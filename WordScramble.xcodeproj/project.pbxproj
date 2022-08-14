@@ -10,12 +10,14 @@
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
 		8ADAB27528A5911C0083E028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* ViewController.swift */; };
-		8ADAB27828A5911C0083E028 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27628A5911C0083E028 /* Main.storyboard */; };
 		8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27928A5911D0083E028 /* Assets.xcassets */; };
 		8ADAB27D28A5911D0083E028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */; };
 		8ADAB28828A5911D0083E028 /* WordScrambleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB28728A5911D0083E028 /* WordScrambleTests.swift */; };
 		8ADAB29228A5911D0083E028 /* WordScrambleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */; };
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
+		8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */; };
+		8ADAB2A328A594040083E028 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* start.txt */; };
+		8ADAB2A528A5941B0083E028 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,6 @@
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27428A5911C0083E028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8ADAB27728A5911C0083E028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8ADAB27928A5911D0083E028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADAB27C28A5911D0083E028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ADAB27E28A5911D0083E028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		8ADAB28D28A5911D0083E028 /* WordScrambleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordScrambleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
+		8ADAB2A228A594040083E028 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
+		8ADAB2A428A5941B0083E028 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,12 @@
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
 				8ADAB27428A5911C0083E028 /* ViewController.swift */,
-				8ADAB27628A5911C0083E028 /* Main.storyboard */,
+				8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */,
 				8ADAB27928A5911D0083E028 /* Assets.xcassets */,
 				8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */,
 				8ADAB27E28A5911D0083E028 /* Info.plist */,
+				8ADAB2A228A594040083E028 /* start.txt */,
+				8ADAB2A428A5941B0083E028 /* Store.swift */,
 			);
 			path = WordScramble;
 			sourceTree = "<group>";
@@ -232,8 +238,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ADAB27D28A5911D0083E028 /* LaunchScreen.storyboard in Resources */,
+				8ADAB2A328A594040083E028 /* start.txt in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
-				8ADAB27828A5911C0083E028 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ADAB2A528A5941B0083E028 /* Store.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* ViewController.swift in Sources */,
+				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8ADAB27628A5911C0083E028 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8ADAB27728A5911C0083E028 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -366,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -420,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +442,6 @@
 				INFOPLIST_FILE = WordScramble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +469,6 @@
 				INFOPLIST_FILE = WordScramble/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
