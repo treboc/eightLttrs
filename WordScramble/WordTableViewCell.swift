@@ -9,6 +9,19 @@ import UIKit
 
 class WordTableViewCell: UITableViewCell {
   static let identifier = "WordTableViewCell"
+  var word: String! {
+    didSet {
+      wordLabel.text = word
+      pointsImage.image = UIImage(systemName: "\(word.count).circle.fill")
+    }
+  }
+
+  lazy var pointsImage: UIImageView = {
+    let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFit
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
+  }()
 
   lazy var wordLabel: UILabel = {
     let lbl = UILabel()
@@ -27,12 +40,21 @@ class WordTableViewCell: UITableViewCell {
   }
 
   private func setupLabel() {
+    self.addSubview(pointsImage)
     self.addSubview(wordLabel)
     NSLayoutConstraint.activate([
-      wordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      wordLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-      wordLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -16),
-      wordLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+      pointsImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.widthPadding),
+      pointsImage.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
+      pointsImage.widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.widthPadding * 2),
+      pointsImage.heightAnchor.constraint(equalTo: pointsImage.widthAnchor),
+      pointsImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+
+      wordLabel.leadingAnchor.constraint(equalTo: pointsImage.trailingAnchor, constant: Constants.widthPadding),
+      wordLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
+      wordLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -(2*Constants.widthPadding) + pointsImage.frame.width),
+      wordLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.widthPadding),
+      wordLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])
   }
 }

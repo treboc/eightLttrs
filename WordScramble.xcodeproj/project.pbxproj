@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
+		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
-		8ADAB27528A5911C0083E028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* ViewController.swift */; };
+		8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* MainViewController.swift */; };
 		8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27928A5911D0083E028 /* Assets.xcassets */; };
 		8ADAB27D28A5911D0083E028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */; };
 		8ADAB28828A5911D0083E028 /* WordScrambleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB28728A5911D0083E028 /* WordScrambleTests.swift */; };
@@ -38,10 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8ADAB27428A5911C0083E028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8ADAB27428A5911C0083E028 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8ADAB27928A5911D0083E028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADAB27C28A5911D0083E028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ADAB27E28A5911D0083E028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,8 +109,10 @@
 			children = (
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
-				8ADAB27428A5911C0083E028 /* ViewController.swift */,
+				8ADAB27428A5911C0083E028 /* MainViewController.swift */,
+				8A6703C828A9A77000BBF5F1 /* MainView.swift */,
 				8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */,
+				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
 				8ADAB27928A5911D0083E028 /* Assets.xcassets */,
 				8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */,
 				8ADAB27E28A5911D0083E028 /* Info.plist */,
@@ -265,8 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ADAB2A528A5941B0083E028 /* Store.swift in Sources */,
-				8ADAB27528A5911C0083E028 /* ViewController.swift in Sources */,
+				8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */,
+				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
 				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
+				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,
 			);

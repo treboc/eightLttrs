@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 11.08.22.
@@ -7,75 +7,69 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-  lazy var tableView: UITableView = {
-    let tableView = UITableView()
-    tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
-    tableView.dataSource = self
-    tableView.delegate = self
-    return tableView
-  }()
-
+class MainViewController: UIViewController {
   let store = Store()
+  var mainView: MainView {
+    view as! MainView
+  }
 
   override func loadView() {
-    view = tableView
+    view = MainView()
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
     setupNavigationController()
+    setupActions()
     startGame()
+    mainView.tableView.dataSource = self
+    mainView.tableView.delegate = self
   }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return store.usedWords.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as! WordTableViewCell
-    cell.wordLabel.text = store.usedWords[indexPath.row]
+    cell.word = store.usedWords[indexPath.row]
     return cell
   }
 }
 
-extension ViewController {
+extension MainViewController {
   func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
+    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
+  }
+
+  func setupActions() {
+    mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
+    mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
   }
 
   @objc
   func startGame() {
     title = store.allWords.randomElement()
     store.usedWords.removeAll(keepingCapacity: true)
-    tableView.reloadData()
+    mainView.tableView.reloadData()
   }
 
   @objc
-  func promptForAnswer() {
-    let ac = UIAlertController(title: "Enter Answer", message: nil, preferredStyle: .alert)
-    ac.addTextField()
-
-    let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] _ in
-      guard let answer = ac?.textFields?[0].text else { return }
-      self?.submit(answer)
-    }
-    ac.addAction(submitAction)
-    present(ac, animated: true)
-  }
-
-  func submit(_ answer: String) {
-    let lowerAnswer = answer.lowercased()
+  func submit() {
+    guard
+      let lowerAnswer = mainView.wordTextField.text?.lowercased(),
+      let answer = mainView.wordTextField.text
+    else { return }
     do {
       try check(lowerAnswer)
       store.usedWords.insert(answer, at: 0)
       let indexPath = IndexPath(row: 0, section: 0)
-      tableView.insertRows(at: [indexPath], with: .automatic)
+      mainView.tableView.insertRows(at: [indexPath], with: .automatic)
+      mainView.wordTextField.text?.removeAll()
     } catch let error as WordError {
       catchError(error)
     } catch {
@@ -106,7 +100,7 @@ extension ViewController {
 
 }
 
-extension ViewController {
+extension MainViewController {
   func check(_ word: String) throws {
     // tooShort
     if word.count < 3 {
