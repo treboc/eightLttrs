@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */; };
+		8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */; };
+		8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */; };
+		8A3F79D528AC59810058A272 /* allWords8LettersUS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */; };
 		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
 		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
+		8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
 		8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* MainViewController.swift */; };
@@ -18,8 +23,8 @@
 		8ADAB29228A5911D0083E028 /* WordScrambleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */; };
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
 		8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */; };
-		8ADAB2A328A594040083E028 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* start.txt */; };
-		8ADAB2A528A5941B0083E028 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* Store.swift */; };
+		8ADAB2A328A594040083E028 /* startWordsUS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* startWordsUS.txt */; };
+		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "wordlist-german.txt"; sourceTree = "<group>"; };
+		8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsDE.txt; sourceTree = "<group>"; };
+		8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersDE.txt; sourceTree = "<group>"; };
+		8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersUS.txt; sourceTree = "<group>"; };
 		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,8 +65,8 @@
 		8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
-		8ADAB2A228A594040083E028 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
-		8ADAB2A428A5941B0083E028 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		8ADAB2A228A594040083E028 /* startWordsUS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsUS.txt; sourceTree = "<group>"; };
+		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A3F79D328AC55E90058A272 /* GameService */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAB2A428A5941B0083E028 /* GameService.swift */,
+				8ADAB2A228A594040083E028 /* startWordsUS.txt */,
+				8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */,
+				8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */,
+				8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */,
+				8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */,
+			);
+			path = GameService;
+			sourceTree = "<group>";
+		};
+		8A70BEC128AB7C4300455FF1 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8A70BEC228AB7C4C00455FF1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		8A70BEC328AB7C5A00455FF1 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAB27428A5911C0083E028 /* MainViewController.swift */,
+				8A6703C828A9A77000BBF5F1 /* MainView.swift */,
+				8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
@@ -109,15 +158,13 @@
 			children = (
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
-				8ADAB27428A5911C0083E028 /* MainViewController.swift */,
-				8A6703C828A9A77000BBF5F1 /* MainView.swift */,
-				8ADAB2A028A591D40083E028 /* WordTableViewCell.swift */,
-				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
+				8A70BEC328AB7C5A00455FF1 /* MainViewController */,
+				8A70BEC228AB7C4C00455FF1 /* Helper */,
+				8A70BEC128AB7C4300455FF1 /* Onboarding */,
+				8A3F79D328AC55E90058A272 /* GameService */,
 				8ADAB27928A5911D0083E028 /* Assets.xcassets */,
 				8ADAB27B28A5911D0083E028 /* LaunchScreen.storyboard */,
 				8ADAB27E28A5911D0083E028 /* Info.plist */,
-				8ADAB2A228A594040083E028 /* start.txt */,
-				8ADAB2A428A5941B0083E028 /* Store.swift */,
 			);
 			path = WordScramble;
 			sourceTree = "<group>";
@@ -243,8 +290,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3F79D528AC59810058A272 /* allWords8LettersUS.txt in Resources */,
+				8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */,
+				8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */,
+				8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */,
 				8ADAB27D28A5911D0083E028 /* LaunchScreen.storyboard in Resources */,
-				8ADAB2A328A594040083E028 /* start.txt in Resources */,
+				8ADAB2A328A594040083E028 /* startWordsUS.txt in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,9 +321,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ADAB2A528A5941B0083E028 /* Store.swift in Sources */,
+				8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */,
 				8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
+				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
