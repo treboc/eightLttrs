@@ -70,7 +70,7 @@ class GameService: GameServiceProtocol {
     let currentLocale = Locale.autoupdatingCurrent.identifier.suffix(2)
 
     // load possible words to check for
-    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8\(currentLocale).txt", withExtension: nil) {
+    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
       if let possibleWords = try? String(contentsOf: possibleWordsURL) {
         let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines).map({ $0.lowercased() })
         self.allPossibleWords = Set(possibleLowercasedWords)
