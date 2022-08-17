@@ -71,6 +71,7 @@ extension MainViewController {
   func startGame() {
     gameService.startGame { [weak self] currentWord in
       self?.title = currentWord
+      mainView.scorePointsLabel.text = "\(gameService.currentScore)"
       mainView.tableView.reloadData()
     }
   }
@@ -99,7 +100,8 @@ extension MainViewController {
 
   private func updateUIAfterSumbission() {
     let indexPath = IndexPath(row: 0, section: 0)
-    mainView.tableView.insertRows(at: [indexPath], with: .automatic)
+    mainView.tableView.insertRows(at: [indexPath], with: .left)
+    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
   }
 }

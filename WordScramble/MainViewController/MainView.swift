@@ -37,13 +37,33 @@ class MainView: UIView {
     btn.isEnabled = false
     let imageConf = UIImage.SymbolConfiguration(textStyle: .caption1)
     let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf)!
+    plusImage.withTintColor(.label, renderingMode: .automatic)
     btn.setImage(plusImage, for: .normal)
     return btn
+  }()
+
+  lazy var scoreTextLabel: UILabel = {
+    let lbl = UILabel()
+    lbl.textAlignment = .right
+    lbl.text = "Current Score"
+    lbl.font = .preferredFont(forTextStyle: .subheadline)
+    return lbl
+  }()
+
+  lazy var scorePointsLabel: UILabel = {
+    let lbl = UILabel()
+    lbl.textAlignment = .right
+    lbl.text = "0"
+    lbl.font = .preferredFont(forTextStyle: .headline)
+    lbl.font = .monospacedDigitSystemFont(ofSize: lbl.font.pointSize, weight: .semibold)
+    return lbl
   }()
 
   lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
+    tableView.separatorColor = .systemOrange
+    tableView.keyboardDismissMode = .interactiveWithAccessory
     return tableView
   }()
 
@@ -64,7 +84,7 @@ class MainView: UIView {
 extension MainView {
   func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
-    let views = [wordTextField, submitButton, tableView]
+    let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, tableView]
     for view in views {
       self.addSubview(view)
       view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +101,17 @@ extension MainView {
       submitButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
       submitButton.widthAnchor.constraint(equalTo: submitButton.heightAnchor),
 
-      tableView.topAnchor.constraint(equalTo: wordTextField.bottomAnchor, constant: 12),
+      scoreTextLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
+      scoreTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
+      scoreTextLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+      scoreTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+
+      scorePointsLabel.topAnchor.constraint(equalTo: scoreTextLabel.bottomAnchor),
+      scorePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
+      scorePointsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
+      scorePointsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+
+      tableView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
       tableView.widthAnchor.constraint(equalTo: widthAnchor),
       tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
       tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)

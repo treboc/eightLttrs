@@ -91,6 +91,7 @@ class GameService: GameServiceProtocol {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
     usedWords.removeAll()
+    calculateScore()
     completionHandler(rndWord)
   }
 
