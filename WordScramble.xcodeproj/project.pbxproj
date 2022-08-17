@@ -11,6 +11,9 @@
 		8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */; };
 		8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */; };
 		8A3F79D528AC59810058A272 /* allWords8LettersUS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */; };
+		8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79D928ACD4A60058A272 /* MenuViewController.swift */; };
+		8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DB28ACD4D30058A272 /* MenuView.swift */; };
+		8A3F79DE28ACE42C0058A272 /* ScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* ScoreService.swift */; };
 		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
 		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */; };
@@ -49,6 +52,9 @@
 		8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsDE.txt; sourceTree = "<group>"; };
 		8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersDE.txt; sourceTree = "<group>"; };
 		8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersUS.txt; sourceTree = "<group>"; };
+		8A3F79D928ACD4A60058A272 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8A3F79DB28ACD4D30058A272 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		8A3F79DD28ACE42C0058A272 /* ScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreService.swift; sourceTree = "<group>"; };
 		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAB2A428A5941B0083E028 /* GameService.swift */,
+				8A3F79DD28ACE42C0058A272 /* ScoreService.swift */,
 				8ADAB2A228A594040083E028 /* startWordsUS.txt */,
 				8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */,
 				8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */,
@@ -105,6 +112,15 @@
 				8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */,
 			);
 			path = GameService;
+			sourceTree = "<group>";
+		};
+		8A3F79D828ACD4940058A272 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A3F79D928ACD4A60058A272 /* MenuViewController.swift */,
+				8A3F79DB28ACD4D30058A272 /* MenuView.swift */,
+			);
+			path = MenuViewController;
 			sourceTree = "<group>";
 		};
 		8A70BEC128AB7C4300455FF1 /* Onboarding */ = {
@@ -158,6 +174,7 @@
 			children = (
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
+				8A3F79D828ACD4940058A272 /* MenuViewController */,
 				8A70BEC328AB7C5A00455FF1 /* MainViewController */,
 				8A70BEC228AB7C4C00455FF1 /* Helper */,
 				8A70BEC128AB7C4300455FF1 /* Onboarding */,
@@ -323,8 +340,11 @@
 			files = (
 				8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */,
 				8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */,
+				8A3F79DE28ACE42C0058A272 /* ScoreService.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
+				8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */,
+				8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */,
 				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
