@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
   var gameService: GameServiceProtocol
 
   var mainView: MainView {
@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     startGame()
     mainView.tableView.dataSource = self
     mainView.tableView.delegate = self
+    mainView.wordTextField.delegate = self
   }
 }
 
@@ -63,6 +64,7 @@ extension MainViewController {
   func setupActions() {
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
+    self.hideKeyboardOnTap()
   }
 
   @objc
@@ -102,3 +104,16 @@ extension MainViewController {
   }
 }
 
+// MARK: - Handle dismiss keyboard on tap
+extension MainViewController {
+  fileprivate func hideKeyboardOnTap() {
+    let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+
+  @objc
+  fileprivate func hideKeyboard() {
+    view.endEditing(true)
+  }
+}
