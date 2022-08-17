@@ -58,7 +58,7 @@ extension MainViewController {
   func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restart))
   }
 
   func setupActions() {
@@ -73,6 +73,20 @@ extension MainViewController {
       self?.title = currentWord
       mainView.scorePointsLabel.text = "\(gameService.currentScore)"
       mainView.tableView.reloadData()
+    }
+  }
+
+  @objc
+  private func restart() {
+    if gameService.usedWords.isEmpty {
+      startGame()
+    } else {
+      let ac = UIAlertController(title: "Are you sure?", message: "When you reset the game, all words and your score will be reset.", preferredStyle: .alert)
+      let resetAction = UIAlertAction(title: "Yes, I'm sure!", style: .destructive) { [weak self] _ in self?.startGame() }
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+      ac.addAction(resetAction)
+      ac.addAction(cancelAction)
+      present(ac, animated: true)
     }
   }
 
