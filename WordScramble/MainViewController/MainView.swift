@@ -33,9 +33,11 @@ class MainView: UIView {
 
   lazy var submitButton: UIButton = {
     let btn = UIButton()
-    btn.configuration = .borderedProminent()
+    var configuration = UIButton.Configuration.borderedProminent()
+    configuration.baseForegroundColor = .systemBackground
+    btn.configuration = configuration
     btn.isEnabled = false
-    let imageConf = UIImage.SymbolConfiguration(textStyle: .caption1)
+    let imageConf = UIImage.SymbolConfiguration(pointSize: 12)
     let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf)!
     plusImage.withTintColor(.label, renderingMode: .automatic)
     btn.setImage(plusImage, for: .normal)

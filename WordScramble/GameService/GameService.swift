@@ -35,6 +35,8 @@ struct Alert {
 }
 
 protocol GameServiceProtocol {
+  var scoreService: ScoreService { get set }
+
   var startWords: Set<String> { get set }
   var allPossibleWords: Set<String> { set get }
   var currentWord: String { get set }
@@ -44,12 +46,15 @@ protocol GameServiceProtocol {
 
   func loadWords()
   func startGame(_: (String) -> Void)
+  func endGame(playerName: String)
 
   func check(_ word: String) throws
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws
 }
 
 class GameService: GameServiceProtocol {
+  var scoreService: ScoreService
+
   var startWords: Set<String> = .init()
   var allPossibleWords: Set<String> = .init()
   var currentWord: String = ""
@@ -61,7 +66,8 @@ class GameService: GameServiceProtocol {
   }
   var currentScore: Int = 0
 
-  init() {
+  init(scoreService: ScoreService) {
+    self.scoreService = scoreService
     loadWords()
   }
 
@@ -93,6 +99,11 @@ class GameService: GameServiceProtocol {
     usedWords.removeAll()
     calculateScore()
     completionHandler(rndWord)
+  }
+
+  func endGame(playerName: String) {
+    guard !usedWords.isEmpty else { return }
+    scoreService.saveScore(word: currentWord, name: playerName, score: currentScore)
   }
 
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {

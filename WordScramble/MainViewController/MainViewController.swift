@@ -8,14 +8,14 @@
 import Combine
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControllerDelegate {
   var gameService: GameServiceProtocol
 
   var mainView: MainView {
     view as! MainView
   }
 
-  init(gameService: GameServiceProtocol = GameService()) {
+  init(gameService: GameServiceProtocol = GameService(scoreService: ScoreService())) {
     self.gameService = gameService
     super.init(nibName: nil, bundle: nil)
   }
@@ -58,13 +58,21 @@ extension MainViewController {
   func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restart))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
   }
 
   func setupActions() {
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
     self.hideKeyboardOnTap()
+  }
+
+  @objc
+  private func showMenu() {
+    let menuVC = MenuViewController()
+    menuVC.delegate = self
+    let menuNavVC = UINavigationController(rootViewController: menuVC)
+    present(menuNavVC, animated: true)
   }
 
   @objc
@@ -77,17 +85,34 @@ extension MainViewController {
   }
 
   @objc
-  private func restart() {
+  func resetGame() {
     if gameService.usedWords.isEmpty {
       startGame()
     } else {
       let ac = UIAlertController(title: "Are you sure?", message: "When you reset the game, all words and your score will be reset.", preferredStyle: .alert)
-      let resetAction = UIAlertAction(title: "Yes, I'm sure!", style: .destructive) { [weak self] _ in self?.startGame() }
+      let resetAction = UIAlertAction(title: "Yes, I'm sure!", style: .destructive) { [weak self] _ in
+        self?.startGame()
+      }
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
       ac.addAction(resetAction)
       ac.addAction(cancelAction)
       present(ac, animated: true)
     }
+  }
+
+  @objc
+  func endGame() {
+    let ac = UIAlertController(title: "Ending game..", message: "To save your highscore, we need your name!", preferredStyle: .alert)
+    ac.addTextField()
+    let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+      guard let name = ac.textFields?[0].text else { return }
+      self?.gameService.endGame(playerName: name)
+      self?.startGame()
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    ac.addAction(saveAction)
+    ac.addAction(cancelAction)
+    present(ac, animated: true)
   }
 
   @objc
