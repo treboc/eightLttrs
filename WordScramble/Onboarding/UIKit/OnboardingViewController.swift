@@ -39,17 +39,17 @@ extension OnboardingViewController {
     pageControl.addTarget(self, action: #selector(pageControlTapped), for: .valueChanged)
 
     let page1 = OnboardingPageViewController(
-      title: "What's the game about?",
-      body: ["based on a project of 100daysOfSwift by Paul Hudson",
-             "try to find as many words as possible out of a random starting word"])
+      title: L10n.Onboarding.FirstPage.title,
+      body: [L10n.Onboarding.FirstPage.body1,
+             L10n.Onboarding.FirstPage.body2])
     let page2 = OnboardingPageViewController(
-      title: "Rules",
-      body: ["all starting words are eight letters long",
-             "your word must contain a minimum of three letters"])
+      title: L10n.Onboarding.SecondPage.title,
+      body: [L10n.Onboarding.SecondPage.body1,
+             L10n.Onboarding.SecondPage.body2])
     let page3 = OnboardingPageViewController(
-      title: "Scoring",
-      body: ["for the first three letters are one point each",
-             "for every following letter two points, then four, then six and so on"],
+      title: L10n.Onboarding.ThirdPage.title,
+      body: [L10n.Onboarding.ThirdPage.body1,
+             L10n.Onboarding.ThirdPage.body2],
       isLastPage: true)
 
     pages.append(contentsOf: [page1, page2, page3])
@@ -60,16 +60,17 @@ extension OnboardingViewController {
   private func style() {
     pageControl.translatesAutoresizingMaskIntoConstraints = false
     pageControl.currentPageIndicatorTintColor = .tintColor
+    pageControl.pageIndicatorTintColor = .secondaryLabel
     pageControl.numberOfPages = pages.count
     pageControl.currentPage = initialPage
 
     skipButton.translatesAutoresizingMaskIntoConstraints = false
-    skipButton.setTitle("Skip", for: .normal)
+    skipButton.setTitle(L10n.Onboarding.SkipButton.title, for: .normal)
     skipButton.configuration = .plain()
     skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
 
     nextButton.translatesAutoresizingMaskIntoConstraints = false
-    nextButton.setTitle("Next", for: .normal)
+    nextButton.setTitle(L10n.Onboarding.NextButton.title, for: .normal)
     nextButton.configuration = .plain()
     nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
   }

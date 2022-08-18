@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Menu"
+    self.title = L10n.MenuView.title
     setupActions()
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
@@ -35,7 +35,7 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController {
   private func setupActions() {
-    menuView.resetSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+    menuView.restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
     menuView.endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
   }
 

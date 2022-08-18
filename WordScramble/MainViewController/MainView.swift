@@ -45,7 +45,7 @@ class MainView: UIView {
   lazy var scoreTextLabel: UILabel = {
     let lbl = UILabel()
     lbl.textAlignment = .right
-    lbl.text = "Current Score"
+    lbl.text = L10n.MainView.currentScore
     lbl.font = .preferredFont(forTextStyle: .subheadline)
     return lbl
   }()

@@ -13,17 +13,17 @@ enum WordError: Error {
   var alert: Alert {
     switch self {
     case .notReal:
-      return Alert(title: "Word Not Recognized",
-                        message: "You can't just make them up, you know?")
+      return Alert(title: L10n.WordError.NotReal.title,
+                   message: L10n.WordError.NotReal.message)
     case .notOriginal:
-      return Alert(title: "Word Already Used",
-                        message: "Come on, be more original!")
+      return Alert(title: L10n.WordError.NotOriginal.title,
+                   message: L10n.WordError.NotOriginal.message)
     case .notPossible(let word):
-      return Alert(title: "Word Not Possible",
-                        message: "You can't spell that from \"\(word)\". Please, look again.")
+      return Alert(title: L10n.WordError.NotPossible.title,
+                   message: L10n.WordError.NotPossible.message(word))
     case .tooShort:
-      return Alert(title: "Too Short",
-                        message: "THe word should have at least three letters.")
+      return Alert(title: L10n.WordError.TooShort.title,
+                   message: L10n.WordError.TooShort.message)
     }
   }
 }

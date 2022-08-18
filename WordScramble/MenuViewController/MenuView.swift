@@ -22,10 +22,10 @@ class MenuView: UIView {
     return sv
   }()
 
-  lazy var resetSessionButton: UIButton = {
+  lazy var restartSessionButton: UIButton = {
     let btn = UIButton()
     btn.configuration = .borderedProminent()
-    btn.setTitle("Reset Session", for: .normal)
+    btn.setTitle(L10n.MenuView.restartSession, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     return btn
   }()
@@ -33,7 +33,7 @@ class MenuView: UIView {
   lazy var endSessionButton: UIButton = {
     let btn = UIButton()
     btn.configuration = .borderedProminent()
-    btn.setTitle("End Session", for: .normal)
+    btn.setTitle(L10n.MenuView.endSession, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     return btn
   }()
@@ -41,7 +41,7 @@ class MenuView: UIView {
   lazy var showHighscoreButton: UIButton = {
     let btn = UIButton()
     btn.configuration = .borderedProminent()
-    btn.setTitle("Show Highscore", for: .normal)
+    btn.setTitle(L10n.MenuView.showHighscore, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     return btn
   }()
@@ -57,7 +57,7 @@ class MenuView: UIView {
   }
 
   private func setupLayout() {
-    let views = [resetSessionButton, endSessionButton, showHighscoreButton]
+    let views = [restartSessionButton, endSessionButton, showHighscoreButton]
     views.forEach {
       stackView.addArrangedSubview($0)
       $0.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5).isActive = true

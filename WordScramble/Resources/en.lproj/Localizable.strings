@@ -19,3 +19,34 @@
 "onboarding.thirdPage.body1" = "for the first three letters there is one point each";
 "onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
 "onboarding.thirdPage.buttonTitle" = "Let's go!";
+
+// WordError
+"wordError.notReal.title" = "Word Not Recognized";
+"wordError.notReal.message" = "You can't just make them up, you know?";
+"wordError.notOriginal.title" = "Word Already Used";
+"wordError.notOriginal.message" = "Come on, be more original!";
+"wordError.notPossible.title" = "Word Not Possible";
+"wordError.notPossible.message" = "You can't spell that from \"%@\". Please look again.";
+"wordError.tooShort.title" = "Too Short";
+"wordError.tooShort.message" = "The word should have at least three characters.";
+
+// MainView
+"mainView.currentScore" = "Current Score";
+
+// MenuView
+"menuView.title" = "Menu";
+"menuView.restartSession" = "Restart Session";
+"menuView.endSession" = "End Session";
+"menuView.showHighscore" = "Show Highscore";
+
+// Alerts
+"resetGameAlert.title" = "Are you sure?";
+"resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost.";
+"resetGameAlert.cancel" = "Cancel";
+"resetGameAlert.sure" = "Yes, I'm sure!";
+
+"endGameAlert.title" = "Saving Score";
+"endGameAlert.message" = "To save your score, we need your name!";
+"endGameAlert.cancel" = "Cancel";
+"endGameAlert.save" = "Save";
+

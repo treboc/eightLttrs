@@ -61,9 +61,9 @@ extension OnboardingPageViewController {
       view.addSubview(startButton)
 
       NSLayoutConstraint.activate([
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 64),
+        titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 128),
 
         bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
         bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
@@ -78,15 +78,14 @@ extension OnboardingPageViewController {
       ])
     } else {
       NSLayoutConstraint.activate([
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 64),
-        titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+        titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 128),
 
         bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
         bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
         bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-        bodyLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64)
+        bodyLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -128)
       ])
     }
   }

@@ -94,11 +94,13 @@ extension MainViewController {
     if gameService.usedWords.isEmpty {
       startGame()
     } else {
-      let ac = UIAlertController(title: "Are you sure?", message: "When you reset the game, all words and your score will be reset.", preferredStyle: .alert)
-      let resetAction = UIAlertAction(title: "Yes, I'm sure!", style: .destructive) { [weak self] _ in
+      let ac = UIAlertController(title: L10n.ResetGameAlert.title,
+                                 message: L10n.ResetGameAlert.message,
+                                 preferredStyle: .alert)
+      let resetAction = UIAlertAction(title: L10n.ResetGameAlert.sure, style: .destructive) { [weak self] _ in
         self?.startGame()
       }
-      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+      let cancelAction = UIAlertAction(title: L10n.ResetGameAlert.cancel, style: .cancel)
       ac.addAction(resetAction)
       ac.addAction(cancelAction)
       present(ac, animated: true)
@@ -107,14 +109,16 @@ extension MainViewController {
 
   @objc
   func endGame() {
-    let ac = UIAlertController(title: "Ending game..", message: "To save your highscore, we need your name!", preferredStyle: .alert)
+    let ac = UIAlertController(title: L10n.EndGameAlert.title,
+                               message: L10n.EndGameAlert.message,
+                               preferredStyle: .alert)
     ac.addTextField()
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+    let saveAction = UIAlertAction(title: L10n.EndGameAlert.save, style: .default) { [weak self] _ in
       guard let name = ac.textFields?[0].text else { return }
       self?.gameService.endGame(playerName: name)
       self?.startGame()
     }
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    let cancelAction = UIAlertAction(title: L10n.EndGameAlert.cancel, style: .cancel)
     ac.addAction(saveAction)
     ac.addAction(cancelAction)
     present(ac, animated: true)
@@ -172,7 +176,7 @@ extension MainViewController {
     if isFirstStart == false {
       let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
       onboardingVC.modalPresentationStyle = .fullScreen
-      present(onboardingVC, animated: false)
+      self.parent?.present(onboardingVC, animated: false)
     }
   }
 }

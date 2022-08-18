@@ -10,6 +10,30 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  internal enum EndGameAlert {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "endGameAlert.cancel", fallback: #"Cancel"#)
+    /// To save your score, we need your name!
+    internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: #"To save your score, we need your name!"#)
+    /// Save
+    internal static let save = L10n.tr("Localizable", "endGameAlert.save", fallback: #"Save"#)
+    /// Saving Score
+    internal static let title = L10n.tr("Localizable", "endGameAlert.title", fallback: #"Saving Score"#)
+  }
+  internal enum MainView {
+    /// Current Score
+    internal static let currentScore = L10n.tr("Localizable", "mainView.currentScore", fallback: #"Current Score"#)
+  }
+  internal enum MenuView {
+    /// End Session
+    internal static let endSession = L10n.tr("Localizable", "menuView.endSession", fallback: #"End Session"#)
+    /// Restart Session
+    internal static let restartSession = L10n.tr("Localizable", "menuView.restartSession", fallback: #"Restart Session"#)
+    /// Show Highscore
+    internal static let showHighscore = L10n.tr("Localizable", "menuView.showHighscore", fallback: #"Show Highscore"#)
+    /// Menu
+    internal static let title = L10n.tr("Localizable", "menuView.title", fallback: #"Menu"#)
+  }
   internal enum Onboarding {
     internal enum FirstPage {
       /// based on a project of 100daysOfSwift by Paul Hudson
@@ -44,6 +68,44 @@ internal enum L10n {
       internal static let buttonTitle = L10n.tr("Localizable", "onboarding.thirdPage.buttonTitle", fallback: #"Let's go!"#)
       /// Scoring
       internal static let title = L10n.tr("Localizable", "onboarding.thirdPage.title", fallback: #"Scoring"#)
+    }
+  }
+  internal enum ResetGameAlert {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "resetGameAlert.cancel", fallback: #"Cancel"#)
+    /// When you reset the game, all words and your score will be reset and lost.
+    internal static let message = L10n.tr("Localizable", "resetGameAlert.message", fallback: #"When you reset the game, all words and your score will be reset and lost."#)
+    /// Yes, I'm sure!
+    internal static let sure = L10n.tr("Localizable", "resetGameAlert.sure", fallback: #"Yes, I'm sure!"#)
+    /// Are you sure?
+    internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: #"Are you sure?"#)
+  }
+  internal enum WordError {
+    internal enum NotOriginal {
+      /// Come on, be more original!
+      internal static let message = L10n.tr("Localizable", "wordError.notOriginal.message", fallback: #"Come on, be more original!"#)
+      /// Word Already Used
+      internal static let title = L10n.tr("Localizable", "wordError.notOriginal.title", fallback: #"Word Already Used"#)
+    }
+    internal enum NotPossible {
+      /// You can't spell that from "%@". Please look again.
+      internal static func message(_ p1: Any) -> String {
+        return L10n.tr("Localizable", "wordError.notPossible.message", String(describing: p1), fallback: #"You can't spell that from "%@". Please look again."#)
+      }
+      /// Word Not Possible
+      internal static let title = L10n.tr("Localizable", "wordError.notPossible.title", fallback: #"Word Not Possible"#)
+    }
+    internal enum NotReal {
+      /// You can't just make them up, you know?
+      internal static let message = L10n.tr("Localizable", "wordError.notReal.message", fallback: #"You can't just make them up, you know?"#)
+      /// Word Not Recognized
+      internal static let title = L10n.tr("Localizable", "wordError.notReal.title", fallback: #"Word Not Recognized"#)
+    }
+    internal enum TooShort {
+      /// The word should have at least three characters.
+      internal static let message = L10n.tr("Localizable", "wordError.tooShort.message", fallback: #"The word should have at least three characters."#)
+      /// Too Short
+      internal static let title = L10n.tr("Localizable", "wordError.tooShort.title", fallback: #"Too Short"#)
     }
   }
 }

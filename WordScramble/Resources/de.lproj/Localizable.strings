@@ -7,15 +7,46 @@
 */
 
 // Onboarding
-"onboarding.skipButton.title" = "Skip";
-"onboarding.nextButton.title" = "Next";
-"onboarding.firstPage.title" = "What's the game about?";
-"onboarding.firstPage.body1" = "based on a project of 100daysOfSwift by Paul Hudson";
-"onboarding.firstPage.body2" = "try to find as many words as possible out of a random starting word";
-"onboarding.secondPage.title" = "Rules";
-"onboarding.secondPage.body1" = "all starting words are eight letters long";
-"onboarding.secondPage.body2" = "your word must contain at least a minimum of three letters";
-"onboarding.thirdPage.title" = "Scoring";
-"onboarding.thirdPage.body1" = "for the first three letters there is one point each";
-"onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
-"onboarding.thirdPage.buttonTitle" = "Let's go!";
+"onboarding.skipButton.title" = "Überspringen";
+"onboarding.nextButton.title" = "Weiter";
+"onboarding.firstPage.title" = "Worum geht's?";
+"onboarding.firstPage.body1" = "das Spiel basiert auf einem Projekt aus dem Kurs '100daysOfSwift' von Paul Hudson";
+"onboarding.firstPage.body2" = "versuch so viele Worte wie möglich aus dem zufällig gewähltem Startwort zu bilden";
+"onboarding.secondPage.title" = "Regeln";
+"onboarding.secondPage.body1" = "alle Startworte haben acht Buchstaben";
+"onboarding.secondPage.body2" = "stelle die Buchstaben um, lass welche weg, dein Wort muss lediglich mindestens drei Buchstaben haben";
+"onboarding.thirdPage.title" = "Punkteberechnung";
+"onboarding.thirdPage.body1" = "für die ersten drei Buchstaben deines Wortes gibt es drei Punkte";
+"onboarding.thirdPage.body2" = "für jeden weiteren immer zwei mehr, also für den vierten 2, für den fünften 4, für den sechsten 6, etc.";
+"onboarding.thirdPage.buttonTitle" = "Los gehts!";
+
+
+// WordError
+"wordError.notReal.title" = "Kein Wort";
+"wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
+"wordError.notOriginal.title" = "Schon genutzt";
+"wordError.notOriginal.message" = "Das hatten wir schon, denk' dir was neues aus.";
+"wordError.notPossible.title" = "Nicht möglich!";
+"wordError.notPossible.message" = "Aus den Buchstaben kannst du \"%@\" nicht machen.";
+"wordError.tooShort.title" = "Zu kurz";
+"wordError.tooShort.message" = "Ein bisschen länger sollte es schon sein.";
+
+// MainView
+"mainView.currentScore" = "Gesamtpunktzahl";
+
+// MenuView
+"menuView.title" = "Menü";
+"menuView.restartSession" = "Neues Wort";
+"menuView.endSession" = "Wort beenden";
+"menuView.showHighscore" = "Highscores";
+
+// Alerts
+"resetGameAlert.title" = "Bist du sicher?";
+"resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt.";
+"resetGameAlert.cancel" = "Abbrechen";
+"resetGameAlert.sure" = "Ja, ich bin sicher!";
+
+"endGameAlert.title" = "Punktzahl sichern";
+"endGameAlert.message" = "Um deine Punkte zu speichern, brauche ich deinen Namen!";
+"endGameAlert.cancel" = "Abbrechen";
+"endGameAlert.save" = "Speichern";
