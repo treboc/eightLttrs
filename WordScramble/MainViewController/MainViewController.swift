@@ -32,6 +32,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    presentOnboardingOnFirstStart()
+
     setupNavigationController()
     setupActions()
     startGame()
@@ -158,5 +161,18 @@ extension MainViewController {
   @objc
   fileprivate func hideKeyboard() {
     view.endEditing(true)
+  }
+}
+
+// MARK: - Onboarding on first start
+extension MainViewController {
+  private func presentOnboardingOnFirstStart() {
+    let isFirstStart = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstStart)
+
+    if isFirstStart == false {
+      let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+      onboardingVC.modalPresentationStyle = .fullScreen
+      present(onboardingVC, animated: false)
+    }
   }
 }
