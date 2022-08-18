@@ -16,9 +16,7 @@ class MainView: UIView {
   lazy var wordTextField: UITextField = {
     let tf = UITextField()
     tf.layer.cornerRadius = 5
-    tf.layer.borderWidth = 1
-    tf.layer.borderColor = UIColor.lightGray.cgColor
-    tf.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+    tf.backgroundColor = .secondarySystemBackground
     tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
     tf.leftViewMode = .always
     tf.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
