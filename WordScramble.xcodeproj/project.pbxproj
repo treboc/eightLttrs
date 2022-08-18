@@ -17,6 +17,7 @@
 		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
 		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */; };
+		8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3A428AE5C2900DFA6D5 /* WordError.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
 		8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* MainViewController.swift */; };
@@ -58,6 +59,7 @@
 		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		8A78F3A428AE5C2900DFA6D5 /* WordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordError.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAB2A428A5941B0083E028 /* GameService.swift */,
+				8A78F3A428AE5C2900DFA6D5 /* WordError.swift */,
 				8A3F79DD28ACE42C0058A272 /* ScoreService.swift */,
 				8ADAB2A228A594040083E028 /* startWordsUS.txt */,
 				8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */,
@@ -346,6 +349,7 @@
 				8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */,
 				8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */,
 				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
+				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,

@@ -123,7 +123,7 @@ extension String {
 extension GameService {
   private func calculateScore() {
     currentScore = usedWords
-      .map { calclulateScoreOf($0) }
+      .map { calculateScoreOf($0) }
       .reduce(0, +)
   }
 
@@ -134,25 +134,25 @@ extension GameService {
    - 4 points for the 5th,
    - 6 points for the 6th, etc.
    */
-  private func calclulateScoreOf(_ word: String) -> Int {
-    var wordScore = 0
+  private func calculateScoreOf(_ answer: String) -> Int {
+    var score = 0
     var scoreMultiplier = 2
-    var wordLength = word.count
+    var length = answer.count
 
-    switch wordLength {
+    switch length {
     case 3:
-      wordScore = 3
+      score = 3
     case 4...:
-      wordScore += 3
-      wordLength -= 3
-      for _ in 0..<wordLength {
-        wordScore += scoreMultiplier
+      score += 3
+      length -= 3
+      for _ in 0..<length {
+        score += scoreMultiplier
         scoreMultiplier += 2
       }
     default:
       break
     }
-    return wordScore
+    return score
   }
 }
 
