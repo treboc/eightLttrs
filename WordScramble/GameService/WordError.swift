@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct Alert {
+  let title: String
+  let message: String
+}
+
 enum WordError: Error {
   case notReal, notOriginal, notPossible(word: String), tooShort
 

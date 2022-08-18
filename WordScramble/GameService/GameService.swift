@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 
 
-struct Alert {
-  let title: String
-  let message: String
-}
 
 protocol GameServiceProtocol {
   var scoreService: ScoreService { get set }
