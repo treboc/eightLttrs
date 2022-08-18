@@ -100,7 +100,7 @@ extension MainView {
 
       submitButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.widthPadding),
       submitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
-      submitButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+      submitButton.heightAnchor.constraint(equalToConstant: 40),
       submitButton.widthAnchor.constraint(equalTo: submitButton.heightAnchor),
 
       scoreTextLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
