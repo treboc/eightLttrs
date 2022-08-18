@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  WordScramble
+
+  Created by Marvin Lee Kobert on 18.08.22.
+  
+*/
+
+// Onboarding
+"onboarding.skipButton.title" = "Skip";
+"onboarding.nextButton.title" = "Next";
+"onboarding.firstPage.title" = "What's the game about?";
+"onboarding.firstPage.body1" = "based on a project of 100daysOfSwift by Paul Hudson";
+"onboarding.firstPage.body2" = "try to find as many words as possible out of a random starting word";
+"onboarding.secondPage.title" = "Rules";
+"onboarding.secondPage.body1" = "all starting words are eight letters long";
+"onboarding.secondPage.body2" = "your word must contain at least a minimum of three letters";
+"onboarding.thirdPage.title" = "Scoring";
+"onboarding.thirdPage.body1" = "for the first three letters there is one point each";
+"onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
+"onboarding.thirdPage.buttonTitle" = "Let's go!";
