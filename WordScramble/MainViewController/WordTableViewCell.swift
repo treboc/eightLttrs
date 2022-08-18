@@ -12,7 +12,11 @@ class WordTableViewCell: UITableViewCell {
   var word: String! {
     didSet {
       wordLabel.text = word
-      pointsImage.image = UIImage(systemName: "\(word.calclulateScore()).circle.fill")
+    }
+  }
+  var points: Int! {
+    didSet {
+      pointsImage.image = UIImage(systemName: "\(points ?? 0).circle.fill")
     }
   }
 
@@ -48,7 +52,6 @@ class WordTableViewCell: UITableViewCell {
       pointsImage.widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.widthPadding * 2),
       pointsImage.heightAnchor.constraint(equalTo: pointsImage.widthAnchor),
       pointsImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-
 
       wordLabel.leadingAnchor.constraint(equalTo: pointsImage.trailingAnchor, constant: Constants.widthPadding),
       wordLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),

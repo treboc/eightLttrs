@@ -48,7 +48,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as! WordTableViewCell
-    cell.word = gameService.usedWords[indexPath.row]
+    let (word, points) = gameService.populateWordWithScore(at: indexPath)
+    cell.word = word
+    cell.points = points
     cell.selectionStyle = .none
     return cell
   }

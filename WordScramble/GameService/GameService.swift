@@ -30,6 +30,7 @@ protocol GameServiceProtocol {
 
   func check(_ word: String) throws
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws
+  func populateWordWithScore(at indexPath: IndexPath) -> (String, Int)
 }
 
 class GameService: GameServiceProtocol {
@@ -93,30 +94,15 @@ class GameService: GameServiceProtocol {
       onCompletion()
     }
   }
-}
 
-extension String {
-  func calclulateScore() -> Int {
-    var wordScore = 0
-    var scoreMultiplier = 2
-    var wordLength = self.count
+  func populateWordWithScore(at indexPath: IndexPath) -> (String, Int) {
+    guard !usedWords[indexPath.row].isEmpty else { return ("Unknown", 0) }
 
-    switch wordLength {
-    case 3:
-      wordScore = 3
-    case 4...:
-      wordScore += 3
-      wordLength -= 3
-      for _ in 0..<wordLength {
-        wordScore += scoreMultiplier
-        scoreMultiplier += 2
-      }
-    default:
-      break
-    }
-    return wordScore
+    let word = usedWords[indexPath.row]
+    let points = calculateScoreOf(word)
+
+    return (word, points)
   }
-
 }
 
 // MARK: - Calculation of Scores
