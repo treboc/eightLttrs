@@ -22,6 +22,8 @@
 		8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3B028AE928C00DFA6D5 /* OnboardingPageViewController.swift */; };
 		8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */; };
 		8A78F3BD28AEBFCD00DFA6D5 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */; };
+		8A87110728B18217004F299F /* AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110628B18217004F299F /* AlertData.swift */; };
+		8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110B28B1824A004F299F /* AlertPresenter.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
 		8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* MainViewController.swift */; };
@@ -67,9 +69,10 @@
 		8A78F3AC28AE904800DFA6D5 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		8A78F3B028AE928C00DFA6D5 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		8A78F3B828AEBD6A00DFA6D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8A78F3BA28AEBD9200DFA6D5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8A78F3BB28AEBD9200DFA6D5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		8A87110628B18217004F299F /* AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertData.swift; sourceTree = "<group>"; };
+		8A87110B28B1824A004F299F /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +192,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		8A87110828B18234004F299F /* AlertPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A87110628B18217004F299F /* AlertData.swift */,
+				8A87110B28B1824A004F299F /* AlertPresenter.swift */,
+			);
+			path = AlertPresenter;
+			sourceTree = "<group>";
+		};
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +230,7 @@
 				8A70BEC328AB7C5A00455FF1 /* MainViewController */,
 				8A70BEC228AB7C4C00455FF1 /* Helper */,
 				8A70BEC128AB7C4300455FF1 /* Onboarding */,
+				8A87110828B18234004F299F /* AlertPresenter */,
 				8A3F79D328AC55E90058A272 /* GameService */,
 				8ADAB27928A5911D0083E028 /* Assets.xcassets */,
 				8A78F3B628AEB9A200DFA6D5 /* Resources */,
@@ -392,7 +405,9 @@
 				8ADAB2A128A591D40083E028 /* WordTableViewCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8A78F3AD28AE904800DFA6D5 /* OnboardingPageView.swift in Sources */,
+				8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
+				8A87110728B18217004F299F /* AlertData.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,
 				8A78F3BD28AEBFCD00DFA6D5 /* L10n.swift in Sources */,
@@ -445,7 +460,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8ADAB27C28A5911D0083E028 /* Base */,
-				8A78F3BA28AEBD9200DFA6D5 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

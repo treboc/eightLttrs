@@ -32,18 +32,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-
     presentOnboardingOnFirstStart()
 
     setupNavigationController()
     setupActions()
     startGame()
+
     mainView.tableView.dataSource = self
     mainView.tableView.delegate = self
+    mainView.tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
+    
     mainView.wordTextField.delegate = self
   }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return gameService.usedWords.count
@@ -52,13 +55,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as! WordTableViewCell
     let (word, points) = gameService.populateWordWithScore(at: indexPath)
-    cell.word = word
-    cell.points = points
-    cell.selectionStyle = .none
+    cell.updateLabels(with: (word, points))
     return cell
   }
 }
 
+// MARK: - MainViewControllerSetup
 extension MainViewController {
   func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
@@ -67,11 +69,29 @@ extension MainViewController {
   }
 
   func setupActions() {
+    self.hideKeyboardOnTap()
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
-    self.hideKeyboardOnTap()
   }
 
+
+  func presentAlertControllert(with alert: Alert) {
+    let ac = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+    let defaultAction = UIAlertAction(title: "OK", style: .default)
+    ac.addAction(defaultAction)
+    present(ac, animated: true)
+  }
+
+  private func updateUIAfterSumbission() {
+    let indexPath = IndexPath(row: 0, section: 0)
+    mainView.tableView.insertRows(at: [indexPath], with: .left)
+    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
+    mainView.wordTextField.text?.removeAll()
+  }
+}
+
+// MARK: - Methods for Buttons
+extension MainViewController {
   @objc
   private func showMenu() {
     let menuVC = MenuViewController()
@@ -94,16 +114,10 @@ extension MainViewController {
     if gameService.usedWords.isEmpty {
       startGame()
     } else {
-      let ac = UIAlertController(title: L10n.ResetGameAlert.title,
-                                 message: L10n.ResetGameAlert.message,
-                                 preferredStyle: .alert)
-      let resetAction = UIAlertAction(title: L10n.ResetGameAlert.sure, style: .destructive) { [weak self] _ in
+      let alertData = AlertPresenterData(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, actionTitle: L10n.ResetGameAlert.sure) { [weak self] _ in
         self?.startGame()
       }
-      let cancelAction = UIAlertAction(title: L10n.ResetGameAlert.cancel, style: .cancel)
-      ac.addAction(resetAction)
-      ac.addAction(cancelAction)
-      present(ac, animated: true)
+      AlertPresenter.presentAlert(on: self, with: alertData)
     }
   }
 
@@ -137,20 +151,6 @@ extension MainViewController {
     } catch {
       fatalError(error.localizedDescription)
     }
-  }
-
-  func presentAlertControllert(with alert: Alert) {
-    let ac = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
-    let defaultAction = UIAlertAction(title: "OK", style: .default)
-    ac.addAction(defaultAction)
-    present(ac, animated: true)
-  }
-
-  private func updateUIAfterSumbission() {
-    let indexPath = IndexPath(row: 0, section: 0)
-    mainView.tableView.insertRows(at: [indexPath], with: .left)
-    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
-    mainView.wordTextField.text?.removeAll()
   }
 }
 

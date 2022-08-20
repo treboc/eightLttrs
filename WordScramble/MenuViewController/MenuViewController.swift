@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
   var delegate: MenuViewControllerDelegate?
 
   override func loadView() {
-    view = MenuView()
+    view = MenuView(frame: .zero, restartSession: resetButtonTapped, endSession: endGameButtonTapped)
   }
 
   override func viewDidLoad() {
@@ -35,8 +35,6 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController {
   private func setupActions() {
-    menuView.restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-    menuView.endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
   }
 
   @objc

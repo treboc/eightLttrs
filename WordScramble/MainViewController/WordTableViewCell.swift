@@ -8,44 +8,41 @@
 import UIKit
 
 class WordTableViewCell: UITableViewCell {
-  static let identifier = "WordTableViewCell"
-  var word: String! {
-    didSet {
-      wordLabel.text = word
-    }
-  }
-  var points: Int! {
-    didSet {
-      pointsImage.image = UIImage(systemName: "\(points ?? 0).circle.fill")
-    }
+  static var identifier: String {
+    String(describing: self)
   }
 
-  lazy var pointsImage: UIImageView = {
-    let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFit
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-
-  lazy var wordLabel: UILabel = {
-    let lbl = UILabel()
-    lbl.translatesAutoresizingMaskIntoConstraints = false
-    lbl.font = .preferredFont(forTextStyle: .headline)
-    return lbl
-  }()
+  private let pointsImage = UIImageView()
+  private let wordLabel = UILabel()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupLabel()
+    self.selectionStyle = .none
+    setupViews()
+    setupLayout()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private func setupLabel() {
+  func updateLabels(with data: (word: String, points: Int)) {
+    pointsImage.image = UIImage(systemName: "\(data.points).circle.fill")
+    wordLabel.text = data.word
+  }
+
+  private func setupViews() {
+    pointsImage.contentMode = .scaleAspectFit
+    wordLabel.font = .preferredFont(forTextStyle: .headline)
+  }
+
+  private func setupLayout() {
     self.addSubview(pointsImage)
     self.addSubview(wordLabel)
+
+    pointsImage.translatesAutoresizingMaskIntoConstraints = false
+    wordLabel.translatesAutoresizingMaskIntoConstraints = false
+
     NSLayoutConstraint.activate([
       pointsImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.widthPadding),
       pointsImage.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),

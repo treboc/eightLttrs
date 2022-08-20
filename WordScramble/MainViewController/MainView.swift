@@ -13,64 +13,17 @@ class MainView: UIView {
   var cancellables = Set<AnyCancellable>()
 
   // MARK: - Views
-  lazy var wordTextField: UITextField = {
-    let tf = UITextField()
-    tf.layer.cornerRadius = 5
-    tf.backgroundColor = .secondarySystemBackground
-    tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
-    tf.leftViewMode = .always
-    tf.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
-    tf.rightViewMode = .unlessEditing
-    tf.clearButtonMode = .whileEditing
-    tf.keyboardType = .default
-    tf.autocorrectionType = .no
-    tf.returnKeyType = .send
-    tf.becomeFirstResponder()
-    return tf
-  }()
-
-  lazy var submitButton: UIButton = {
-    let btn = UIButton()
-    var configuration = UIButton.Configuration.borderedProminent()
-    configuration.baseForegroundColor = .systemBackground
-    btn.configuration = configuration
-    btn.isEnabled = false
-    let imageConf = UIImage.SymbolConfiguration(pointSize: 12)
-    let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf)!
-    plusImage.withTintColor(.label, renderingMode: .automatic)
-    btn.setImage(plusImage, for: .normal)
-    return btn
-  }()
-
-  lazy var scoreTextLabel: UILabel = {
-    let lbl = UILabel()
-    lbl.textAlignment = .right
-    lbl.text = L10n.MainView.currentScore
-    lbl.font = .preferredFont(forTextStyle: .subheadline)
-    return lbl
-  }()
-
-  lazy var scorePointsLabel: UILabel = {
-    let lbl = UILabel()
-    lbl.textAlignment = .right
-    lbl.text = "0"
-    lbl.font = .preferredFont(forTextStyle: .headline)
-    lbl.font = .monospacedDigitSystemFont(ofSize: lbl.font.pointSize, weight: .semibold)
-    return lbl
-  }()
-
-  lazy var tableView: UITableView = {
-    let tableView = UITableView()
-    tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
-    tableView.separatorColor = .systemOrange
-    tableView.keyboardDismissMode = .interactiveWithAccessory
-    return tableView
-  }()
+  let wordTextField = UITextField()
+  let submitButton = UIButton()
+  private let scoreTextLabel = UILabel()
+  let scorePointsLabel = UILabel()
+  let tableView = UITableView()
 
   // MARK: - init()
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = .systemBackground
+    setupViews()
     setupLayout()
     setupPublishers()
   }
@@ -82,7 +35,47 @@ class MainView: UIView {
 
 // MARK: - Setting up Layout
 extension MainView {
-  func setupLayout() {
+  private func setupViews() {
+    // WordTextField
+    wordTextField.layer.cornerRadius = 5
+    wordTextField.backgroundColor = .secondarySystemBackground
+    wordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wordTextField.frame.height))
+    wordTextField.leftViewMode = .always
+    wordTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wordTextField.frame.height))
+    wordTextField.rightViewMode = .unlessEditing
+    wordTextField.clearButtonMode = .whileEditing
+    wordTextField.keyboardType = .default
+    wordTextField.autocorrectionType = .no
+    wordTextField.returnKeyType = .send
+    wordTextField.becomeFirstResponder()
+
+    // Submit Button
+    var configuration = UIButton.Configuration.borderedProminent()
+    configuration.baseForegroundColor = .systemBackground
+    submitButton.configuration = configuration
+    submitButton.isEnabled = false
+    let imageConf = UIImage.SymbolConfiguration(pointSize: 12)
+    let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf)!
+    plusImage.withTintColor(.label, renderingMode: .automatic)
+    submitButton.setImage(plusImage, for: .normal)
+
+    // ScoreTextLabel
+    scoreTextLabel.textAlignment = .right
+    scoreTextLabel.text = L10n.MainView.currentScore
+    scoreTextLabel.font = .preferredFont(forTextStyle: .subheadline)
+
+    // ScorePointsLabel
+    scorePointsLabel.textAlignment = .right
+    scorePointsLabel.text = "0"
+    scorePointsLabel.font = .preferredFont(forTextStyle: .headline)
+    scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scoreTextLabel.font.pointSize, weight: .semibold)
+
+    // UsedWordsTableView
+    tableView.separatorColor = .systemOrange
+    tableView.keyboardDismissMode = .interactiveWithAccessory
+  }
+
+  private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
     let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, tableView]
     for view in views {
@@ -117,6 +110,10 @@ extension MainView {
       tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     ])
   }
+
+//  private func setupSubmitAction() {
+//    submitButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
+//  }
 }
 
 // MARK: - Setting up publishers

@@ -13,47 +13,44 @@ class MenuView: UIView {
    2. End Session Button
    3. Show Highscores Button
    */
-  lazy var stackView: UIStackView = {
-    let sv = UIStackView()
-    sv.axis = .vertical
-    sv.alignment = .center
-    sv.spacing = 20
-    sv.translatesAutoresizingMaskIntoConstraints = false
-    return sv
-  }()
 
-  lazy var restartSessionButton: UIButton = {
-    let btn = UIButton()
-    btn.configuration = .borderedProminent()
-    btn.setTitle(L10n.MenuView.restartSession, for: .normal)
-    btn.translatesAutoresizingMaskIntoConstraints = false
-    return btn
-  }()
+  private let stackView = UIStackView()
+  private let restartSessionButton = UIButton(configuration: .borderedProminent())
+  private let endSessionButton = UIButton(configuration: .borderedProminent())
+  private let showHighscoreButton = UIButton(configuration: .borderedProminent())
 
-  lazy var endSessionButton: UIButton = {
-    let btn = UIButton()
-    btn.configuration = .borderedProminent()
-    btn.setTitle(L10n.MenuView.endSession, for: .normal)
-    btn.translatesAutoresizingMaskIntoConstraints = false
-    return btn
-  }()
+  var restartSession: (() -> Void)
+  var endSession: (() -> Void)
 
-  lazy var showHighscoreButton: UIButton = {
-    let btn = UIButton()
-    btn.configuration = .borderedProminent()
-    btn.setTitle(L10n.MenuView.showHighscore, for: .normal)
-    btn.translatesAutoresizingMaskIntoConstraints = false
-    return btn
-  }()
-
-  override init(frame: CGRect) {
+  init(frame: CGRect, restartSession: @escaping () -> Void, endSession: @escaping () -> Void) {
+    self.restartSession = restartSession
+    self.endSession = endSession
     super.init(frame: frame)
-    self.backgroundColor = .systemBackground
+    setupViews()
     setupLayout()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+}
+
+extension MenuView {
+  private func setupViews() {
+    // StackView
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 20
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+
+    restartSessionButton.setTitle(L10n.MenuView.restartSession, for: .normal)
+    endSessionButton.setTitle(L10n.MenuView.endSession, for: .normal)
+    showHighscoreButton.setTitle(L10n.MenuView.showHighscore, for: .normal)
+
+    restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+    endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
+
+    self.backgroundColor = .systemBackground
   }
 
   private func setupLayout() {
@@ -71,4 +68,13 @@ class MenuView: UIView {
     ])
   }
 
+  @objc
+  private func resetButtonTapped() {
+    restartSession()
+  }
+
+  @objc
+  private func endGameButtonTapped() {
+    endSession()
+  }
 }
