@@ -38,7 +38,7 @@ class GameService: GameServiceProtocol {
 
   var usedWords: [String] = [] {
     didSet {
-      calculateScore()
+      updateCurrentScore()
     }
   }
   var currentScore: Int = 0
@@ -74,13 +74,13 @@ class GameService: GameServiceProtocol {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
     usedWords.removeAll()
-    calculateScore()
+    updateCurrentScore()
     completionHandler(rndWord)
   }
 
   func endGame(playerName: String) {
     guard !usedWords.isEmpty else { return }
-    scoreService.saveScore(word: currentWord, name: playerName, score: currentScore)
+    ScoreService.save(word: currentWord, for: playerName, with: currentScore)
   }
 
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {
@@ -103,7 +103,7 @@ class GameService: GameServiceProtocol {
 
 // MARK: - Calculation of Scores
 extension GameService {
-  private func calculateScore() {
+  private func updateCurrentScore() {
     currentScore = usedWords
       .map { calculateScoreOf($0) }
       .reduce(0, +)
