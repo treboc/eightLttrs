@@ -140,22 +140,22 @@ extension GameService {
 
 extension GameService {
   func check(_ word: String) throws {
-    let word = word.lowercased()
+    let lowercasedWord = word.lowercased()
     // tooShort
-    if word.count < 3 {
+    if lowercasedWord.count < 3 {
       throw WordError.tooShort
     }
 
     // isOriginal
     if usedWords
       .map({ $0.lowercased() })
-      .contains(word) || word == currentWord {
+      .contains(lowercasedWord) || lowercasedWord == currentWord.lowercased() {
       throw WordError.notOriginal
     }
 
     // isPossible
     var tempWord = currentWord.lowercased()
-    try word.forEach {
+    try lowercasedWord.forEach {
       if let position = tempWord.firstIndex(of: $0) {
         tempWord.remove(at: position)
       } else {
@@ -164,7 +164,7 @@ extension GameService {
     }
 
     // isReal
-    if !allPossibleWords.contains(word) {
+    if !allPossibleWords.contains(lowercasedWord) {
       throw WordError.notReal
     }
 //    let checker = UITextChecker()
