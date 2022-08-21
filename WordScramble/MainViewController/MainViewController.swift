@@ -36,13 +36,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
 
     setupNavigationController()
     setupActions()
-    startGame()
 
     mainView.tableView.dataSource = self
     mainView.tableView.delegate = self
     mainView.tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
-    
+
     mainView.wordTextField.delegate = self
+
+    startGame()
   }
 }
 
