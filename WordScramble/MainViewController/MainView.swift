@@ -110,10 +110,6 @@ extension MainView {
       tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     ])
   }
-
-//  private func setupSubmitAction() {
-//    submitButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
-//  }
 }
 
 // MARK: - Setting up publishers
