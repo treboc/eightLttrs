@@ -10,15 +10,35 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  internal enum EndGameAlert {
+  /// Congratulations! 🎉
+  internal static let endSessionView = L10n.tr("Localizable", "endSessionView.", fallback: #"Congratulations! 🎉"#)
+  internal enum ButtonTitle {
     /// Cancel
-    internal static let cancel = L10n.tr("Localizable", "endGameAlert.cancel", fallback: #"Cancel"#)
+    internal static let cancel = L10n.tr("Localizable", "ButtonTitle.cancel", fallback: #"Cancel"#)
+    /// Yes, I'm sure
+    internal static let imSure = L10n.tr("Localizable", "ButtonTitle.imSure", fallback: #"Yes, I'm sure"#)
+    /// Next
+    internal static let next = L10n.tr("Localizable", "ButtonTitle.next", fallback: #"Next"#)
+    /// Save
+    internal static let save = L10n.tr("Localizable", "ButtonTitle.save", fallback: #"Save"#)
+    /// Skip
+    internal static let skip = L10n.tr("Localizable", "ButtonTitle.skip", fallback: #"Skip"#)
+    /// Submit
+    internal static let submit = L10n.tr("Localizable", "ButtonTitle.submit", fallback: #"Submit"#)
+  }
+  internal enum EndGameAlert {
     /// To save your score, we need your name!
     internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: #"To save your score, we need your name!"#)
-    /// Save
-    internal static let save = L10n.tr("Localizable", "endGameAlert.save", fallback: #"Save"#)
     /// Saving Score
     internal static let title = L10n.tr("Localizable", "endGameAlert.title", fallback: #"Saving Score"#)
+  }
+  internal enum EndSessionView {
+    /// Hooray!
+    internal static let body = L10n.tr("Localizable", "endSessionView.body", fallback: #"Hooray!"#)
+    /// Congratulations! 🎉
+    internal static let congratulationsLabelText = L10n.tr("Localizable", "endSessionView.congratulationsLabelText", fallback: #"Congratulations! 🎉"#)
+    /// Congratulations! 🎉
+    internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: #"Congratulations! 🎉"#)
   }
   internal enum MainView {
     /// Current Score
@@ -43,10 +63,6 @@ internal enum L10n {
       /// What's the game about?
       internal static let title = L10n.tr("Localizable", "onboarding.firstPage.title", fallback: #"What's the game about?"#)
     }
-    internal enum NextButton {
-      /// Next
-      internal static let title = L10n.tr("Localizable", "onboarding.nextButton.title", fallback: #"Next"#)
-    }
     internal enum SecondPage {
       /// all starting words are eight letters long
       internal static let body1 = L10n.tr("Localizable", "onboarding.secondPage.body1", fallback: #"all starting words are eight letters long"#)
@@ -54,10 +70,6 @@ internal enum L10n {
       internal static let body2 = L10n.tr("Localizable", "onboarding.secondPage.body2", fallback: #"your word must contain at least a minimum of three letters"#)
       /// Rules
       internal static let title = L10n.tr("Localizable", "onboarding.secondPage.title", fallback: #"Rules"#)
-    }
-    internal enum SkipButton {
-      /// Skip
-      internal static let title = L10n.tr("Localizable", "onboarding.skipButton.title", fallback: #"Skip"#)
     }
     internal enum ThirdPage {
       /// for the first three letters there is one point each
@@ -71,12 +83,8 @@ internal enum L10n {
     }
   }
   internal enum ResetGameAlert {
-    /// Cancel
-    internal static let cancel = L10n.tr("Localizable", "resetGameAlert.cancel", fallback: #"Cancel"#)
     /// When you reset the game, all words and your score will be reset and lost.
     internal static let message = L10n.tr("Localizable", "resetGameAlert.message", fallback: #"When you reset the game, all words and your score will be reset and lost."#)
-    /// Yes, I'm sure!
-    internal static let sure = L10n.tr("Localizable", "resetGameAlert.sure", fallback: #"Yes, I'm sure!"#)
     /// Are you sure?
     internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: #"Are you sure?"#)
   }

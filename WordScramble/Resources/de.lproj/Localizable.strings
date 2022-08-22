@@ -7,8 +7,6 @@
 */
 
 // Onboarding
-"onboarding.skipButton.title" = "Überspringen";
-"onboarding.nextButton.title" = "Weiter";
 "onboarding.firstPage.title" = "Worum geht's?";
 "onboarding.firstPage.body1" = "das Spiel basiert auf einem Projekt aus dem Kurs '100daysOfSwift' von Paul Hudson";
 "onboarding.firstPage.body2" = "versuch so viele Worte wie möglich aus dem zufällig gewähltem Startwort zu bilden";
@@ -40,13 +38,23 @@
 "menuView.endSession" = "Wort beenden";
 "menuView.showHighscore" = "Highscores";
 
+// EndSessionView
+"endSessionView.title" = "Congratulations! 🎉";
+"endSessionView.body" = "Hooray!";
+"endSessionView." = "Congratulations! 🎉";
+"endSessionView.congratulationsLabelText" = "Congratulations! 🎉";
+
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";
 "resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt.";
-"resetGameAlert.cancel" = "Abbrechen";
-"resetGameAlert.sure" = "Ja, ich bin sicher!";
 
 "endGameAlert.title" = "Punktzahl sichern";
 "endGameAlert.message" = "Um deine Punkte zu speichern, brauche ich deinen Namen!";
-"endGameAlert.cancel" = "Abbrechen";
-"endGameAlert.save" = "Speichern";
+
+// ButtonTitles
+"ButtonTitle.submit" = "Okay";
+"ButtonTitle.cancel" = "Abbrechen";
+"ButtonTitle.save" = "Speichern";
+"ButtonTitle.imSure" = "Ja, ich bin sicher";
+"ButtonTitle.skip" = "Überspringen";
+"ButtonTitle.next" = "Weiter";

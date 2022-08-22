@@ -1,14 +1,12 @@
 /* 
-  Localizable.strings
-  WordScramble
+ Localizable.strings
+ WordScramble
 
-  Created by Marvin Lee Kobert on 18.08.22.
-  
-*/
+ Created by Marvin Lee Kobert on 18.08.22.
+
+ */
 
 // Onboarding
-"onboarding.skipButton.title" = "Skip";
-"onboarding.nextButton.title" = "Next";
 "onboarding.firstPage.title" = "What's the game about?";
 "onboarding.firstPage.body1" = "based on a project of 100daysOfSwift by Paul Hudson";
 "onboarding.firstPage.body2" = "try to find as many words as possible out of a random starting word";
@@ -39,14 +37,23 @@
 "menuView.endSession" = "End Session";
 "menuView.showHighscore" = "Show Highscore";
 
+// EndSessionView
+"endSessionView.title" = "Congratulations! 🎉";
+"endSessionView.body" = "Hooray!";
+"endSessionView." = "Congratulations! 🎉";
+"endSessionView.congratulationsLabelText" = "Congratulations! 🎉";
+
 // Alerts
 "resetGameAlert.title" = "Are you sure?";
 "resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost.";
-"resetGameAlert.cancel" = "Cancel";
-"resetGameAlert.sure" = "Yes, I'm sure!";
 
 "endGameAlert.title" = "Saving Score";
 "endGameAlert.message" = "To save your score, we need your name!";
-"endGameAlert.cancel" = "Cancel";
-"endGameAlert.save" = "Save";
 
+// ButtonTitles
+"ButtonTitle.submit" = "Submit";
+"ButtonTitle.cancel" = "Cancel";
+"ButtonTitle.save" = "Save";
+"ButtonTitle.imSure" = "Yes, I'm sure";
+"ButtonTitle.skip" = "Skip";
+"ButtonTitle.next" = "Next";

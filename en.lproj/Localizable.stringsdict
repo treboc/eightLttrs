@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+  <dict>
+    <key>words.count</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>%#@words@</string>
+      <key>words</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>d</string>
+        <key>zero</key>
+        <string>Sorry, you've found no words!</string>
+        <key>one</key>
+        <string>Awesome, you've found one word!</string>
+        <key>other</key>
+        <string>You found %d words, that's awesome!</string>
+      </dict>
+    </dict>
+  </dict>
+</plist>
+
