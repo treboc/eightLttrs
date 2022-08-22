@@ -8,13 +8,23 @@
 import UIKit
 
 class BasicTextField: UITextField {
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    self.layer.cornerRadius = 5
+    self.backgroundColor = .secondarySystemBackground
+    self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+    self.leftViewMode = .always
+    self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+    self.rightViewMode = .unlessEditing
+    self.clearButtonMode = .whileEditing
+    self.keyboardType = .default
+    self.autocorrectionType = .no
+    self.returnKeyType = .send
+    self.becomeFirstResponder()
+  }
 
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }
