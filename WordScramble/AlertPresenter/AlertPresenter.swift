@@ -10,7 +10,7 @@ import UIKit
 struct AlertPresenter {
   static func presentAlert(on viewController: UIViewController, with alertData: AlertPresenterData) {
     let ac = UIAlertController(title: alertData.title, message: alertData.message, preferredStyle: .alert)
-    let defaultAction = UIAlertAction(title: L10n.EndGameAlert.cancel, style: .cancel)
+    let defaultAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
     let customAction = UIAlertAction(title: alertData.actionTitle, style: alertData.actionStyle, handler: alertData.actionHandler)
 
     ac.addAction(defaultAction)

@@ -65,12 +65,12 @@ extension OnboardingViewController {
     pageControl.currentPage = initialPage
 
     skipButton.translatesAutoresizingMaskIntoConstraints = false
-    skipButton.setTitle(L10n.Onboarding.SkipButton.title, for: .normal)
+    skipButton.setTitle(L10n.ButtonTitle.skip, for: .normal)
     skipButton.configuration = .plain()
     skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
 
     nextButton.translatesAutoresizingMaskIntoConstraints = false
-    nextButton.setTitle(L10n.Onboarding.NextButton.title, for: .normal)
+    nextButton.setTitle(L10n.ButtonTitle.next, for: .normal)
     nextButton.configuration = .plain()
     nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
   }

@@ -115,7 +115,7 @@ extension MainViewController {
     if gameService.usedWords.isEmpty {
       startGame()
     } else {
-      let alertData = AlertPresenterData(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, actionTitle: L10n.ResetGameAlert.sure) { [weak self] _ in
+      let alertData = AlertPresenterData(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, actionTitle: L10n.ButtonTitle.imSure) { [weak self] _ in
         self?.startGame()
       }
       AlertPresenter.presentAlert(on: self, with: alertData)
@@ -133,10 +133,11 @@ extension MainViewController {
       self?.gameService.endGame(playerName: name)
       self?.startGame()
     }
-    let cancelAction = UIAlertAction(title: L10n.EndGameAlert.cancel, style: .cancel)
+    let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
     ac.addAction(saveAction)
     ac.addAction(cancelAction)
     present(ac, animated: true)
+
   }
 
   @objc
