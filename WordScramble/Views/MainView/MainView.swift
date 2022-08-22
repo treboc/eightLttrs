@@ -71,29 +71,29 @@ extension MainView {
     }
 
     NSLayoutConstraint.activate([
-      wordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.widthPadding),
+      wordTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: Constants.widthPadding),
       wordTextField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.widthPadding),
       wordTextField.trailingAnchor.constraint(equalTo: submitButton.leadingAnchor, constant: -Constants.widthPadding),
       wordTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
 
       submitButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.widthPadding),
-      submitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
+      submitButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.widthPadding),
       submitButton.heightAnchor.constraint(equalToConstant: 40),
       submitButton.widthAnchor.constraint(equalTo: submitButton.heightAnchor),
 
       scoreTextLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
-      scoreTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
+      scoreTextLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
       scoreTextLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
       scoreTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 
       scorePointsLabel.topAnchor.constraint(equalTo: scoreTextLabel.bottomAnchor),
-      scorePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
+      scorePointsLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
       scorePointsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
       scorePointsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 
       tableView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
-      tableView.widthAnchor.constraint(equalTo: widthAnchor),
-      tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
       tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     ])
   }
