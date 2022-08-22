@@ -13,7 +13,7 @@ class MainView: UIView {
   var cancellables = Set<AnyCancellable>()
 
   // MARK: - Views
-  let wordTextField = UITextField()
+  let wordTextField = BasicTextField()
   let submitButton = UIButton()
   private let scoreTextLabel = UILabel()
   let scorePointsLabel = UILabel()
@@ -36,19 +36,6 @@ class MainView: UIView {
 // MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
-    // WordTextField
-    wordTextField.layer.cornerRadius = 5
-    wordTextField.backgroundColor = .secondarySystemBackground
-    wordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wordTextField.frame.height))
-    wordTextField.leftViewMode = .always
-    wordTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wordTextField.frame.height))
-    wordTextField.rightViewMode = .unlessEditing
-    wordTextField.clearButtonMode = .whileEditing
-    wordTextField.keyboardType = .default
-    wordTextField.autocorrectionType = .no
-    wordTextField.returnKeyType = .send
-    wordTextField.becomeFirstResponder()
-
     // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
