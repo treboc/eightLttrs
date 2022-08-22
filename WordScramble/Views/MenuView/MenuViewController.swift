@@ -20,21 +20,22 @@ class MenuViewController: UIViewController {
   var delegate: MenuViewControllerDelegate?
 
   override func loadView() {
-    view = MenuView(frame: .zero, restartSession: resetButtonTapped, endSession: endGameButtonTapped)
+    view = MenuView(frame: .zero)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = L10n.MenuView.title
     setupActions()
-    navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.largeTitleDisplayMode = .always
+    navigationItem.largeTitleDisplayMode = .never
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeMenu))
   }
 }
 
 extension MenuViewController {
   private func setupActions() {
+    menuView.restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+    menuView.endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
   }
 
   @objc

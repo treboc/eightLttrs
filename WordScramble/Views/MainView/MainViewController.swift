@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
     view as! MainView
   }
 
-  init(gameService: GameServiceProtocol = GameService(scoreService: ScoreService())) {
+  init(gameService: GameServiceProtocol = GameService()) {
     self.gameService = gameService
     super.init(nibName: nil, bundle: nil)
   }
@@ -127,11 +127,12 @@ extension MainViewController {
     let ac = UIAlertController(title: L10n.EndGameAlert.title,
                                message: L10n.EndGameAlert.message,
                                preferredStyle: .alert)
-    ac.addTextField()
-    let saveAction = UIAlertAction(title: L10n.EndGameAlert.save, style: .default) { [weak self] _ in
-      guard let name = ac.textFields?[0].text else { return }
-      self?.gameService.endGame(playerName: name)
-      self?.startGame()
+    let saveAction = UIAlertAction(title: L10n.ButtonTitle.save, style: .default) { [weak self] _ in
+      guard let self = self else { return }
+      let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
+                                                  score: self.gameService.currentScore,
+                                                  wordCount: self.gameService.usedWords.count)
+      self.present(endSessionVC, animated: true)
     }
     let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
     ac.addAction(saveAction)

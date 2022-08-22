@@ -15,16 +15,13 @@ class MenuView: UIView {
    */
 
   private let stackView = UIStackView()
-  private let restartSessionButton = UIButton(configuration: .borderedProminent())
-  private let endSessionButton = UIButton(configuration: .borderedProminent())
-  private let showHighscoreButton = UIButton(configuration: .borderedProminent())
+  private let tableView = UITableView()
 
-  var restartSession: (() -> Void)
-  var endSession: (() -> Void)
+  let restartSessionButton = UIButton()
+  let endSessionButton = UIButton()
+  let showHighscoreButton = UIButton()
 
-  init(frame: CGRect, restartSession: @escaping () -> Void, endSession: @escaping () -> Void) {
-    self.restartSession = restartSession
-    self.endSession = endSession
+  override init(frame: CGRect) {
     super.init(frame: frame)
     setupViews()
     setupLayout()
@@ -37,18 +34,23 @@ class MenuView: UIView {
 
 extension MenuView {
   private func setupViews() {
-    // StackView
-    stackView.axis = .vertical
-    stackView.alignment = .center
-    stackView.spacing = 20
-    stackView.translatesAutoresizingMaskIntoConstraints = false
+    // Buttons
+    var buttonConfiguration = UIButton.Configuration.borderedProminent()
+    buttonConfiguration.buttonSize = .large
+    buttonConfiguration.cornerStyle = .large
+
+    let buttons = [restartSessionButton, endSessionButton, showHighscoreButton]
+    buttons.forEach { $0.configuration = buttonConfiguration }
 
     restartSessionButton.setTitle(L10n.MenuView.restartSession, for: .normal)
     endSessionButton.setTitle(L10n.MenuView.endSession, for: .normal)
     showHighscoreButton.setTitle(L10n.MenuView.showHighscore, for: .normal)
 
-    restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-    endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
+    // StackView
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 20
+    stackView.translatesAutoresizingMaskIntoConstraints = false
 
     self.backgroundColor = .systemBackground
   }
@@ -57,24 +59,16 @@ extension MenuView {
     let views = [restartSessionButton, endSessionButton, showHighscoreButton]
     views.forEach {
       stackView.addArrangedSubview($0)
-      $0.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5).isActive = true
+      $0.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.6).isActive = true
+      $0.heightAnchor.constraint(greaterThanOrEqualToConstant: 45).isActive = true
     }
 
     addSubview(stackView)
 
     NSLayoutConstraint.activate([
+      stackView.widthAnchor.constraint(equalTo: widthAnchor),
       stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
       stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
     ])
-  }
-
-  @objc
-  private func resetButtonTapped() {
-    restartSession()
-  }
-
-  @objc
-  private func endGameButtonTapped() {
-    endSession()
   }
 }
