@@ -8,19 +8,14 @@
 import Foundation
 import UIKit
 
-
-
 protocol GameServiceProtocol {
-  var scoreService: ScoreService { get set }
-
   var startWords: Set<String> { get set }
   var allPossibleWords: Set<String> { set get }
   var currentWord: String { get set }
 
   var usedWords: [String] { get set }
-  var currentScore: Int { get set }
+  var currentScore: Int { get }
 
-  func loadWords()
   func startGame(_: (String) -> Void)
   func endGame(playerName: String)
 
@@ -30,27 +25,25 @@ protocol GameServiceProtocol {
 }
 
 class GameService: GameServiceProtocol {
-  var scoreService: ScoreService
-
-  var startWords: Set<String> = .init()
-  var allPossibleWords: Set<String> = .init()
+  var startWords = Set<String>()
+  var allPossibleWords = Set<String>()
   var currentWord: String = ""
 
-  var usedWords: [String] = [] {
-    didSet {
-      updateCurrentScore()
-    }
+  var usedWords: [String] = []
+  var currentScore: Int {
+    return usedWords
+      .map { calculateScoreOf($0) }
+      .reduce(0, +)
   }
-  var currentScore: Int = 0
 
-  init(scoreService: ScoreService) {
-    self.scoreService = scoreService
+  init() {
     loadWords()
   }
 
-  internal func loadWords() {
+  private func loadWords() {
     // getting the apps language
     let currentLocale = Locale.autoupdatingCurrent.identifier.suffix(2)
+    print(currentLocale)
 
     // load possible words to check for
     if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
@@ -70,12 +63,11 @@ class GameService: GameServiceProtocol {
     }
   }
 
-  func startGame(_ completionHandler: (String) -> Void) {
+  func startGame(_ handler: (String) -> Void) {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
     usedWords.removeAll()
-    updateCurrentScore()
-    completionHandler(rndWord)
+    handler(rndWord)
   }
 
   func endGame(playerName: String) {
@@ -103,12 +95,6 @@ class GameService: GameServiceProtocol {
 
 // MARK: - Calculation of Scores
 extension GameService {
-  private func updateCurrentScore() {
-    currentScore = usedWords
-      .map { calculateScoreOf($0) }
-      .reduce(0, +)
-  }
-
   /*
    Word scoring:
    - for each letter of the first 3, there is 1 point
