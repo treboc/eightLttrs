@@ -41,7 +41,7 @@ class GameService: GameServiceProtocol {
   }
   var currentScore: Int {
     return usedWords
-      .map { calculateScoreOf($0.word) }
+      .map { $0.word.calculateScore() }
       .reduce(0, +)
   }
 
@@ -86,32 +86,22 @@ class GameService: GameServiceProtocol {
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {
     do {
       try check(word)
-      let scoreForWord = calculateScoreOf(word)
-      let wordCellItem = WordCellItem(word: word, points: scoreForWord)
+      let wordCellItem = WordCellItem(word: word)
       usedWords.insert(wordCellItem, at: 0)
       onCompletion()
     }
   }
 
   func populateWordWithScore(at indexPath: IndexPath) -> WordCellItem {
-//    guard !usedWords[indexPath.row].isEmpty else { return WordCellItem(word: "Unknown", points: 0) }
+    guard !usedWords[indexPath.row].word.isEmpty else { return WordCellItem(word: "Unknown") }
 
     let word = usedWords[indexPath.row].word
-    let points = calculateScoreOf(word)
-
-    return WordCellItem(word: word, points: points)
+    return WordCellItem(word: word)
   }
 }
 
 // MARK: - Calculation of Scores
 extension GameService {
-  /*
-   Word scoring:
-   - for each letter of the first 3, there is 1 point
-   - 2 points for the 4th letter,
-   - 4 points for the 5th,
-   - 6 points for the 6th, etc.
-   */
   private func calculateScoreOf(_ answer: String) -> Int {
     var score = 0
     var scoreMultiplier = 2
