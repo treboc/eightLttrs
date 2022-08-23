@@ -29,6 +29,7 @@ class EndSessionView: UIView {
   private let textField = BasicTextField()
   private var submitButton = UIButton()
   private var cancelButton = UIButton()
+  private(set) var textFieldText: String = ""
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -122,6 +123,12 @@ extension EndSessionView {
       .publisher(for: UITextField.textDidChangeNotification, object: textField)
       .map { !(($0.object as? UITextField)?.text?.isEmpty ?? false) }
       .assign(to: \EndSessionView.submitButton.isEnabled, on: self)
+      .store(in: &cancellables)
+
+    NotificationCenter.default
+      .publisher(for: UITextField.textDidChangeNotification, object: textField)
+      .map { ($0.object as? UITextField)?.text ?? "Unknown" }
+      .assign(to: \EndSessionView.textFieldText, on: self)
       .store(in: &cancellables)
   }
 }
