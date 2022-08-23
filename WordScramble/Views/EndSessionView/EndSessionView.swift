@@ -98,10 +98,9 @@ extension EndSessionView {
     addSubview(stackView)
 
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-      stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
-      stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -50),
-      stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
+      stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
 
       textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
       textField.heightAnchor.constraint(equalToConstant: 40)
