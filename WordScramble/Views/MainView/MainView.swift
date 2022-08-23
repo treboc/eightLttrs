@@ -109,7 +109,7 @@ extension MainView {
 
 extension MainView {
   static private func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-    var config = UICollectionLayoutListConfiguration(appearance: .plain)
+    let config = UICollectionLayoutListConfiguration(appearance: .plain)
     return UICollectionViewCompositionalLayout.list(using: config)
   }
 }

@@ -7,6 +7,21 @@
 
 import UIKit
 
+struct WordCellItem: Hashable {
+  let word: String
+  private let points: Int
+
+  init(word: String, points: Int) {
+    self.word = word
+    self.points = points
+  }
+
+  var pointsImage: UIImage {
+    let config = UIImage.SymbolConfiguration(textStyle: .headline)
+    return UIImage(systemName: "\(points <= 50 ? points : 0).circle.fill", withConfiguration: config)!
+  }
+}
+
 class WordCell: UICollectionViewListCell {
   static var identifier: String {
     String(describing: self)
@@ -27,9 +42,9 @@ class WordCell: UICollectionViewListCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func updateLabels(with data: (word: String, points: Int)) {
-    pointsImage.image = UIImage(systemName: "\(data.points).circle.fill")
-    wordLabel.text = data.word
+  func updateLabels(with wordCellItem: WordCellItem) {
+    pointsImage.image = wordCellItem.pointsImage
+    wordLabel.text = wordCellItem.word
   }
 
   private func setupViews() {

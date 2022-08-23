@@ -5,15 +5,18 @@
 //  Created by Marvin Lee Kobert on 11.08.22.
 //
 
+import Combine
 import Foundation
 import UIKit
 
 protocol GameServiceProtocol {
+  var wordCellItemPublisher: CurrentValueSubject<[WordCellItem], Never> { get set }
+
   var startWords: Set<String> { get set }
   var allPossibleWords: Set<String> { set get }
   var currentWord: String { get set }
 
-  var usedWords: [String] { get set }
+  var usedWords: [WordCellItem] { get set }
   var currentScore: Int { get }
 
   func startGame(_: (String) -> Void)
@@ -21,18 +24,24 @@ protocol GameServiceProtocol {
 
   func check(_ word: String) throws
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws
-  func populateWordWithScore(at indexPath: IndexPath) -> (String, Int)
+  func populateWordWithScore(at indexPath: IndexPath) -> WordCellItem
 }
 
 class GameService: GameServiceProtocol {
+  var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
+
   var startWords = Set<String>()
   var allPossibleWords = Set<String>()
   var currentWord: String = ""
 
-  var usedWords: [String] = []
+  var usedWords: [WordCellItem] = [] {
+    didSet {
+      wordCellItemPublisher.send(usedWords)
+    }
+  }
   var currentScore: Int {
     return usedWords
-      .map { calculateScoreOf($0) }
+      .map { calculateScoreOf($0.word) }
       .reduce(0, +)
   }
 
@@ -43,7 +52,6 @@ class GameService: GameServiceProtocol {
   private func loadWords() {
     // getting the apps language
     let currentLocale = Locale.autoupdatingCurrent.identifier.suffix(2)
-    print(currentLocale)
 
     // load possible words to check for
     if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
@@ -78,18 +86,20 @@ class GameService: GameServiceProtocol {
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {
     do {
       try check(word)
-      usedWords.insert(word, at: 0)
+      let scoreForWord = calculateScoreOf(word)
+      let wordCellItem = WordCellItem(word: word, points: scoreForWord)
+      usedWords.insert(wordCellItem, at: 0)
       onCompletion()
     }
   }
 
-  func populateWordWithScore(at indexPath: IndexPath) -> (String, Int) {
-    guard !usedWords[indexPath.row].isEmpty else { return ("Unknown", 0) }
+  func populateWordWithScore(at indexPath: IndexPath) -> WordCellItem {
+//    guard !usedWords[indexPath.row].isEmpty else { return WordCellItem(word: "Unknown", points: 0) }
 
-    let word = usedWords[indexPath.row]
+    let word = usedWords[indexPath.row].word
     let points = calculateScoreOf(word)
 
-    return (word, points)
+    return WordCellItem(word: word, points: points)
   }
 }
 
@@ -134,7 +144,7 @@ extension GameService {
 
     // isOriginal
     if usedWords
-      .map({ $0.lowercased() })
+      .map({ $0.word.lowercased() })
       .contains(lowercasedWord) || lowercasedWord == currentWord.lowercased() {
       throw WordError.notOriginal
     }

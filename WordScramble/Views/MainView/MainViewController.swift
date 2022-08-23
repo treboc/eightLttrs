@@ -15,6 +15,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
     view as! MainView
   }
 
+  lazy var dataSource = configuteDataSource()
+  var cancellable: AnyCancellable?
+
   init(gameService: GameServiceProtocol = GameService()) {
     self.gameService = gameService
     super.init(nibName: nil, bundle: nil)
@@ -37,11 +40,15 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
     setupNavigationController()
     setupActions()
 
-    mainView.collectionView.dataSource = self
     mainView.collectionView.delegate = self
     mainView.collectionView.register(WordCell.self, forCellWithReuseIdentifier: WordCell.identifier)
 
     mainView.wordTextField.delegate = self
+
+    cancellable = gameService.wordCellItemPublisher
+      .sink { [weak self] items in
+        self?.updateCollectionViewState(with: items)
+      }
 
     startGame()
   }
@@ -49,14 +56,34 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+  enum Section {
+    case wordList
+  }
+
+  private func configuteDataSource() -> UICollectionViewDiffableDataSource<Section, WordCellItem> {
+    return UICollectionViewDiffableDataSource<Section, WordCellItem>(collectionView: mainView.collectionView) { collectionView, indexPath, item in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCell.identifier, for: indexPath) as! WordCell
+      cell.updateLabels(with: item)
+      return cell
+    }
+  }
+
+  private func updateCollectionViewState(with items: [WordCellItem]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, WordCellItem>()
+    snapshot.appendSections([.wordList])
+    snapshot.appendItems(items, toSection: .wordList)
+    dataSource.apply(snapshot)
+  }
+
+
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return gameService.usedWords.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCell.identifier, for: indexPath) as! WordCell
-    let (word, points) = gameService.populateWordWithScore(at: indexPath)
-    cell.updateLabels(with: (word, points))
+    let wordCellItem = gameService.populateWordWithScore(at: indexPath)
+    cell.updateLabels(with: wordCellItem)
     return cell
   }
 
@@ -93,7 +120,6 @@ extension MainViewController {
 
   private func updateUIAfterSumbission() {
     let indexPath = IndexPath(row: 0, section: 0)
-    mainView.collectionView.insertItems(at: [indexPath])
     mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
   }
