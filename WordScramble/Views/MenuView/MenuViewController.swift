@@ -27,15 +27,19 @@ class MenuViewController: UIViewController {
     super.viewDidLoad()
     self.title = L10n.MenuView.title
     setupActions()
-    navigationItem.largeTitleDisplayMode = .never
+    navigationController?.navigationBar.prefersLargeTitles = true
+    navigationItem.largeTitleDisplayMode = .always
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeMenu))
+    self.navigationItem.backButtonTitle = ""
   }
 }
 
+// MARK: - Actions
 extension MenuViewController {
   private func setupActions() {
     menuView.restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
     menuView.endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
+    menuView.showHighscoreButton.addTarget(self, action: #selector(showHighscoreButtonTapped), for: .touchUpInside)
   }
 
   @objc
@@ -48,6 +52,12 @@ extension MenuViewController {
   private func endGameButtonTapped() {
     dismiss(animated: true)
     delegate?.endGame()
+  }
+
+  @objc
+  private func showHighscoreButtonTapped() {
+    let highscoreVC = HighscoreViewController()
+    navigationController?.pushViewController(highscoreVC, animated: true)
   }
 
   @objc

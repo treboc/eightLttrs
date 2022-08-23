@@ -8,6 +8,13 @@
 import Combine
 import UIKit
 
+extension UICollectionView {
+  static func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+    let config = UICollectionLayoutListConfiguration(appearance: .plain)
+    return UICollectionViewCompositionalLayout.list(using: config)
+  }
+}
+
 class MainView: UIView {
   // MARK: - NotificationCenter Publishers
   var cancellables = Set<AnyCancellable>()
@@ -17,7 +24,8 @@ class MainView: UIView {
   let submitButton = UIButton()
   private let scoreTextLabel = UILabel()
   let scorePointsLabel = UILabel()
-  private(set) var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
+  private(set) var collectionView = UICollectionView(frame: .zero,
+                                                     collectionViewLayout: UICollectionView.makeCollectionViewLayout())
 
   // MARK: - init()
   override init(frame: CGRect) {
