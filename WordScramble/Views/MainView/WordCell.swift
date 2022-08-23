@@ -1,5 +1,5 @@
 //
-//  WordTableViewCell.swift
+//  WordCell.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 11.08.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WordTableViewCell: UITableViewCell {
+class WordCell: UICollectionViewListCell {
   static var identifier: String {
     String(describing: self)
   }
@@ -15,13 +15,14 @@ class WordTableViewCell: UITableViewCell {
   private let pointsImage = UIImageView()
   private let wordLabel = UILabel()
 
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.selectionStyle = .none
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+
     setupViews()
     setupLayout()
   }
-  
+
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

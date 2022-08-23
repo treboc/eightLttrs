@@ -17,7 +17,7 @@ class MainView: UIView {
   let submitButton = UIButton()
   private let scoreTextLabel = UILabel()
   let scorePointsLabel = UILabel()
-  let tableView = UITableView()
+  private(set) var collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
 
   // MARK: - init()
   override init(frame: CGRect) {
@@ -56,15 +56,11 @@ extension MainView {
     scorePointsLabel.text = "0"
     scorePointsLabel.font = .preferredFont(forTextStyle: .headline)
     scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scoreTextLabel.font.pointSize, weight: .semibold)
-
-    // UsedWordsTableView
-    tableView.separatorColor = .systemOrange
-    tableView.keyboardDismissMode = .interactiveWithAccessory
   }
 
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
-    let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, tableView]
+    let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, collectionView]
     for view in views {
       self.addSubview(view)
       view.translatesAutoresizingMaskIntoConstraints = false
@@ -91,10 +87,10 @@ extension MainView {
       scorePointsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
       scorePointsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 
-      tableView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
-      tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-      tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-      tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+      collectionView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     ])
   }
 }
@@ -108,5 +104,12 @@ extension MainView {
       .map { !(($0.object as? UITextField)?.text?.isEmpty ?? false) }
       .assign(to: \MainView.submitButton.isEnabled, on: self)
       .store(in: &cancellables)
+  }
+}
+
+extension MainView {
+  static private func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+    var config = UICollectionLayoutListConfiguration(appearance: .plain)
+    return UICollectionViewCompositionalLayout.list(using: config)
   }
 }

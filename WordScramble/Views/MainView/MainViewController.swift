@@ -37,9 +37,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
     setupNavigationController()
     setupActions()
 
-    mainView.tableView.dataSource = self
-    mainView.tableView.delegate = self
-    mainView.tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
+    mainView.collectionView.dataSource = self
+    mainView.collectionView.delegate = self
+    mainView.collectionView.register(WordCell.self, forCellWithReuseIdentifier: WordCell.identifier)
 
     mainView.wordTextField.delegate = self
 
@@ -47,17 +47,25 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
   }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return gameService.usedWords.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as! WordTableViewCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCell.identifier, for: indexPath) as! WordCell
     let (word, points) = gameService.populateWordWithScore(at: indexPath)
     cell.updateLabels(with: (word, points))
     return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    return false
+  }
+
+  func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+    return false
   }
 }
 
@@ -85,7 +93,7 @@ extension MainViewController {
 
   private func updateUIAfterSumbission() {
     let indexPath = IndexPath(row: 0, section: 0)
-    mainView.tableView.insertRows(at: [indexPath], with: .left)
+    mainView.collectionView.insertItems(at: [indexPath])
     mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
   }
@@ -106,7 +114,7 @@ extension MainViewController {
     gameService.startGame { [weak self] currentWord in
       self?.title = currentWord
       mainView.scorePointsLabel.text = "\(gameService.currentScore)"
-      mainView.tableView.reloadData()
+      mainView.collectionView.reloadData()
     }
   }
 
@@ -127,7 +135,7 @@ extension MainViewController {
     let ac = UIAlertController(title: L10n.EndGameAlert.title,
                                message: L10n.EndGameAlert.message,
                                preferredStyle: .alert)
-    let saveAction = UIAlertAction(title: L10n.ButtonTitle.save, style: .default) { [weak self] _ in
+    let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .default) { [weak self] _ in
       guard let self = self else { return }
       let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
                                                   score: self.gameService.currentScore,
