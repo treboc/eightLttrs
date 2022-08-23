@@ -10,8 +10,6 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// Congratulations! 🎉
-  internal static let endSessionView = L10n.tr("Localizable", "endSessionView.", fallback: #"Congratulations! 🎉"#)
   internal enum ButtonTitle {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "ButtonTitle.cancel", fallback: #"Cancel"#)
@@ -33,10 +31,10 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "endGameAlert.title", fallback: #"Saving Score"#)
   }
   internal enum EndSessionView {
-    /// Hooray!
-    internal static let body = L10n.tr("Localizable", "endSessionView.body", fallback: #"Hooray!"#)
-    /// Congratulations! 🎉
-    internal static let congratulationsLabelText = L10n.tr("Localizable", "endSessionView.congratulationsLabelText", fallback: #"Congratulations! 🎉"#)
+    /// You have reached %@ points.
+    internal static func body(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "endSessionView.body", String(describing: p1), fallback: #"You have reached %@ points."#)
+    }
     /// Congratulations! 🎉
     internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: #"Congratulations! 🎉"#)
   }
@@ -114,6 +112,12 @@ internal enum L10n {
       internal static let message = L10n.tr("Localizable", "wordError.tooShort.message", fallback: #"The word should have at least three characters."#)
       /// Too Short
       internal static let title = L10n.tr("Localizable", "wordError.tooShort.title", fallback: #"Too Short"#)
+    }
+  }
+  internal enum Words {
+    /// Plural format key: "%#@words@"
+    internal static func count(_ p1: Int) -> String {
+      return L10n.tr("Localizable", "words.count", p1, fallback: #"Plural format key: "%#@words@""#)
     }
   }
 }

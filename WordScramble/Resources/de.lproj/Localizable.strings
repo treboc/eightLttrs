@@ -39,17 +39,15 @@
 "menuView.showHighscore" = "Highscores";
 
 // EndSessionView
-"endSessionView.title" = "Congratulations! 🎉";
-"endSessionView.body" = "Hooray!";
-"endSessionView." = "Congratulations! 🎉";
-"endSessionView.congratulationsLabelText" = "Congratulations! 🎉";
+"endSessionView.title" = "Herzlichen Glückwunsch! 🎉";
+"endSessionView.body" = "Du hast %@ Punkte erreicht.";
 
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";
 "resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt.";
 
-"endGameAlert.title" = "Punktzahl sichern";
-"endGameAlert.message" = "Um deine Punkte zu speichern, brauche ich deinen Namen!";
+"endGameAlert.title" = "Speichern";
+"endGameAlert.message" = "Bist du dir sicher, dass dir keine weiteren Wörter einfallen?";
 
 // ButtonTitles
 "ButtonTitle.submit" = "Okay";

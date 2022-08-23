@@ -1,0 +1,57 @@
+/* 
+ Localizable.strings
+ WordScramble
+
+ Created by Marvin Lee Kobert on 18.08.22.
+
+ */
+
+// Onboarding
+"onboarding.firstPage.title" = "What's the game about?";
+"onboarding.firstPage.body1" = "based on a project of 100daysOfSwift by Paul Hudson";
+"onboarding.firstPage.body2" = "try to find as many words as possible out of a random starting word";
+"onboarding.secondPage.title" = "Rules";
+"onboarding.secondPage.body1" = "all starting words are eight letters long";
+"onboarding.secondPage.body2" = "your word must contain at least a minimum of three letters";
+"onboarding.thirdPage.title" = "Scoring";
+"onboarding.thirdPage.body1" = "for the first three letters there is one point each";
+"onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
+"onboarding.thirdPage.buttonTitle" = "Let's go!";
+
+// WordError
+"wordError.notReal.title" = "Word Not Recognized";
+"wordError.notReal.message" = "You can't just make them up, you know?";
+"wordError.notOriginal.title" = "Word Already Used";
+"wordError.notOriginal.message" = "Come on, be more original!";
+"wordError.notPossible.title" = "Word Not Possible";
+"wordError.notPossible.message" = "You can't spell that from \"%@\". Please look again.";
+"wordError.tooShort.title" = "Too Short";
+"wordError.tooShort.message" = "The word should have at least three characters.";
+
+// MainView
+"mainView.currentScore" = "Current Score";
+
+// MenuView
+"menuView.title" = "Menu";
+"menuView.restartSession" = "Restart Session";
+"menuView.endSession" = "End Session";
+"menuView.showHighscore" = "Show Highscore";
+
+// EndSessionView
+"endSessionView.title" = "Congratulations! 🎉";
+"endSessionView.body" = "You have reached %@ points.";
+
+// Alerts
+"resetGameAlert.title" = "Are you sure?";
+"resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost.";
+
+"endGameAlert.title" = "Saving";
+"endGameAlert.message" = "Are you sure, you don't know any other words?";
+
+// ButtonTitles
+"ButtonTitle.submit" = "Submit";
+"ButtonTitle.cancel" = "Cancel";
+"ButtonTitle.save" = "Save";
+"ButtonTitle.imSure" = "Yes, I'm sure";
+"ButtonTitle.skip" = "Skip";
+"ButtonTitle.next" = "Next";
