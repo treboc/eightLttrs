@@ -7,21 +7,6 @@
 
 import UIKit
 
-struct WordCellItem: Hashable {
-  let word: String
-  private let points: Int
-
-  init(word: String, points: Int) {
-    self.word = word
-    self.points = points
-  }
-
-  var pointsImage: UIImage {
-    let config = UIImage.SymbolConfiguration(textStyle: .headline)
-    return UIImage(systemName: "\(points <= 50 ? points : 0).circle.fill", withConfiguration: config)!
-  }
-}
-
 class WordCell: UICollectionViewListCell {
   static var identifier: String {
     String(describing: self)

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct HighscoreCellItem: Hashable {
+  let name: String
+  let score: Int
+}
