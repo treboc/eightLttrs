@@ -55,7 +55,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate {
   enum Section {
     case wordList
   }
@@ -68,23 +68,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
   }
 
+  // Update cells using snapshot
   private func updateCollectionViewState(with items: [WordCellItem]) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, WordCellItem>()
     snapshot.appendSections([.wordList])
     snapshot.appendItems(items, toSection: .wordList)
     dataSource.apply(snapshot)
-  }
-
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return gameService.usedWords.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCell.identifier, for: indexPath) as! WordCell
-    let wordCellItem = gameService.populateWordWithScore(at: indexPath)
-    cell.updateLabels(with: wordCellItem)
-    return cell
   }
 
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -119,7 +108,6 @@ extension MainViewController {
   }
 
   private func updateUIAfterSumbission() {
-    let indexPath = IndexPath(row: 0, section: 0)
     mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
   }

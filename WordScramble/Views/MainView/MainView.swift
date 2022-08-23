@@ -106,10 +106,3 @@ extension MainView {
       .store(in: &cancellables)
   }
 }
-
-extension MainView {
-  static private func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-    let config = UICollectionLayoutListConfiguration(appearance: .plain)
-    return UICollectionViewCompositionalLayout.list(using: config)
-  }
-}
