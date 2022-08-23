@@ -26,9 +26,10 @@ class EndSessionView: UIView {
 
   private let titleLabel = UILabel()
   private let bodyLabel = UILabel()
-  private let textField = BasicTextField()
-  private var submitButton = UIButton()
-  private var cancelButton = UIButton()
+  private(set) var textField = BasicTextField()
+  private(set) var submitButton = UIButton()
+  private(set) var cancelButton = UIButton()
+
   private(set) var textFieldText: String = ""
 
   override init(frame: CGRect) {
@@ -78,7 +79,7 @@ extension EndSessionView {
     submitButtonConfig.buttonSize = .large
     submitButton = UIButton(configuration: submitButtonConfig)
     submitButton.isEnabled = false
-    submitButton.setTitle("Submit Score!", for: .normal)
+    submitButton.setTitle(L10n.ButtonTitle.submit, for: .normal)
 
     // CancelButton
     var cancelButtonConfig = UIButton.Configuration.tinted()
@@ -86,7 +87,7 @@ extension EndSessionView {
     cancelButtonConfig.buttonSize = .large
     cancelButton = UIButton(configuration: cancelButtonConfig)
     cancelButton.tintColor = .systemRed
-    cancelButton.setTitle("Cancel", for: .normal)
+    cancelButton.setTitle(L10n.ButtonTitle.cancel, for: .normal)
   }
 
   private func setupLayout() {
@@ -111,7 +112,9 @@ extension EndSessionView {
 
 extension EndSessionView {
   func updateBodyLabel(with word: String, score: Int, wordCount: Int) {
-    bodyLabel.text = "Hooray!" + "\n\n" + "That scores with \(score) points!"
+    bodyLabel.text = L10n.Words.count(wordCount) 
+    + "\n"
+    + L10n.EndSessionView.body(score)
   }
 }
 

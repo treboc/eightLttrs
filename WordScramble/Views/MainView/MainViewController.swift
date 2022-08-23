@@ -32,7 +32,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-    presentOnboardingOnFirstStart()
+    presentOnboardinIfIsFirstStart()
 
     setupNavigationController()
     setupActions()
@@ -140,13 +140,13 @@ extension MainViewController {
       let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
                                                   score: self.gameService.currentScore,
                                                   wordCount: self.gameService.usedWords.count)
+      endSessionVC.delegate = self
       self.present(endSessionVC, animated: true)
     }
     let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
     ac.addAction(saveAction)
     ac.addAction(cancelAction)
     present(ac, animated: true)
-
   }
 
   @objc
@@ -162,6 +162,16 @@ extension MainViewController {
     } catch {
       fatalError(error.localizedDescription)
     }
+  }
+}
+
+extension MainViewController: EndSessionDelegate {
+  func submitButtonTapped() {
+    startGame()
+  }
+
+  func cancelButtonTapped() {
+    startGame()
   }
 }
 
@@ -181,7 +191,7 @@ extension MainViewController {
 
 // MARK: - Onboarding on first start
 extension MainViewController {
-  private func presentOnboardingOnFirstStart() {
+  private func presentOnboardinIfIsFirstStart() {
     let isFirstStart = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstStart)
 
     if isFirstStart == false {
@@ -191,3 +201,4 @@ extension MainViewController {
     }
   }
 }
+
