@@ -33,10 +33,10 @@ extension HighscoreView {
     divider.setContentHuggingPriority(.defaultHigh, for: .vertical)
 
     let gradient = CAGradientLayer()
-    gradient.colors = [UIColor.systemTeal.cgColor, UIColor.purple.cgColor]
+    gradient.colors = [UIColor.systemOrange.cgColor, UIColor.systemGray.cgColor]
     gradient.frame = divider.frame
-    gradient.startPoint = .init(x: 0, y: 0.5)
-    gradient.startPoint = .init(x: 1, y: 0.5)
+    gradient.startPoint = .init(x: 0, y: 0)
+    gradient.endPoint = .init(x: 1, y: 0)
     divider.layer.insertSublayer(gradient, at: 0)
 
     stackView.axis = .vertical
