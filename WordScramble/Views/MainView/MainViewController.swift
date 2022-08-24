@@ -114,6 +114,9 @@ extension MainViewController {
   private func updateUIAfterSumbission() {
     mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
+    // Maybe looking up for another solution because this needs to be done
+    // because this is not like typing or removing all characters 'by hand'..
+    mainView.submitButton.isEnabled = false
   }
 }
 
