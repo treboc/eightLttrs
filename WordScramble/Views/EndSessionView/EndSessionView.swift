@@ -63,7 +63,6 @@ extension EndSessionView {
     titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
 
     // DisplayDataLabel
-    bodyLabel.text = "Plcaceholder\nLorem ipsum"
     bodyLabel.font = .preferredFont(forTextStyle: .body)
     bodyLabel.textColor = .secondaryLabel
     bodyLabel.numberOfLines = 0
@@ -88,6 +87,9 @@ extension EndSessionView {
     cancelButton = UIButton(configuration: cancelButtonConfig)
     cancelButton.tintColor = .systemRed
     cancelButton.setTitle(L10n.ButtonTitle.cancel, for: .normal)
+
+    // set last players name and enable button, if not nil
+    setLastPlayersName()
   }
 
   private func setupLayout() {
@@ -107,6 +109,13 @@ extension EndSessionView {
       textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
       textField.heightAnchor.constraint(equalToConstant: 40)
     ])
+  }
+
+  private func setLastPlayersName() {
+    if let lastName = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastPlayersName) {
+      textField.text = lastName
+      submitButton.isEnabled = true
+    }
   }
 }
 

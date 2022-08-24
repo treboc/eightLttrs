@@ -14,4 +14,5 @@ struct Constants {
 
 struct UserDefaultsKeys {
   static let isFirstStart = "isFirstStart"
+  static let lastPlayersName = "lastPlayersName"
 }

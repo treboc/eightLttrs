@@ -60,7 +60,7 @@ extension EndSessionViewController {
       .trimmingCharacters(in: .whitespacesAndNewlines)
       .isEmpty
     else { return }
-
+    setLastPlayersName(name)
     ScoreService.save(word: word, for: name, with: score)
     delegate?.submitButtonTapped()
     self.dismiss(animated: true)
@@ -70,5 +70,15 @@ extension EndSessionViewController {
   private func cancelButtonTapped() {
     delegate?.submitButtonTapped()
     self.dismiss(animated: true)
+  }
+}
+
+extension EndSessionViewController {
+  private func loadLastPlayersName() -> String {
+    return UserDefaults.standard.string(forKey: UserDefaultsKeys.lastPlayersName) ?? ""
+  }
+
+  private func setLastPlayersName(_ name: String) {
+    UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
   }
 }
