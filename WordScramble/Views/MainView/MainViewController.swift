@@ -171,7 +171,9 @@ extension MainViewController {
     else { return }
     do {
       try gameService.submitAnswerWith(answer, onCompletion: updateUIAfterSumbission)
+      HapticManager.shared.notification(type: .success)
     } catch let error as WordError {
+      HapticManager.shared.notification(type: .error)
       presentAlertControllert(with: error.alert)
     } catch {
       fatalError(error.localizedDescription)
