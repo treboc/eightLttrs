@@ -10,6 +10,8 @@ import UIKit
 protocol MenuViewControllerDelegate {
   func resetGame()
   func endGame()
+
+  var hasUsedWords: Bool { get }
 }
 
 class MenuViewController: UIViewController {
@@ -25,18 +27,31 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = L10n.MenuView.title
+    setupNavigationBar()
     setupActions()
+
+    // disable the endSessionButton if there are no words entered yet
+    if let hasUsedWords = delegate?.hasUsedWords {
+      menuView.endSessionButton.isEnabled = hasUsedWords ? true : false
+    }
+  }
+}
+
+// MARK: - NavigationArea
+extension MenuViewController {
+  private func setupNavigationBar() {
+    self.title = L10n.MenuView.title
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeMenu))
-    self.navigationItem.backButtonTitle = ""
   }
 }
 
 // MARK: - Actions
 extension MenuViewController {
   private func setupActions() {
+    // CloseButton
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeMenu))
+
     menuView.restartSessionButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
     menuView.endSessionButton.addTarget(self, action: #selector(endGameButtonTapped), for: .touchUpInside)
     menuView.showHighscoreButton.addTarget(self, action: #selector(showHighscoreButtonTapped), for: .touchUpInside)

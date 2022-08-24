@@ -9,6 +9,10 @@ import Combine
 import UIKit
 
 class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControllerDelegate {
+  var hasUsedWords: Bool {
+    !gameService.usedWords.isEmpty
+  }
+
   var gameService: GameServiceProtocol
 
   var mainView: MainView {
