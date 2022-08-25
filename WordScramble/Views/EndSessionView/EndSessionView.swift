@@ -10,18 +10,17 @@ import UIKit
 
 class EndSessionView: UIView {
   /*
-   
    Needed Views / Layout Ideas
    1. - Label for "Cogratulations! 🎉"
    2. - Label below the first label, showing: current word, reached score and maybe number of found words
    3. - textfield for name input
    4. - button to submit score
    -> after that, maybe an alert showing success of saving and giving possibility to share saved score
-
    */
 
   private var cancellables = Set<AnyCancellable>()
 
+  private let scrollView = UIScrollView()
   private let stackView = UIStackView()
 
   private let titleLabel = UILabel()
@@ -29,8 +28,6 @@ class EndSessionView: UIView {
   private(set) var textField = BasicTextField()
   private(set) var submitButton = UIButton()
   private(set) var cancelButton = UIButton()
-
-  private(set) var textFieldText: String = ""
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -50,11 +47,13 @@ extension EndSessionView {
   private func setupViews() {
     self.backgroundColor = .systemBackground
 
+    // ScrollView
+    scrollView.keyboardDismissMode = .onDrag
+
     // StackView
-    stackView.alignment = .center
     stackView.axis = .vertical
+    stackView.alignment = .center
     stackView.spacing = 30
-    stackView.distribution = .fill
 
     // CongratulationsLabel
     titleLabel.text = "Congratulations! 🎉"
@@ -88,7 +87,7 @@ extension EndSessionView {
     cancelButton.tintColor = .systemRed
     cancelButton.setTitle(L10n.ButtonTitle.cancel, for: .normal)
 
-    // set last players name and enable button, if not nil
+    // set last players name and enable button, if not Rnil
     setLastPlayersName()
   }
 
@@ -96,15 +95,24 @@ extension EndSessionView {
     let views = [titleLabel, bodyLabel, textField, submitButton, cancelButton]
     views.forEach { stackView.addArrangedSubview($0) }
 
-    textField.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
     stackView.translatesAutoresizingMaskIntoConstraints = false
+    textField.translatesAutoresizingMaskIntoConstraints = false
 
-    addSubview(stackView)
+    addSubview(scrollView)
+    scrollView.addSubview(stackView)
 
     NSLayoutConstraint.activate([
-      stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-      stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+      scrollView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.bottomAnchor, constant: -50),
+
+      stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+      stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+      stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
       textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
       textField.heightAnchor.constraint(equalToConstant: 40)
@@ -135,12 +143,6 @@ extension EndSessionView {
       .publisher(for: UITextField.textDidChangeNotification, object: textField)
       .map { !(($0.object as? UITextField)?.text?.isEmpty ?? false) }
       .assign(to: \EndSessionView.submitButton.isEnabled, on: self)
-      .store(in: &cancellables)
-
-    NotificationCenter.default
-      .publisher(for: UITextField.textDidChangeNotification, object: textField)
-      .map { ($0.object as? UITextField)?.text ?? "Unknown" }
-      .assign(to: \EndSessionView.textFieldText, on: self)
       .store(in: &cancellables)
   }
 }
