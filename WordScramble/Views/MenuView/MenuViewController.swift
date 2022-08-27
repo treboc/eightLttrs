@@ -82,9 +82,14 @@ extension MenuViewController {
 
   @objc
   private func resetButtonTapped() {
-    presentResetAlert { [weak self] _ in
-      self?.gameService.startGame()
-      self?.dismiss(animated: true)
+    if gameService.usedWords.isEmpty {
+      gameService.startGame()
+      dismiss(animated: true)
+    } else {
+      presentResetAlert { [weak self] _ in
+        self?.gameService.startGame()
+        self?.dismiss(animated: true)
+      }
     }
   }
 
