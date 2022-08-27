@@ -91,13 +91,13 @@ extension MainViewController: UICollectionViewDelegate {
 
 // MARK: - MainViewControllerSetup
 extension MainViewController {
-  func setupNavigationController() {
+  private func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
   }
 
-  func setupActions() {
+  private func setupActions() {
     self.hideKeyboardOnTap()
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
