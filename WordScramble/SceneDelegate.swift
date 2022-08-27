@@ -8,51 +8,41 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
   var window: UIWindow?
-
-  private func getMainVCfrom(_ context: UIOpenURLContext) -> UIViewController? {
-    let word = context.url.pathComponents[1]
-
-    if word.count == 8 {
-      let gameType: GameType = .sharedWord(word)
-      return MainViewController(gameType: gameType)
-    } else {
-      return nil
-    }
-  }
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
+    window.makeKeyAndVisible()
 
     // opened from session
     if let context = connectionOptions.urlContexts.first,
-       let mainVCwithWord = getMainVCfrom(context) {
-      window.rootViewController = UINavigationController(rootViewController: mainVCwithWord)
+       let mainVCwithStartWord = createMainViewController(from: context) {
+      window.rootViewController = UINavigationController(rootViewController: mainVCwithStartWord)
     } else {
       window.rootViewController = UINavigationController(rootViewController: MainViewController())
     }
-
-    window.makeKeyAndVisible()
     self.window = window
   }
 
-  // Gets called when the app is already opened (e.g. running in background)
+  // Gets called when the app is already opened (e.g. running in background) and a link is clicked
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    guard let scene = (scene as? UIWindowScene) else { return }
-    let window = UIWindow(windowScene: scene)
+    guard
+      let scene = (scene as? UIWindowScene),
+      let context = URLContexts.first,
+      let word = getStartWord(from: context)
+    else { return }
 
-    // opened from session
-    if let context = URLContexts.first,
-       let mainVCwithWord = getMainVCfrom(context) {
-      window.rootViewController = UINavigationController(rootViewController: mainVCwithWord)
-    } else {
-      window.rootViewController = UINavigationController(rootViewController: MainViewController())
+    // check if there is currently a session with atleast one word
+    if mainViewControllerHasUsedWords(in: scene),
+       let mainVC = getMainViewController(in: scene) {
+      // dismiss topViewController, to get present the Alert on the mainViewController
+      (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
+      // the "continue"-action
+      presentAlertController(on: mainVC) { _ in
+        mainVC.gameService.startGame(with: word)
+      }
     }
-
-    window.makeKeyAndVisible()
-    self.window = window
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
@@ -82,7 +72,52 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
   }
-
-
 }
 
+extension SceneDelegate {
+  private func getStartWord(from context: UIOpenURLContext) -> String? {
+    let word = context.url.pathComponents[1]
+
+    if word.count == 8 {
+      return word
+    } else {
+      return nil
+    }
+  }
+
+  private func createMainViewController(from context: UIOpenURLContext) -> MainViewController? {
+    if let word = getStartWord(from: context) {
+      return MainViewController(gameType: .sharedWord(word))
+    }
+    return nil
+  }
+
+  private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
+    guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
+
+    let mainVC = viewControllers.first { viewController in
+      viewController is MainViewController
+    }
+
+    return mainVC as? MainViewController
+  }
+
+  private func mainViewControllerHasUsedWords(in scene: UIWindowScene) -> Bool {
+    if let mainVC = getMainViewController(in: scene),
+       mainVC.hasUsedWords {
+      return true
+    }
+    return false
+  }
+
+  private func presentAlertController(on viewController: UIViewController, with handler: @escaping ((UIAlertAction) -> Void) ) {
+    let ac = UIAlertController(title: L10n.SharedWord.AlertIfAlreadyStartedSession.title,
+                               message: L10n.SharedWord.AlertIfAlreadyStartedSession.message,
+                               preferredStyle: .alert)
+    let proceedAction = UIAlertAction(title: L10n.ButtonTitle.continue, style: .destructive, handler: handler)
+    let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
+    ac.addAction(proceedAction)
+    ac.addAction(cancelAction)
+    viewController.present(ac, animated: true)
+  }
+}

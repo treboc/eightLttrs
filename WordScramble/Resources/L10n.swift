@@ -13,6 +13,8 @@ internal enum L10n {
   internal enum ButtonTitle {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "ButtonTitle.cancel", fallback: #"Cancel"#)
+    /// Continue
+    internal static let `continue` = L10n.tr("Localizable", "ButtonTitle.continue", fallback: #"Continue"#)
     /// Yes, I'm sure
     internal static let imSure = L10n.tr("Localizable", "ButtonTitle.imSure", fallback: #"Yes, I'm sure"#)
     /// Next
@@ -40,10 +42,10 @@ internal enum L10n {
   }
   internal enum HighscoreView {
     internal enum ShareScore {
-      /// Hey look, I've scored "%@" points on "%@"!
+      /// Hey look, I've scored %@ points on "%@"!
       /// Try it and see if you can beat this!
       internal static func text(_ p1: Any, _ p2: Any) -> String {
-        return L10n.tr("Localizable", "highscoreView.shareScore.text", String(describing: p1), String(describing: p2), fallback: #"Hey look, I've scored "%@" points on "%@"!\nTry it and see if you can beat this!"#)
+        return L10n.tr("Localizable", "highscoreView.shareScore.text", String(describing: p1), String(describing: p2), fallback: #"Hey look, I've scored %@ points on "%@"!\nTry it and see if you can beat this!"#)
       }
     }
   }
@@ -94,6 +96,14 @@ internal enum L10n {
     internal static let message = L10n.tr("Localizable", "resetGameAlert.message", fallback: #"When you reset the game, all words and your score will be reset and lost."#)
     /// Are you sure?
     internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: #"Are you sure?"#)
+  }
+  internal enum SharedWord {
+    internal enum AlertIfAlreadyStartedSession {
+      /// You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!
+      internal static let message = L10n.tr("Localizable", "sharedWord.alertIfAlreadyStartedSession.message", fallback: #"You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!"#)
+      /// Warning!
+      internal static let title = L10n.tr("Localizable", "sharedWord.alertIfAlreadyStartedSession.title", fallback: #"Warning!"#)
+    }
   }
   internal enum WordError {
     internal enum NotOriginal {

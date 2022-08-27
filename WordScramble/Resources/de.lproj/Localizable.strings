@@ -52,6 +52,9 @@
 "endGameAlert.title" = "Speichern";
 "endGameAlert.message" = "Bist du dir sicher, dass dir keine weiteren Wörter einfallen?";
 
+"sharedWord.alertIfAlreadyStartedSession.title" = "Achtung!";
+"sharedWord.alertIfAlreadyStartedSession.message" = "Du hast bereits ein Spiel angefangen. Bist du dir sicher das du das aktuelle Spiel beenden und mit dem geteilten Wort neu angefangen möchtest? Dein Spiel wird nicht gespeichert!";
+
 // ButtonTitles
 "ButtonTitle.submit" = "Okay";
 "ButtonTitle.cancel" = "Abbrechen";
@@ -59,3 +62,4 @@
 "ButtonTitle.imSure" = "Ja, ich bin sicher";
 "ButtonTitle.skip" = "Überspringen";
 "ButtonTitle.next" = "Weiter";
+"ButtonTitle.continue" = "Fortfahren";
