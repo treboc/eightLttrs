@@ -82,8 +82,10 @@ extension MenuViewController {
 
   @objc
   private func resetButtonTapped() {
-    dismiss(animated: true)
-    gameService.startGame()
+    presentResetAlert { [weak self] _ in
+      self?.gameService.startGame()
+      self?.dismiss(animated: true)
+    }
   }
 
   @objc
@@ -115,5 +117,14 @@ extension MenuViewController {
   @objc
   private func closeMenu() {
     dismiss(animated: true)
+  }
+}
+
+extension MenuViewController {
+  private func presentResetAlert(_ resetHandler: @escaping (UIAlertAction) -> Void) {
+    let ac = UIAlertController(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel))
+    ac.addAction(UIAlertAction(title: L10n.ButtonTitle.imSure, style: .destructive, handler: resetHandler))
+    self.present(ac, animated: true)
   }
 }

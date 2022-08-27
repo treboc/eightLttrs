@@ -17,7 +17,7 @@ struct WordCellItem: Hashable {
   }
 
   var pointsImage: UIImage {
-    let config = UIImage.SymbolConfiguration(textStyle: .headline)
+    let config = UIImage.SymbolConfiguration(font: .preferredFont(forTextStyle: .headline), scale: .large)
     return UIImage(systemName: "\(points <= 50 ? points : 0).circle.fill", withConfiguration: config)!
   }
 }
