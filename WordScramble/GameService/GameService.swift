@@ -20,6 +20,15 @@ enum RegionBasedLocale: String {
       return "EN"
     }
   }
+
+  var textCheckerLanguage: String {
+    switch self {
+    case .de, .at, .ch:
+      return "de_DE"
+    case .en:
+      return "en_US"
+    }
+  }
 }
 
 class GameService: GameServiceProtocol {
@@ -28,6 +37,8 @@ class GameService: GameServiceProtocol {
 
   var startWords = Set<String>()
   var allPossibleWords = Set<String>()
+
+  var currentLocale: RegionBasedLocale
 
   var currentWord: String = "" {
     didSet {
@@ -51,7 +62,7 @@ class GameService: GameServiceProtocol {
     // check users region.. if it's at, ch or de -> use german start words
     // if not, english
     let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
-    let currentLocale: RegionBasedLocale = .init(rawValue: locale) ?? .en
+    self.currentLocale = .init(rawValue: locale) ?? .en
 
     loadWords(with: currentLocale)
 
@@ -174,7 +185,7 @@ extension GameService {
 //    }
     let checker = UITextChecker()
     let range = NSRange(location: 0, length: word.utf16.count)
-    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "de_DE")
+    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: self.currentLocale.textCheckerLanguage)
 
     if misspelledRange.location != NSNotFound {
       throw WordError.notReal
