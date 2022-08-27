@@ -7,6 +7,32 @@
 
 import UIKit
 
+extension CALayer {
+  func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+    let border = CAGradientLayer()
+
+    switch edge {
+    case .top:
+      border.frame = CGRect(x: 0, y: 0, width: frame.width, height: thickness)
+    case .bottom:
+      border.frame = CGRect(x: 0, y: frame.height - thickness, width: frame.width, height: thickness)
+    case .left:
+      border.frame = CGRect(x: 0, y: 0, width: thickness, height: frame.height)
+    case .right:
+      border.frame = CGRect(x: frame.width - thickness, y: 0, width: thickness, height: frame.height)
+    default:
+      break
+    }
+
+    border.colors = [UIColor.systemBackground.cgColor, UIColor.tintColor.cgColor]
+    border.startPoint = .init(x: 0, y: 0)
+    border.endPoint = .init(x: 1, y: 0)
+
+    addSublayer(border)
+  }
+}
+
+
 class WordCell: UICollectionViewListCell {
   static var identifier: String {
     String(describing: self)
@@ -38,8 +64,11 @@ class WordCell: UICollectionViewListCell {
     wordLabel.adjustsFontForContentSizeCategory = true
 
     stackView.axis = .horizontal
+    stackView.alignment = .center
     stackView.spacing = 10
     stackView.translatesAutoresizingMaskIntoConstraints = false
+
+    self.layer.addBorder(edge: .bottom, color: .tintColor, thickness: 1)
   }
 
   private func setupLayout() {
@@ -54,25 +83,5 @@ class WordCell: UICollectionViewListCell {
       stackView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.widthPadding)
     ])
-
-//    self.addSubview(pointsImage)
-//    self.addSubview(wordLabel)
-//
-//    pointsImage.translatesAutoresizingMaskIntoConstraints = false
-//    wordLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//    NSLayoutConstraint.activate([
-//      pointsImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.widthPadding),
-//      pointsImage.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
-//      pointsImage.widthAnchor.constraint(equalToConstant: Constants.widthPadding * 2),
-//      pointsImage.heightAnchor.constraint(equalTo: pointsImage.widthAnchor),
-//      pointsImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-//
-//      wordLabel.leadingAnchor.constraint(equalTo: pointsImage.trailingAnchor, constant: Constants.widthPadding),
-//      wordLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
-//      wordLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -(2*Constants.widthPadding) + pointsImage.frame.width),
-//      wordLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.widthPadding),
-//      wordLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-//    ])
   }
 }

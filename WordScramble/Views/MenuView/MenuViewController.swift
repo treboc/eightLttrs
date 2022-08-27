@@ -99,7 +99,7 @@ extension MenuViewController {
                                message: L10n.EndGameAlert.message,
                                preferredStyle: .alert)
 
-    let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .default) { [weak self] _ in
+    let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .destructive) { [weak self] _ in
       guard let self = self else { return }
       let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
                                                   score: self.gameService.currentScore,

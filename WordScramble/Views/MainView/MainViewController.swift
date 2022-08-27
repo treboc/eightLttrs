@@ -160,38 +160,6 @@ extension MainViewController {
   }
 
   @objc
-  func resetGame() {
-    if gameService.usedWords.isEmpty {
-      self.gameService.startGame()
-    } else {
-      let alertData = AlertPresenterData(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, actionTitle: L10n.ButtonTitle.imSure) { [weak self] _ in
-        guard let self = self else { return }
-        self.gameService.startGame()
-      }
-      AlertPresenter.presentAlert(on: self, with: alertData)
-    }
-  }
-
-  @objc
-  func endGame() {
-    let ac = UIAlertController(title: L10n.EndGameAlert.title,
-                               message: L10n.EndGameAlert.message,
-                               preferredStyle: .alert)
-    let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .default) { [weak self] _ in
-      guard let self = self else { return }
-      let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
-                                                  score: self.gameService.currentScore,
-                                                  wordCount: self.gameService.usedWords.count)
-      endSessionVC.delegate = self
-      self.present(endSessionVC, animated: true)
-    }
-    let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
-    ac.addAction(saveAction)
-    ac.addAction(cancelAction)
-    present(ac, animated: true)
-  }
-
-  @objc
   func submit() {
     guard
       let answer = mainView.wordTextField.text,

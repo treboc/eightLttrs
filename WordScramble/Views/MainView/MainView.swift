@@ -10,7 +10,8 @@ import UIKit
 
 extension UICollectionView {
   static func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-    let config = UICollectionLayoutListConfiguration(appearance: .plain)
+    var config = UICollectionLayoutListConfiguration(appearance: .plain)
+    config.showsSeparators = false
     return UICollectionViewCompositionalLayout.list(using: config)
   }
 }
@@ -64,6 +65,8 @@ extension MainView {
     scorePointsLabel.text = "0"
     scorePointsLabel.font = .preferredFont(forTextStyle: .headline)
     scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scoreTextLabel.font.pointSize, weight: .semibold)
+
+
   }
 
   private func setupLayout() {
