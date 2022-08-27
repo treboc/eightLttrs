@@ -38,6 +38,7 @@ extension MenuView {
     var buttonConfiguration = UIButton.Configuration.borderedProminent()
     buttonConfiguration.buttonSize = .large
     buttonConfiguration.cornerStyle = .large
+    buttonConfiguration.baseForegroundColor = .systemBackground
 
     let buttons = [restartSessionButton, endSessionButton, showHighscoreButton]
     buttons.forEach { $0.configuration = buttonConfiguration }

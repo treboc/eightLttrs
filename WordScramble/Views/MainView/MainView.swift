@@ -87,12 +87,10 @@ extension MainView {
 
       scoreTextLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
       scoreTextLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
-      scoreTextLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
       scoreTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 
       scorePointsLabel.topAnchor.constraint(equalTo: scoreTextLabel.bottomAnchor),
       scorePointsLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
-      scorePointsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
       scorePointsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 
       collectionView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),

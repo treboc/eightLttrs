@@ -22,6 +22,7 @@ class BasicTextField: UITextField {
     self.autocorrectionType = .no
     self.returnKeyType = .send
     self.becomeFirstResponder()
+    self.accessibilityLabel = "Textfield"
   }
 
   required init?(coder: NSCoder) {

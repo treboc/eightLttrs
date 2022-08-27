@@ -102,7 +102,9 @@ extension MainViewController {
     self.hideKeyboardOnTap()
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
+    let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
+    menuButton.accessibilityLabel = "Menu"
+    navigationItem.rightBarButtonItem = menuButton
   }
 
   private func setupPublishers() {
