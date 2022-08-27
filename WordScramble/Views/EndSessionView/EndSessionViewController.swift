@@ -74,10 +74,6 @@ extension EndSessionViewController {
 }
 
 extension EndSessionViewController {
-  private func loadLastPlayersName() -> String {
-    return UserDefaults.standard.string(forKey: UserDefaultsKeys.lastPlayersName) ?? ""
-  }
-
   private func setLastPlayersName(_ name: String) {
     UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
   }
