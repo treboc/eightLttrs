@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EndSessionDelegate {
-  func submitButtonTapped()
+  func submitButtonTapped(_ name: String)
   func cancelButtonTapped()
 }
 
@@ -42,6 +42,7 @@ class EndSessionViewController: UIViewController {
     super.viewDidLoad()
     self.isModalInPresentation = true
     endSessionView.updateBodyLabel(with: word, score: score, wordCount: wordCount)
+    navigationItem.hidesBackButton = true
     setupActions()
   }
 }
@@ -55,26 +56,17 @@ extension EndSessionViewController {
 
   @objc
   private func submitButtonTapped() {
-    let name = endSessionView.textFieldText
-    guard !name
-      .trimmingCharacters(in: .whitespacesAndNewlines)
-      .isEmpty
+    guard let name = endSessionView.textField.text,
+          !name.trimmingCharacters(in: .whitespacesAndNewlines)
+               .isEmpty
     else { return }
-    setLastPlayersName(name)
-    ScoreService.save(word: word, for: name, with: score)
-    delegate?.submitButtonTapped()
+    delegate?.submitButtonTapped(name)
     self.dismiss(animated: true)
   }
 
   @objc
   private func cancelButtonTapped() {
-    delegate?.submitButtonTapped()
+    delegate?.cancelButtonTapped()
     self.dismiss(animated: true)
-  }
-}
-
-extension EndSessionViewController {
-  private func setLastPlayersName(_ name: String) {
-    UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
   }
 }

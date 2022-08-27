@@ -31,7 +31,9 @@ class ScoreService {
       return result
         .enumerated()
         .map { (index, item) in
-          return HighscoreCellItem(name: item.name!, score: Int(item.score))
+          return HighscoreCellItem(name: item.unwrappedName,
+                                   word: item.unwrappedWord,
+                                   score: Int(item.score))
         }
         .sorted { $0.score > $1.score }
     } catch let error as NSError {
