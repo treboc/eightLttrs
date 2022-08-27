@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HighscoreCell: UICollectionViewListCell {
+class HighscoreCell: UITableViewCell {
   static var identifier: String {
     String(describing: self)
   }
@@ -17,9 +17,8 @@ class HighscoreCell: UICollectionViewListCell {
   private let nameLabel = UILabel()
   private let scoreLabel = UILabel()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupViews()
     setupLayout()
   }
@@ -35,6 +34,8 @@ class HighscoreCell: UICollectionViewListCell {
   }
 
   private func setupViews() {
+    self.selectionStyle = .none
+
     rankLabel.font = .preferredFont(forTextStyle: .headline)
 
     stackView.axis = .horizontal
@@ -49,7 +50,6 @@ class HighscoreCell: UICollectionViewListCell {
     let safeArea = self.safeAreaLayoutGuide
     [rankLabel, nameLabel, scoreLabel].forEach { stackView.addArrangedSubview($0) }
     stackView.translatesAutoresizingMaskIntoConstraints = false
-//    rankLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(stackView)
 
     NSLayoutConstraint.activate([

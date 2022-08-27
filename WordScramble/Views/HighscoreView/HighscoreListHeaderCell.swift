@@ -46,7 +46,6 @@ class HighscoreListHeaderCell: UIView {
     let safeArea = self.safeAreaLayoutGuide
     [rankLabel, nameLabel, scoreLabel].forEach { stackView.addArrangedSubview($0) }
     stackView.translatesAutoresizingMaskIntoConstraints = false
-    //    rankLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(stackView)
 
     NSLayoutConstraint.activate([

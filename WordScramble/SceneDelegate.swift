@@ -11,11 +11,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
+  private func getMainVCfrom(_ context: UIOpenURLContext) -> UIViewController? {
+    let word = context.url.pathComponents[1]
+
+    if word.count == 8 {
+      let gameType: GameType = .sharedWord(word)
+      return MainViewController(gameType: gameType)
+    } else {
+      return nil
+    }
+  }
+
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
-    let rootVC = UINavigationController(rootViewController: MainViewController())
-    window.rootViewController = rootVC
+
+    // opened from session
+    if let context = connectionOptions.urlContexts.first,
+       let mainVCwithWord = getMainVCfrom(context) {
+      window.rootViewController = UINavigationController(rootViewController: mainVCwithWord)
+    } else {
+      window.rootViewController = UINavigationController(rootViewController: MainViewController())
+    }
+
+    window.makeKeyAndVisible()
+    self.window = window
+  }
+
+  // Gets called when the app is already opened (e.g. running in background)
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let scene = (scene as? UIWindowScene) else { return }
+    let window = UIWindow(windowScene: scene)
+
+    // opened from session
+    if let context = URLContexts.first,
+       let mainVCwithWord = getMainVCfrom(context) {
+      window.rootViewController = UINavigationController(rootViewController: mainVCwithWord)
+    } else {
+      window.rootViewController = UINavigationController(rootViewController: MainViewController())
+    }
+
     window.makeKeyAndVisible()
     self.window = window
   }

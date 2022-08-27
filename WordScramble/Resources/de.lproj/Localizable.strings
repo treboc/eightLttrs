@@ -42,6 +42,9 @@
 "endSessionView.title" = "Herzlichen Glückwunsch! 🎉";
 "endSessionView.body" = "Du hast %@ Punkte erreicht.";
 
+// HighscoreView -> Sharing
+"highscoreView.shareScore.text" = "Hey schau' mal! Ich habe %@ Punkte bei \"%@\" erreicht!\nVersuch es auch, und sieh ob du es besser kannst!";
+
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";
 "resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt.";

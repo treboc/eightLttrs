@@ -45,8 +45,17 @@ class GameService: GameServiceProtocol {
       .reduce(0, +)
   }
 
-  init() {
+  init(_ gameType: GameType? = .randomWord) {
     loadWords()
+
+    switch gameType {
+    case .randomWord:
+      startGame()
+    case .sharedWord(let word):
+      startGame(with: word)
+    case .none:
+      break
+    }
   }
 
   private func loadWords() {
@@ -71,11 +80,21 @@ class GameService: GameServiceProtocol {
     }
   }
 
-  func startGame(_ handler: (String) -> Void) {
+  func startGame(with word: String) {
+    if let decodedWord = word.removingPercentEncoding {
+      currentWord = decodedWord
+      usedWords.removeAll()
+    }
+  }
+
+  func startGame() {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
     usedWords.removeAll()
-    handler(rndWord)
+  }
+
+  func restartGame() {
+    startGame()
   }
 
   func endGame(playerName: String) {

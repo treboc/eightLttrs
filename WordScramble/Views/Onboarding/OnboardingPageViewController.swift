@@ -8,7 +8,6 @@
 import UIKit
 
 class OnboardingPageViewController: UIViewController {
-
   let titleLabel = UILabel()
   let bodyLabel = UILabel()
   let startButton = UIButton()

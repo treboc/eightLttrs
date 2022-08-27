@@ -25,10 +25,10 @@ internal enum L10n {
     internal static let submit = L10n.tr("Localizable", "ButtonTitle.submit", fallback: #"Submit"#)
   }
   internal enum EndGameAlert {
-    /// To save your score, we need your name!
-    internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: #"To save your score, we need your name!"#)
-    /// Saving Score
-    internal static let title = L10n.tr("Localizable", "endGameAlert.title", fallback: #"Saving Score"#)
+    /// Are you sure, you don't know any other words?
+    internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: #"Are you sure, you don't know any other words?"#)
+    /// Saving
+    internal static let title = L10n.tr("Localizable", "endGameAlert.title", fallback: #"Saving"#)
   }
   internal enum EndSessionView {
     /// You have reached %@ points.
@@ -37,6 +37,15 @@ internal enum L10n {
     }
     /// Congratulations! 🎉
     internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: #"Congratulations! 🎉"#)
+  }
+  internal enum HighscoreView {
+    internal enum ShareScore {
+      /// Hey look, I've scored "%@" points on "%@"!
+      /// Try it and see if you can beat this!
+      internal static func text(_ p1: Any, _ p2: Any) -> String {
+        return L10n.tr("Localizable", "highscoreView.shareScore.text", String(describing: p1), String(describing: p2), fallback: #"Hey look, I've scored "%@" points on "%@"!\nTry it and see if you can beat this!"#)
+      }
+    }
   }
   internal enum MainView {
     /// Current Score

@@ -10,8 +10,7 @@ import UIKit
 class HighscoreView: UIView {
   private let stackView = UIStackView()
   private let headerCell = HighscoreListHeaderCell()
-  private(set) var collectionView = UICollectionView(frame: .zero,
-                                                     collectionViewLayout: UICollectionView.makeCollectionViewLayout())
+  private(set) var tableView = UITableView()
   private let divider = UIView()
 
   override init(frame: CGRect) {
@@ -33,7 +32,7 @@ extension HighscoreView {
     divider.setContentHuggingPriority(.defaultHigh, for: .vertical)
 
     let gradient = CAGradientLayer()
-    gradient.colors = [UIColor.systemOrange.cgColor, UIColor.systemGray.cgColor]
+    gradient.colors = [UIColor(named: "AccentColor")!.cgColor, UIColor.systemGray.cgColor]
     gradient.frame = divider.frame
     gradient.startPoint = .init(x: 0, y: 0)
     gradient.endPoint = .init(x: 1, y: 0)
@@ -53,7 +52,7 @@ extension HighscoreView {
 
     stackView.addArrangedSubview(headerCell)
     stackView.addArrangedSubview(divider)
-    stackView.addArrangedSubview(collectionView)
+    stackView.addArrangedSubview(tableView)
 
     addSubview(stackView)
 

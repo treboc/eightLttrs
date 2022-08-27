@@ -9,5 +9,6 @@ import Foundation
 
 struct HighscoreCellItem: Hashable {
   let name: String
+  let word: String
   let score: Int
 }

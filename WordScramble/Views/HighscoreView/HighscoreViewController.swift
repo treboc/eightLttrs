@@ -6,21 +6,26 @@
 //
 
 import Combine
+import LinkPresentation
 import UIKit
+import SwiftUI
 
 class HighscoreViewController: UIViewController {
   var highscoreView: HighscoreView {
     view as! HighscoreView
   }
 
+  let metadata = LPLinkMetadata()
+
   override func loadView() {
     view = HighscoreView()
   }
 
-  lazy var dataSource = configuteDataSource()
-  var highscores = [HighscoreCellItem]() {
+  var metaData: LPLinkMetadata?
+
+  private var highscores = [HighscoreCellItem]() {
     didSet {
-      updateCollectionViewState(with: highscores)
+      highscoreView.tableView.reloadData()
     }
   }
 
@@ -30,51 +35,76 @@ class HighscoreViewController: UIViewController {
     self.highscores = ScoreService.loadHighscores()
     self.title = "Highscore"
 
-    highscoreView.collectionView.delegate = self
-    highscoreView.collectionView.register(HighscoreCell.self, forCellWithReuseIdentifier: HighscoreCell.identifier)
+    highscoreView.tableView.delegate = self
+    highscoreView.tableView.dataSource = self
+    highscoreView.tableView.register(HighscoreCell.self, forCellReuseIdentifier: HighscoreCell.identifier)
 
     // Set close button in navigationBar
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeMenu))
   }
-}
 
-// MARK: - Actions
-extension HighscoreViewController {
   @objc
   private func closeMenu() {
     dismiss(animated: true)
   }
 }
 
-// MARK: - UICollectionViewSetup
-extension HighscoreViewController: UICollectionViewDelegate {
-  enum Section {
-    case scores
+// MARK: - Sharing Score (UIActivityItemSource)
+extension HighscoreViewController: UIActivityItemSource {
+  func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+    "Spread the word!"
   }
 
-  // Make this generic
-  private func configuteDataSource() -> UICollectionViewDiffableDataSource<Section, HighscoreCellItem> {
-    return UICollectionViewDiffableDataSource<Section, HighscoreCellItem>(collectionView: highscoreView.collectionView) { collectionView, indexPath, item in
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HighscoreCell.identifier, for: indexPath) as! HighscoreCell
-      cell.updateLabels(with: item, and: indexPath)
-      return cell
+  func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+    return metadata
+  }
+
+  func activityViewControllerLinkMetadata(_: UIActivityViewController) -> LPLinkMetadata? {
+    return metadata
+  }
+
+  private func shareHighscore(_ item: HighscoreCellItem) {
+    if let word = item.word.addingPercentEncoding(withAllowedCharacters: .letters),
+       let url = URL(string: "wordscramble://word/\(word)") {
+      metadata.originalURL = URL(string: "wordscramble://\(word)")
+      metadata.url = metadata.originalURL
+      metadata.title = "Try it yourself!"
+      metadata.imageProvider = NSItemProvider.init(contentsOf: Bundle.main.url(forResource: "icon", withExtension: "jpg"))
+      let text = L10n.HighscoreView.ShareScore.text(item.score, item.word)
+      let ac = UIActivityViewController(activityItems: [self, text, url], applicationActivities: nil)
+      present(ac, animated: true)
     }
   }
+}
 
-  private func updateCollectionViewState(with items: [HighscoreCellItem]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, HighscoreCellItem>()
-    snapshot.appendSections([.scores])
-    snapshot.appendItems(items, toSection: .scores)
-    dataSource.apply(snapshot)
+// MARK: - UITableViewController Methods
+extension HighscoreViewController: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    highscores.count
   }
 
-  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-    return false
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: HighscoreCell.identifier, for: indexPath) as! HighscoreCell
+    cell.updateLabels(with: highscores[indexPath.row], and: indexPath)
+    return cell
   }
 
-  func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-    return false
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    true
   }
+
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let shareAction = UIContextualAction(style: .normal, title: "Share") { [weak self] action, view, completion in
+      guard let self = self else { return }
+      self.shareHighscore(self.highscores[indexPath.row])
+      completion(true)
+    }
+    shareAction.backgroundColor = UIColor(named: "AccentColor")
+    shareAction.image = UIImage(systemName: "square.and.arrow.up")
+
+    return UISwipeActionsConfiguration(actions: [shareAction])
+  }
+
 }

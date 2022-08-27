@@ -41,6 +41,9 @@
 "endSessionView.title" = "Congratulations! 🎉";
 "endSessionView.body" = "You have reached %@ points.";
 
+// HighscoreView -> Sharing
+"highscoreView.shareScore.text" = "Hey look, I've scored %@ points on \"%@\"!\nTry it and see if you can beat this!";
+
 // Alerts
 "resetGameAlert.title" = "Are you sure?";
 "resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost.";
