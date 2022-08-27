@@ -9,6 +9,19 @@ import Combine
 import Foundation
 import UIKit
 
+enum RegionBasedLocale: String {
+  case de, at, ch, en
+
+  var fileNameSuffix: String {
+    switch self {
+    case .de, .at, .ch:
+      return "DE"
+    default:
+      return "EN"
+    }
+  }
+}
+
 class GameService: GameServiceProtocol {
   var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
   var currentWordPublisher = CurrentValueSubject<String, Never>("")
@@ -35,7 +48,12 @@ class GameService: GameServiceProtocol {
   }
 
   init(_ gameType: GameType? = .randomWord) {
-    loadWords()
+    // check users region.. if it's at, ch or de -> use german start words
+    // if not, english
+    let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
+    let currentLocale: RegionBasedLocale = .init(rawValue: locale) ?? .en
+
+    loadWords(with: currentLocale)
 
     switch gameType {
     case .randomWord:
@@ -47,20 +65,17 @@ class GameService: GameServiceProtocol {
     }
   }
 
-  private func loadWords() {
-    // getting the apps language
-    let currentLocale = Locale.autoupdatingCurrent.identifier.suffix(2)
-
-    // load possible words to check for
-    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
-      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
-        let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines).map({ $0.lowercased() })
-        self.allPossibleWords = Set(possibleLowercasedWords)
-      }
-    }
+  private func loadWords(with locale: RegionBasedLocale) {
+//    // load possible words to check for
+//    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
+//      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
+//        let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines).map({ $0.lowercased() })
+//        self.allPossibleWords = Set(possibleLowercasedWords)
+//      }
+//    }
 
     // load possible startWords in the current language
-    if let startWordsURL = Bundle.main.url(forResource: "startWords\(currentLocale).txt", withExtension: nil) {
+    if let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.fileNameSuffix)", withExtension: "txt") {
       if let startWords = try? String(contentsOf: startWordsURL) {
         self.startWords = Set(startWords.components(separatedBy: .newlines))
       }

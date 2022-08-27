@@ -6640,7 +6640,6 @@ bergiges
 bergisch
 Bergisel
 Bergjoch
-Bergjude
 Bergkamm
 Bergkäse
 Bergklee
@@ -10418,7 +10417,6 @@ Dorfheim
 Dorfherr
 Dorfhund
 Dorfhure
-Dorfjude
 Dorfkern
 Dorfkind
 Dorfkino
@@ -20019,7 +20017,6 @@ halbiere
 halbiert
 halbirre
 Halbjahr
-Halbjude
 Halbkalk
 Halblage
 Halblaie
@@ -21784,7 +21781,6 @@ hofieren
 hofierst
 hofierte
 höfische
-Hofjuden
 Hofkarte
 Hofkasse
 Hofkatze
@@ -23214,19 +23210,6 @@ jucktest
 Judäerin
 judäisch
 Judasohr
-Judenbad
-Judeneid
-Judenfan
-Judenhof
-Judenhut
-Judenohr
-Judenrat
-Judensau
-Judentor
-Judentum
-Judenweg
-Jüdinnen
-jüdische
 Judizium
 Judoclub
 Judoklub
@@ -29147,7 +29130,6 @@ Mithörer
 mithörst
 mithörte
 mitjuble
-Mitjuden
 mitkamen
 mitkämen
 Mitkampf
@@ -31827,7 +31809,6 @@ Ostinsel
 ostische
 Ostjapan
 Ostjavas
-Ostjuden
 Ostjüdin
 Ostkamin
 Ostkante
@@ -44474,7 +44455,6 @@ völligem
 völligen
 völliger
 völliges
-Volljude
 Vollkorn
 Vollkost
 volllädt

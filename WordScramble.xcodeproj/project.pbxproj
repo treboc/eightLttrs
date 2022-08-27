@@ -10,7 +10,7 @@
 		8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */; };
 		8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */; };
 		8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */; };
-		8A3F79D528AC59810058A272 /* allWords8LettersUS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */; };
+		8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */; };
 		8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79D928ACD4A60058A272 /* MenuViewController.swift */; };
 		8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DB28ACD4D30058A272 /* MenuView.swift */; };
 		8A3F79DE28ACE42C0058A272 /* ScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* ScoreService.swift */; };
@@ -50,7 +50,7 @@
 		8ADAB28828A5911D0083E028 /* WordScrambleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB28728A5911D0083E028 /* WordScrambleTests.swift */; };
 		8ADAB29228A5911D0083E028 /* WordScrambleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */; };
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
-		8ADAB2A328A594040083E028 /* startWordsUS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* startWordsUS.txt */; };
+		8ADAB2A328A594040083E028 /* startWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* startWordsEN.txt */; };
 		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +75,7 @@
 		8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "wordlist-german.txt"; sourceTree = "<group>"; };
 		8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsDE.txt; sourceTree = "<group>"; };
 		8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersDE.txt; sourceTree = "<group>"; };
-		8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersUS.txt; sourceTree = "<group>"; };
+		8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersEN.txt; sourceTree = "<group>"; };
 		8A3F79D928ACD4A60058A272 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8A3F79DB28ACD4D30058A272 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A3F79DD28ACE42C0058A272 /* ScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreService.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		8ADAB28D28A5911D0083E028 /* WordScrambleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordScrambleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8ADAB2A228A594040083E028 /* startWordsUS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsUS.txt; sourceTree = "<group>"; };
+		8ADAB2A228A594040083E028 /* startWordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsEN.txt; sourceTree = "<group>"; };
 		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,10 +157,10 @@
 				8ADAB2A428A5941B0083E028 /* GameService.swift */,
 				8A794FDA28B938E700BC9CE5 /* GameServiceProtocol.swift */,
 				8A78F3A428AE5C2900DFA6D5 /* WordError.swift */,
-				8ADAB2A228A594040083E028 /* startWordsUS.txt */,
+				8ADAB2A228A594040083E028 /* startWordsEN.txt */,
 				8A3F79CE28AC4E7F0058A272 /* startWordsDE.txt */,
 				8A3F79D128AC55CF0058A272 /* allWords8LettersDE.txt */,
-				8A3F79D428AC59810058A272 /* allWords8LettersUS.txt */,
+				8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */,
 				8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */,
 			);
 			path = GameService;
@@ -446,14 +446,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A3F79D528AC59810058A272 /* allWords8LettersUS.txt in Resources */,
+				8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */,
 				8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */,
 				8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */,
 				8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */,
 				8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */,
 				8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */,
 				8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */,
-				8ADAB2A328A594040083E028 /* startWordsUS.txt in Resources */,
+				8ADAB2A328A594040083E028 /* startWordsEN.txt in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
