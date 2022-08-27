@@ -43,6 +43,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
 
     setupNavigationController()
     setupActions()
+    setupPublishers()
 
     mainView.collectionView.delegate = self
     mainView.collectionView.register(WordCell.self, forCellWithReuseIdentifier: WordCell.identifier)
@@ -103,6 +104,26 @@ extension MainViewController {
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
   }
 
+  private func setupPublishers() {
+    // Publisher to update the cells, corrosponding to the used words in gameService
+    gameService.wordCellItemPublisher
+      .sink { [weak self] items in
+        self?.applySnapshot(with: items)
+      }
+      .store(in: &cancellables)
+
+    // Publisher to update the title, when the word changes in gameService
+    gameService.currentWordPublisher
+      .sink { [weak self] word in
+        self?.updateLabels(with: word)
+      }
+      .store(in: &cancellables)
+
+    gameService.wordCellItemPublisher
+      .map { !$0.isEmpty }
+      .assign(to: \.hasUsedWords, on: self)
+      .store(in: &cancellables)
+  }
 
   func presentAlertControllert(with alert: Alert) {
     let ac = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)

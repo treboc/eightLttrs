@@ -9,13 +9,18 @@ import Combine
 import Foundation
 import UIKit
 
-
 class GameService: GameServiceProtocol {
   var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
+  var currentWordPublisher = CurrentValueSubject<String, Never>("")
 
   var startWords = Set<String>()
   var allPossibleWords = Set<String>()
-  var currentWord: String = ""
+
+  var currentWord: String = "" {
+    didSet {
+      currentWordPublisher.send(currentWord)
+    }
+  }
 
   var usedWords: [WordCellItem] = [] {
     didSet {
