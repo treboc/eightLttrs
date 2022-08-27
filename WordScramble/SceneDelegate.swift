@@ -34,12 +34,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     else { return }
 
     // check if there is currently a session with atleast one word
-    if mainViewControllerHasUsedWords(in: scene),
-       let mainVC = getMainViewController(in: scene) {
-      // dismiss topViewController, to get present the Alert on the mainViewController
-      (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
-      // the "continue"-action
-      presentAlertController(on: mainVC) { _ in
+    if let mainVC = getMainViewController(in: scene) {
+      if mainViewControllerHasUsedWords(in: scene) {
+        // dismiss topViewController, to get present the Alert on the mainViewController
+        (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
+        // the "continue"-action
+        presentAlertController(on: mainVC) { _ in
+          mainVC.gameService.startGame(with: word)
+        }
+      } else {
         mainVC.gameService.startGame(with: word)
       }
     }
