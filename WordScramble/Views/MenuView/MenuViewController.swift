@@ -7,19 +7,30 @@
 
 import UIKit
 
-protocol MenuViewControllerDelegate {
-  func resetGame()
-  func endGame()
-
-  var hasUsedWords: Bool { get }
-}
+//protocol MenuViewControllerDelegate {
+//  func resetGame()
+//  func endGame()
+//
+//  var gameService: GameServiceProtocol { get }
+//
+//  var hasUsedWords: Bool { get }
+//}
 
 class MenuViewController: UIViewController {
   var menuView: MenuView {
     view as! MenuView
   }
 
-  var delegate: MenuViewControllerDelegate?
+  let gameService: GameServiceProtocol
+
+  init(gameService: GameServiceProtocol) {
+    self.gameService = gameService
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func loadView() {
     view = MenuView(frame: .zero)
@@ -31,8 +42,8 @@ class MenuViewController: UIViewController {
     setupActions()
 
     // disable the endSessionButton if there are no words entered yet
-    if let hasUsedWords = delegate?.hasUsedWords {
-      menuView.endSessionButton.isEnabled = hasUsedWords ? true : false
+    if gameService.usedWords.isEmpty {
+      menuView.endSessionButton.isEnabled = false
     }
   }
 }
@@ -43,6 +54,18 @@ extension MenuViewController {
     self.title = L10n.MenuView.title
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
+  }
+}
+
+// MARK: - EndSessionDelegate
+extension MenuViewController: EndSessionDelegate {
+  func submitButtonTapped(_ name: String) {
+    gameService.endGame(playerName: name)
+    dismiss(animated: true)
+  }
+
+  func cancelButtonTapped() {
+    dismiss(animated: true)
   }
 }
 
@@ -60,13 +83,27 @@ extension MenuViewController {
   @objc
   private func resetButtonTapped() {
     dismiss(animated: true)
-    delegate?.resetGame()
+    gameService.startGame()
   }
 
   @objc
   private func endGameButtonTapped() {
-    dismiss(animated: true)
-    delegate?.endGame()
+    let ac = UIAlertController(title: L10n.EndGameAlert.title,
+                               message: L10n.EndGameAlert.message,
+                               preferredStyle: .alert)
+
+    let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .default) { [weak self] _ in
+      guard let self = self else { return }
+      let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
+                                                  score: self.gameService.currentScore,
+                                                  wordCount: self.gameService.usedWords.count)
+      endSessionVC.delegate = self
+      self.navigationController?.pushViewController(endSessionVC, animated: true)
+    }
+    let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
+    ac.addAction(saveAction)
+    ac.addAction(cancelAction)
+    present(ac, animated: true)
   }
 
   @objc

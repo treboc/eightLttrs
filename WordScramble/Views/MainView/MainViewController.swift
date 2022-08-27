@@ -8,22 +8,28 @@
 import Combine
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControllerDelegate {
-  var hasUsedWords: Bool {
-    !gameService.usedWords.isEmpty
-  }
-
-  var gameService: GameServiceProtocol
-
+class MainViewController: UIViewController, UITextFieldDelegate {
   var mainView: MainView {
     view as! MainView
   }
 
   lazy var dataSource = configuteDataSource()
-  var cancellable: AnyCancellable?
+  var cancellables = Set<AnyCancellable>()
 
-  init(gameService: GameServiceProtocol = GameService()) {
-    self.gameService = gameService
+  var hasUsedWords: Bool = false
+
+  var gameService: GameServiceProtocol
+  var gameType: GameType
+
+  init(gameType: GameType = .randomWord) {
+    self.gameType = gameType
+
+    if gameType == .randomWord {
+      self.gameService = GameService()
+    } else {
+      self.gameService = GameService(gameType)
+    }
+
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -39,6 +45,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
+
     presentOnboardinIfIsFirstStart()
 
     setupNavigationController()
@@ -47,15 +54,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, MenuViewControl
 
     mainView.collectionView.delegate = self
     mainView.collectionView.register(WordCell.self, forCellWithReuseIdentifier: WordCell.identifier)
-
     mainView.wordTextField.delegate = self
 
-    cancellable = gameService.wordCellItemPublisher
-      .sink { [weak self] items in
-        self?.updateCollectionViewState(with: items)
-      }
-
-    startGame()
+    mainView.collectionView.keyboardDismissMode = .interactiveWithAccessory
   }
 }
 
@@ -74,7 +75,7 @@ extension MainViewController: UICollectionViewDelegate {
   }
 
   // Update cells using snapshot
-  private func updateCollectionViewState(with items: [WordCellItem]) {
+  private func applySnapshot(with items: [WordCellItem]) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, WordCellItem>()
     snapshot.appendSections([.wordList])
     snapshot.appendItems(items, toSection: .wordList)
@@ -95,13 +96,13 @@ extension MainViewController {
   private func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
   }
 
   private func setupActions() {
     self.hideKeyboardOnTap()
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
   }
 
   private func setupPublishers() {
@@ -132,7 +133,7 @@ extension MainViewController {
     present(ac, animated: true)
   }
 
-  private func updateUIAfterSumbission() {
+  private func updateMainViewAfterSubmission() {
     mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
     // Maybe looking up for another solution because this needs to be done
@@ -143,30 +144,27 @@ extension MainViewController {
 
 // MARK: - Methods for Buttons
 extension MainViewController {
+  private func updateLabels(with word: String) {
+    self.title = word
+    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
+    mainView.clearTextField()
+  }
+
   @objc
   private func showMenu() {
-    let menuVC = MenuViewController()
-    menuVC.delegate = self
+    let menuVC = MenuViewController(gameService: gameService)
     let menuNavVC = UINavigationController(rootViewController: menuVC)
     present(menuNavVC, animated: true)
   }
 
   @objc
-  func startGame() {
-    gameService.startGame { [weak self] currentWord in
-      self?.title = currentWord
-      mainView.scorePointsLabel.text = "\(gameService.currentScore)"
-      mainView.collectionView.reloadData()
-    }
-  }
-
-  @objc
   func resetGame() {
     if gameService.usedWords.isEmpty {
-      startGame()
+      self.gameService.startGame()
     } else {
       let alertData = AlertPresenterData(title: L10n.ResetGameAlert.title, message: L10n.ResetGameAlert.message, actionTitle: L10n.ButtonTitle.imSure) { [weak self] _ in
-        self?.startGame()
+        guard let self = self else { return }
+        self.gameService.startGame()
       }
       AlertPresenter.presentAlert(on: self, with: alertData)
     }
@@ -198,7 +196,7 @@ extension MainViewController {
       !answer.isEmpty
     else { return }
     do {
-      try gameService.submitAnswerWith(answer, onCompletion: updateUIAfterSumbission)
+      try gameService.submitAnswerWith(answer, onCompletion: updateMainViewAfterSubmission)
       HapticManager.shared.notification(type: .success)
     } catch let error as WordError {
       HapticManager.shared.notification(type: .error)
@@ -209,13 +207,21 @@ extension MainViewController {
   }
 }
 
+// MARK: EndSessionDelegate
 extension MainViewController: EndSessionDelegate {
-  func submitButtonTapped() {
-    startGame()
+  // EndSessionDelegate
+  // -> gets called in EndSessionViewController
+  func submitButtonTapped(_ name: String) {
+    setLastPlayersName(name)
+    gameService.endGame(playerName: name)
   }
 
   func cancelButtonTapped() {
-    startGame()
+    gameService.startGame()
+  }
+
+  private func setLastPlayersName(_ name: String) {
+    UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
   }
 }
 
@@ -233,7 +239,7 @@ extension MainViewController {
   }
 }
 
-// MARK: - Onboarding on first start
+// MARK: - Handle onboarding
 extension MainViewController {
   private func presentOnboardinIfIsFirstStart() {
     let isFirstStart = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstStart)

@@ -27,6 +27,7 @@ class GameService: GameServiceProtocol {
       wordCellItemPublisher.send(usedWords)
     }
   }
+
   var currentScore: Int {
     return usedWords
       .map { $0.word.calculateScore() }
@@ -81,13 +82,9 @@ class GameService: GameServiceProtocol {
     usedWords.removeAll()
   }
 
-  func restartGame() {
-    startGame()
-  }
-
   func endGame(playerName: String) {
-    guard !usedWords.isEmpty else { return }
     ScoreService.save(word: currentWord, for: playerName, with: currentScore)
+    startGame()
   }
 
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {
@@ -157,16 +154,16 @@ extension GameService {
     }
 
     // isReal
-    if !allPossibleWords.contains(lowercasedWord) {
-      throw WordError.notReal
-    }
-//    let checker = UITextChecker()
-//    let range = NSRange(location: 0, length: word.utf16.count)
-//    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "de_DE")
-//
-//    if misspelledRange.location != NSNotFound {
+//    if !allPossibleWords.contains(lowercasedWord) {
 //      throw WordError.notReal
 //    }
+    let checker = UITextChecker()
+    let range = NSRange(location: 0, length: word.utf16.count)
+    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "de_DE")
+
+    if misspelledRange.location != NSNotFound {
+      throw WordError.notReal
+    }
   }
 }
 
