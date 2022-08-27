@@ -101,6 +101,10 @@ extension MainView {
       collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     ])
   }
+
+  func clearTextField() {
+    wordTextField.text?.removeAll()
+  }
 }
 
 // MARK: - Setting up publishers
@@ -111,6 +115,16 @@ extension MainView {
       .publisher(for: UITextField.textDidChangeNotification, object: wordTextField)
       .map { !(($0.object as? UITextField)?.text?.isEmpty ?? false) }
       .assign(to: \MainView.submitButton.isEnabled, on: self)
+      .store(in: &cancellables)
+
+    NotificationCenter.default
+      .publisher(for: UITextField.textDidChangeNotification, object: wordTextField)
+      .sink {
+        if let charCount = ($0.object as? UITextField)?.text?.count,
+           charCount > 8 {
+          self.wordTextField.text?.removeLast()
+        }
+      }
       .store(in: &cancellables)
   }
 }
