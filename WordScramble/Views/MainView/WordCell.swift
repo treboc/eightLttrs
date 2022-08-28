@@ -8,14 +8,16 @@
 import UIKit
 
 extension CALayer {
-  func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+  func addBorder(edge: UIRectEdge,
+                 colors: [CGColor] = [UIColor.systemBackground.cgColor, UIColor.tintColor.cgColor],
+                 thickness: CGFloat) {
     let border = CAGradientLayer()
 
     switch edge {
     case .top:
       border.frame = CGRect(x: 0, y: 0, width: frame.width, height: thickness)
     case .bottom:
-      border.frame = CGRect(x: 0, y: frame.height - thickness, width: frame.width, height: thickness)
+      border.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: thickness)
     case .left:
       border.frame = CGRect(x: 0, y: 0, width: thickness, height: frame.height)
     case .right:
@@ -24,7 +26,7 @@ extension CALayer {
       break
     }
 
-    border.colors = [UIColor.systemBackground.cgColor, UIColor.tintColor.cgColor]
+    border.colors = [UIColor.clear.cgColor, UIColor.tintColor.cgColor]
     border.startPoint = .init(x: 0, y: 0)
     border.endPoint = .init(x: 1, y: 0)
 
@@ -68,7 +70,7 @@ class WordCell: UICollectionViewListCell {
     stackView.spacing = 10
     stackView.translatesAutoresizingMaskIntoConstraints = false
 
-    self.layer.addBorder(edge: .bottom, color: .tintColor, thickness: 1)
+    self.layer.addBorder(edge: .bottom, thickness: 1)
   }
 
   private func setupLayout() {
@@ -81,7 +83,7 @@ class WordCell: UICollectionViewListCell {
       stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.widthPadding),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.widthPadding),
       stackView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.widthPadding),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.widthPadding)
+      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.widthPadding),
     ])
   }
 }
