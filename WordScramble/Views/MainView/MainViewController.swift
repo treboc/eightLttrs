@@ -13,7 +13,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  lazy var dataSource = configuteDataSource()
+  var dataSource: UICollectionViewDiffableDataSource<Section, WordCellItem>!
   var cancellables = Set<AnyCancellable>()
 
   var hasUsedWords: Bool = false
@@ -45,18 +45,14 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-
     presentOnboardinIfIsFirstStart()
 
     setupNavigationController()
+    setupCollectionView()
     setupActions()
     setupPublishers()
 
-    mainView.collectionView.delegate = self
-    mainView.collectionView.register(WordCell.self, forCellWithReuseIdentifier: WordCell.identifier)
     mainView.wordTextField.delegate = self
-
-    mainView.collectionView.keyboardDismissMode = .interactiveWithAccessory
   }
 }
 
@@ -66,12 +62,29 @@ extension MainViewController: UICollectionViewDelegate {
     case wordList
   }
 
-  private func configuteDataSource() -> UICollectionViewDiffableDataSource<Section, WordCellItem> {
-    return UICollectionViewDiffableDataSource<Section, WordCellItem>(collectionView: mainView.collectionView) { collectionView, indexPath, item in
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCell.identifier, for: indexPath) as! WordCell
-      cell.updateLabels(with: item)
+  private func setupCollectionView() {
+    mainView.collectionView.delegate = self
+
+    // Create cell registration that defines how data should be shown in a cell
+    let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, WordCellItem> { (cell, indexPath, item) in
+      // Define how data should be shown using content configuration
+      var content = cell.defaultContentConfiguration()
+      content.image = item.pointsImage
+      content.text = item.word
+
+      // Assign content configuration to cell
+      cell.contentConfiguration = content
+    }
+
+    dataSource = UICollectionViewDiffableDataSource<Section, WordCellItem>(collectionView: mainView.collectionView) {
+      (collectionView: UICollectionView, indexPath: IndexPath, identifier: WordCellItem) -> UICollectionViewCell? in
+      // Dequeue reusable cell using cell registration (Reuse identifier no longer needed)
+      let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration,
+                                                              for: indexPath,
+                                                              item: identifier)
       return cell
     }
+    mainView.collectionView.keyboardDismissMode = .interactiveWithAccessory
   }
 
   // Update cells using snapshot
@@ -96,6 +109,16 @@ extension MainViewController {
   private func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationController?.navigationBar.prefersLargeTitles = true
+
+    // Set NavTitle to rounded design
+    var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle)
+    titleFont = UIFont(descriptor: titleFont
+      .fontDescriptor
+      .withDesign(.rounded)?
+      .withSymbolicTraits(.traitBold)
+                       ?? titleFont.fontDescriptor, size: titleFont.pointSize
+    )
+    self.navigationController?.navigationBar.largeTitleTextAttributes = [.font: titleFont]
   }
 
   private func setupActions() {
@@ -110,6 +133,7 @@ extension MainViewController {
   private func setupPublishers() {
     // Publisher to update the cells, corrosponding to the used words in gameService
     gameService.wordCellItemPublisher
+      .dropFirst()
       .sink { [weak self] items in
         self?.applySnapshot(with: items)
       }
@@ -142,7 +166,6 @@ extension MainViewController {
   }
 
   private func updateMainViewAfterSubmission() {
-    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.wordTextField.text?.removeAll()
     // Maybe looking up for another solution because this needs to be done
     // because this is not like typing or removing all characters 'by hand'..

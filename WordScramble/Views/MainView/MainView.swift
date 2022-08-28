@@ -8,14 +8,6 @@
 import Combine
 import UIKit
 
-extension UICollectionView {
-  static func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-    var config = UICollectionLayoutListConfiguration(appearance: .plain)
-    config.showsSeparators = false
-    return UICollectionViewCompositionalLayout.list(using: config)
-  }
-}
-
 class MainView: UIView {
   // MARK: - NotificationCenter Publishers
   var cancellables = Set<AnyCancellable>()
@@ -25,13 +17,13 @@ class MainView: UIView {
   let submitButton = UIButton()
   private let scoreTextLabel = UILabel()
   let scorePointsLabel = UILabel()
-  private(set) var collectionView = UICollectionView(frame: .zero,
-                                                     collectionViewLayout: UICollectionView.makeCollectionViewLayout())
+  private(set) var collectionView: UICollectionView!
 
   // MARK: - init()
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = .systemBackground
+
     setupViews()
     setupLayout()
     setupPublishers()
@@ -45,6 +37,12 @@ class MainView: UIView {
 // MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
+    // CollectionView
+    let config = UICollectionLayoutListConfiguration(appearance: .plain)
+    let layout = UICollectionViewCompositionalLayout.list(using: config)
+
+    self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
     // WordTextField
     wordTextField.autocapitalizationType = .none
 
@@ -61,19 +59,20 @@ extension MainView {
     // ScoreTextLabel
     scoreTextLabel.textAlignment = .right
     scoreTextLabel.text = L10n.MainView.currentScore
-    scoreTextLabel.font = .preferredFont(forTextStyle: .subheadline)
+    scoreTextLabel.font = .preferredFont(forTextStyle: .caption1)
 
     // ScorePointsLabel
     scorePointsLabel.textAlignment = .right
     scorePointsLabel.text = "0"
     scorePointsLabel.font = .preferredFont(forTextStyle: .headline)
-    scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scoreTextLabel.font.pointSize, weight: .semibold)
+    scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scorePointsLabel.font.pointSize, weight: .semibold)
   }
 
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
     let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, collectionView]
     for view in views {
+      guard let view = view else { return }
       self.addSubview(view)
       view.translatesAutoresizingMaskIntoConstraints = false
     }
