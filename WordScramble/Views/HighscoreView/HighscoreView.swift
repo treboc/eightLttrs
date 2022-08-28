@@ -27,8 +27,7 @@ class HighscoreView: UIView {
 // MARK: - View setup
 extension HighscoreView {
   private func setupViews() {
-    divider.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 12)
-    divider.layer.cornerRadius = 1.5
+    divider.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1)
     divider.setContentHuggingPriority(.defaultHigh, for: .vertical)
 
     let gradient = CAGradientLayer()

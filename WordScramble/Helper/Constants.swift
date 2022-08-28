@@ -15,4 +15,8 @@ struct Constants {
 struct UserDefaultsKeys {
   static let isFirstStart = "isFirstStart"
   static let lastPlayersName = "lastPlayersName"
+
+  // Settings
+  static let enabledVibration = "enabledVibration"
+  static let enabledSound = "enabledSound"
 }

@@ -56,7 +56,7 @@ extension EndSessionView {
     stackView.spacing = 30
 
     // CongratulationsLabel
-    titleLabel.text = "Congratulations! 🎉"
+    titleLabel.text = L10n.EndSessionView.title
     titleLabel.font = .preferredFont(forTextStyle: .title2)
     titleLabel.font = .boldSystemFont(ofSize: titleLabel.font.pointSize)
     titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)

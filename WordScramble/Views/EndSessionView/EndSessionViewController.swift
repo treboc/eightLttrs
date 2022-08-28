@@ -60,6 +60,7 @@ extension EndSessionViewController {
           !name.trimmingCharacters(in: .whitespacesAndNewlines)
                .isEmpty
     else { return }
+    UserDefaults.standard.setValue(name, forKey: UserDefaultsKeys.lastPlayersName)
     delegate?.submitButtonTapped(name)
     self.dismiss(animated: true)
   }

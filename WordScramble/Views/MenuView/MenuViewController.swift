@@ -7,15 +7,6 @@
 
 import UIKit
 
-//protocol MenuViewControllerDelegate {
-//  func resetGame()
-//  func endGame()
-//
-//  var gameService: GameServiceProtocol { get }
-//
-//  var hasUsedWords: Bool { get }
-//}
-
 class MenuViewController: UIViewController {
   var menuView: MenuView {
     view as! MenuView

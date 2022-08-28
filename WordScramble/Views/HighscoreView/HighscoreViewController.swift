@@ -33,7 +33,7 @@ class HighscoreViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.highscores = ScoreService.loadHighscores()
-    self.title = "Highscore"
+//    self.title = "Highscore"
 
     highscoreView.tableView.delegate = self
     highscoreView.tableView.dataSource = self

@@ -10,7 +10,15 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+
+    // register settings
+    UserDefaults.standard.register(
+      defaults: [
+        UserDefaultsKeys.enabledVibration: true,
+        UserDefaultsKeys.enabledSound: true,
+      ]
+    )
+
     return true
   }
 

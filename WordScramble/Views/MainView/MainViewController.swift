@@ -7,6 +7,7 @@
 
 import Combine
 import UIKit
+import SwiftUI
 
 class MainViewController: UIViewController, UITextFieldDelegate {
   var mainView: MainView {
@@ -126,7 +127,7 @@ extension MainViewController {
     mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
     let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
-    menuButton.accessibilityLabel = "Menu"
+    menuButton.accessibilityLabel = L10n.MenuView.title
     navigationItem.rightBarButtonItem = menuButton
   }
 
@@ -186,9 +187,8 @@ extension MainViewController {
 
   @objc
   private func showMenu() {
-    let menuVC = MenuViewController(gameService: gameService)
-    let menuNavVC = UINavigationController(rootViewController: menuVC)
-    present(menuNavVC, animated: true)
+    let vc = UIHostingController(rootView: MenuView_SwiftUI(gameService: gameService))
+    present(vc, animated: true)
   }
 
   @objc
@@ -244,12 +244,12 @@ extension MainViewController {
 // MARK: - Handle onboarding
 extension MainViewController {
   private func presentOnboardinIfIsFirstStart() {
-    let isFirstStart = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstStart)
-
-    if isFirstStart == false {
+    if UserDefaults.standard.value(forKey: UserDefaultsKeys.isFirstStart) == nil {
       let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
       onboardingVC.modalPresentationStyle = .fullScreen
       self.parent?.present(onboardingVC, animated: false)
+
+      UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isFirstStart)
     }
   }
 }

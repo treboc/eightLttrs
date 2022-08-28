@@ -59,28 +59,3 @@ extension String {
     return (Set(possibleWordsForString), score)
   }
 }
-
-extension String {
-  func allPossibleWords(basedOn list: Set<String>, with minStringLen: Int = 3) -> (Set<String>, Int) {
-    let stringArray = self
-      .map { String($0).lowercased() }
-    let permutedStringList = stringArray.permute(minStringLen: minStringLen)
-
-    // iterate over the list passed in,
-    // only keep the string permuted words
-    let possibleWordsForString = list
-      .compactMap { word in
-        if permutedStringList.contains(word.lowercased()) {
-          return word
-        }
-        return nil
-      }
-      .filter { !($0 == self) }
-
-    let score = possibleWordsForString
-      .map { $0.calculateScore() }
-      .reduce(0, +)
-
-    return (Set(possibleWordsForString), score)
-  }
-}
