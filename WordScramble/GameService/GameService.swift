@@ -20,15 +20,6 @@ enum RegionBasedLocale: String {
       return "EN"
     }
   }
-
-  var textCheckerLanguage: String {
-    switch self {
-    case .de, .at, .ch:
-      return "de_DE"
-    case .en:
-      return "en_US"
-    }
-  }
 }
 
 class GameService: GameServiceProtocol {
@@ -37,31 +28,30 @@ class GameService: GameServiceProtocol {
   var possibleScorePublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
 
   var startWords = Set<String>()
-  var allPossibleWords = Set<String>()
+  var possibleWords = Set<String>()
+  var possibleWordsForCurrentWord = Set<String>()
 
   var currentLocale: RegionBasedLocale
 
   var currentWord: String = "" {
     didSet {
       currentWordPublisher.send(currentWord)
-
-      DispatchQueue.global(qos: .background).async {
-        let (_, score) = WordScramble.allPossibleWords(of: self.currentWord)
-        self.possibleScore = score
-      }
+      getAllPossibleWordsFor(currentWord, basedOn: possibleWords)
     }
   }
 
+
   var usedWords: [WordCellItem] = [] {
     didSet {
+      updateCurrentScore()
       wordCellItemPublisher.send(usedWords)
     }
   }
 
-  var currentScore: Int {
-    return usedWords
-      .map { $0.word.calculateScore() }
-      .reduce(0, +)
+  var currentScore: Int = 0 {
+    didSet {
+      possibleScorePublisher.send((currentScore, possibleScore))
+    }
   }
 
   var possibleScore: Int = 0 {
@@ -86,18 +76,16 @@ class GameService: GameServiceProtocol {
     case .none:
       break
     }
-
-
   }
 
   private func loadWords(with locale: RegionBasedLocale) {
-    //    // load possible words to check for
-    //    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
-    //      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
-//        let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines).map({ $0.lowercased() })
-//        self.allPossibleWords = Set(possibleLowercasedWords)
-//      }
-//    }
+    // load possible words to check for
+    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(locale.fileNameSuffix).txt", withExtension: nil) {
+      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
+        let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines)
+        self.possibleWords = Set(possibleLowercasedWords)
+      }
+    }
 
     // load possible startWords in the current language
     if let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.fileNameSuffix)", withExtension: "txt") {
@@ -146,6 +134,23 @@ class GameService: GameServiceProtocol {
 
 // MARK: - Calculation of Scores
 extension GameService {
+  private func getAllPossibleWordsFor(_ word: String, basedOn list: Set<String>) {
+    DispatchQueue.global(qos: .background).async { [weak self] in
+      guard let self = self else { return }
+      let (words, score) = word.allPossibleWords(basedOn: list)
+      self.possibleWordsForCurrentWord = words
+      DispatchQueue.main.async {
+        self.possibleScore = score
+      }
+    }
+  }
+
+  private func updateCurrentScore() {
+    self.currentScore = usedWords
+      .map { $0.word.calculateScore() }
+      .reduce(0, +)
+  }
+
   private func calculateScoreOf(_ answer: String) -> Int {
     var score = 0
     var scoreMultiplier = 2
@@ -194,16 +199,16 @@ extension GameService {
     }
 
     // isReal
-//    if !allPossibleWords.contains(lowercasedWord) {
-//      throw WordError.notReal
-//    }
-    let checker = UITextChecker()
-    let range = NSRange(location: 0, length: word.utf16.count)
-    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: self.currentLocale.textCheckerLanguage)
-
-    if misspelledRange.location != NSNotFound {
+    if !possibleWords.contains(word) {
       throw WordError.notReal
     }
+//    let checker = UITextChecker()
+//    let range = NSRange(location: 0, length: word.utf16.count)
+//    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: self.currentLocale.textCheckerLanguage)
+//
+//    if misspelledRange.location != NSNotFound {
+//      throw WordError.notReal
+//    }
   }
 }
 

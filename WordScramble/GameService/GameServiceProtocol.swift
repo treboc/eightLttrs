@@ -14,7 +14,7 @@ protocol GameServiceProtocol {
   var possibleScorePublisher: CurrentValueSubject<(Int, Int), Never> { get set }
 
   var startWords: Set<String> { get set }
-  var allPossibleWords: Set<String> { set get }
+  var possibleWords: Set<String> { set get }
   var currentWord: String { get set }
 
   var usedWords: [WordCellItem] { get set }
