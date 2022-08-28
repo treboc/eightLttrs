@@ -45,6 +45,9 @@ class MainView: UIView {
 // MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
+    // WordTextField
+    wordTextField.autocapitalizationType = .none
+
     // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
