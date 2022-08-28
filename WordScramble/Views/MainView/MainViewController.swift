@@ -126,6 +126,12 @@ extension MainViewController {
       .map { !$0.isEmpty }
       .assign(to: \.hasUsedWords, on: self)
       .store(in: &cancellables)
+
+    gameService.possibleScorePublisher
+      .sink { [weak self] (currentScore, possibleScore) in
+        self?.updateScoreLabel(with: currentScore, and: possibleScore)
+      }
+      .store(in: &cancellables)
   }
 
   func presentAlertControllert(with alert: Alert) {
@@ -148,8 +154,11 @@ extension MainViewController {
 extension MainViewController {
   private func updateLabels(with word: String) {
     self.title = word
-    mainView.scorePointsLabel.text = "\(gameService.currentScore)"
     mainView.clearTextField()
+  }
+
+  private func updateScoreLabel(with currentScore: Int, and possibleScore: Int) {
+    mainView.scorePointsLabel.text = "\(currentScore) / \(possibleScore)"
   }
 
   @objc

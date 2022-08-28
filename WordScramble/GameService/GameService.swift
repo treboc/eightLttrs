@@ -34,6 +34,7 @@ enum RegionBasedLocale: String {
 class GameService: GameServiceProtocol {
   var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
   var currentWordPublisher = CurrentValueSubject<String, Never>("")
+  var possibleScorePublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
 
   var startWords = Set<String>()
   var allPossibleWords = Set<String>()
@@ -43,6 +44,11 @@ class GameService: GameServiceProtocol {
   var currentWord: String = "" {
     didSet {
       currentWordPublisher.send(currentWord)
+
+      DispatchQueue.global(qos: .background).async {
+        let (_, score) = WordScramble.allPossibleWords(of: self.currentWord)
+        self.possibleScore = score
+      }
     }
   }
 
@@ -56,6 +62,12 @@ class GameService: GameServiceProtocol {
     return usedWords
       .map { $0.word.calculateScore() }
       .reduce(0, +)
+  }
+
+  var possibleScore: Int = 0 {
+    didSet {
+      possibleScorePublisher.send((currentScore, possibleScore))
+    }
   }
 
   init(_ gameType: GameType? = .randomWord) {
@@ -74,12 +86,14 @@ class GameService: GameServiceProtocol {
     case .none:
       break
     }
+
+
   }
 
   private func loadWords(with locale: RegionBasedLocale) {
-//    // load possible words to check for
-//    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
-//      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
+    //    // load possible words to check for
+    //    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(currentLocale).txt", withExtension: nil) {
+    //      if let possibleWords = try? String(contentsOf: possibleWordsURL) {
 //        let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines).map({ $0.lowercased() })
 //        self.allPossibleWords = Set(possibleLowercasedWords)
 //      }

@@ -11,6 +11,7 @@ import Combine
 protocol GameServiceProtocol {
   var wordCellItemPublisher: CurrentValueSubject<[WordCellItem], Never> { get set }
   var currentWordPublisher: CurrentValueSubject<String, Never> { get set }
+  var possibleScorePublisher: CurrentValueSubject<(Int, Int), Never> { get set }
 
   var startWords: Set<String> { get set }
   var allPossibleWords: Set<String> { set get }

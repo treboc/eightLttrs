@@ -42,6 +42,7 @@
 		8A99A32C28B552F900E5ABBF /* HighscoreListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */; };
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFC55D28B6162500ACC064 /* HapticsManager.swift */; };
+		8ACF525028BAD985008728BB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF524F28BAD985008728BB /* Array+Extensions.swift */; };
 		8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9610A28B3C9B600F443FB /* BasicTextField.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
 		8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27228A5911C0083E028 /* SceneDelegate.swift */; };
@@ -109,6 +110,7 @@
 		8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListHeaderCell.swift; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8ABFC55D28B6162500ACC064 /* HapticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		8ACF524F28BAD985008728BB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		8AD9610A28B3C9B600F443FB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				8A99A32028B524DC00E5ABBF /* String+Extensions.swift */,
+				8ACF524F28BAD985008728BB /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
+				8ACF525028BAD985008728BB /* Array+Extensions.swift in Sources */,
 				8A87110728B18217004F299F /* AlertData.swift in Sources */,
 				8A87111A28B2BF5A004F299F /* EndSessionViewController.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
