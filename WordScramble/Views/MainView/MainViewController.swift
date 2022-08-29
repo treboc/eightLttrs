@@ -27,7 +27,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   init(gameType: GameType = .random) {
     self.gameType = gameType
 
-    if gameType == .random {
+    let lastSession = SessionService.returnLastSession()
+    dump(lastSession)
+
+    if gameType == .random && lastSession != nil {
+      self.gameService = GameService(lastSession: lastSession!)
+    } else if gameType == .random {
       self.gameService = GameService()
     } else {
       self.gameService = GameService(gameType)
@@ -137,7 +142,6 @@ extension MainViewController {
   private func setupPublishers() {
     // Publisher to update the cells, corrosponding to the used words in gameService
     gameService.wordCellItemPublisher
-      .dropFirst()
       .sink { [weak self] items in
         self?.applySnapshot(with: items)
       }

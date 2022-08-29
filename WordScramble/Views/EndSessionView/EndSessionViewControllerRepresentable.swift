@@ -24,9 +24,7 @@ struct EndSessionViewControllerRepresentable: UIViewControllerRepresentable, End
   let gameService: GameServiceProtocol
 
   func makeUIViewController(context: Context) -> EndSessionViewController {
-    let vc = EndSessionViewController(word: gameService.currentWord,
-                                      score: gameService.currentScore,
-                                      wordCount: gameService.usedWords.count)
+    let vc = EndSessionViewController(session: gameService.currentSession)
     vc.delegate = self
     return vc
   }

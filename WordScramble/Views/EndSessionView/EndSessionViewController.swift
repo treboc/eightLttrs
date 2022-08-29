@@ -13,9 +13,7 @@ protocol EndSessionDelegate {
 }
 
 class EndSessionViewController: UIViewController {
-  private let word: String
-  private let score: Int
-  private let wordCount: Int
+  private let session: Session
 
   var endSessionView: EndSessionView {
     view as! EndSessionView
@@ -23,10 +21,8 @@ class EndSessionViewController: UIViewController {
 
   var delegate: EndSessionDelegate?
 
-  init(word: String, score: Int, wordCount: Int) {
-    self.word = word
-    self.score = score
-    self.wordCount = wordCount
+  init(session: Session) {
+    self.session = session
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -41,7 +37,7 @@ class EndSessionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.isModalInPresentation = true
-    endSessionView.updateBodyLabel(with: word, score: score, wordCount: wordCount)
+    endSessionView.updateBodyLabel(with: session.unwrappedWord, score: Int(session.score), wordCount: session.unwrappedUsedWords.count)
     navigationItem.hidesBackButton = true
     setupActions()
   }

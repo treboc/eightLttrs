@@ -39,6 +39,8 @@ class GameService: GameServiceProtocol {
 
   var currentLocale: RegionBasedLocale
 
+  var currentSession: Session
+  
   var currentWord: String = "" {
     didSet {
       currentWordPublisher.send(currentWord)
@@ -50,6 +52,7 @@ class GameService: GameServiceProtocol {
     didSet {
       updateCurrentScore()
       wordCellItemPublisher.send(usedWords)
+      dump(usedWords)
       possibleWordsPublisher.send((usedWords.count, possibleWordsForCurrentWordCount))
     }
   }
@@ -66,17 +69,28 @@ class GameService: GameServiceProtocol {
     }
   }
 
-  init(_ gameType: GameType? = .random) {
+  init(_ gameType: GameType? = .random, lastSession: Session? = nil) {
     // check users region.. if it's at, ch or de -> use german start words
     // if not, english
     let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
     self.currentLocale = .init(rawValue: locale) ?? .en
 
-    loadWords(with: currentLocale)
+    if let lastSession = lastSession {
+      self.currentSession = lastSession
+      self.currentLocale = .init(rawValue: lastSession.localeIdentifier!) ?? .en
+      loadWords(with: currentLocale)
+    } else {
+      self.currentSession = Session.newSession()
+      loadWords(with: currentLocale)
+    }
 
     switch gameType {
     case .random:
-      startGame()
+      if let session = lastSession {
+        startGame(with: session)
+      } else {
+        startGame()
+      }
     case .shared(let word):
       startGame(with: word)
     case .none:
@@ -103,6 +117,14 @@ class GameService: GameServiceProtocol {
     }
   }
 
+  func startGame(with session: Session) {
+    currentWord = session.word ?? "ERROR"
+    session.usedWords?.forEach {
+      usedWords.append(WordCellItem(word: $0))
+
+    }
+  }
+
   func startGame(with word: String) {
     if let decodedWord = word.removingPercentEncoding {
       currentWord = decodedWord
@@ -117,7 +139,7 @@ class GameService: GameServiceProtocol {
   }
 
   func endGame(playerName: String) {
-    ScoreService.save(word: currentWord, for: playerName, with: currentScore)
+    SessionService.persistFinished(session: currentSession, forPlayer: playerName)
     startGame()
   }
 
@@ -126,15 +148,25 @@ class GameService: GameServiceProtocol {
       try check(word)
       let wordCellItem = WordCellItem(word: word)
       usedWords.insert(wordCellItem, at: 0)
+      save(currentSession)
       onCompletion()
     }
   }
 
-  func populateWordWithScore(at indexPath: IndexPath) -> WordCellItem {
+  func getWordCellItem(at indexPath: IndexPath) -> WordCellItem {
     guard !usedWords[indexPath.row].word.isEmpty else { return WordCellItem(word: "Unknown") }
-
     let word = usedWords[indexPath.row].word
     return WordCellItem(word: word)
+  }
+
+  private func save(_ session: Session) {
+    session.word = currentWord
+    session.usedWords = usedWords.map { $0.word }
+    session.score = Int32(currentScore)
+    session.localeIdentifier = currentLocale.rawValue
+
+    SessionService.persist(session: session)
+    dump(session)
   }
 }
 

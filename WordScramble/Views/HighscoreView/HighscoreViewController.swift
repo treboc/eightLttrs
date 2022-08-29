@@ -32,8 +32,7 @@ class HighscoreViewController: UIViewController {
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.highscores = ScoreService.loadHighscores()
-//    self.title = "Highscore"
+    self.highscores = SessionService.loadHighscores()
 
     highscoreView.tableView.delegate = self
     highscoreView.tableView.dataSource = self
@@ -51,7 +50,7 @@ class HighscoreViewController: UIViewController {
   }
 }
 
-// MARK: - Sharing Score (UIActivityItemSource)
+// MARK: - Sharing Session (UIActivityItemSource)
 extension HighscoreViewController: UIActivityItemSource {
   func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
     "Spread the word!"

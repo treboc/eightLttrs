@@ -18,6 +18,7 @@ protocol GameServiceProtocol {
   var possibleWords: Set<String> { set get }
   var currentWord: String { get set }
 
+  var currentSession: Session { get set }
   var usedWords: [WordCellItem] { get set }
   var possibleWordsForCurrentWord: Set<String> { get }
   var currentScore: Int { get }
@@ -29,5 +30,5 @@ protocol GameServiceProtocol {
 
   func check(_ word: String) throws
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws
-  func populateWordWithScore(at indexPath: IndexPath) -> WordCellItem
+  func getWordCellItem(at indexPath: IndexPath) -> WordCellItem
 }

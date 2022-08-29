@@ -92,9 +92,7 @@ extension MenuViewController {
 
     let saveAction = UIAlertAction(title: L10n.ButtonTitle.imSure, style: .destructive) { [weak self] _ in
       guard let self = self else { return }
-      let endSessionVC = EndSessionViewController(word: self.gameService.currentWord,
-                                                  score: self.gameService.currentScore,
-                                                  wordCount: self.gameService.usedWords.count)
+      let endSessionVC = EndSessionViewController(session: self.gameService.currentSession)
       endSessionVC.delegate = self
       self.navigationController?.pushViewController(endSessionVC, animated: true)
     }
