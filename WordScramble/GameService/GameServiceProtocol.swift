@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GameServiceProtocol {
-  var wordCellItemPublisher: CurrentValueSubject<[WordCellItem], Never> { get set }
+  var wordCellItemPublisher: CurrentValueSubject<[String], Never> { get set }
   var currentWordPublisher: CurrentValueSubject<String, Never> { get set }
   var possibleScorePublisher: CurrentValueSubject<(Int, Int), Never> { get set }
   var possibleWordsPublisher: CurrentValueSubject<(Int, Int), Never> { get set }
@@ -19,7 +19,7 @@ protocol GameServiceProtocol {
   var currentWord: String { get set }
 
   var currentSession: Session { get set }
-  var usedWords: [WordCellItem] { get set }
+  var usedWords: [String] { get set }
   var possibleWordsForCurrentWord: Set<String> { get }
   var currentScore: Int { get }
 

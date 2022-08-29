@@ -15,28 +15,16 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var dataSource: UICollectionViewDiffableDataSource<Section, WordCellItem>!
+  var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   var cancellables = Set<AnyCancellable>()
 
   var hasUsedWords: Bool = false
 
-  var gameService: GameServiceProtocol
-  var gameType: GameType
+  var gameService: GameService
   var audioPlayer: AVAudioPlayer?
 
-  init(gameType: GameType = .random) {
-    self.gameType = gameType
-
-    let lastSession = SessionService.returnLastSession()
-    dump(lastSession)
-
-    if gameType == .random && lastSession != nil {
-      self.gameService = GameService(lastSession: lastSession!)
-    } else if gameType == .random {
-      self.gameService = GameService()
-    } else {
-      self.gameService = GameService(gameType)
-    }
+  init(gameService: GameService) {
+    self.gameService = gameService
 
     super.init(nibName: nil, bundle: nil)
   }
@@ -74,18 +62,21 @@ extension MainViewController: UICollectionViewDelegate {
     mainView.collectionView.delegate = self
 
     // Create cell registration that defines how data should be shown in a cell
-    let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, WordCellItem> { (cell, indexPath, item) in
+    let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String> { (cell, indexPath, word) in
       // Define how data should be shown using content configuration
       var content = cell.defaultContentConfiguration()
-      content.image = item.pointsImage
-      content.text = item.word
+      let points = word.calculateScore()
+      let config = UIImage.SymbolConfiguration(font: .preferredFont(forTextStyle: .headline), scale: .large)
+      let image = UIImage(systemName: "\(points <= 50 ? points : 0).circle.fill", withConfiguration: config)!
+      content.image = image
+      content.text = word
 
       // Assign content configuration to cell
       cell.contentConfiguration = content
     }
 
-    dataSource = UICollectionViewDiffableDataSource<Section, WordCellItem>(collectionView: mainView.collectionView) {
-      (collectionView: UICollectionView, indexPath: IndexPath, identifier: WordCellItem) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView) {
+      (collectionView: UICollectionView, indexPath: IndexPath, identifier: String) -> UICollectionViewCell? in
       // Dequeue reusable cell using cell registration (Reuse identifier no longer needed)
       let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration,
                                                               for: indexPath,
@@ -97,8 +88,8 @@ extension MainViewController: UICollectionViewDelegate {
   }
 
   // Update cells using snapshot
-  private func applySnapshot(with items: [WordCellItem]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, WordCellItem>()
+  private func applySnapshot(with items: [String]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
     snapshot.appendSections([.wordList])
     snapshot.appendItems(items, toSection: .wordList)
     dataSource.apply(snapshot)
@@ -140,35 +131,41 @@ extension MainViewController {
   }
 
   private func setupPublishers() {
-    // Publisher to update the cells, corrosponding to the used words in gameService
-    gameService.wordCellItemPublisher
-      .sink { [weak self] items in
-        self?.applySnapshot(with: items)
-      }
-      .store(in: &cancellables)
-
-    // Publisher to update the title, when the word changes in gameService
-    gameService.currentWordPublisher
+    // Publisher -> updates title
+    gameService.$currentWord
       .sink { [weak self] word in
         self?.updateLabels(with: word)
       }
       .store(in: &cancellables)
 
-    gameService.wordCellItemPublisher
-      .map { !$0.isEmpty }
-      .assign(to: \.hasUsedWords, on: self)
+    // Publisher -> updates collectionView
+    gameService.$usedWords
+      .sink { [weak self] words in
+        self?.applySnapshot(with: words)
+      }
       .store(in: &cancellables)
 
-    gameService.possibleScorePublisher
+    // Publisher -> updates left-side foundWordsLabels
+    gameService.$usedWords
+      .map { $0.count }
+      .combineLatest(gameService.$possibleWordsCount)
+      .sink { [weak self] (usedWordsCount, possibleWordsCount) in
+        self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
+      }
+      .store(in: &cancellables)
+
+    // Publisher -> updates right-side scoreLabels
+    gameService.$currentScore
+      .combineLatest(gameService.$possibleScore)
       .sink { [weak self] (currentScore, possibleScore) in
         self?.updateScoreLabel(with: currentScore, and: possibleScore)
       }
       .store(in: &cancellables)
 
-    gameService.possibleWordsPublisher
-      .sink { [weak self] (usedWordsCount, possibleWordsCount) in
-        self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
-      }
+    // Publisher -> disables / enables "End Session" button in menu
+    gameService.$usedWords
+      .map { $0.isEmpty }
+      .assign(to: \.hasUsedWords, on: self)
       .store(in: &cancellables)
   }
 

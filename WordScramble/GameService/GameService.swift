@@ -22,51 +22,35 @@ enum RegionBasedLocale: String {
   }
 }
 
-class GameService: GameServiceProtocol {
-  var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
-  var currentWordPublisher = CurrentValueSubject<String, Never>("")
-  var possibleScorePublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
-  var possibleWordsPublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
-
+class GameService {
   var startWords = Set<String>()
-  var possibleWords = Set<String>()
+  var allPossibleWords = Set<String>()
   var possibleWordsForCurrentWord = Set<String>()
-  var possibleWordsForCurrentWordCount = 0 {
+
+  @Published var currentSession: Session
+
+  @Published var currentWord: String = "" {
     didSet {
-      possibleWordsPublisher.send((usedWords.count, possibleWordsForCurrentWordCount))
+      getAllPossibleWordsFor(currentWord, basedOn: allPossibleWords)
     }
   }
+
+  @Published var usedWords: [String] = [] {
+    didSet {
+      updateCurrentScore()
+    }
+  }
+  @Published var currentScore: Int = 0
+  @Published var possibleScore: Int = 0
+  @Published var possibleWordsCount = 0
 
   var currentLocale: RegionBasedLocale
 
-  var currentSession: Session
-  
-  var currentWord: String = "" {
-    didSet {
-      currentWordPublisher.send(currentWord)
-      getAllPossibleWordsFor(currentWord, basedOn: possibleWords)
-    }
-  }
-
-  var usedWords: [WordCellItem] = [] {
-    didSet {
-      updateCurrentScore()
-      wordCellItemPublisher.send(usedWords)
-      dump(usedWords)
-      possibleWordsPublisher.send((usedWords.count, possibleWordsForCurrentWordCount))
-    }
-  }
-
-  var currentScore: Int = 0 {
-    didSet {
-      possibleScorePublisher.send((currentScore, possibleScore))
-    }
-  }
-
-  var possibleScore: Int = 0 {
-    didSet {
-      possibleScorePublisher.send((currentScore, possibleScore))
-    }
+  init(lastSession: Session) {
+    self.currentSession = lastSession
+    self.currentLocale = .init(rawValue: lastSession.localeIdentifier ?? "DE") ?? .de
+    loadWords(with: currentLocale)
+    startGame(with: lastSession)
   }
 
   init(_ gameType: GameType? = .random, lastSession: Session? = nil) {
@@ -74,15 +58,8 @@ class GameService: GameServiceProtocol {
     // if not, english
     let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
     self.currentLocale = .init(rawValue: locale) ?? .en
-
-    if let lastSession = lastSession {
-      self.currentSession = lastSession
-      self.currentLocale = .init(rawValue: lastSession.localeIdentifier!) ?? .en
-      loadWords(with: currentLocale)
-    } else {
-      self.currentSession = Session.newSession()
-      loadWords(with: currentLocale)
-    }
+    self.currentSession = Session.newSession()
+    loadWords(with: currentLocale)
 
     switch gameType {
     case .random:
@@ -103,7 +80,7 @@ class GameService: GameServiceProtocol {
     if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(locale.fileNameSuffix).txt", withExtension: nil) {
       if let possibleWords = try? String(contentsOf: possibleWordsURL) {
         let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines)
-        self.possibleWords = Set(possibleLowercasedWords)
+        self.allPossibleWords = Set(possibleLowercasedWords)
       }
     }
 
@@ -112,8 +89,13 @@ class GameService: GameServiceProtocol {
       if let startWords = try? String(contentsOf: startWordsURL) {
         self.startWords = Set(startWords.components(separatedBy: .newlines))
       }
-    } else {
-      startWords = ["silkworm"]
+    }
+  }
+
+  func startGame(with session: Session) {
+    currentWord = session.word ?? "ERROR"
+    session.usedWords.forEach {
+      usedWords.append($0)
     }
   }
 
@@ -136,6 +118,7 @@ class GameService: GameServiceProtocol {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
     usedWords.removeAll()
+    currentSession = Session.newSession()
   }
 
   func endGame(playerName: String) {
@@ -146,17 +129,19 @@ class GameService: GameServiceProtocol {
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws {
     do {
       try check(word)
-      let wordCellItem = WordCellItem(word: word)
-      usedWords.insert(wordCellItem, at: 0)
+      usedWords.insert(word, at: 0)
       save(currentSession)
       onCompletion()
     }
   }
 
-  func getWordCellItem(at indexPath: IndexPath) -> WordCellItem {
-    guard !usedWords[indexPath.row].word.isEmpty else { return WordCellItem(word: "Unknown") }
-    let word = usedWords[indexPath.row].word
-    return WordCellItem(word: word)
+  private func save(_ session: Session) {
+    if session.word == nil {
+      session.word = currentWord
+      session.localeIdentifier = currentLocale.rawValue
+    }
+    session.usedWords = usedWords
+    SessionService.persist(session: session)
   }
 
   private func save(_ session: Session) {
@@ -179,14 +164,14 @@ extension GameService {
       self.possibleWordsForCurrentWord = words
       DispatchQueue.main.async {
         self.possibleScore = score
-        self.possibleWordsForCurrentWordCount = words.count
+        self.possibleWordsCount = words.count
       }
     }
   }
 
   private func updateCurrentScore() {
     self.currentScore = usedWords
-      .map { $0.word.calculateScore() }
+      .map { $0.calculateScore() }
       .reduce(0, +)
   }
 
@@ -221,7 +206,6 @@ extension GameService {
 
     // isOriginal
     if usedWords
-      .map({ $0.word })
       .contains(word) {
       throw WordError.notOriginal
     }
@@ -237,7 +221,7 @@ extension GameService {
     }
 
     // isReal
-    if !possibleWords.contains(word) {
+    if !allPossibleWords.contains(word) {
       throw WordError.notReal
     }
 //    let checker = UITextChecker()
@@ -247,6 +231,16 @@ extension GameService {
 //    if misspelledRange.location != NSNotFound {
 //      throw WordError.notReal
 //    }
+  }
+
+  class func isValidStartWord(_ word: String) -> Bool {
+    let localeIdentifier = String(Locale.autoupdatingCurrent.identifier.suffix(2)).uppercased()
+    if let startWordsURL = Bundle.main.url(forResource: "startWords\(localeIdentifier)", withExtension: "txt") {
+      if let startWords = try? String(contentsOf: startWordsURL) {
+        return startWords.contains(word)
+      }
+    }
+    return false
   }
 }
 

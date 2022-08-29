@@ -21,7 +21,7 @@ struct EndSessionViewControllerRepresentable: UIViewControllerRepresentable, End
 
   typealias UIViewControllerType = EndSessionViewController
 
-  let gameService: GameServiceProtocol
+  let gameService: GameService
 
   func makeUIViewController(context: Context) -> EndSessionViewController {
     let vc = EndSessionViewController(session: gameService.currentSession)

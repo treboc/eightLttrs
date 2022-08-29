@@ -13,15 +13,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
-    window.makeKeyAndVisible()
+    var mainVC: MainViewController!
 
-    // opened from session
     if let context = connectionOptions.urlContexts.first,
-       let mainVCwithStartWord = createMainViewController(from: context) {
-      window.rootViewController = UINavigationController(rootViewController: mainVCwithStartWord)
+       let word = getStartWord(from: context) {
+      let gameService = GameService(.shared(word))
+      mainVC = MainViewController(gameService: gameService)
+    } else if let session = SessionService.returnLastSession() {
+      let gameService = GameService(lastSession: session)
+      mainVC = MainViewController(gameService: gameService)
     } else {
-      window.rootViewController = UINavigationController(rootViewController: MainViewController())
+      let gameService = GameService()
+      mainVC = MainViewController(gameService: gameService)
     }
+
+    window.rootViewController = UINavigationController(rootViewController: mainVC)
+    window.makeKeyAndVisible()
     self.window = window
   }
 
@@ -30,9 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard
       let scene = (scene as? UIWindowScene),
       let context = URLContexts.first,
-      let word = getStartWord(from: context)
+      let word = getStartWord(from: context),
+      GameService.isValidStartWord(word)
     else { return }
-
+    
     // check if there is currently a session with atleast one word
     if let mainVC = getMainViewController(in: scene) {
       if mainViewControllerHasUsedWords(in: scene) {
@@ -79,20 +87,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
   private func getStartWord(from context: UIOpenURLContext) -> String? {
-    let word = context.url.pathComponents[1]
+    guard
+      let word = context.url.pathComponents[safe: 1],
+      GameService.isValidStartWord(word)
+    else { return nil }
 
-    if word.count == 8 {
-      return word
-    } else {
-      return nil
-    }
+    return word
   }
 
-  private func createMainViewController(from context: UIOpenURLContext) -> MainViewController? {
-    if let word = getStartWord(from: context) {
-      return MainViewController(gameType: .shared(word))
+  private func mainViewControllerHasUsedWords(in scene: UIWindowScene) -> Bool {
+    if let mainVC = getMainViewController(in: scene),
+       mainVC.hasUsedWords {
+      return true
     }
-    return nil
+    return false
   }
 
   private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
@@ -103,14 +111,6 @@ extension SceneDelegate {
     }
 
     return mainVC as? MainViewController
-  }
-
-  private func mainViewControllerHasUsedWords(in scene: UIWindowScene) -> Bool {
-    if let mainVC = getMainViewController(in: scene),
-       mainVC.hasUsedWords {
-      return true
-    }
-    return false
   }
 
   private func presentAlertController(on viewController: UIViewController, with handler: @escaping ((UIAlertAction) -> Void) ) {

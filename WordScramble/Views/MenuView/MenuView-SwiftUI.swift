@@ -17,7 +17,7 @@ struct AlertToPresent {
 
 struct MenuView_SwiftUI: View {
   // Properties
-  let gameService: GameServiceProtocol
+  let gameService: GameService
   @Environment(\.dismiss) private var dismiss
 
   // UserDefaults
@@ -93,11 +93,11 @@ extension MenuView_SwiftUI {
         ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
           HStack {
             Text(word)
-              .strikethrough(gameService.usedWords.map { $0.word }.contains(word), color: .accentColor)
+              .strikethrough(gameService.usedWords.contains(word), color: .accentColor)
 
             Spacer()
 
-            gameService.usedWords.map { $0.word }.contains(word)
+            gameService.usedWords.contains(word)
             ? Image(systemName: "checkmark.circle")
             : Image(systemName: "circle")
           }
