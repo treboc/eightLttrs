@@ -52,6 +52,8 @@ internal enum L10n {
   internal enum MainView {
     /// Current Score
     internal static let currentScore = L10n.tr("Localizable", "mainView.currentScore", fallback: #"Current Score"#)
+    /// Words found
+    internal static let foundWords = L10n.tr("Localizable", "mainView.foundWords", fallback: #"Words found"#)
   }
   internal enum MenuView {
     /// End Session

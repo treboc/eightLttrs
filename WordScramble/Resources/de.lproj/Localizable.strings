@@ -31,6 +31,7 @@
 
 // MainView
 "mainView.currentScore" = "Gesamtpunktzahl";
+"mainView.foundWords" = "Wörter gefunden";
 
 // MenuView
 "menuView.title" = "Menü";

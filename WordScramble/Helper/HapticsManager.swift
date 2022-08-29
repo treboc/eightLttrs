@@ -9,6 +9,8 @@ import SwiftUI
 
 class HapticManager {
   static let shared = HapticManager()
+  let generator = UINotificationFeedbackGenerator()
+
 
   func notification(type: UINotificationFeedbackGenerator.FeedbackType) {
     let generator = UINotificationFeedbackGenerator()
@@ -18,5 +20,17 @@ class HapticManager {
   func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
     let generator = UIImpactFeedbackGenerator(style: style)
     generator.impactOccurred()
+  }
+
+  func success() {
+    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledVibration) {
+      generator.notificationOccurred(.success)
+    }
+  }
+
+  func error() {
+    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledVibration) {
+      generator.notificationOccurred(.error)
+    }
   }
 }

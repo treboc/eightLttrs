@@ -26,10 +26,16 @@ class GameService: GameServiceProtocol {
   var wordCellItemPublisher = CurrentValueSubject<[WordCellItem], Never>([])
   var currentWordPublisher = CurrentValueSubject<String, Never>("")
   var possibleScorePublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
+  var possibleWordsPublisher = CurrentValueSubject<(Int, Int), Never>((0, 0))
 
   var startWords = Set<String>()
   var possibleWords = Set<String>()
   var possibleWordsForCurrentWord = Set<String>()
+  var possibleWordsForCurrentWordCount = 0 {
+    didSet {
+      possibleWordsPublisher.send((usedWords.count, possibleWordsForCurrentWordCount))
+    }
+  }
 
   var currentLocale: RegionBasedLocale
 
@@ -40,11 +46,11 @@ class GameService: GameServiceProtocol {
     }
   }
 
-
   var usedWords: [WordCellItem] = [] {
     didSet {
       updateCurrentScore()
       wordCellItemPublisher.send(usedWords)
+      possibleWordsPublisher.send((usedWords.count, possibleWordsForCurrentWordCount))
     }
   }
 
@@ -141,6 +147,7 @@ extension GameService {
       self.possibleWordsForCurrentWord = words
       DispatchQueue.main.async {
         self.possibleScore = score
+        self.possibleWordsForCurrentWordCount = words.count
       }
     }
   }

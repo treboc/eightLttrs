@@ -55,15 +55,27 @@ struct MenuView_SwiftUI: View {
               .labelStyle(.titleAndIcon)
           }
         }
+        .tint(.accentColor)
 
         #if DEBUG
         Section("Development") {
           Button("Reset first start") { UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart) }
         }
+
+        allPossibleWordsSection_DEV
+
         #endif
       }
       .sheet(isPresented: $endGameViewIsShown, onDismiss: endGameViewDismissed) {
         EndSessionViewControllerRepresentable(gameService: gameService)
+      }
+      .toolbar {
+        ToolbarItem {
+          Button(action: dismiss.callAsFunction) {
+            Label("Close", systemImage: "x.circle.fill")
+              .foregroundColor(.accentColor)
+          }
+        }
       }
       .presentAlert(with: $alertModel)
       .navigationTitle(L10n.MenuView.title)
@@ -72,6 +84,31 @@ struct MenuView_SwiftUI: View {
   }
 }
 
+// MARK: - Views
+extension MenuView_SwiftUI {
+  #if DEBUG
+  private var allPossibleWordsSection_DEV: some View {
+    Section("Possible words for \(gameService.currentWord)") {
+      List {
+        ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
+          HStack {
+            Text(word)
+              .strikethrough(gameService.usedWords.map { $0.word }.contains(word), color: .accentColor)
+
+            Spacer()
+
+            gameService.usedWords.map { $0.word }.contains(word)
+            ? Image(systemName: "checkmark.circle")
+            : Image(systemName: "circle")
+          }
+        }
+      }
+    }
+  }
+  #endif
+}
+
+// MARK: - Methods
 extension MenuView_SwiftUI {
   private func restartSession() {
     if !gameService.usedWords.isEmpty {

@@ -58,4 +58,9 @@ extension String {
 
     return (Set(possibleWordsForString), score)
   }
+
+
+  public func replacedWithStars() -> String {
+    return String(self.map { _ in "✯" })
+  }
 }

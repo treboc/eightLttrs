@@ -18,10 +18,11 @@ class BasicTextField: UITextField {
     self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
     self.rightViewMode = .unlessEditing
     self.clearButtonMode = .whileEditing
-    self.keyboardType = .default
+    self.keyboardType = .asciiCapable
     self.autocorrectionType = .no
     self.returnKeyType = .send
     self.becomeFirstResponder()
+    self.autocapitalizationType = .none
     self.accessibilityLabel = "Textfield"
   }
 

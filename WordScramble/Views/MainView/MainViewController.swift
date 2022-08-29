@@ -5,6 +5,7 @@
 //  Created by Marvin Lee Kobert on 11.08.22.
 //
 
+import AVFoundation
 import Combine
 import UIKit
 import SwiftUI
@@ -21,6 +22,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
   var gameService: GameServiceProtocol
   var gameType: GameType
+  var audioPlayer: AVAudioPlayer?
 
   init(gameType: GameType = .randomWord) {
     self.gameType = gameType
@@ -157,6 +159,12 @@ extension MainViewController {
         self?.updateScoreLabel(with: currentScore, and: possibleScore)
       }
       .store(in: &cancellables)
+
+    gameService.possibleWordsPublisher
+      .sink { [weak self] (usedWordsCount, possibleWordsCount) in
+        self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
+      }
+      .store(in: &cancellables)
   }
 
   func presentAlertControllert(with alert: Alert) {
@@ -167,10 +175,10 @@ extension MainViewController {
   }
 
   private func updateMainViewAfterSubmission() {
-    mainView.wordTextField.text?.removeAll()
     // Maybe looking up for another solution because this needs to be done
     // because this is not like typing or removing all characters 'by hand'..
     mainView.submitButton.isEnabled = false
+    mainView.wordTextField.text?.removeAll()
   }
 }
 
@@ -182,7 +190,11 @@ extension MainViewController {
   }
 
   private func updateScoreLabel(with currentScore: Int, and possibleScore: Int) {
-    mainView.scorePointsLabel.text = "\(currentScore) / \(possibleScore)"
+    mainView.currentScoreBodyLabel.text = "\(currentScore) / \(possibleScore)"
+  }
+
+  private func updateWordsLabel(with usedWordsCount: Int, and possibleWordsCount: Int) {
+    mainView.foundWordsBodyLabel.text = "\(usedWordsCount) / \(possibleWordsCount)"
   }
 
   @objc
@@ -199,12 +211,25 @@ extension MainViewController {
     else { return }
     do {
       try gameService.submitAnswerWith(answer, onCompletion: updateMainViewAfterSubmission)
-      HapticManager.shared.notification(type: .success)
+      HapticManager.shared.success()
+      playSound(.success)
     } catch let error as WordError {
-      HapticManager.shared.notification(type: .error)
+      HapticManager.shared.error()
+      playSound(.error)
       presentAlertControllert(with: error.alert)
     } catch {
       fatalError(error.localizedDescription)
+    }
+  }
+
+  private func playSound(_ type: SoundType) {
+    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
+      do {
+        audioPlayer = try AVAudioPlayer(contentsOf: type.fileURL)
+        audioPlayer?.play()
+      } catch {
+        print(error.localizedDescription)
+      }
     }
   }
 }

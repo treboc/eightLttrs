@@ -30,6 +30,7 @@
 
 // MainView
 "mainView.currentScore" = "Current Score";
+"mainView.foundWords" = "Words found";
 
 // MenuView
 "menuView.title" = "Menu";

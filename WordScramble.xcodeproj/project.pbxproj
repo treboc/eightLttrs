@@ -19,6 +19,9 @@
 		8A45C1E328BBC30700A136CC /* ViewModfifier-PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */; };
 		8A45C1E528BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */; };
 		8A45C1E728BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */; };
+		8A4C4C8828BC327F00B643D1 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8628BC327F00B643D1 /* success.wav */; };
+		8A4C4C8928BC327F00B643D1 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8728BC327F00B643D1 /* error.wav */; };
+		8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8B28BC34F800B643D1 /* SoundType.swift */; };
 		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
 		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */; };
@@ -90,6 +93,9 @@
 		8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModfifier-PresentAlert.swift"; sourceTree = "<group>"; };
 		8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewViewcontrollerRepresentable.swift; sourceTree = "<group>"; };
+		8A4C4C8628BC327F00B643D1 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
+		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
+		8A4C4C8B28BC34F800B643D1 /* SoundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundType.swift; sourceTree = "<group>"; };
 		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +203,15 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		8A4C4C8A28BC34EB00B643D1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8A4C4C8628BC327F00B643D1 /* success.wav */,
+				8A4C4C8728BC327F00B643D1 /* error.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		8A70BEC128AB7C4300455FF1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +247,7 @@
 		8A78F3B628AEB9A200DFA6D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A4C4C8A28BC34EB00B643D1 /* Sounds */,
 				8AB2DEE328B7F21A00F165B9 /* icon.png */,
 				8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */,
 				8A87CC4028B4185900A9643B /* Localizable.stringsdict */,
@@ -288,6 +304,7 @@
 			children = (
 				8A99A31C28B5210300E5ABBF /* WordCellItem.swift */,
 				8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */,
+				8A4C4C8B28BC34F800B643D1 /* SoundType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -475,9 +492,11 @@
 				8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */,
 				8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */,
 				8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */,
+				8A4C4C8828BC327F00B643D1 /* success.wav in Resources */,
 				8A3F79D028AC4E7F0058A272 /* startWordsDE.txt in Resources */,
 				8A3F79D228AC55CF0058A272 /* allWords8LettersDE.txt in Resources */,
 				8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */,
+				8A4C4C8928BC327F00B643D1 /* error.wav in Resources */,
 				8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */,
 				8ADAB2A328A594040083E028 /* startWordsEN.txt in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
@@ -514,6 +533,7 @@
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */,
+				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */,
 				8A87111628B28322004F299F /* Score+CoreDataProperties.swift in Sources */,

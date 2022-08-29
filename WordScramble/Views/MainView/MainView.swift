@@ -15,8 +15,13 @@ class MainView: UIView {
   // MARK: - Views
   let wordTextField = BasicTextField()
   let submitButton = UIButton()
-  private let scoreTextLabel = UILabel()
-  let scorePointsLabel = UILabel()
+
+  private let foundWordsTitleLabel = UILabel()
+  let foundWordsBodyLabel = UILabel()
+
+  private let currentScoreTitleLabel = UILabel()
+  let currentScoreBodyLabel = UILabel()
+
   private(set) var collectionView: UICollectionView!
 
   // MARK: - init()
@@ -43,9 +48,6 @@ extension MainView {
 
     self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
-    // WordTextField
-    wordTextField.autocapitalizationType = .none
-
     // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
@@ -56,21 +58,32 @@ extension MainView {
     plusImage.withTintColor(.label, renderingMode: .automatic)
     submitButton.setImage(plusImage, for: .normal)
 
-    // ScoreTextLabel
-    scoreTextLabel.textAlignment = .right
-    scoreTextLabel.text = L10n.MainView.currentScore
-    scoreTextLabel.font = .preferredFont(forTextStyle: .caption1)
+    // foundWordsTitleLabel
+    foundWordsTitleLabel.textAlignment = .left
+    foundWordsTitleLabel.text = L10n.MainView.foundWords
+    foundWordsTitleLabel.font = .preferredFont(forTextStyle: .caption1)
 
-    // ScorePointsLabel
-    scorePointsLabel.textAlignment = .right
-    scorePointsLabel.text = "0"
-    scorePointsLabel.font = .preferredFont(forTextStyle: .headline)
-    scorePointsLabel.font = .monospacedDigitSystemFont(ofSize: scorePointsLabel.font.pointSize, weight: .semibold)
+    // FoundWordsBodyLabel
+    foundWordsBodyLabel.textAlignment = .left
+    foundWordsBodyLabel.text = "0 / 0"
+    foundWordsBodyLabel.font = .preferredFont(forTextStyle: .headline)
+    foundWordsBodyLabel.font = .monospacedDigitSystemFont(ofSize: foundWordsBodyLabel.font.pointSize, weight: .semibold)
+
+    // CurrentScoreTitleLabel
+    currentScoreTitleLabel.textAlignment = .right
+    currentScoreTitleLabel.text = L10n.MainView.currentScore
+    currentScoreTitleLabel.font = .preferredFont(forTextStyle: .caption1)
+
+    // CurrentScoreTitleLabel
+    currentScoreBodyLabel.textAlignment = .right
+    currentScoreBodyLabel.text = "0 / 0"
+    currentScoreBodyLabel.font = .preferredFont(forTextStyle: .headline)
+    currentScoreBodyLabel.font = .monospacedDigitSystemFont(ofSize: currentScoreBodyLabel.font.pointSize, weight: .semibold)
   }
 
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
-    let views = [wordTextField, submitButton, scoreTextLabel, scorePointsLabel, collectionView]
+    let views = [wordTextField, submitButton, foundWordsTitleLabel, foundWordsBodyLabel, currentScoreTitleLabel, currentScoreBodyLabel, collectionView]
     for view in views {
       guard let view = view else { return }
       self.addSubview(view)
@@ -88,15 +101,21 @@ extension MainView {
       submitButton.heightAnchor.constraint(equalToConstant: 40),
       submitButton.widthAnchor.constraint(equalTo: submitButton.heightAnchor),
 
-      scoreTextLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
-      scoreTextLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
-      scoreTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+      foundWordsTitleLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
+      foundWordsTitleLabel.leadingAnchor.constraint(equalTo: wordTextField.leadingAnchor),
+      foundWordsTitleLabel.trailingAnchor.constraint(equalTo: currentScoreTitleLabel.leadingAnchor),
 
-      scorePointsLabel.topAnchor.constraint(equalTo: scoreTextLabel.bottomAnchor),
-      scorePointsLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
-      scorePointsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+      foundWordsBodyLabel.topAnchor.constraint(equalTo: currentScoreTitleLabel.bottomAnchor),
+      foundWordsBodyLabel.leadingAnchor.constraint(equalTo: wordTextField.leadingAnchor),
+      foundWordsBodyLabel.trailingAnchor.constraint(equalTo: currentScoreBodyLabel.leadingAnchor),
 
-      collectionView.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
+      currentScoreTitleLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
+      currentScoreTitleLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
+
+      currentScoreBodyLabel.topAnchor.constraint(equalTo: currentScoreTitleLabel.bottomAnchor),
+      currentScoreBodyLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
+
+      collectionView.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor),
       collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
