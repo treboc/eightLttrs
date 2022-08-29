@@ -24,10 +24,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   var gameType: GameType
   var audioPlayer: AVAudioPlayer?
 
-  init(gameType: GameType = .randomWord) {
+  init(gameType: GameType = .random) {
     self.gameType = gameType
 
-    if gameType == .randomWord {
+    if gameType == .random {
       self.gameService = GameService()
     } else {
       self.gameService = GameService(gameType)
@@ -87,6 +87,7 @@ extension MainViewController: UICollectionViewDelegate {
                                                               item: identifier)
       return cell
     }
+
     mainView.collectionView.keyboardDismissMode = .interactiveWithAccessory
   }
 
@@ -224,11 +225,13 @@ extension MainViewController {
 
   private func playSound(_ type: SoundType) {
     if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
-      do {
-        audioPlayer = try AVAudioPlayer(contentsOf: type.fileURL)
-        audioPlayer?.play()
-      } catch {
-        print(error.localizedDescription)
+      DispatchQueue.global(qos: .background).async { [weak self] in
+        do {
+          self?.audioPlayer = try AVAudioPlayer(contentsOf: type.fileURL)
+          self?.audioPlayer?.play()
+        } catch {
+          print(error.localizedDescription)
+        }
       }
     }
   }

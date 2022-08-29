@@ -66,7 +66,7 @@ class GameService: GameServiceProtocol {
     }
   }
 
-  init(_ gameType: GameType? = .randomWord) {
+  init(_ gameType: GameType? = .random) {
     // check users region.. if it's at, ch or de -> use german start words
     // if not, english
     let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
@@ -75,9 +75,9 @@ class GameService: GameServiceProtocol {
     loadWords(with: currentLocale)
 
     switch gameType {
-    case .randomWord:
+    case .random:
       startGame()
-    case .sharedWord(let word):
+    case .shared(let word):
       startGame(with: word)
     case .none:
       break

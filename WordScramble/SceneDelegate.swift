@@ -90,7 +90,7 @@ extension SceneDelegate {
 
   private func createMainViewController(from context: UIOpenURLContext) -> MainViewController? {
     if let word = getStartWord(from: context) {
-      return MainViewController(gameType: .sharedWord(word))
+      return MainViewController(gameType: .shared(word))
     }
     return nil
   }

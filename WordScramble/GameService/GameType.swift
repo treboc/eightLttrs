@@ -8,6 +8,6 @@
 import Foundation
 
 enum GameType: Equatable {
-  case randomWord
-  case sharedWord(String)
+  case random
+  case shared(String)
 }

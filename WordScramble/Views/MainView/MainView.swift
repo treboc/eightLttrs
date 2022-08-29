@@ -42,12 +42,6 @@ class MainView: UIView {
 // MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
-    // CollectionView
-    let config = UICollectionLayoutListConfiguration(appearance: .plain)
-    let layout = UICollectionViewCompositionalLayout.list(using: config)
-
-    self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-
     // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
@@ -79,6 +73,11 @@ extension MainView {
     currentScoreBodyLabel.text = "0 / 0"
     currentScoreBodyLabel.font = .preferredFont(forTextStyle: .headline)
     currentScoreBodyLabel.font = .monospacedDigitSystemFont(ofSize: currentScoreBodyLabel.font.pointSize, weight: .semibold)
+
+    // CollectionView
+    let config = UICollectionLayoutListConfiguration(appearance: .plain)
+    let layout = UICollectionViewCompositionalLayout.list(using: config)
+    self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   }
 
   private func setupLayout() {
@@ -115,7 +114,7 @@ extension MainView {
       currentScoreBodyLabel.topAnchor.constraint(equalTo: currentScoreTitleLabel.bottomAnchor),
       currentScoreBodyLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
 
-      collectionView.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor),
+      collectionView.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor, constant: 8),
       collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
