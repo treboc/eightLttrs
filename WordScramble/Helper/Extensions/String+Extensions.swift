@@ -36,7 +36,7 @@ extension String {
     return score
   }
 
-  func allPossibleWords(basedOn list: Set<String>, with minStringLen: Int = 3) -> (Set<String>, Int) {
+  func allPossibleWords(basedOn list: Set<String>, with minStringLen: Int = 3) async -> (Set<String>, Int) {
     let stringArray = self
       .map { String($0).lowercased() }
     let permutedStringList = stringArray.permute(minStringLen: minStringLen)
@@ -44,13 +44,9 @@ extension String {
     // iterate over the list passed in,
     // only keep the string permuted words
     let possibleWordsForString = list
-      .compactMap { word in
-        if permutedStringList.contains(word.lowercased()) {
-          return word
-        }
-        return nil
+      .filter { word in
+        permutedStringList.contains(word.lowercased()) && word != self
       }
-      .filter { !($0 == self) }
 
     let score = possibleWordsForString
       .map { $0.calculateScore() }

@@ -56,6 +56,9 @@
 "sharedWord.alertIfAlreadyStartedSession.title" = "Achtung!";
 "sharedWord.alertIfAlreadyStartedSession.message" = "Du hast bereits ein Spiel angefangen. Bist du dir sicher das du das aktuelle Spiel beenden und mit dem geteilten Wort neu angefangen möchtest? Dein Spiel wird nicht gespeichert!";
 
+"sharedWord.alert.noValidStartword.title" = "Fehler!";
+"sharedWord.alert.noValidStartword.message" = "Das ist kein mögliches Startwort.";
+
 // ButtonTitles
 "ButtonTitle.submit" = "Okay";
 "ButtonTitle.cancel" = "Abbrechen";
@@ -64,3 +67,4 @@
 "ButtonTitle.skip" = "Überspringen";
 "ButtonTitle.next" = "Weiter";
 "ButtonTitle.continue" = "Fortfahren";
+"ButtonTitle.ok" = "Okay";

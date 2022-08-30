@@ -9,18 +9,7 @@ import Combine
 import Foundation
 import UIKit
 
-enum RegionBasedLocale: String {
-  case de, at, ch, en
 
-  var fileNameSuffix: String {
-    switch self {
-    case .de, .at, .ch:
-      return "DE"
-    default:
-      return "EN"
-    }
-  }
-}
 
 class GameService {
   var startWords = Set<String>()
@@ -29,19 +18,15 @@ class GameService {
 
   @Published var currentSession: Session
 
-  @Published var currentWord: String = "" {
-    didSet {
-      getAllPossibleWordsFor(currentWord, basedOn: allPossibleWords)
-    }
-  }
-
+  @Published var currentWord: String = ""
   @Published var usedWords: [String] = [] {
     didSet {
       updateCurrentScore()
     }
   }
+
   @Published var currentScore: Int = 0
-  @Published var possibleScore: Int = 0
+  @Published var possibleWordsScore: Int = 0
   @Published var possibleWordsCount = 0
 
   var currentLocale: RegionBasedLocale
@@ -53,7 +38,7 @@ class GameService {
     startGame(with: lastSession)
   }
 
-  init(_ gameType: GameType? = .random, lastSession: Session? = nil) {
+  init(gameType: GameType? = .random) {
     // check users region.. if it's at, ch or de -> use german start words
     // if not, english
     let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
@@ -63,11 +48,7 @@ class GameService {
 
     switch gameType {
     case .random:
-      if let session = lastSession {
-        startGame(with: session)
-      } else {
-        startGame()
-      }
+      startGame()
     case .shared(let word):
       startGame(with: word)
     case .none:
@@ -93,32 +74,40 @@ class GameService {
   }
 
   func startGame(with session: Session) {
-    currentWord = session.word ?? "ERROR"
-    session.usedWords.forEach {
-      usedWords.append($0)
-    }
+    currentWord = session.unwrappedWord
+    loadDataFrom(session)
   }
 
-  func startGame(with session: Session) {
-    currentWord = session.word ?? "ERROR"
-    session.usedWords?.forEach {
-      usedWords.append(WordCellItem(word: $0))
-
+  private func loadDataFrom(_ session: Session) {
+    guard
+      session.possibleWords.count > 0,
+      session.possibleWordsCount > 0,
+      session.possibleWordsScore > 0
+    else {
+      getAllPossibleWordsFor(currentWord, basedOn: allPossibleWords)
+      return
     }
+
+    currentWord = session.unwrappedWord
+    possibleWordsForCurrentWord = Set.init(session.possibleWords)
+    possibleWordsCount = session.possibleWordsCount
+    possibleWordsScore = session.possibleWordsScore
+    usedWords = session.usedWords
   }
 
   func startGame(with word: String) {
-    if let decodedWord = word.removingPercentEncoding {
-      currentWord = decodedWord
-      usedWords.removeAll()
-    }
+    currentWord = word
+    getAllPossibleWordsFor(currentWord, basedOn: allPossibleWords)
+    currentSession = Session.newSession()
+    usedWords.removeAll()
   }
 
   func startGame() {
     guard let rndWord = startWords.randomElement() else { return }
     currentWord = rndWord
-    usedWords.removeAll()
+    getAllPossibleWordsFor(rndWord, basedOn: allPossibleWords)
     currentSession = Session.newSession()
+    usedWords.removeAll()
   }
 
   func endGame(playerName: String) {
@@ -139,33 +128,23 @@ class GameService {
     if session.word == nil {
       session.word = currentWord
       session.localeIdentifier = currentLocale.rawValue
+      session.possibleWords = Array(possibleWordsForCurrentWord)
+      session.possibleWordsCount = possibleWordsCount
+      session.possibleWordsScore = possibleWordsScore
     }
     session.usedWords = usedWords
     SessionService.persist(session: session)
-  }
-
-  private func save(_ session: Session) {
-    session.word = currentWord
-    session.usedWords = usedWords.map { $0.word }
-    session.score = Int32(currentScore)
-    session.localeIdentifier = currentLocale.rawValue
-
-    SessionService.persist(session: session)
-    dump(session)
   }
 }
 
 // MARK: - Calculation of Scores
 extension GameService {
   private func getAllPossibleWordsFor(_ word: String, basedOn list: Set<String>) {
-    DispatchQueue.global(qos: .background).async { [weak self] in
-      guard let self = self else { return }
-      let (words, score) = word.allPossibleWords(basedOn: list)
+    Task {
+      let (words, score) = await word.allPossibleWords(basedOn: list)
       self.possibleWordsForCurrentWord = words
-      DispatchQueue.main.async {
-        self.possibleScore = score
-        self.possibleWordsCount = words.count
-      }
+      self.possibleWordsScore = score
+      self.possibleWordsCount = words.count
     }
   }
 
@@ -221,7 +200,7 @@ extension GameService {
     }
 
     // isReal
-    if !allPossibleWords.contains(word) {
+    if !possibleWordsForCurrentWord.contains(word) {
       throw WordError.notReal
     }
 //    let checker = UITextChecker()
@@ -230,17 +209,17 @@ extension GameService {
 //
 //    if misspelledRange.location != NSNotFound {
 //      throw WordError.notReal
-//    }
+    //    }
   }
 
   class func isValidStartWord(_ word: String) -> Bool {
     let localeIdentifier = String(Locale.autoupdatingCurrent.identifier.suffix(2)).uppercased()
-    if let startWordsURL = Bundle.main.url(forResource: "startWords\(localeIdentifier)", withExtension: "txt") {
-      if let startWords = try? String(contentsOf: startWordsURL) {
-        return startWords.contains(word)
-      }
-    }
-    return false
+    guard
+      let startWordsURL = Bundle.main.url(forResource: "startWords\(localeIdentifier)", withExtension: "txt"),
+      let startWords = try? String(contentsOf: startWordsURL),
+      let decodedWord = word.removingPercentEncoding else { return false }
+
+    return startWords.contains(decodedWord)
   }
 }
 

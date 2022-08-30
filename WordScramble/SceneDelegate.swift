@@ -10,14 +10,20 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
 
+  // Gets called on 'cold start'!
+  // App is currently not running, whether in background nor active
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
     var mainVC: MainViewController!
 
+    // We check the connectionOptions, they contain the urlContexts,
+    // if the App was launched by clicking an AppLink
+    // If so and the word inside the link is a valid start word,
+    // try to start the session
     if let context = connectionOptions.urlContexts.first,
-       let word = getStartWord(from: context) {
-      let gameService = GameService(.shared(word))
+       let word = extractStartWord(from: context) {
+      let gameService = GameService(gameType: .shared(word))
       mainVC = MainViewController(gameService: gameService)
     } else if let session = SessionService.returnLastSession() {
       let gameService = GameService(lastSession: session)
@@ -37,17 +43,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard
       let scene = (scene as? UIWindowScene),
       let context = URLContexts.first,
-      let word = getStartWord(from: context),
-      GameService.isValidStartWord(word)
-    else { return }
+      let word = extractStartWord(from: context)
+    else {
+      if let mainVC = getMainViewController(in: scene as! UIWindowScene) {
+        // dismiss topViewController, to get present the Alert on the mainViewController
+        mainVC.navigationController?.topViewController?.dismiss(animated: false)
+        // the "continue"-action
+        presentAlertController(on: mainVC,
+                               with: L10n.SharedWord.Alert.NoValidStartword.title,
+                               and: L10n.SharedWord.Alert.NoValidStartword.message)
+      }
+
+      return
+    }
     
     // check if there is currently a session with atleast one word
     if let mainVC = getMainViewController(in: scene) {
-      if mainViewControllerHasUsedWords(in: scene) {
+       if mainVC.hasUsedWords {
         // dismiss topViewController, to get present the Alert on the mainViewController
         (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
         // the "continue"-action
-        presentAlertController(on: mainVC) { _ in
+         presentAlertController(on: mainVC,
+                                with: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
+                                and: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
           mainVC.gameService.startGame(with: word)
         }
       } else {
@@ -86,21 +104,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension SceneDelegate {
-  private func getStartWord(from context: UIOpenURLContext) -> String? {
+  private func extractStartWord(from context: UIOpenURLContext) -> String? {
     guard
       let word = context.url.pathComponents[safe: 1],
       GameService.isValidStartWord(word)
     else { return nil }
 
     return word
-  }
-
-  private func mainViewControllerHasUsedWords(in scene: UIWindowScene) -> Bool {
-    if let mainVC = getMainViewController(in: scene),
-       mainVC.hasUsedWords {
-      return true
-    }
-    return false
   }
 
   private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
@@ -113,14 +123,21 @@ extension SceneDelegate {
     return mainVC as? MainViewController
   }
 
-  private func presentAlertController(on viewController: UIViewController, with handler: @escaping ((UIAlertAction) -> Void) ) {
-    let ac = UIAlertController(title: L10n.SharedWord.AlertIfAlreadyStartedSession.title,
-                               message: L10n.SharedWord.AlertIfAlreadyStartedSession.message,
+  private func presentAlertController(on viewController: UIViewController,
+                                      with title: String,
+                                      and message: String,
+                                      onContinuePressed: ((UIAlertAction) -> Void)? = nil ) {
+    let ac = UIAlertController(title: title,
+                               message: message,
                                preferredStyle: .alert)
-    let proceedAction = UIAlertAction(title: L10n.ButtonTitle.continue, style: .destructive, handler: handler)
-    let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
-    ac.addAction(proceedAction)
-    ac.addAction(cancelAction)
+    if let handler = onContinuePressed {
+      let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
+      ac.addAction(cancelAction)
+      let proceedAction = UIAlertAction(title: L10n.ButtonTitle.continue, style: .destructive, handler: handler)
+      ac.addAction(proceedAction)
+    } else {
+      ac.addAction(UIAlertAction(title: L10n.ButtonTitle.ok, style: .default))
+    }
     viewController.present(ac, animated: true)
   }
 }

@@ -48,7 +48,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     setupActions()
     setupPublishers()
 
-    mainView.wordTextField.delegate = self
+    mainView.textField.delegate = self
   }
 }
 
@@ -123,7 +123,7 @@ extension MainViewController {
 
   private func setupActions() {
     self.hideKeyboardOnTap()
-    mainView.wordTextField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
+    mainView.textField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
     let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
@@ -149,6 +149,7 @@ extension MainViewController {
     gameService.$usedWords
       .map { $0.count }
       .combineLatest(gameService.$possibleWordsCount)
+      .receive(on: RunLoop.main)
       .sink { [weak self] (usedWordsCount, possibleWordsCount) in
         self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
       }
@@ -156,7 +157,8 @@ extension MainViewController {
 
     // Publisher -> updates right-side scoreLabels
     gameService.$currentScore
-      .combineLatest(gameService.$possibleScore)
+      .combineLatest(gameService.$possibleWordsScore)
+      .receive(on: RunLoop.main)
       .sink { [weak self] (currentScore, possibleScore) in
         self?.updateScoreLabel(with: currentScore, and: possibleScore)
       }
@@ -164,7 +166,7 @@ extension MainViewController {
 
     // Publisher -> disables / enables "End Session" button in menu
     gameService.$usedWords
-      .map { $0.isEmpty }
+      .map { !$0.isEmpty }
       .assign(to: \.hasUsedWords, on: self)
       .store(in: &cancellables)
   }
@@ -180,7 +182,7 @@ extension MainViewController {
     // Maybe looking up for another solution because this needs to be done
     // because this is not like typing or removing all characters 'by hand'..
     mainView.submitButton.isEnabled = false
-    mainView.wordTextField.text?.removeAll()
+    mainView.textField.text?.removeAll()
   }
 }
 
@@ -196,7 +198,7 @@ extension MainViewController {
   }
 
   private func updateWordsLabel(with usedWordsCount: Int, and possibleWordsCount: Int) {
-    mainView.foundWordsBodyLabel.text = "\(usedWordsCount) / \(possibleWordsCount)"
+    mainView.numberOfWordsBodyLabel.text = "\(usedWordsCount) / \(possibleWordsCount)"
   }
 
   @objc
@@ -208,7 +210,7 @@ extension MainViewController {
   @objc
   func submit() {
     guard
-      let answer = mainView.wordTextField.text,
+      let answer = mainView.textField.text,
       !answer.isEmpty
     else { return }
     do {

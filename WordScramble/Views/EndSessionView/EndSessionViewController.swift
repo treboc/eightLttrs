@@ -37,7 +37,7 @@ class EndSessionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.isModalInPresentation = true
-    endSessionView.updateBodyLabel(with: session.unwrappedWord, score: Int(session.score), wordCount: session.unwrappedUsedWords.count)
+    endSessionView.updateBodyLabel(with: session.unwrappedWord, score: Int(session.score), wordCount: session.usedWords.count)
     navigationItem.hidesBackButton = true
     setupActions()
   }

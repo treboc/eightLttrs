@@ -29,6 +29,9 @@ extension Session: Identifiable {
   @NSManaged public var startedAt: Date?
   @NSManaged public var timeElapsed: Double
   @NSManaged public var usedWords: [String]
+  @NSManaged public var possibleWords: [String]
+  @NSManaged public var possibleWordsCountIntern: Int16
+  @NSManaged public var possibleWordsScoreIntern: Int16
   @NSManaged public var isFinished: Bool
   @NSManaged public var localeIdentifier: String?
 }
@@ -37,11 +40,10 @@ extension Session: Identifiable {
 extension Session {
   @objc dynamic
   var score: Int {
-    return self.unwrappedUsedWords
+    return self.usedWords
       .map { $0.calculateScore() }
       .reduce(0, +)
   }
-
 
   var unwrappedWord: String {
     get { word ?? "Unknown Word" }
@@ -58,9 +60,13 @@ extension Session {
     set { startedAt = newValue }
   }
 
-  @objc
-  var unwrappedUsedWords: [String] {
-    get { usedWords ?? [] }
-    set { usedWords = newValue }
+  var possibleWordsCount: Int {
+    get { Int(possibleWordsCountIntern) }
+    set { possibleWordsCountIntern = Int16(newValue) }
+  }
+
+  var possibleWordsScore: Int {
+    get { Int(possibleWordsScoreIntern) }
+    set { possibleWordsScoreIntern = Int16(newValue) }
   }
 }

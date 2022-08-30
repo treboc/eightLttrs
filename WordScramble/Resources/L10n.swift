@@ -19,6 +19,8 @@ internal enum L10n {
     internal static let imSure = L10n.tr("Localizable", "ButtonTitle.imSure", fallback: #"Yes, I'm sure"#)
     /// Next
     internal static let next = L10n.tr("Localizable", "ButtonTitle.next", fallback: #"Next"#)
+    /// OK
+    internal static let ok = L10n.tr("Localizable", "ButtonTitle.ok", fallback: #"OK"#)
     /// Save
     internal static let save = L10n.tr("Localizable", "ButtonTitle.save", fallback: #"Save"#)
     /// Skip
@@ -100,11 +102,19 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: #"Are you sure?"#)
   }
   internal enum SharedWord {
-    internal enum AlertIfAlreadyStartedSession {
-      /// You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!
-      internal static let message = L10n.tr("Localizable", "sharedWord.alertIfAlreadyStartedSession.message", fallback: #"You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!"#)
-      /// Warning!
-      internal static let title = L10n.tr("Localizable", "sharedWord.alertIfAlreadyStartedSession.title", fallback: #"Warning!"#)
+    internal enum Alert {
+      internal enum NoValidStartword {
+        /// This is not a valid start word!
+        internal static let message = L10n.tr("Localizable", "sharedWord.alert.noValidStartword.message", fallback: #"This is not a valid start word!"#)
+        /// Error!
+        internal static let title = L10n.tr("Localizable", "sharedWord.alert.noValidStartword.title", fallback: #"Error!"#)
+      }
+      internal enum UsedWordsInCurrentSession {
+        /// You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!
+        internal static let message = L10n.tr("Localizable", "sharedWord.alert.usedWordsInCurrentSession.message", fallback: #"You're already playing a game. Are you sure you want to reset it and start a new one with the shared word? The current progression will be lost!"#)
+        /// Warning!
+        internal static let title = L10n.tr("Localizable", "sharedWord.alert.usedWordsInCurrentSession.title", fallback: #"Warning!"#)
+      }
     }
   }
   internal enum WordError {
