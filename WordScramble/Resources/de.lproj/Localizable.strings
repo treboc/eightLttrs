@@ -45,6 +45,7 @@
 
 // HighscoreView -> Sharing
 "highscoreView.shareScore.text" = "Hey schau' mal! Ich habe %@ Punkte bei \"%@\" erreicht!\nVersuch es auch, und sieh ob du es besser kannst!";
+"highscoreView.title" = "Highscores";
 
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";

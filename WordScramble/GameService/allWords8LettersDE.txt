@@ -74072,8 +74072,10 @@ Tatziels
 Tau
 taub
 Täubchen
+Taube
 taube
 taubem
+Tauben
 tauben
 tauber
 Täuber
@@ -85408,7 +85410,6 @@ wovon
 wovor
 wow
 Woyzeck
-Woyzecks
 wozu
 Wozzeck
 Wrack

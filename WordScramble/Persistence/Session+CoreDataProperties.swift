@@ -38,11 +38,26 @@ extension Session: Identifiable {
 
 // MARK: - Unwrapped optional properties
 extension Session {
-  @objc dynamic
   var score: Int {
     return self.usedWords
-      .map { $0.calculateScore() }
+      .map { $0.calculatedScore() }
       .reduce(0, +)
+  }
+
+  var percentageWordsFound: Double {
+    return Double(usedWords.count) / Double(possibleWordsCount)
+  }
+
+  var percentageWordsFoundString: String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .percent
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 2
+
+    if let string = formatter.string(from: percentageWordsFound as NSNumber) {
+      return string
+    }
+    return "0%"
   }
 
   var unwrappedWord: String {

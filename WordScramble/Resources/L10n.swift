@@ -43,6 +43,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: #"Congratulations! 🎉"#)
   }
   internal enum HighscoreView {
+    /// Highscores
+    internal static let title = L10n.tr("Localizable", "highscoreView.title", fallback: #"Highscores"#)
     internal enum ShareScore {
       /// Hey look, I've scored %@ points on "%@"!
       /// Try it and see if you can beat this!

@@ -24,20 +24,12 @@ class SessionService {
     return []
   }
 
-  static func loadHighscores(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> [HighscoreCellItem] {
+  static func loadHighscores(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> [Session] {
     let fetchRequest: NSFetchRequest<Session> = NSFetchRequest<Session>(entityName: Session.description())
     do {
       let result = try context.fetch(fetchRequest)
       return result
-        .enumerated()
-        .compactMap { (index, item) in
-          if item.isFinished {
-            return HighscoreCellItem(name: item.unwrappedName,
-                                     word: item.unwrappedWord,
-                                     score: Int(item.score))
-          }
-          return nil
-        }
+        .filter(\.isFinished)
         .sorted { $0.score > $1.score }
     } catch let error as NSError {
       NSLog("Error fetching NSManagedObjects \(Session.description()): \(error.localizedDescription), \(error.userInfo)")

@@ -9,8 +9,6 @@ import Combine
 import Foundation
 import UIKit
 
-
-
 class GameService {
   var startWords = Set<String>()
   var allPossibleWords = Set<String>()
@@ -19,12 +17,7 @@ class GameService {
   @Published var currentSession: Session
 
   @Published var currentWord: String = ""
-  @Published var usedWords: [String] = [] {
-    didSet {
-      updateCurrentScore()
-    }
-  }
-
+  @Published var usedWords: [String] = []
   @Published var currentScore: Int = 0
   @Published var possibleWordsScore: Int = 0
   @Published var possibleWordsCount = 0
@@ -76,6 +69,7 @@ class GameService {
   func startGame(with session: Session) {
     currentWord = session.unwrappedWord
     loadDataFrom(session)
+    updateCurrentScore()
   }
 
   private func loadDataFrom(_ session: Session) {
@@ -120,6 +114,7 @@ class GameService {
       try check(word)
       usedWords.insert(word, at: 0)
       save(currentSession)
+      updateCurrentScore()
       onCompletion()
     }
   }
@@ -150,7 +145,7 @@ extension GameService {
 
   private func updateCurrentScore() {
     self.currentScore = usedWords
-      .map { $0.calculateScore() }
+      .map { $0.calculatedScore() }
       .reduce(0, +)
   }
 
@@ -212,7 +207,7 @@ extension GameService {
     //    }
   }
 
-  class func isValidStartWord(_ word: String) -> Bool {
+  static func isValidStartWord(_ word: String) -> Bool {
     let localeIdentifier = String(Locale.autoupdatingCurrent.identifier.suffix(2)).uppercased()
     guard
       let startWordsURL = Bundle.main.url(forResource: "startWords\(localeIdentifier)", withExtension: "txt"),

@@ -11,24 +11,42 @@ import CoreData
 class PersistenceStore {
   static let shared = PersistenceStore()
 
-  var persistentContainer: NSPersistentContainer
+  var container: NSPersistentContainer
   let context: NSManagedObjectContext
 
-  private init() {
-    persistentContainer = NSPersistentContainer(name: "WordScramble")
+  private init(inMemory: Bool = false) {
+    container = NSPersistentContainer(name: "WordScramble")
+    context = container.viewContext
 
-    let description = NSPersistentStoreDescription()
-    description.shouldAddStoreAsynchronously = true
+    if inMemory {
+      container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+    }
 
-    persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-    persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+    container.viewContext.automaticallyMergesChangesFromParent = true
+    container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-    context = persistentContainer.viewContext
-
-    persistentContainer.loadPersistentStores(completionHandler: { (_, error) in
+    container.loadPersistentStores(completionHandler: { (_, error) in
       if let error = error as NSError? {
         fatalError("Unresolved loadPersistentStores error \(error), \(error.userInfo)")
       }
     })
   }
+}
+
+// For SwiftUI Previews
+extension PersistenceStore {
+  // A test configuration for SwiftUI previews
+  static var preview: PersistenceStore = {
+    let store = PersistenceStore(inMemory: true)
+    let session = Session(context: store.context)
+    session.id = UUID()
+    session.name = "Brunhilde"
+    session.word = "Sandsack"
+    session.usedWords = ["Sand", "Sack"]
+    session.possibleWords = Array(repeating: session.usedWords.randomElement()!, count: 62)
+    session.possibleWordsCount = 62
+    session.possibleWordsScore = 231
+    session.localeIdentifier = "DE"
+    return store
+  }()
 }

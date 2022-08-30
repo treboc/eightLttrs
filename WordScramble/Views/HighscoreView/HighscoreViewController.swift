@@ -21,9 +21,7 @@ class HighscoreViewController: UIViewController {
     view = HighscoreView()
   }
 
-  var metaData: LPLinkMetadata?
-
-  private var highscores = [HighscoreCellItem]() {
+  private var sessions = [Session]() {
     didSet {
       highscoreView.tableView.reloadData()
     }
@@ -32,7 +30,7 @@ class HighscoreViewController: UIViewController {
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.highscores = SessionService.loadHighscores()
+    self.sessions = SessionService.loadHighscores()
 
     highscoreView.tableView.delegate = self
     highscoreView.tableView.dataSource = self
@@ -64,14 +62,14 @@ extension HighscoreViewController: UIActivityItemSource {
     return metadata
   }
 
-  private func shareHighscore(_ item: HighscoreCellItem) {
-    if let word = item.word.addingPercentEncoding(withAllowedCharacters: .letters),
+  private func shareHighscore(of session: Session) {
+    if let word = session.unwrappedWord.addingPercentEncoding(withAllowedCharacters: .letters),
        let url = URL(string: "wordscramble://word/\(word)") {
       metadata.originalURL = URL(string: "wordscramble://\(word)")
       metadata.url = metadata.originalURL
       metadata.title = "Try it yourself!"
       metadata.imageProvider = NSItemProvider.init(contentsOf: Bundle.main.url(forResource: "icon", withExtension: "jpg"))
-      let text = L10n.HighscoreView.ShareScore.text(item.score, item.word)
+      let text = L10n.HighscoreView.ShareScore.text(session.score, session.unwrappedWord)
       let ac = UIActivityViewController(activityItems: [self, text, url], applicationActivities: nil)
       present(ac, animated: true)
     }
@@ -81,12 +79,12 @@ extension HighscoreViewController: UIActivityItemSource {
 // MARK: - UITableViewController Methods
 extension HighscoreViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    highscores.count
+    sessions.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: HighscoreCell.identifier, for: indexPath) as! HighscoreCell
-    cell.updateLabels(with: highscores[indexPath.row], and: indexPath)
+    cell.updateLabels(with: sessions[indexPath.row], and: indexPath)
     return cell
   }
 
@@ -94,10 +92,16 @@ extension HighscoreViewController: UITableViewDataSource, UITableViewDelegate {
     true
   }
 
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let session = sessions[indexPath.row]
+    let detailViewController = UIHostingController(rootView: HighscoreDetailView(session: session))
+    navigationController?.pushViewController(detailViewController, animated: true)
+  }
+
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let shareAction = UIContextualAction(style: .normal, title: "Share") { [weak self] action, view, completion in
       guard let self = self else { return }
-      self.shareHighscore(self.highscores[indexPath.row])
+      self.shareHighscore(of: self.sessions[indexPath.row])
       completion(true)
     }
     shareAction.backgroundColor = UIColor(named: "AccentColor")

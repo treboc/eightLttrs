@@ -64,6 +64,8 @@
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
 		8ADAB2A328A594040083E028 /* startWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A228A594040083E028 /* startWordsEN.txt */; };
 		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
+		8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */; };
+		8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8ADAB2A228A594040083E028 /* startWordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsEN.txt; sourceTree = "<group>"; };
 		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreDetailView.swift; sourceTree = "<group>"; };
+		8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +347,8 @@
 				8A99A32928B5327400E5ABBF /* HighscoreCell.swift */,
 				8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */,
 				8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */,
+				8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */,
+				8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */,
 			);
 			path = HighscoreView;
 			sourceTree = "<group>";
@@ -551,7 +557,9 @@
 				8A45C1DE28BB909500A136CC /* MenuView-SwiftUI.swift in Sources */,
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
+				8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */,
 				8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */,
+				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8A4A612E28BD406600EA126A /* Collection+Extensions.swift in Sources */,

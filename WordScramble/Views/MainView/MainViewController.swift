@@ -65,7 +65,7 @@ extension MainViewController: UICollectionViewDelegate {
     let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String> { (cell, indexPath, word) in
       // Define how data should be shown using content configuration
       var content = cell.defaultContentConfiguration()
-      let points = word.calculateScore()
+      let points = word.calculatedScore()
       let config = UIImage.SymbolConfiguration(font: .preferredFont(forTextStyle: .headline), scale: .large)
       let image = UIImage(systemName: "\(points <= 50 ? points : 0).circle.fill", withConfiguration: config)!
       content.image = image

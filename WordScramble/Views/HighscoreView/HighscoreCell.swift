@@ -12,10 +12,11 @@ class HighscoreCell: UITableViewCell {
     String(describing: self)
   }
 
-  private let stackView = UIStackView()
   private let rankLabel = UILabel()
   private let nameLabel = UILabel()
-  private let scoreLabel = UILabel()
+  private let wordLabel = UILabel()
+  private let scorePointsLabel = UILabel()
+  private let scoreTextLabel = UILabel()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,38 +28,59 @@ class HighscoreCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func updateLabels(with cellItem: HighscoreCellItem, and indexPath: IndexPath) {
-    rankLabel.text = "#\(indexPath.item + 1)"
-    nameLabel.text = cellItem.name
-    scoreLabel.text = String(format: "%03d", cellItem.score)
+  func updateLabels(with session: Session, and indexPath: IndexPath) {
+    rankLabel.text = "\(indexPath.item + 1)."
+    nameLabel.text = session.unwrappedName
+    wordLabel.text = "gestartet mit: \(session.unwrappedWord)"
+    scorePointsLabel.text = String(format: "%03d", session.score)
   }
 
   private func setupViews() {
     self.selectionStyle = .none
+    self.accessoryType = .disclosureIndicator
 
+    // RankLabel
+    rankLabel.textAlignment = .center
     rankLabel.font = .preferredFont(forTextStyle: .headline)
 
-    stackView.axis = .horizontal
-    stackView.spacing = 10
+    wordLabel.font = .preferredFont(forTextStyle: .caption2)
+    wordLabel.textColor = .secondaryLabel
 
-    rankLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-    nameLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-    scoreLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    // ScoreTextLabel
+    scoreTextLabel.text = "Punkte"
+    scoreTextLabel.font = .preferredFont(forTextStyle: .caption2)
+    scoreTextLabel.textColor = .secondaryLabel
   }
 
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
-    [rankLabel, nameLabel, scoreLabel].forEach { stackView.addArrangedSubview($0) }
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    addSubview(stackView)
+    [rankLabel, nameLabel, wordLabel, scorePointsLabel, scoreTextLabel].forEach {
+      addSubview($0)
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-      stackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
-      stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-      stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
+      // RankLabel
+      rankLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+      rankLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      rankLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
 
-      rankLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1)
+      // NameLabel
+      nameLabel.leadingAnchor.constraint(equalTo: rankLabel.trailingAnchor, constant: 12),
+      nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+
+      // wordLabel
+      wordLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+      wordLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+
+      // ScorePointsLabel
+      scorePointsLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      scorePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35),
+
+      // scoreTextLabel
+      scoreTextLabel.topAnchor.constraint(equalTo: scorePointsLabel.bottomAnchor),
+      scoreTextLabel.trailingAnchor.constraint(equalTo: scorePointsLabel.trailingAnchor),
+      scoreTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
     ])
   }
 }

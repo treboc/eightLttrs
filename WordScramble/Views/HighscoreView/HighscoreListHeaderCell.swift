@@ -32,7 +32,7 @@ class HighscoreListHeaderCell: UIView {
 
     rankLabel.text = "Rank"
     nameLabel.text = "Name"
-    scoreLabel.text = "Rank"
+    scoreLabel.text = "Score"
 
     stackView.axis = .horizontal
     stackView.spacing = 10
@@ -51,7 +51,7 @@ class HighscoreListHeaderCell: UIView {
     NSLayoutConstraint.activate([
       stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
       stackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
-      stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+      stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -35),
       stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
     ])
   }

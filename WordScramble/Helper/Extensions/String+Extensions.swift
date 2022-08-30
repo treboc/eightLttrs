@@ -15,7 +15,7 @@ extension String {
    - 4 points for the 5th,
    - 6 points for the 6th, etc.
    */
-  func calculateScore() -> Int {
+  func calculatedScore() -> Int {
     var score = 0
     var scoreMultiplier = 2
     var length = self.count
@@ -36,10 +36,11 @@ extension String {
     return score
   }
 
-  func allPossibleWords(basedOn list: Set<String>, with minStringLen: Int = 3) async -> (Set<String>, Int) {
-    let stringArray = self
+  func allPossibleWords(basedOn list: Set<String>,
+                        with minStringLen: Int = 3) async -> (Set<String>, Int) {
+    let string = self
       .map { String($0).lowercased() }
-    let permutedStringList = stringArray.permute(minStringLen: minStringLen)
+    let permutedStringList = string.permute(minStringLen: minStringLen)
 
     // iterate over the list passed in,
     // only keep the string permuted words
@@ -49,7 +50,7 @@ extension String {
       }
 
     let score = possibleWordsForString
-      .map { $0.calculateScore() }
+      .map { $0.calculatedScore() }
       .reduce(0, +)
 
     return (Set(possibleWordsForString), score)

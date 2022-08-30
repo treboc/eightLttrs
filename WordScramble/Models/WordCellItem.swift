@@ -13,7 +13,7 @@ struct WordCellItem: Hashable {
 
   init(word: String) {
     self.word = word
-    self.points = word.calculateScore()
+    self.points = word.calculatedScore()
   }
 
   var pointsImage: UIImage {
