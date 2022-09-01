@@ -104,21 +104,21 @@ extension MainView {
       submitButton.heightAnchor.constraint(equalToConstant: 40),
       submitButton.widthAnchor.constraint(equalTo: submitButton.heightAnchor),
 
-      numberOfWordsTitleLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
-      numberOfWordsTitleLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-      numberOfWordsTitleLabel.trailingAnchor.constraint(equalTo: currentScoreTitleLabel.leadingAnchor),
-
-      numberOfWordsBodyLabel.topAnchor.constraint(equalTo: currentScoreTitleLabel.bottomAnchor),
+      numberOfWordsBodyLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 24),
       numberOfWordsBodyLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
       numberOfWordsBodyLabel.trailingAnchor.constraint(equalTo: currentScoreBodyLabel.leadingAnchor),
 
-      currentScoreTitleLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 8),
-      currentScoreTitleLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
+      numberOfWordsTitleLabel.topAnchor.constraint(equalTo: numberOfWordsBodyLabel.bottomAnchor),
+      numberOfWordsTitleLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+      numberOfWordsTitleLabel.trailingAnchor.constraint(equalTo: currentScoreTitleLabel.leadingAnchor),
 
-      currentScoreBodyLabel.topAnchor.constraint(equalTo: currentScoreTitleLabel.bottomAnchor),
+      currentScoreBodyLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 24),
       currentScoreBodyLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
 
-      divider.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor, constant: 8),
+      currentScoreTitleLabel.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor),
+      currentScoreTitleLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
+
+      divider.topAnchor.constraint(equalTo: numberOfWordsTitleLabel.bottomAnchor, constant: 8),
       divider.widthAnchor.constraint(equalTo: widthAnchor),
       divider.centerXAnchor.constraint(equalTo: centerXAnchor),
       divider.heightAnchor.constraint(equalToConstant: 3),
