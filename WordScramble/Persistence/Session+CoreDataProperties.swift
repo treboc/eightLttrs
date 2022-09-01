@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Session: Identifiable {
   @nonobjc public class func fetchRequest() -> NSFetchRequest<Session> {
     return NSFetchRequest<Session>(entityName: "Score")

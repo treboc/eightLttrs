@@ -81,6 +81,7 @@ struct MenuView_SwiftUI: View {
       .navigationTitle(L10n.MenuView.title)
       .roundedNavigationTitle()
     }
+    .navigationViewStyle(.stack)
   }
 }
 
