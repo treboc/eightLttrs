@@ -15,13 +15,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var dataSource: UICollectionViewDiffableDataSource<Section, String>!
-  var cancellables = Set<AnyCancellable>()
-
-  var hasUsedWords: Bool = false
+  var gameServiceHasUsedWords: Bool = false
 
   var gameService: GameService
   var audioPlayer: AVAudioPlayer?
+  var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+  var cancellables = Set<AnyCancellable>()
 
   init(gameService: GameService) {
     self.gameService = gameService
@@ -41,7 +40,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
-    presentOnboardinIfIsFirstStart()
+    presentOnboarding()
 
     setupNavigationController()
     setupCollectionView()
@@ -123,18 +122,24 @@ extension MainViewController {
 
   private func setupActions() {
     self.hideKeyboardOnTap()
+
+    // SubmitActions
     mainView.textField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
+
+    // Right -> UIBarButtonItem
     let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
     navigationItem.rightBarButtonItem = menuButton
   }
 
+
+
   private func setupPublishers() {
     // Publisher -> updates title
-    gameService.$currentWord
-      .sink { [weak self] word in
-        self?.updateLabels(with: word)
+    gameService.$baseWord
+      .sink { [weak self] baseWord in
+        self?.didReceive(baseWord)
       }
       .store(in: &cancellables)
 
@@ -148,7 +153,7 @@ extension MainViewController {
     // Publisher -> updates left-side foundWordsLabels
     gameService.$usedWords
       .map { $0.count }
-      .combineLatest(gameService.$possibleWordsCount)
+      .combineLatest(gameService.$maxPossibleWordsForBaseWord)
       .receive(on: RunLoop.main)
       .sink { [weak self] (usedWordsCount, possibleWordsCount) in
         self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
@@ -156,8 +161,8 @@ extension MainViewController {
       .store(in: &cancellables)
 
     // Publisher -> updates right-side scoreLabels
-    gameService.$currentScore
-      .combineLatest(gameService.$possibleWordsScore)
+    gameService.$totalScore
+      .combineLatest(gameService.$maxPossibleScoreForBaseWord)
       .receive(on: RunLoop.main)
       .sink { [weak self] (currentScore, possibleScore) in
         self?.updateScoreLabel(with: currentScore, and: possibleScore)
@@ -167,11 +172,11 @@ extension MainViewController {
     // Publisher -> disables / enables "End Session" button in menu
     gameService.$usedWords
       .map { !$0.isEmpty }
-      .assign(to: \.hasUsedWords, on: self)
+      .assign(to: \.gameServiceHasUsedWords, on: self)
       .store(in: &cancellables)
   }
 
-  func presentAlertControllert(with alert: Alert) {
+  func presentWordError(with alert: WordErrorAlert) {
     let ac = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
     let defaultAction = UIAlertAction(title: "OK", style: .default)
     ac.addAction(defaultAction)
@@ -182,14 +187,14 @@ extension MainViewController {
     // Maybe looking up for another solution because this needs to be done
     // because this is not like typing or removing all characters 'by hand'..
     mainView.submitButton.isEnabled = false
-    mainView.textField.text?.removeAll()
+    mainView.clearTextField()
   }
 }
 
 // MARK: - Methods for Buttons
 extension MainViewController {
-  private func updateLabels(with word: String) {
-    self.title = word
+  private func didReceive(_ baseWord: String) {
+    self.title = baseWord
     mainView.clearTextField()
   }
 
@@ -201,6 +206,18 @@ extension MainViewController {
     mainView.numberOfWordsBodyLabel.text = "\(usedWordsCount) / \(possibleWordsCount)"
   }
 
+  // dismiss keyboard on tap anywhere outside the keyboard
+  fileprivate func hideKeyboardOnTap() {
+    let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+
+  @objc
+  fileprivate func hideKeyboard() {
+    view.endEditing(true)
+  }
+
   @objc
   private func showMenu() {
     let vc = UIHostingController(rootView: MenuView_SwiftUI(gameService: gameService))
@@ -208,19 +225,19 @@ extension MainViewController {
   }
 
   @objc
-  func submit() {
+  private func submit() {
     guard
-      let answer = mainView.textField.text,
-      !answer.isEmpty
+      let input = mainView.textField.text,
+      !input.isEmpty
     else { return }
     do {
-      try gameService.submitAnswerWith(answer, onCompletion: updateMainViewAfterSubmission)
+      try gameService.submit(input, onCompletion: updateMainViewAfterSubmission)
       HapticManager.shared.success()
       playSound(.success)
     } catch let error as WordError {
       HapticManager.shared.error()
       playSound(.error)
-      presentAlertControllert(with: error.alert)
+      presentWordError(with: error.alert)
     } catch {
       fatalError(error.localizedDescription)
     }
@@ -250,7 +267,7 @@ extension MainViewController: EndSessionDelegate {
   }
 
   func cancelButtonTapped() {
-    gameService.startGame()
+//    gameService.startGame()
   }
 
   private func setLastPlayersName(_ name: String) {
@@ -258,23 +275,13 @@ extension MainViewController: EndSessionDelegate {
   }
 }
 
-// MARK: - Handle dismiss keyboard on tap
 extension MainViewController {
-  fileprivate func hideKeyboardOnTap() {
-    let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-    tap.cancelsTouchesInView = false
-    view.addGestureRecognizer(tap)
-  }
 
-  @objc
-  fileprivate func hideKeyboard() {
-    view.endEditing(true)
-  }
 }
 
 // MARK: - Handle onboarding
 extension MainViewController {
-  private func presentOnboardinIfIsFirstStart() {
+  private func presentOnboarding() {
     if UserDefaults.standard.value(forKey: UserDefaultsKeys.isFirstStart) == nil {
       let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
       onboardingVC.modalPresentationStyle = .fullScreen

@@ -24,14 +24,14 @@ extension Session: Identifiable {
   }
 
   @NSManaged public var id: UUID?
-  @NSManaged public var word: String?
-  @NSManaged public var name: String?
+  @NSManaged public var baseWord: String?
+  @NSManaged public var playerName: String?
   @NSManaged public var startedAt: Date?
   @NSManaged public var timeElapsed: Double
   @NSManaged public var usedWords: [String]
-  @NSManaged public var possibleWords: [String]
-  @NSManaged public var possibleWordsCountIntern: Int16
-  @NSManaged public var possibleWordsScoreIntern: Int16
+  @NSManaged public var possibleWordsOnBaseWord: [String]
+  @NSManaged public var maxPossibleWordsOnBaseWordIntern: Int16
+  @NSManaged public var maxPossibleScoreOnBaseWordIntern: Int16
   @NSManaged public var isFinished: Bool
   @NSManaged public var localeIdentifier: String?
 }
@@ -45,7 +45,7 @@ extension Session {
   }
 
   var percentageWordsFound: Double {
-    return Double(usedWords.count) / Double(possibleWordsCount)
+    return Double(usedWords.count) / Double(maxPossibleWordsOnBaseWord)
   }
 
   var percentageWordsFoundString: String {
@@ -57,17 +57,17 @@ extension Session {
     if let string = formatter.string(from: percentageWordsFound as NSNumber) {
       return string
     }
-    return "0%"
+    return "0 %"
   }
 
   var unwrappedWord: String {
-    get { word ?? "Unknown Word" }
-    set { word = newValue }
+    get { baseWord ?? "Unknown Word" }
+    set { baseWord = newValue }
   }
 
   var unwrappedName: String {
-    get { name ?? "Unknown Name" }
-    set { name = newValue }
+    get { playerName ?? "Unknown Name" }
+    set { playerName = newValue }
   }
 
   var unwrappedStartedAt: Date {
@@ -75,13 +75,26 @@ extension Session {
     set { startedAt = newValue }
   }
 
-  var possibleWordsCount: Int {
-    get { Int(possibleWordsCountIntern) }
-    set { possibleWordsCountIntern = Int16(newValue) }
+  var maxPossibleWordsOnBaseWord: Int {
+    get { Int(maxPossibleWordsOnBaseWordIntern) }
+    set { maxPossibleWordsOnBaseWordIntern = Int16(newValue) }
   }
 
-  var possibleWordsScore: Int {
-    get { Int(possibleWordsScoreIntern) }
-    set { possibleWordsScoreIntern = Int16(newValue) }
+  var maxPossibleScoreOnBaseWord: Int {
+    get { Int(maxPossibleScoreOnBaseWordIntern) }
+    set { maxPossibleScoreOnBaseWordIntern = Int16(newValue) }
+  }
+
+
+  var locIdentifier: RegionBasedLocale {
+    get {
+      if let identifier = localeIdentifier {
+        return .init(rawValue: identifier) ?? .en
+      } else {
+        return .en
+      }
+    }
+
+    set { localeIdentifier = newValue.rawValue }
   }
 }

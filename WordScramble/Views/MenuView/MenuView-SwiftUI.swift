@@ -88,7 +88,7 @@ struct MenuView_SwiftUI: View {
 extension MenuView_SwiftUI {
   #if DEBUG
   private var allPossibleWordsSection_DEV: some View {
-    Section("Possible words for \(gameService.currentWord)") {
+    Section("Possible words for \(gameService.baseWord)") {
       List {
         ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
           HStack {

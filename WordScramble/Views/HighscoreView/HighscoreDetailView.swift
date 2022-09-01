@@ -31,7 +31,7 @@ struct HighscoreDetailView: View {
           Text("Score")
             .foregroundColor(.secondary)
           Spacer()
-          Text("\(session.score) / \(session.possibleWordsScore)")
+          Text("\(session.score) / \(session.maxPossibleScoreOnBaseWord)")
         }
       }
       

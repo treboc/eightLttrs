@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // We check the connectionOptions, they contain the urlContexts,
     // if the App was launched by clicking an AppLink
-    // If so and the word inside the link is a valid start word,
+    // If so and the baseWord inside the link is a valid start baseWord,
     // try to start the session
     if let context = connectionOptions.urlContexts.first,
        let word = extractStartWord(from: context) {
@@ -58,9 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
     
-    // check if there is currently a session with atleast one word
+    // check if there is currently a session with atleast one baseWord
     if let mainVC = getMainViewController(in: scene) {
-       if mainVC.hasUsedWords {
+       if mainVC.gameServiceHasUsedWords {
         // dismiss topViewController, to get present the Alert on the mainViewController
         (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
         // the "continue"-action
@@ -80,7 +80,7 @@ extension SceneDelegate {
   private func extractStartWord(from context: UIOpenURLContext) -> String? {
     guard
       let word = context.url.pathComponents[safe: 1],
-      GameService.isValidStartWord(word)
+      GameService.isValidBaseWord(word)
     else { return nil }
 
     return word

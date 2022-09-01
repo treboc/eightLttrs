@@ -12,7 +12,7 @@ class EndSessionView: UIView {
   /*
    Needed Views / Layout Ideas
    1. - Label for "Cogratulations! 🎉"
-   2. - Label below the first label, showing: current word, reached score and maybe number of found words
+   2. - Label below the first label, showing: current baseWord, reached score and maybe number of found words
    3. - textfield for name input
    4. - button to submit score
    -> after that, maybe an alert showing success of saving and giving possibility to share saved score

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Alert {
+struct WordErrorAlert {
   let title: String
   let message: String
 }
@@ -15,19 +15,19 @@ struct Alert {
 enum WordError: Error {
   case notReal, notOriginal, notPossible(word: String), tooShort
 
-  var alert: Alert {
+  var alert: WordErrorAlert {
     switch self {
     case .notReal:
-      return Alert(title: L10n.WordError.NotReal.title,
+      return WordErrorAlert(title: L10n.WordError.NotReal.title,
                    message: L10n.WordError.NotReal.message)
     case .notOriginal:
-      return Alert(title: L10n.WordError.NotOriginal.title,
+      return WordErrorAlert(title: L10n.WordError.NotOriginal.title,
                    message: L10n.WordError.NotOriginal.message)
     case .notPossible(let word):
-      return Alert(title: L10n.WordError.NotPossible.title,
+      return WordErrorAlert(title: L10n.WordError.NotPossible.title,
                    message: L10n.WordError.NotPossible.message(word))
     case .tooShort:
-      return Alert(title: L10n.WordError.TooShort.title,
+      return WordErrorAlert(title: L10n.WordError.TooShort.title,
                    message: L10n.WordError.TooShort.message)
     }
   }

@@ -53,7 +53,7 @@ class SessionService {
   }
 
   static func persistFinished(session: Session, forPlayer name: String) {
-    session.name = name
+    session.playerName = name
     session.isFinished = true
 
     do {

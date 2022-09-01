@@ -40,12 +40,12 @@ extension PersistenceStore {
     let store = PersistenceStore(inMemory: true)
     let session = Session(context: store.context)
     session.id = UUID()
-    session.name = "Brunhilde"
-    session.word = "Sandsack"
+    session.playerName = "Brunhilde"
+    session.baseWord = "Sandsack"
     session.usedWords = ["Sand", "Sack"]
-    session.possibleWords = Array(repeating: session.usedWords.randomElement()!, count: 62)
-    session.possibleWordsCount = 62
-    session.possibleWordsScore = 231
+    session.possibleWordsOnBaseWord = Array(repeating: session.usedWords.randomElement()!, count: 62)
+    session.maxPossibleWordsOnBaseWord = 62
+    session.maxPossibleScoreOnBaseWord = 231
     session.localeIdentifier = "DE"
     return store
   }()
