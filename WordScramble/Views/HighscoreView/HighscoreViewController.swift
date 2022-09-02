@@ -64,8 +64,9 @@ extension HighscoreViewController: UIActivityItemSource {
 
   private func shareHighscore(of session: Session) {
     if let word = session.unwrappedWord.addingPercentEncoding(withAllowedCharacters: .letters),
-       let url = URL(string: "wordscramble://baseWord/\(word)") {
-      metadata.originalURL = URL(string: "wordscramble://\(word)")
+       let locale = session.localeIdentifier,
+       let url = URL(string: "wordscramble://baseword/\(locale)/\(word)") {
+      metadata.originalURL = url
       metadata.url = metadata.originalURL
       metadata.title = "Try it yourself!"
       metadata.imageProvider = NSItemProvider.init(contentsOf: Bundle.main.url(forResource: "icon", withExtension: "jpg"))

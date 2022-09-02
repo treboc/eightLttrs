@@ -22,46 +22,43 @@ class GameService {
   @Published var maxPossibleScoreForBaseWord: Int = 0
   @Published var maxPossibleWordsForBaseWord: Int = 0
 
-  var usersLocale: RegionBasedLocale
+  var usersLocale: WSLocale
 
   init(lastSession: Session) {
     self.session = lastSession
     self.usersLocale = lastSession.locIdentifier
     loadWords(with: usersLocale)
-    startGame(with: lastSession)
+    startGame(with: session)
   }
 
   init(gameType: GameType? = .random) {
-    // check users region.. if it's at, ch or de -> use german start words
-    // if not, english
-    let locale = String(Locale.autoupdatingCurrent.identifier.suffix(2)).lowercased()
-    self.usersLocale = .init(rawValue: locale) ?? .en
+    self.usersLocale = .getStoredWSLocale()
     self.session = Session.newSession()
     loadWords(with: usersLocale)
 
     switch gameType {
     case .random:
-      startGame()
+      startRndWordSession()
     case .shared(let word):
-      startGame(with: word)
+      startNewSession(with: word)
     case .none:
       break
     }
   }
 
-
-
   func startGame(with session: Session) {
-    loadDataFrom(session)
+    getDataFrom(session)
     updateCurrentScore()
   }
 
-  private func loadDataFrom(_ session: Session) {
+  private func getDataFrom(_ session: Session) {
     guard
       session.possibleWordsOnBaseWord.count > 0,
       session.maxPossibleWordsOnBaseWord > 0,
       session.maxPossibleScoreOnBaseWord > 0
     else {
+      baseWord = session.unwrappedWord
+      usedWords = session.usedWords
       getAllPossibleWordsFor(baseWord, basedOn: possibleWords)
       return
     }
@@ -73,24 +70,38 @@ class GameService {
     usedWords = session.usedWords
   }
 
-  func startGame(with word: String) {
+  func startNewSession(with word: String) {
     baseWord = word
     getAllPossibleWordsFor(baseWord, basedOn: possibleWords)
     session = Session.newSession()
+    save(session)
     usedWords.removeAll()
   }
 
-  func startGame() {
+  private func checkLocale() {
+    if usersLocale != .getStoredWSLocale() {
+      usersLocale = .getStoredWSLocale()
+      loadWords(with: usersLocale)
+    }
+  }
+
+  #warning("find a better way than a closure to handle this!")
+  func startRndWordSession() {
+    checkLocale()
     guard let rndWord = baseWords.randomElement() else { return }
     baseWord = rndWord
-    getAllPossibleWordsFor(rndWord, basedOn: possibleWords)
-    session = Session.newSession()
-    usedWords.removeAll()
+    getAllPossibleWordsFor(rndWord, basedOn: possibleWords) { [weak self] in
+      guard let self = self else { return }
+      self.session = Session.newSession()
+      self.usedWords.removeAll()
+      self.updateCurrentScore()
+      self.save(self.session)
+    }
   }
 
   func endGame(playerName: String) {
     SessionService.persistFinished(session: session, forPlayer: playerName)
-    startGame()
+    startRndWordSession()
   }
 
   func submit(_ input: String, onCompletion: () -> Void) throws {
@@ -118,12 +129,13 @@ class GameService {
 
 // MARK: - Calculation of Scores
 extension GameService {
-  private func getAllPossibleWordsFor(_ word: String, basedOn list: Set<String>) {
+  private func getAllPossibleWordsFor(_ word: String, basedOn list: Set<String>, completion: (() -> Void)? = nil) {
     Task {
       let (words, score) = await word.allPossibleWords(basedOn: list)
       self.possibleWordsForCurrentWord = words
       self.maxPossibleScoreForBaseWord = score
       self.maxPossibleWordsForBaseWord = words.count
+      completion?()
     }
   }
 
@@ -163,7 +175,7 @@ extension GameService {
     }
   }
 
-  private func loadWords(with locale: RegionBasedLocale) {
+  private func loadWords(with locale: WSLocale) {
     // load possible words to check for
     if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(locale.fileNameSuffix).txt", withExtension: nil) {
       if let possibleWords = try? String(contentsOf: possibleWordsURL) {
@@ -180,10 +192,9 @@ extension GameService {
     }
   }
 
-  static func isValidBaseWord(_ word: String) -> Bool {
-    let localeIdentifier = String(Locale.autoupdatingCurrent.identifier.suffix(2)).uppercased()
+  static func isValidBaseWord(_ word: String, with locale: String) -> Bool {
     if
-      let startWordsURL = Bundle.main.url(forResource: "startWords\(localeIdentifier)", withExtension: "txt"),
+      let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.uppercased())", withExtension: "txt"),
       let startWords = try? String(contentsOf: startWordsURL),
       let decodedWord = word.removingPercentEncoding
     {
@@ -193,7 +204,7 @@ extension GameService {
     }
   }
 
-  static func isValidStartWord(_ word: String, in locale: RegionBasedLocale) -> Bool {
+  static func isValidStartWord(_ word: String, in locale: WSLocale) -> Bool {
     if
       let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.fileNameSuffix)", withExtension: "txt"),
       let startWords = try? String(contentsOf: startWordsURL),
@@ -204,7 +215,5 @@ extension GameService {
       return false
     }
   }
-
-
 }
 

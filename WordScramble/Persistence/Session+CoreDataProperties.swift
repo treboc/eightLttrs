@@ -85,12 +85,12 @@ extension Session {
   }
 
 
-  var locIdentifier: RegionBasedLocale {
+  var locIdentifier: WSLocale {
     get {
       if let identifier = localeIdentifier {
-        return .init(rawValue: identifier) ?? .en
+        return .init(rawValue: identifier) ?? .EN
       } else {
-        return .en
+        return .EN
       }
     }
 

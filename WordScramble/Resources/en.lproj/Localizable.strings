@@ -5,6 +5,12 @@
  Created by Marvin Lee Kobert on 18.08.22.
 
  */
+//
+"german" = "German";
+"english" = "English";
+"baseword" = "baseword";
+"basewords" = "basewords";
+"lastAdded" = "last added";
 
 // Onboarding
 "onboarding.firstPage.title" = "What's the game about?";
@@ -45,6 +51,10 @@
 // HighscoreView -> Sharing
 "highscoreView.shareScore.text" = "Hey look, I've scored %@ points on \"%@\"!\nTry it and see if you can beat this!";
 "highscoreView.title" = "Highscores";
+
+// Widgets
+"widget.wordsFound" = "Found %@ of %@ possible words.";
+"widget.noWords" = "No words found yet. What are you waiting for?";
 
 // Alerts
 "resetGameAlert.title" = "Are you sure?";

@@ -11,9 +11,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+    // german for de/at/ch, else en
+    let wsLocale = WSLocale.wsLocaleBasedOnRegion()
+
+    if WSLocale.regionHasChanged() {
+      // show it, e.g. make possible to load locale based on user pref
+      // currently just persist new region
+      print("Region has changed!")
+    }
+
     // register settings
     UserDefaults.standard.register(
       defaults: [
+        UserDefaultsKeys.regionCode: wsLocale.rawValue,
         UserDefaultsKeys.enabledVibration: true,
         UserDefaultsKeys.enabledSound: true,
       ]

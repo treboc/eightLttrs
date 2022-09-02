@@ -3,17 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A126EE828BEB0E000DB4AB4 /* RegionBasedLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A126EE728BEB0E000DB4AB4 /* RegionBasedLocale.swift */; };
-		8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */; };
+		8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentSession.swift */; };
+		8A01FED928C272ED0071978F /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentSession.swift */; };
+		8A01FEE328C290190071978F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A01FEE128C290190071978F /* Assets.xcassets */; };
 		8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */; };
-		8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79D928ACD4A60058A272 /* MenuViewController.swift */; };
-		8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DB28ACD4D30058A272 /* MenuView.swift */; };
 		8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
-		8A45C1DE28BB909500A136CC /* MenuView-SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DD28BB909500A136CC /* MenuView-SwiftUI.swift */; };
+		8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DD28BB909500A136CC /* MenuView.swift */; };
 		8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */; };
 		8A45C1E328BBC30700A136CC /* ViewModfifier-PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */; };
 		8A45C1E528BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */; };
@@ -24,15 +23,10 @@
 		8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8B28BC34F800B643D1 /* SoundType.swift */; };
 		8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703C828A9A77000BBF5F1 /* MainView.swift */; };
 		8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
-		8A6A3B8628C09FEF00A409E3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
-		8A6A3B8828C09FEF00A409E3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */; };
-		8A6A3B8B28C09FEF00A409E3 /* WordScrambleWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A3B8A28C09FEF00A409E3 /* WordScrambleWidgets.swift */; };
-		8A6A3B8D28C09FF000A409E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A3B8C28C09FF000A409E3 /* Assets.xcassets */; };
-		8A6A3B9128C09FF000A409E3 /* WordScrambleWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A6A3B8328C09FEF00A409E3 /* WordScrambleWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */; };
-		8A73D73328C0DBD6000F81CA /* basewordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A73D73028C0DBD6000F81CA /* basewordsEN.txt */; };
-		8A73D73428C0DBD6000F81CA /* basewordsDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A73D73128C0DBD6000F81CA /* basewordsDE.txt */; };
 		8A73D73528C0DBD6000F81CA /* allWords8LettersDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A73D73228C0DBD6000F81CA /* allWords8LettersDE.txt */; };
+		8A73D73828C0DE3F000F81CA /* startWordsDE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A73D73628C0DE3F000F81CA /* startWordsDE.txt */; };
+		8A73D73928C0DE3F000F81CA /* startWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A73D73728C0DE3F000F81CA /* startWordsEN.txt */; };
 		8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3A428AE5C2900DFA6D5 /* WordError.swift */; };
 		8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3B028AE928C00DFA6D5 /* OnboardingPageViewController.swift */; };
 		8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */; };
@@ -49,8 +43,22 @@
 		8A87111A28B2BF5A004F299F /* EndSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111928B2BF5A004F299F /* EndSessionViewController.swift */; };
 		8A87111C28B2BF62004F299F /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111B28B2BF62004F299F /* EndSessionView.swift */; };
 		8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
-		8A99A31A28B4A83D00E5ABBF /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A31928B4A83D00E5ABBF /* WordCell.swift */; };
-		8A99A31D28B5210300E5ABBF /* WordCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A31C28B5210300E5ABBF /* WordCellItem.swift */; };
+		8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */; };
+		8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */; };
+		8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
+		8A92030028C2657A008AF8EA /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111428B28322004F299F /* Session+CoreDataProperties.swift */; };
+		8A92030128C2657A008AF8EA /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110D28B281C5004F299F /* PersistenceStore.swift */; };
+		8A92030228C2657A008AF8EA /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
+		8A92030328C2657A008AF8EA /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111328B28322004F299F /* Session+CoreDataClass.swift */; };
+		8A92030428C2657E008AF8EA /* WordScramble.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111028B28216004F299F /* WordScramble.xcdatamodeld */; };
+		8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
+		8A92030628C26673008AF8EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
+		8A92030728C26690008AF8EA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+Extensions.swift */; };
+		8A92030828C26699008AF8EA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF524F28BAD985008728BB /* Array+Extensions.swift */; };
+		8A92030928C26699008AF8EA /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A612D28BD406600EA126A /* Collection+Extensions.swift */; };
+		8A92030A28C26783008AF8EA /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */; };
+		8A92030B28C26786008AF8EA /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
+		8A92030C28C26789008AF8EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */; };
 		8A99A32128B524DC00E5ABBF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+Extensions.swift */; };
 		8A99A32328B5255400E5ABBF /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */; };
 		8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32428B5256800E5ABBF /* HighscoreView.swift */; };
@@ -58,7 +66,16 @@
 		8A99A32A28B5327400E5ABBF /* HighscoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32928B5327400E5ABBF /* HighscoreCell.swift */; };
 		8A99A32C28B552F900E5ABBF /* HighscoreListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */; };
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
+		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
+		8ABED74828C1E333003457FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */; };
+		8ABED74B28C1E333003457FD /* WordScrambleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED74A28C1E333003457FD /* WordScrambleWidget.swift */; };
+		8ABED75128C1E333003457FD /* WordScrambleWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8ABED75628C1E458003457FD /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75528C1E458003457FD /* Provider.swift */; };
+		8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75728C1E471003457FD /* SimpleEntry.swift */; };
+		8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75928C1E4AA003457FD /* WidgetView.swift */; };
+		8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75B28C1E65D003457FD /* MediumSizeView.swift */; };
 		8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFC55D28B6162500ACC064 /* HapticsManager.swift */; };
+		8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */; };
 		8ACF525028BAD985008728BB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF524F28BAD985008728BB /* Array+Extensions.swift */; };
 		8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9610A28B3C9B600F443FB /* BasicTextField.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
@@ -74,12 +91,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8A6A3B8F28C09FF000A409E3 /* PBXContainerItemProxy */ = {
+		8ABED74F28C1E333003457FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8ADAB26528A5911C0083E028 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8A6A3B8228C09FEF00A409E3;
-			remoteInfo = WordScrambleWidgetsExtension;
+			remoteGlobalIDString = 8ABED74528C1E332003457FD;
+			remoteInfo = WordScrambleWidgetExtension;
 		};
 		8ADAB28428A5911D0083E028 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -104,7 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8A6A3B9128C09FF000A409E3 /* WordScrambleWidgetsExtension.appex in Embed Foundation Extensions */,
+				8ABED75128C1E333003457FD /* WordScrambleWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,13 +129,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A126EE728BEB0E000DB4AB4 /* RegionBasedLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBasedLocale.swift; sourceTree = "<group>"; };
-		8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "wordlist-german.txt"; sourceTree = "<group>"; };
+		8A01FED528C26D940071978F /* WordScramble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WordScramble.entitlements; sourceTree = "<group>"; };
+		8A01FED728C2706A0071978F /* CurrentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
+		8A01FEE128C290190071978F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersEN.txt; sourceTree = "<group>"; };
-		8A3F79D928ACD4A60058A272 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		8A3F79DB28ACD4D30058A272 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A3F79DD28ACE42C0058A272 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
-		8A45C1DD28BB909500A136CC /* MenuView-SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuView-SwiftUI.swift"; sourceTree = "<group>"; };
+		8A45C1DD28BB909500A136CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedNavigationTitle-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModfifier-PresentAlert.swift"; sourceTree = "<group>"; };
 		8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionViewControllerRepresentable.swift; sourceTree = "<group>"; };
@@ -129,16 +145,12 @@
 		8A4C4C8B28BC34F800B643D1 /* SoundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundType.swift; sourceTree = "<group>"; };
 		8A6703C828A9A77000BBF5F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6703CA28A9B32900BBF5F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8A6A3B8328C09FEF00A409E3 /* WordScrambleWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordScrambleWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8A6A3B8A28C09FEF00A409E3 /* WordScrambleWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleWidgets.swift; sourceTree = "<group>"; };
-		8A6A3B8C28C09FF000A409E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A6A3B8E28C09FF000A409E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A70BEBF28AB7C4000455FF1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		8A73D73028C0DBD6000F81CA /* basewordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basewordsEN.txt; sourceTree = "<group>"; };
-		8A73D73128C0DBD6000F81CA /* basewordsDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basewordsDE.txt; sourceTree = "<group>"; };
 		8A73D73228C0DBD6000F81CA /* allWords8LettersDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersDE.txt; sourceTree = "<group>"; };
+		8A73D73628C0DE3F000F81CA /* startWordsDE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsDE.txt; sourceTree = "<group>"; };
+		8A73D73728C0DE3F000F81CA /* startWordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startWordsEN.txt; sourceTree = "<group>"; };
 		8A78F3A428AE5C2900DFA6D5 /* WordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordError.swift; sourceTree = "<group>"; };
 		8A78F3B028AE928C00DFA6D5 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		8A78F3B828AEBD6A00DFA6D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -157,8 +169,9 @@
 		8A87111B28B2BF62004F299F /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
 		8A87CC4128B4185900A9643B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		8A87CC4228B4185900A9643B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		8A99A31928B4A83D00E5ABBF /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
-		8A99A31C28B5210300E5ABBF /* WordCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCellItem.swift; sourceTree = "<group>"; };
+		8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSizeView.swift; sourceTree = "<group>"; };
+		8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		8A9202FE28C217F5008AF8EA /* WSLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSLocale.swift; sourceTree = "<group>"; };
 		8A99A32028B524DC00E5ABBF /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
 		8A99A32428B5256800E5ABBF /* HighscoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreView.swift; sourceTree = "<group>"; };
@@ -166,7 +179,15 @@
 		8A99A32928B5327400E5ABBF /* HighscoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreCell.swift; sourceTree = "<group>"; };
 		8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListHeaderCell.swift; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordScrambleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ABED74A28C1E333003457FD /* WordScrambleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleWidget.swift; sourceTree = "<group>"; };
+		8ABED74E28C1E333003457FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ABED75528C1E458003457FD /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		8ABED75728C1E471003457FD /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
+		8ABED75928C1E4AA003457FD /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		8ABED75B28C1E65D003457FD /* MediumSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSizeView.swift; sourceTree = "<group>"; };
 		8ABFC55D28B6162500ACC064 /* HapticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment+Extension.swift"; sourceTree = "<group>"; };
 		8ACF524F28BAD985008728BB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		8AD9610A28B3C9B600F443FB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,12 +207,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8A6A3B8028C09FEF00A409E3 /* Frameworks */ = {
+		8ABED74328C1E332003457FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6A3B8828C09FEF00A409E3 /* SwiftUI.framework in Frameworks */,
-				8A6A3B8628C09FEF00A409E3 /* WidgetKit.framework in Frameworks */,
+				8ABED74828C1E333003457FD /* SwiftUI.framework in Frameworks */,
+				8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,11 +247,11 @@
 				8ADAB2A428A5941B0083E028 /* GameService.swift */,
 				8A794FDA28B938E700BC9CE5 /* GameServiceProtocol.swift */,
 				8A78F3A428AE5C2900DFA6D5 /* WordError.swift */,
+				8A9202FE28C217F5008AF8EA /* WSLocale.swift */,
+				8A73D73628C0DE3F000F81CA /* startWordsDE.txt */,
+				8A73D73728C0DE3F000F81CA /* startWordsEN.txt */,
 				8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */,
 				8A73D73228C0DBD6000F81CA /* allWords8LettersDE.txt */,
-				8A73D73128C0DBD6000F81CA /* basewordsDE.txt */,
-				8A73D73028C0DBD6000F81CA /* basewordsEN.txt */,
-				8A3F79CD28AC4E7F0058A272 /* wordlist-german.txt */,
 			);
 			path = GameService;
 			sourceTree = "<group>";
@@ -238,9 +259,7 @@
 		8A3F79D828ACD4940058A272 /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
-				8A3F79D928ACD4A60058A272 /* MenuViewController.swift */,
-				8A45C1DD28BB909500A136CC /* MenuView-SwiftUI.swift */,
-				8A3F79DB28ACD4D30058A272 /* MenuView.swift */,
+				8A45C1DD28BB909500A136CC /* MenuView.swift */,
 				8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */,
 			);
 			path = MenuView;
@@ -272,16 +291,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8A6A3B8928C09FEF00A409E3 /* WordScrambleWidgets */ = {
-			isa = PBXGroup;
-			children = (
-				8A6A3B8A28C09FEF00A409E3 /* WordScrambleWidgets.swift */,
-				8A6A3B8C28C09FF000A409E3 /* Assets.xcassets */,
-				8A6A3B8E28C09FF000A409E3 /* Info.plist */,
-			);
-			path = WordScrambleWidgets;
-			sourceTree = "<group>";
-		};
 		8A70BEC128AB7C4300455FF1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +318,6 @@
 			children = (
 				8ADAB27428A5911C0083E028 /* MainViewController.swift */,
 				8A6703C828A9A77000BBF5F1 /* MainView.swift */,
-				8A99A31928B4A83D00E5ABBF /* WordCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -352,6 +360,7 @@
 				8A87111328B28322004F299F /* Session+CoreDataClass.swift */,
 				8A87111428B28322004F299F /* Session+CoreDataProperties.swift */,
 				8A87111028B28216004F299F /* WordScramble.xcdatamodeld */,
+				8A01FED728C2706A0071978F /* CurrentSession.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -381,10 +390,8 @@
 		8A99A31B28B520EF00E5ABBF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A99A31C28B5210300E5ABBF /* WordCellItem.swift */,
 				8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */,
 				8A4C4C8B28BC34F800B643D1 /* SoundType.swift */,
-				8A126EE728BEB0E000DB4AB4 /* RegionBasedLocale.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,15 +409,48 @@
 		8A99A32628B5257000E5ABBF /* HighscoreView */ = {
 			isa = PBXGroup;
 			children = (
-				8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */,
+				8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */,
 				8A99A32428B5256800E5ABBF /* HighscoreView.swift */,
 				8A99A32928B5327400E5ABBF /* HighscoreCell.swift */,
 				8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */,
-				8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */,
 				8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */,
+				8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */,
 				8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */,
 			);
 			path = HighscoreView;
+			sourceTree = "<group>";
+		};
+		8ABED74928C1E333003457FD /* WordScrambleWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8ABED74A28C1E333003457FD /* WordScrambleWidget.swift */,
+				8ABED75F28C1E66C003457FD /* Views */,
+				8ABED75728C1E471003457FD /* SimpleEntry.swift */,
+				8AC3AAB828C1F351004C355A /* Extensions */,
+				8ABED75528C1E458003457FD /* Provider.swift */,
+				8ABED74E28C1E333003457FD /* Info.plist */,
+				8A01FEE128C290190071978F /* Assets.xcassets */,
+			);
+			path = WordScrambleWidget;
+			sourceTree = "<group>";
+		};
+		8ABED75F28C1E66C003457FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8ABED75928C1E4AA003457FD /* WidgetView.swift */,
+				8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */,
+				8ABED75B28C1E65D003457FD /* MediumSizeView.swift */,
+				8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8AC3AAB828C1F351004C355A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8ADAB26428A5911C0083E028 = {
@@ -419,7 +459,7 @@
 				8ADAB26F28A5911C0083E028 /* WordScramble */,
 				8ADAB28628A5911D0083E028 /* WordScrambleTests */,
 				8ADAB29028A5911D0083E028 /* WordScrambleUITests */,
-				8A6A3B8928C09FEF00A409E3 /* WordScrambleWidgets */,
+				8ABED74928C1E333003457FD /* WordScrambleWidget */,
 				8A6A3B8428C09FEF00A409E3 /* Frameworks */,
 				8ADAB26E28A5911C0083E028 /* Products */,
 			);
@@ -431,7 +471,7 @@
 				8ADAB26D28A5911C0083E028 /* WordScramble.app */,
 				8ADAB28328A5911D0083E028 /* WordScrambleTests.xctest */,
 				8ADAB28D28A5911D0083E028 /* WordScrambleUITests.xctest */,
-				8A6A3B8328C09FEF00A409E3 /* WordScrambleWidgetsExtension.appex */,
+				8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -439,6 +479,7 @@
 		8ADAB26F28A5911C0083E028 /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				8A01FED528C26D940071978F /* WordScramble.entitlements */,
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
 				8A99A31B28B520EF00E5ABBF /* Models */,
@@ -473,21 +514,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8A6A3B8228C09FEF00A409E3 /* WordScrambleWidgetsExtension */ = {
+		8ABED74528C1E332003457FD /* WordScrambleWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A6A3B9528C09FF000A409E3 /* Build configuration list for PBXNativeTarget "WordScrambleWidgetsExtension" */;
+			buildConfigurationList = 8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "WordScrambleWidgetExtension" */;
 			buildPhases = (
-				8A6A3B7F28C09FEF00A409E3 /* Sources */,
-				8A6A3B8028C09FEF00A409E3 /* Frameworks */,
-				8A6A3B8128C09FEF00A409E3 /* Resources */,
+				8ABED74228C1E332003457FD /* Sources */,
+				8ABED74328C1E332003457FD /* Frameworks */,
+				8ABED74428C1E332003457FD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = WordScrambleWidgetsExtension;
-			productName = WordScrambleWidgetsExtension;
-			productReference = 8A6A3B8328C09FEF00A409E3 /* WordScrambleWidgetsExtension.appex */;
+			name = WordScrambleWidgetExtension;
+			productName = WordScrambleWidgetExtension;
+			productReference = 8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		8ADAB26C28A5911C0083E028 /* WordScramble */ = {
@@ -502,7 +543,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8A6A3B9028C09FF000A409E3 /* PBXTargetDependency */,
+				8ABED75028C1E333003457FD /* PBXTargetDependency */,
 			);
 			name = WordScramble;
 			productName = WordScramble;
@@ -555,7 +596,7 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					8A6A3B8228C09FEF00A409E3 = {
+					8ABED74528C1E332003457FD = {
 						CreatedOnToolsVersion = 14.0;
 					};
 					8ADAB26C28A5911C0083E028 = {
@@ -572,7 +613,7 @@
 				};
 			};
 			buildConfigurationList = 8ADAB26828A5911C0083E028 /* Build configuration list for PBXProject "WordScramble" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -588,17 +629,19 @@
 				8ADAB26C28A5911C0083E028 /* WordScramble */,
 				8ADAB28228A5911D0083E028 /* WordScrambleTests */,
 				8ADAB28C28A5911D0083E028 /* WordScrambleUITests */,
-				8A6A3B8228C09FEF00A409E3 /* WordScrambleWidgetsExtension */,
+				8ABED74528C1E332003457FD /* WordScrambleWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8A6A3B8128C09FEF00A409E3 /* Resources */ = {
+		8ABED74428C1E332003457FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6A3B8D28C09FF000A409E3 /* Assets.xcassets in Resources */,
+				8A92030C28C26789008AF8EA /* Localizable.strings in Resources */,
+				8A01FEE328C290190071978F /* Assets.xcassets in Resources */,
+				8A92030B28C26786008AF8EA /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,14 +651,13 @@
 			files = (
 				8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */,
 				8A73D73528C0DBD6000F81CA /* allWords8LettersDE.txt in Resources */,
-				8A3F79CF28AC4E7F0058A272 /* wordlist-german.txt in Resources */,
-				8A73D73428C0DBD6000F81CA /* basewordsDE.txt in Resources */,
 				8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */,
+				8A73D73828C0DE3F000F81CA /* startWordsDE.txt in Resources */,
 				8A4C4C8828BC327F00B643D1 /* success.wav in Resources */,
 				8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */,
+				8A73D73928C0DE3F000F81CA /* startWordsEN.txt in Resources */,
 				8A4C4C8928BC327F00B643D1 /* error.wav in Resources */,
 				8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */,
-				8A73D73328C0DBD6000F81CA /* basewordsEN.txt in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,11 +679,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8A6A3B7F28C09FEF00A409E3 /* Sources */ = {
+		8ABED74228C1E332003457FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6A3B8B28C09FEF00A409E3 /* WordScrambleWidgets.swift in Sources */,
+				8A92030028C2657A008AF8EA /* Session+CoreDataProperties.swift in Sources */,
+				8ABED75628C1E458003457FD /* Provider.swift in Sources */,
+				8A92030328C2657A008AF8EA /* Session+CoreDataClass.swift in Sources */,
+				8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */,
+				8A92030728C26690008AF8EA /* String+Extensions.swift in Sources */,
+				8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */,
+				8A01FED928C272ED0071978F /* CurrentSession.swift in Sources */,
+				8A92030628C26673008AF8EA /* Constants.swift in Sources */,
+				8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */,
+				8A92030828C26699008AF8EA /* Array+Extensions.swift in Sources */,
+				8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */,
+				8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */,
+				8A92030228C2657A008AF8EA /* SessionService.swift in Sources */,
+				8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */,
+				8A92030128C2657A008AF8EA /* PersistenceStore.swift in Sources */,
+				8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */,
+				8A92030428C2657E008AF8EA /* WordScramble.xcdatamodeld in Sources */,
+				8ABED74B28C1E333003457FD /* WordScrambleWidget.swift in Sources */,
+				8A92030928C26699008AF8EA /* Collection+Extensions.swift in Sources */,
+				8A92030A28C26783008AF8EA /* L10n.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,31 +716,28 @@
 				8A99A32828B530BA00E5ABBF /* HighscoreCellItem.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
 				8A85AD2B28BDF3AF007FF4BF /* Divider.swift in Sources */,
-				8A126EE828BEB0E000DB4AB4 /* RegionBasedLocale.swift in Sources */,
-				8A45C1DE28BB909500A136CC /* MenuView-SwiftUI.swift in Sources */,
+				8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */,
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */,
+				8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */,
 				8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */,
 				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8A4A612E28BD406600EA126A /* Collection+Extensions.swift in Sources */,
-				8A3F79DA28ACD4A60058A272 /* MenuViewController.swift in Sources */,
 				8A87111628B28322004F299F /* Session+CoreDataProperties.swift in Sources */,
 				8A794FDB28B938E700BC9CE5 /* GameServiceProtocol.swift in Sources */,
-				8A3F79DC28ACD4D30058A272 /* MenuView.swift in Sources */,
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
 				8A99A32328B5255400E5ABBF /* HighscoreViewController.swift in Sources */,
 				8A87111528B28322004F299F /* Session+CoreDataClass.swift in Sources */,
 				8A45C1E728BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,
-				8A99A31D28B5210300E5ABBF /* WordCellItem.swift in Sources */,
-				8A99A31A28B4A83D00E5ABBF /* WordCell.swift in Sources */,
 				8A87111228B28216004F299F /* WordScramble.xcdatamodeld in Sources */,
 				8A99A32128B524DC00E5ABBF /* String+Extensions.swift in Sources */,
 				8A99A32A28B5327400E5ABBF /* HighscoreCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
+				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
 				8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
@@ -717,10 +775,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A6A3B9028C09FF000A409E3 /* PBXTargetDependency */ = {
+		8ABED75028C1E333003457FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A6A3B8228C09FEF00A409E3 /* WordScrambleWidgetsExtension */;
-			targetProxy = 8A6A3B8F28C09FF000A409E3 /* PBXContainerItemProxy */;
+			target = 8ABED74528C1E332003457FD /* WordScrambleWidgetExtension */;
+			targetProxy = 8ABED74F28C1E333003457FD /* PBXContainerItemProxy */;
 		};
 		8ADAB28528A5911D0083E028 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -756,17 +814,18 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8A6A3B9328C09FF000A409E3 /* Debug */ = {
+		8ABED75328C1E333003457FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WordScrambleWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WordScrambleWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidgets;
+				INFOPLIST_FILE = WordScrambleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -775,7 +834,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScramble.WordScrambleWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScramble.WordScrambleWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -784,17 +843,18 @@
 			};
 			name = Debug;
 		};
-		8A6A3B9428C09FF000A409E3 /* Release */ = {
+		8ABED75428C1E333003457FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WordScrambleWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WordScrambleWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidgets;
+				INFOPLIST_FILE = WordScrambleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -803,7 +863,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScramble.WordScrambleWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScramble.WordScrambleWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -816,6 +876,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -877,6 +938,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -935,6 +997,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = WordScramble/WordScramble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
@@ -969,6 +1032,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = WordScramble/WordScramble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
@@ -1075,11 +1139,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A6A3B9528C09FF000A409E3 /* Build configuration list for PBXNativeTarget "WordScrambleWidgetsExtension" */ = {
+		8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "WordScrambleWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A6A3B9328C09FF000A409E3 /* Debug */,
-				8A6A3B9428C09FF000A409E3 /* Release */,
+				8ABED75328C1E333003457FD /* Debug */,
+				8ABED75428C1E333003457FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

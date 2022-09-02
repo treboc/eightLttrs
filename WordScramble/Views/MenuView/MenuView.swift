@@ -2,74 +2,149 @@
 //  MenuView.swift
 //  WordScramble
 //
-//  Created by Marvin Lee Kobert on 17.08.22.
-//
 
 import UIKit
+import SwiftUI
 
-class MenuView: UIView {
-  /*
-   1. Reset Session Button
-   2. End Session Button
-   3. Show Highscores Button
-   */
-
-  private let stackView = UIStackView()
-  private let tableView = UITableView()
-
-  let restartSessionButton = UIButton()
-  let endSessionButton = UIButton()
-  let showHighscoreButton = UIButton()
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setupViews()
-    setupLayout()
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+struct AlertToPresent {
+  let title: String
+  let message: String
+  let primaryActionTitle: String = L10n.ButtonTitle.imSure
+  let primaryAction: () -> Void
 }
 
-extension MenuView {
-  private func setupViews() {
-    // Buttons
-    var buttonConfiguration = UIButton.Configuration.borderedProminent()
-    buttonConfiguration.buttonSize = .large
-    buttonConfiguration.cornerStyle = .large
-    buttonConfiguration.baseForegroundColor = .systemBackground
+struct MenuView: View {
+  // Properties
+  let gameService: GameService
+  @Environment(\.dismiss) private var dismiss
 
-    let buttons = [restartSessionButton, endSessionButton, showHighscoreButton]
-    buttons.forEach { $0.configuration = buttonConfiguration }
+  // UserDefaults
+  @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
+  @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
+  @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: WSLocale = .DE
 
-    restartSessionButton.setTitle(L10n.MenuView.restartSession, for: .normal)
-    endSessionButton.setTitle(L10n.MenuView.endSession, for: .normal)
-    showHighscoreButton.setTitle(L10n.MenuView.showHighscore, for: .normal)
+  @State private var alertModel: AlertToPresent? = nil
+  @State private var endGameViewIsShown: Bool = false
 
-    // StackView
-    stackView.axis = .vertical
-    stackView.alignment = .center
-    stackView.spacing = 20
-    stackView.translatesAutoresizingMaskIntoConstraints = false
+  var body: some View {
+    NavigationView {
+      Form {
+        Section {
+          Button(L10n.MenuView.restartSession, action: restartSession)
 
-    self.backgroundColor = .systemBackground
-  }
+          Button(L10n.MenuView.endSession, action: endSession)
+            .disabled(gameService.usedWords.isEmpty)
 
-  private func setupLayout() {
-    let views = [restartSessionButton, endSessionButton, showHighscoreButton]
-    views.forEach {
-      stackView.addArrangedSubview($0)
-      $0.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.6).isActive = true
-      $0.heightAnchor.constraint(greaterThanOrEqualToConstant: 45).isActive = true
+          NavigationLink(L10n.MenuView.showHighscore) {
+            HighscoresViewRepresentable()
+              .navigationTitle("Highscores")
+          }
+          .buttonStyle(.borderedProminent)
+        }
+
+        Section("Settings") {
+          Picker(selection: $chosenBasewordLocale) {
+            ForEach(WSLocale.availableLanguages()) { locale in
+              Text(locale.description)
+                .tag(locale)
+            }
+          } label: {
+            Label(L10n.basewords, systemImage: "book.circle")
+              .labelStyle(.titleAndIcon)
+          }
+
+          Toggle(isOn: $enabledVibration) {
+            Label("Vibration", systemImage: "waveform.circle")
+              .labelStyle(.titleAndIcon)
+          }
+
+          Toggle(isOn: $enabledSound) {
+            Label("Sound", systemImage: enabledSound ? "speaker.circle" : "speaker.slash.circle")
+              .animation(.default, value: enabledSound)
+              .labelStyle(.titleAndIcon)
+          }
+        }
+        .tint(.accentColor)
+
+        #if DEBUG
+        Section("Development") {
+          Button("Reset first start") { UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart) }
+        }
+
+        allPossibleWordsSection_DEV
+
+        #endif
+      }
+      .sheet(isPresented: $endGameViewIsShown, onDismiss: endGameViewDismissed) {
+        EndSessionViewControllerRepresentable(gameService: gameService)
+      }
+      .toolbar {
+        ToolbarItem {
+          Button(action: dismiss.callAsFunction) {
+            Label("Close", systemImage: "x.circle.fill")
+              .foregroundColor(.accentColor)
+          }
+        }
+      }
+      .presentAlert(with: $alertModel)
+      .navigationTitle(L10n.MenuView.title)
+      .roundedNavigationTitle()
     }
-
-    addSubview(stackView)
-
-    NSLayoutConstraint.activate([
-      stackView.widthAnchor.constraint(equalTo: widthAnchor),
-      stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-    ])
+    .navigationViewStyle(.stack)
   }
 }
+
+// MARK: - Views
+extension MenuView {
+  #if DEBUG
+  private var allPossibleWordsSection_DEV: some View {
+    Section("Possible words for \(gameService.baseWord)") {
+      List {
+        ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
+          HStack {
+            Text(word)
+              .strikethrough(gameService.usedWords.contains(word), color: .accentColor)
+
+            Spacer()
+
+            gameService.usedWords.contains(word)
+            ? Image(systemName: "checkmark.circle")
+            : Image(systemName: "circle")
+          }
+        }
+      }
+    }
+  }
+  #endif
+}
+
+// MARK: - Methods
+extension MenuView {
+  private func restartSession() {
+    if !gameService.usedWords.isEmpty {
+      self.alertModel = AlertToPresent(title: L10n.ResetGameAlert.title,
+                                       message: L10n.ResetGameAlert.message) {
+        gameService.startRndWordSession()
+        dismiss.callAsFunction()
+      }
+    } else {
+      gameService.startRndWordSession()
+      dismiss.callAsFunction()
+    }
+  }
+
+  private func endSession() {
+    self.alertModel = AlertToPresent(title: L10n.EndGameAlert.title,
+                                     message: L10n.EndGameAlert.message) {
+      endGameViewIsShown.toggle()
+    }
+  }
+
+  private func endGameViewDismissed() {
+    dismiss.callAsFunction()
+    gameService.startRndWordSession()
+  }
+}
+
+
+

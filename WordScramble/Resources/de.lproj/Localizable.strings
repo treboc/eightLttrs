@@ -5,6 +5,12 @@
   Created by Marvin Lee Kobert on 18.08.22.
   
 */
+//
+"german" = "Deutsch";
+"english" = "Englisch";
+"baseword" = "Grundwort";
+"basewords" = "Grundwörter";
+"lastAdded" = "zuletzt hinzugefügt";
 
 // Onboarding
 "onboarding.firstPage.title" = "Worum geht's?";
@@ -46,6 +52,10 @@
 // HighscoreView -> Sharing
 "highscoreView.shareScore.text" = "Hey schau' mal! Ich habe %@ Punkte bei \"%@\" erreicht!\nVersuch es auch, und sieh ob du es besser kannst!";
 "highscoreView.title" = "Highscores";
+
+// Widgets
+"widget.wordsFound" = "%@ von %@ möglichen Wörtern gefunden.";
+"widget.noWords" = "Noch kein Wort gefunden. Worauf wartest du?";
 
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";

@@ -70305,10 +70305,6 @@ Negativ
 negative
 Negative
 Negativs
-Neger
-Negerin
-Negern
-Negers
 Negev
 negiere
 Negiere
@@ -71135,9 +71131,6 @@ Niger
 Nigeria
 Nigerias
 Nigers
-Nigger
-Niggern
-Niggers
 Nihilist
 Nijmegen
 Nike
@@ -71505,7 +71498,6 @@ Norwegen
 Norweger
 Norwich
 not
-Not
 Not
 Notabeln
 notabene

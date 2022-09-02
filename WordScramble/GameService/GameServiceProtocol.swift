@@ -30,5 +30,4 @@ protocol GameServiceProtocol {
 
   func check(_ word: String) throws
   func submitAnswerWith(_ word: String, onCompletion: () -> Void) throws
-  func getWordCellItem(at indexPath: IndexPath) -> WordCellItem
 }

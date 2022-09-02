@@ -83,7 +83,7 @@ extension MainViewController: UICollectionViewDelegate {
       return cell
     }
 
-    mainView.collectionView.keyboardDismissMode = .interactiveWithAccessory
+    mainView.collectionView.keyboardDismissMode = .onDrag
   }
 
   // Update cells using snapshot
@@ -132,8 +132,6 @@ extension MainViewController {
     menuButton.accessibilityLabel = L10n.MenuView.title
     navigationItem.rightBarButtonItem = menuButton
   }
-
-
 
   private func setupPublishers() {
     // Publisher -> updates title
@@ -220,7 +218,7 @@ extension MainViewController {
 
   @objc
   private func showMenu() {
-    let vc = UIHostingController(rootView: MenuView_SwiftUI(gameService: gameService))
+    let vc = UIHostingController(rootView: MenuView(gameService: gameService))
     present(vc, animated: true)
   }
 

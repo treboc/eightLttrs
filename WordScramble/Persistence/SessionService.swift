@@ -55,19 +55,27 @@ class SessionService {
   static func persistFinished(session: Session, forPlayer name: String) {
     session.playerName = name
     session.isFinished = true
+    session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
 
     do {
       try context.save()
     } catch {
       print(error.localizedDescription)
+      context.rollback()
     }
   }
 
   static func persist(session: Session) {
     do {
+      // updating widget
+      let widgetSession = WidgetSession(baseword: session.unwrappedWord, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
+      let currentSession = CurrentSession(currentSession: widgetSession)
+      currentSession.storeItem()
+      dump(currentSession)
       try context.save()
     } catch {
       print(error.localizedDescription)
+      context.rollback()
     }
   }
 }

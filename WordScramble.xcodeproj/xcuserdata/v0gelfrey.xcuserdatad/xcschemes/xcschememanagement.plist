@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>WordScrambleWidgetsExtension.xcscheme_^#shared#^_</key>
+		<key>WordScramble.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>WordScrambleWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
@@ -27,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8ABED74528C1E332003457FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8ADAB26C28A5911C0083E028</key>
 		<dict>
 			<key>primary</key>

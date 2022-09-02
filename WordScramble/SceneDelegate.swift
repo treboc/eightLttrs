@@ -67,10 +67,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          presentAlertController(on: mainVC,
                                 with: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
                                 and: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-          mainVC.gameService.startGame(with: word)
+          mainVC.gameService.startNewSession(with: word)
         }
       } else {
-        mainVC.gameService.startGame(with: word)
+        mainVC.gameService.startNewSession(with: word)
       }
     }
   }
@@ -79,8 +79,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
   private func extractStartWord(from context: UIOpenURLContext) -> String? {
     guard
-      let word = context.url.pathComponents[safe: 1],
-      GameService.isValidBaseWord(word)
+      context.url.scheme == "wordscramble",
+      context.url.host == "baseword",
+      let locale = context.url.pathComponents[safe: 1],
+      let word = context.url.pathComponents[safe: 2],
+      GameService.isValidBaseWord(word, with: locale)
     else { return nil }
 
     return word
