@@ -21,6 +21,7 @@ struct MenuView: View {
   // UserDefaults
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
+  @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
   @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: WSLocale = .DE
 
   @State private var alertModel: AlertToPresent? = nil
@@ -42,7 +43,7 @@ struct MenuView: View {
           .buttonStyle(.borderedProminent)
         }
 
-        Section(L10n.MenuView.settings) {
+        Section {
           Picker(selection: $chosenBasewordLocale) {
             ForEach(WSLocale.availableLanguages()) { locale in
               Text(locale.description)
@@ -53,7 +54,6 @@ struct MenuView: View {
               .labelStyle(.titleAndIcon)
           }
 
-
           Toggle(isOn: $enabledVibration) {
             Label(L10n.MenuView.hapticFeedback, systemImage: "waveform.circle")
               .labelStyle(.titleAndIcon)
@@ -61,9 +61,17 @@ struct MenuView: View {
 
           Toggle(isOn: $enabledSound) {
             Label(L10n.MenuView.sound, systemImage: enabledSound ? "speaker.circle" : "speaker.slash.circle")
-              .animation(.default, value: enabledSound)
               .labelStyle(.titleAndIcon)
           }
+
+          Toggle(isOn: $enabledFiltering) {
+            Label(L10n.MenuView.filter, systemImage: "magnifyingglass.circle")
+              .labelStyle(.titleAndIcon)
+          }
+        } header: {
+          Text(L10n.MenuView.settings)
+        } footer: {
+          Text(L10n.MenuView.filterDescription)
         }
         .tint(.accentColor)
 

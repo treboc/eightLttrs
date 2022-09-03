@@ -94,6 +94,19 @@ extension MainViewController: UICollectionViewDelegate {
     dataSource.apply(snapshot)
   }
 
+  private func applyFilteredSnapshot(with string: String, on items: [String]) {
+    guard !string.isEmpty else {
+      applySnapshot(with: items)
+      return
+    }
+    let filteredItems = items.filter { $0.lowercased().contains(string.lowercased()) }
+
+    var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+    snapshot.appendSections([.wordList])
+    snapshot.appendItems(filteredItems, toSection: .wordList)
+    dataSource.apply(snapshot)
+  }
+
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return false
   }
@@ -171,6 +184,21 @@ extension MainViewController {
     gameService.$usedWords
       .map { !$0.isEmpty }
       .assign(to: \.gameServiceHasUsedWords, on: self)
+      .store(in: &cancellables)
+
+    // Publisher -> enables filtering
+    NotificationCenter.default
+      .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
+      .debounce(for: 0.1, scheduler: RunLoop.main)
+      .receive(on: RunLoop.main)
+      .sink { [weak self] in
+        guard
+          let self = self,
+          let searchString = ($0.object as? UITextField)?.text,
+          UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledFiltering)
+        else { return }
+        self.applyFilteredSnapshot(with: searchString, on: self.gameService.usedWords)
+      }
       .store(in: &cancellables)
   }
 
@@ -271,10 +299,6 @@ extension MainViewController: EndSessionDelegate {
   private func setLastPlayersName(_ name: String) {
     UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
   }
-}
-
-extension MainViewController {
-
 }
 
 // MARK: - Handle onboarding

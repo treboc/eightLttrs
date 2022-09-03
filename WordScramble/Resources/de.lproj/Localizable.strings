@@ -48,6 +48,8 @@
 "menuView.baseword" = "Grundwort";
 "menuView.hapticFeedback" = "Haptisches Feedback";
 "menuView.sound" = "Ton";
+"menuView.filter" = "Filter Bekannte Wörter";
+"menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits bekannten Wörter.";
 
 // EndSessionView
 "endSessionView.title" = "Herzlichen Glückwunsch! 🎉";

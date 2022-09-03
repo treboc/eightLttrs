@@ -91,12 +91,16 @@ internal enum L10n {
     internal static let baseword = L10n.tr("Localizable", "menuView.baseword", fallback: "Baseword")
     /// End Session
     internal static let endSession = L10n.tr("Localizable", "menuView.endSession", fallback: "End Session")
+    /// Filter Used Words
+    internal static let filter = L10n.tr("Localizable", "menuView.filter", fallback: "Filter Used Words")
+    /// When enabled, the list of already used words gets dynamically filtered.
+    internal static let filterDescription = L10n.tr("Localizable", "menuView.filterDescription", fallback: "When enabled, the list of already used words gets dynamically filtered.")
     /// Haptic Feedback
     internal static let hapticFeedback = L10n.tr("Localizable", "menuView.hapticFeedback", fallback: "Haptic Feedback")
     /// Restart Session
     internal static let restartSession = L10n.tr("Localizable", "menuView.restartSession", fallback: "Restart Session")
-    /// Einstellungen
-    internal static let settings = L10n.tr("Localizable", "menuView.settings", fallback: "Einstellungen")
+    /// Settings
+    internal static let settings = L10n.tr("Localizable", "menuView.settings", fallback: "Settings")
     /// Show Highscore
     internal static let showHighscore = L10n.tr("Localizable", "menuView.showHighscore", fallback: "Show Highscore")
     /// Sound

@@ -92,15 +92,6 @@ extension MainView {
     self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   }
 
-//  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//    let isAccessibilityCategory = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
-//    super.traitCollectionDidChange(previousTraitCollection)
-//
-//    if isAccessibilityCategory != previousTraitCollection?.preferredContentSizeCategory.isAccessibilityCategory {
-//      numberOfWordsTitleLabel.text = "Words/nfound"
-//    }
-//  }
-
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
     let views = [textField, submitButton, numberOfWordsTitleLabel, numberOfWordsBodyLabel, currentScoreTitleLabel, currentScoreBodyLabel, divider, collectionView]

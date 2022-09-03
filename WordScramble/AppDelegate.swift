@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if WSLocale.regionHasChanged() {
       // show it, e.g. make possible to load locale based on user pref
       // currently just persist new region
-//      print("Region has changed!")
+      // print("Region has changed!")
     }
 
     // register settings
@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaultsKeys.regionCode: wsLocale.rawValue,
         UserDefaultsKeys.enabledVibration: true,
         UserDefaultsKeys.enabledSound: true,
+        UserDefaultsKeys.enabledFiltering: true
       ]
     )
 

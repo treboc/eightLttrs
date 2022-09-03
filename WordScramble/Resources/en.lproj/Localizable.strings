@@ -47,6 +47,8 @@
 "menuView.baseword" = "Baseword";
 "menuView.hapticFeedback" = "Haptic Feedback";
 "menuView.sound" = "Sound";
+"menuView.filter" = "Filter Used Words";
+"menuView.filterDescription" = "When enabled, the list of already used words gets dynamically filtered.";
 
 // EndSessionView
 "endSessionView.title" = "Congratulations! 🎉";
