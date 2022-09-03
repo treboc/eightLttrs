@@ -16,7 +16,6 @@ struct WordScrambleWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
       WidgetView(entry: entry)
-        .tint(Color("AccentColor"))
     }
     .supportedFamilies([.systemSmall, .systemMedium])
     .configurationDisplayName("Baseword")

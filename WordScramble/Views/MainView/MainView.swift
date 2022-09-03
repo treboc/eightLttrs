@@ -44,6 +44,8 @@ class MainView: UIView {
 // MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
+    let semiBoldFont = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: .semibold)
+
     // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
@@ -57,32 +59,47 @@ extension MainView {
     // NumberOfWordsTitleLabel
     numberOfWordsTitleLabel.textAlignment = .left
     numberOfWordsTitleLabel.text = L10n.MainView.foundWords
+    numberOfWordsTitleLabel.numberOfLines = 0
+    numberOfWordsTitleLabel.lineBreakMode = .byWordWrapping
     numberOfWordsTitleLabel.font = .preferredFont(forTextStyle: .caption1)
     numberOfWordsTitleLabel.textColor = .secondaryLabel
+    numberOfWordsTitleLabel.adjustsFontForContentSizeCategory = true
 
     // NumberOfWordsBodyLabel
     numberOfWordsBodyLabel.textAlignment = .left
     numberOfWordsBodyLabel.text = "0 / 0"
-    numberOfWordsBodyLabel.font = .preferredFont(forTextStyle: .subheadline)
-    numberOfWordsBodyLabel.font = .monospacedDigitSystemFont(ofSize: numberOfWordsBodyLabel.font.pointSize, weight: .semibold)
+    numberOfWordsBodyLabel.adjustsFontForContentSizeCategory = true
+    numberOfWordsBodyLabel.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: semiBoldFont)
 
     // CurrentScoreTitleLabel
     currentScoreTitleLabel.textAlignment = .right
     currentScoreTitleLabel.text = L10n.MainView.currentScore
+    currentScoreTitleLabel.numberOfLines = 0
+    currentScoreTitleLabel.lineBreakMode = .byWordWrapping
     currentScoreTitleLabel.font = .preferredFont(forTextStyle: .caption1)
     currentScoreTitleLabel.textColor = .secondaryLabel
+    currentScoreTitleLabel.adjustsFontForContentSizeCategory = true
 
     // CurrentScoreTitleLabel
     currentScoreBodyLabel.textAlignment = .right
     currentScoreBodyLabel.text = "0 / 0"
-    currentScoreBodyLabel.font = .preferredFont(forTextStyle: .subheadline)
-    currentScoreBodyLabel.font = .monospacedDigitSystemFont(ofSize: currentScoreBodyLabel.font.pointSize, weight: .semibold)
+    currentScoreBodyLabel.adjustsFontForContentSizeCategory = true
+    currentScoreBodyLabel.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: semiBoldFont)
 
     // CollectionView
     let config = UICollectionLayoutListConfiguration(appearance: .plain)
     let layout = UICollectionViewCompositionalLayout.list(using: config)
     self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   }
+
+//  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//    let isAccessibilityCategory = traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+//    super.traitCollectionDidChange(previousTraitCollection)
+//
+//    if isAccessibilityCategory != previousTraitCollection?.preferredContentSizeCategory.isAccessibilityCategory {
+//      numberOfWordsTitleLabel.text = "Words/nfound"
+//    }
+//  }
 
   private func setupLayout() {
     let safeArea = self.safeAreaLayoutGuide
@@ -106,17 +123,18 @@ extension MainView {
 
       numberOfWordsBodyLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 24),
       numberOfWordsBodyLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-      numberOfWordsBodyLabel.trailingAnchor.constraint(equalTo: currentScoreBodyLabel.leadingAnchor),
 
       numberOfWordsTitleLabel.topAnchor.constraint(equalTo: numberOfWordsBodyLabel.bottomAnchor),
       numberOfWordsTitleLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-      numberOfWordsTitleLabel.trailingAnchor.constraint(equalTo: currentScoreTitleLabel.leadingAnchor),
+      numberOfWordsTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width / 2),
 
       currentScoreBodyLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 24),
       currentScoreBodyLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
 
       currentScoreTitleLabel.topAnchor.constraint(equalTo: currentScoreBodyLabel.bottomAnchor),
       currentScoreTitleLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
+      currentScoreTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width / 2),
+
 
       divider.topAnchor.constraint(equalTo: numberOfWordsTitleLabel.bottomAnchor, constant: 8),
       divider.widthAnchor.constraint(equalTo: widthAnchor),

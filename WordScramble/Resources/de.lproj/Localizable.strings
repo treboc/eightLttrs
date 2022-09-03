@@ -41,16 +41,27 @@
 
 // MenuView
 "menuView.title" = "Menü";
+"menuView.settings" = "Einstellungen";
 "menuView.restartSession" = "Neues Wort";
 "menuView.endSession" = "Wort beenden";
 "menuView.showHighscore" = "Highscores";
+"menuView.baseword" = "Grundwort";
+"menuView.hapticFeedback" = "Haptisches Feedback";
+"menuView.sound" = "Ton";
 
 // EndSessionView
 "endSessionView.title" = "Herzlichen Glückwunsch! 🎉";
 "endSessionView.body" = "Du hast %@ Punkte erreicht.";
 
+// HighscoreDetailView
+"highscoreDetaiLView.name" = "Name";
+"highscoreDetaiLView.baseword" = "Grundwort";
+"highscoreDetaiLView.score" = "Punkte";
+"highscoreDetaiLView.foundWordsPercentage" = "%@ % gefunden";
+
 // HighscoreView -> Sharing
 "highscoreView.shareScore.text" = "Hey schau' mal! Ich habe %@ Punkte bei \"%@\" erreicht!\nVersuch es auch, und sieh ob du es besser kannst!";
+"highscoreView.metaDataTitle" = "Versuch's selbst!";
 "highscoreView.title" = "Highscores";
 
 // Widgets

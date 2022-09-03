@@ -22,13 +22,13 @@ struct CircularProgressView: View {
       RoundedRectangle(cornerRadius: 16)
         .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
         .rotation(Angle(degrees: -90))
-        .fill(Color.accentColor.opacity(0.4))
+        .fill(Color.accent.opacity(0.4))
 
       RoundedRectangle(cornerRadius: 16)
         .trim(from: 0, to: progress)
         .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
         .rotation(Angle(degrees: -90))
-        .fill(Color.red)
+        .fill(Color.accent)
 
       showPercentage
       ? Text(progressPercentage)

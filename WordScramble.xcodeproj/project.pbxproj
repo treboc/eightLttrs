@@ -10,13 +10,16 @@
 		8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentSession.swift */; };
 		8A01FED928C272ED0071978F /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentSession.swift */; };
 		8A01FEE328C290190071978F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A01FEE128C290190071978F /* Assets.xcassets */; };
+		8A2A24F628C3215D00C47C27 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A24F528C3215D00C47C27 /* Color+Extension.swift */; };
+		8A2A24F728C3215D00C47C27 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A24F528C3215D00C47C27 /* Color+Extension.swift */; };
+		8A2A24F828C3244A00C47C27 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */; };
 		8A3F79D528AC59810058A272 /* allWords8LettersEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */; };
 		8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
 		8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DD28BB909500A136CC /* MenuView.swift */; };
 		8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */; };
 		8A45C1E328BBC30700A136CC /* ViewModfifier-PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */; };
 		8A45C1E528BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */; };
-		8A45C1E728BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */; };
+		8A45C1E728BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */; };
 		8A4A612E28BD406600EA126A /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A612D28BD406600EA126A /* Collection+Extensions.swift */; };
 		8A4C4C8828BC327F00B643D1 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8628BC327F00B643D1 /* success.wav */; };
 		8A4C4C8928BC327F00B643D1 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8728BC327F00B643D1 /* error.wav */; };
@@ -46,11 +49,6 @@
 		8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */; };
 		8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */; };
 		8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
-		8A92030028C2657A008AF8EA /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111428B28322004F299F /* Session+CoreDataProperties.swift */; };
-		8A92030128C2657A008AF8EA /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110D28B281C5004F299F /* PersistenceStore.swift */; };
-		8A92030228C2657A008AF8EA /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
-		8A92030328C2657A008AF8EA /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111328B28322004F299F /* Session+CoreDataClass.swift */; };
-		8A92030428C2657E008AF8EA /* WordScramble.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111028B28216004F299F /* WordScramble.xcdatamodeld */; };
 		8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
 		8A92030628C26673008AF8EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8A92030728C26690008AF8EA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+Extensions.swift */; };
@@ -60,10 +58,10 @@
 		8A92030B28C26786008AF8EA /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
 		8A92030C28C26789008AF8EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */; };
 		8A99A32128B524DC00E5ABBF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+Extensions.swift */; };
-		8A99A32328B5255400E5ABBF /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */; };
-		8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32428B5256800E5ABBF /* HighscoreView.swift */; };
+		8A99A32328B5255400E5ABBF /* HighscoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */; };
+		8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32428B5256800E5ABBF /* HighscoreListView.swift */; };
 		8A99A32828B530BA00E5ABBF /* HighscoreCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */; };
-		8A99A32A28B5327400E5ABBF /* HighscoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32928B5327400E5ABBF /* HighscoreCell.swift */; };
+		8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */; };
 		8A99A32C28B552F900E5ABBF /* HighscoreListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */; };
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
@@ -87,7 +85,7 @@
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
 		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */; };
-		8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */; };
+		8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,13 +130,14 @@
 		8A01FED528C26D940071978F /* WordScramble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WordScramble.entitlements; sourceTree = "<group>"; };
 		8A01FED728C2706A0071978F /* CurrentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
 		8A01FEE128C290190071978F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A2A24F528C3215D00C47C27 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		8A3F79D428AC59810058A272 /* allWords8LettersEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allWords8LettersEN.txt; sourceTree = "<group>"; };
 		8A3F79DD28ACE42C0058A272 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		8A45C1DD28BB909500A136CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedNavigationTitle-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A45C1E228BBC30700A136CC /* ViewModfifier-PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModfifier-PresentAlert.swift"; sourceTree = "<group>"; };
 		8A45C1E428BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewViewcontrollerRepresentable.swift; sourceTree = "<group>"; };
+		8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighscoreListView-ViewControllerRepresentable.swift"; sourceTree = "<group>"; };
 		8A4A612D28BD406600EA126A /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		8A4C4C8628BC327F00B643D1 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
@@ -173,10 +172,10 @@
 		8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		8A9202FE28C217F5008AF8EA /* WSLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSLocale.swift; sourceTree = "<group>"; };
 		8A99A32028B524DC00E5ABBF /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
-		8A99A32428B5256800E5ABBF /* HighscoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreView.swift; sourceTree = "<group>"; };
+		8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListViewController.swift; sourceTree = "<group>"; };
+		8A99A32428B5256800E5ABBF /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
 		8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreCellItem.swift; sourceTree = "<group>"; };
-		8A99A32928B5327400E5ABBF /* HighscoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreCell.swift; sourceTree = "<group>"; };
+		8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListCell.swift; sourceTree = "<group>"; };
 		8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListHeaderCell.swift; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordScrambleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +202,7 @@
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreDetailView.swift; sourceTree = "<group>"; };
-		8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
+		8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView_.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +401,7 @@
 				8A99A32028B524DC00E5ABBF /* String+Extensions.swift */,
 				8ACF524F28BAD985008728BB /* Array+Extensions.swift */,
 				8A4A612D28BD406600EA126A /* Collection+Extensions.swift */,
+				8A2A24F528C3215D00C47C27 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -409,12 +409,12 @@
 		8A99A32628B5257000E5ABBF /* HighscoreView */ = {
 			isa = PBXGroup;
 			children = (
-				8A45C1E628BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift */,
-				8A99A32428B5256800E5ABBF /* HighscoreView.swift */,
-				8A99A32928B5327400E5ABBF /* HighscoreCell.swift */,
+				8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */,
+				8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */,
+				8A99A32428B5256800E5ABBF /* HighscoreListView.swift */,
+				8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */,
 				8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */,
-				8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */,
-				8A99A32228B5255400E5ABBF /* HighscoreViewController.swift */,
+				8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */,
 				8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */,
 			);
 			path = HighscoreView;
@@ -424,11 +424,11 @@
 			isa = PBXGroup;
 			children = (
 				8ABED74A28C1E333003457FD /* WordScrambleWidget.swift */,
-				8ABED75F28C1E66C003457FD /* Views */,
 				8ABED75728C1E471003457FD /* SimpleEntry.swift */,
-				8AC3AAB828C1F351004C355A /* Extensions */,
 				8ABED75528C1E458003457FD /* Provider.swift */,
 				8ABED74E28C1E333003457FD /* Info.plist */,
+				8ABED75F28C1E66C003457FD /* Views */,
+				8AC3AAB828C1F351004C355A /* Extensions */,
 				8A01FEE128C290190071978F /* Assets.xcassets */,
 			);
 			path = WordScrambleWidget;
@@ -683,9 +683,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A92030028C2657A008AF8EA /* Session+CoreDataProperties.swift in Sources */,
+				8A2A24F728C3215D00C47C27 /* Color+Extension.swift in Sources */,
 				8ABED75628C1E458003457FD /* Provider.swift in Sources */,
-				8A92030328C2657A008AF8EA /* Session+CoreDataClass.swift in Sources */,
 				8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */,
 				8A92030728C26690008AF8EA /* String+Extensions.swift in Sources */,
 				8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */,
@@ -695,11 +694,8 @@
 				8A92030828C26699008AF8EA /* Array+Extensions.swift in Sources */,
 				8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */,
 				8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */,
-				8A92030228C2657A008AF8EA /* SessionService.swift in Sources */,
 				8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */,
-				8A92030128C2657A008AF8EA /* PersistenceStore.swift in Sources */,
 				8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */,
-				8A92030428C2657E008AF8EA /* WordScramble.xcdatamodeld in Sources */,
 				8ABED74B28C1E333003457FD /* WordScrambleWidget.swift in Sources */,
 				8A92030928C26699008AF8EA /* Collection+Extensions.swift in Sources */,
 				8A92030A28C26783008AF8EA /* L10n.swift in Sources */,
@@ -720,26 +716,28 @@
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */,
+				8A2A24F828C3244A00C47C27 /* CircularProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */,
-				8A99A32528B5256800E5ABBF /* HighscoreView.swift in Sources */,
-				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
+				8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */,
+				8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8A4A612E28BD406600EA126A /* Collection+Extensions.swift in Sources */,
 				8A87111628B28322004F299F /* Session+CoreDataProperties.swift in Sources */,
 				8A794FDB28B938E700BC9CE5 /* GameServiceProtocol.swift in Sources */,
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
-				8A99A32328B5255400E5ABBF /* HighscoreViewController.swift in Sources */,
+				8A99A32328B5255400E5ABBF /* HighscoreListViewController.swift in Sources */,
 				8A87111528B28322004F299F /* Session+CoreDataClass.swift in Sources */,
-				8A45C1E728BBEDCE00A136CC /* HighscoreViewViewcontrollerRepresentable.swift in Sources */,
+				8A45C1E728BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,
 				8A87111228B28216004F299F /* WordScramble.xcdatamodeld in Sources */,
 				8A99A32128B524DC00E5ABBF /* String+Extensions.swift in Sources */,
-				8A99A32A28B5327400E5ABBF /* HighscoreCell.swift in Sources */,
+				8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
 				8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
+				8A2A24F628C3215D00C47C27 /* Color+Extension.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ACF525028BAD985008728BB /* Array+Extensions.swift in Sources */,
 				8A45C1E528BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift in Sources */,

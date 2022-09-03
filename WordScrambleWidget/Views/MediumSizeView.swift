@@ -48,7 +48,7 @@ struct MediumSizeView: View {
             ForEach(0..<session.usedWords.count, id: \.self) { i in
               HStack {
                 Image(systemName: "\(entry.session.usedWords[i].calculatedScore()).circle.fill")
-                  .foregroundColor(.accentColor)
+                  .foregroundColor(.accent)
 
                 Text(entry.session.usedWords[i])
                   .font(.system(.headline, design: .rounded))

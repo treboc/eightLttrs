@@ -1,75 +1,55 @@
 //
-//  HighscoreListView.swift
+//  HighscoreView.swift
 //  WordScramble
 //
-//  Created by Marvin Lee Kobert on 31.08.22.
+//  Created by Marvin Lee Kobert on 23.08.22.
 //
 
-import SwiftUI
+import UIKit
 
-struct HighscoreListView: View {
-  @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "isFinished = %d", true))
-  private var sessions: FetchedResults<Session>
+class HighscoreView: UIView {
+  private let stackView = UIStackView()
+  private let headerCell = HighscoreListHeaderCell()
+  private(set) var tableView = UITableView()
+  private let divider = Divider(height: 1)
 
-  var body: some View {
-    List {
-      ForEach(Array(zip(sessions.indices, sessions)), id: \.0) { index, session in
-        HighscoreListRowView(rank: index + 1, session: session)
-      }
-      .listRowSeparator(.hidden)
-    }
-    .listStyle(.plain)
-    .navigationTitle(L10n.HighscoreView.title)
-    .roundedNavigationTitle()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    setupViews()
+    setupLayout()
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
-
-struct HighscoreListView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationView {
-      HighscoreListView()
-    }
-    .preferredColorScheme(.dark)
+// MARK: - View setup
+extension HighscoreView {
+  private func setupViews() {
+    self.backgroundColor = .systemBackground
+    stackView.axis = .vertical
   }
 }
 
-struct HighscoreListRowView: View {
-  let rank: Int
-  let session: Session
+// MARK: - Layout setup
+extension HighscoreView {
+  private func setupLayout() {
+    let safeArea = safeAreaLayoutGuide
+    stackView.translatesAutoresizingMaskIntoConstraints = false
 
+    stackView.addArrangedSubview(headerCell)
+    stackView.addArrangedSubview(divider)
+    stackView.addArrangedSubview(tableView)
 
-  var body: some View {
-    HStack(alignment: .top) {
-      Text("\(rank).")
-        .font(.headline)
-        .fontWeight(.semibold)
-        .frame(width: 30, alignment: .center)
+    addSubview(stackView)
 
-      VStack(alignment: .leading) {
-        Text(session.unwrappedName)
-
-        Group {
-          Text("gesucht war: ")
-          + Text(session.unwrappedWord)
-            .italic()
-        }
-        .font(.caption2)
-        .foregroundColor(.secondary)
-      }
-
-      Spacer()
-
-      VStack(alignment: .trailing) {
-        Text("\(session.score)")
-        Text("Punkte")
-          .font(.caption2)
-          .foregroundColor(.secondary)
-      }
-
-    }
-    .padding(8)
-    .frame(maxWidth: .infinity)
-    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 5))
+    NSLayoutConstraint.activate([
+      stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+      stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+      stackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+      stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+      divider.heightAnchor.constraint(equalToConstant: 1)
+    ])
   }
 }

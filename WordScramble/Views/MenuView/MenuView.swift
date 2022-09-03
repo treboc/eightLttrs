@@ -36,30 +36,31 @@ struct MenuView: View {
             .disabled(gameService.usedWords.isEmpty)
 
           NavigationLink(L10n.MenuView.showHighscore) {
-            HighscoresViewRepresentable()
+            HighscoreListViewRepresentable()
               .navigationTitle("Highscores")
           }
           .buttonStyle(.borderedProminent)
         }
 
-        Section("Settings") {
+        Section(L10n.MenuView.settings) {
           Picker(selection: $chosenBasewordLocale) {
             ForEach(WSLocale.availableLanguages()) { locale in
               Text(locale.description)
                 .tag(locale)
             }
           } label: {
-            Label(L10n.basewords, systemImage: "book.circle")
+            Label(L10n.MenuView.baseword, systemImage: "book.circle")
               .labelStyle(.titleAndIcon)
           }
 
+
           Toggle(isOn: $enabledVibration) {
-            Label("Vibration", systemImage: "waveform.circle")
+            Label(L10n.MenuView.hapticFeedback, systemImage: "waveform.circle")
               .labelStyle(.titleAndIcon)
           }
 
           Toggle(isOn: $enabledSound) {
-            Label("Sound", systemImage: enabledSound ? "speaker.circle" : "speaker.slash.circle")
+            Label(L10n.MenuView.sound, systemImage: enabledSound ? "speaker.circle" : "speaker.slash.circle")
               .animation(.default, value: enabledSound)
               .labelStyle(.titleAndIcon)
           }

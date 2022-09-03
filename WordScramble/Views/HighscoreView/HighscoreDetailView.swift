@@ -14,28 +14,28 @@ struct HighscoreDetailView: View {
     Form {
       Section {
         HStack {
-          Text("Name")
+          Text(L10n.HighscoreDetaiLView.name)
             .foregroundColor(.secondary)
           Spacer()
           Text(session.unwrappedName)
         }
         
         HStack {
-          Text("Startword")
+          Text(L10n.HighscoreDetaiLView.baseword)
             .foregroundColor(.secondary)
           Spacer()
           Text(session.unwrappedWord)
         }
         
         HStack {
-          Text("Score")
+          Text(L10n.HighscoreDetaiLView.score)
             .foregroundColor(.secondary)
           Spacer()
           Text("\(session.score) / \(session.maxPossibleScoreOnBaseWord)")
         }
       }
       
-      Section("Found \(session.percentageWordsFoundString) words") {
+      Section(L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFound)) {
         List {
           ForEach(session.usedWords, id: \.self) { word in
             HStack {
@@ -48,8 +48,6 @@ struct HighscoreDetailView: View {
         }
       }
     }
-    .navigationTitle("Statistics")
-    .roundedNavigationTitle()
   }
 }
 

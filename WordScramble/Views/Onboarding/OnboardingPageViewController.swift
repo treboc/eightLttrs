@@ -46,7 +46,7 @@ extension OnboardingPageViewController {
 
     if isLastPage {
       startButton.translatesAutoresizingMaskIntoConstraints = false
-      startButton.setTitle("Let's go!", for: .normal)
+      startButton.setTitle(L10n.Onboarding.ThirdPage.buttonTitle, for: .normal)
       startButton.configuration = .borderedProminent()
       startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
@@ -98,6 +98,7 @@ extension OnboardingPageViewController {
 }
 
 extension OnboardingPageViewController {
+  // Transform String into bullet-points styled paragraph
   func add(stringList: [String],
            font: UIFont,
            bullet: String = "\u{2022}",
@@ -115,9 +116,6 @@ extension OnboardingPageViewController {
     paragraphStyle.tabStops = [
       NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
     paragraphStyle.defaultTabInterval = indentation
-    //paragraphStyle.firstLineHeadIndent = 0
-    //paragraphStyle.headIndent = 20
-    //paragraphStyle.tailIndent = 1
     paragraphStyle.lineSpacing = lineSpacing
     paragraphStyle.paragraphSpacing = paragraphSpacing
     paragraphStyle.headIndent = indentation

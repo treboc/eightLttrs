@@ -55,7 +55,21 @@ internal enum L10n {
     /// Congratulations! 🎉
     internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: "Congratulations! 🎉")
   }
+  internal enum HighscoreDetaiLView {
+    /// Baseword
+    internal static let baseword = L10n.tr("Localizable", "highscoreDetaiLView.baseword", fallback: "Baseword")
+    /// Found %@ %
+    internal static func foundWordsPercentage(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "highscoreDetaiLView.foundWordsPercentage", String(describing: p1), fallback: "Found %@ %")
+    }
+    /// Name
+    internal static let name = L10n.tr("Localizable", "highscoreDetaiLView.name", fallback: "Name")
+    /// Score
+    internal static let score = L10n.tr("Localizable", "highscoreDetaiLView.score", fallback: "Score")
+  }
   internal enum HighscoreView {
+    /// Try it yourself!
+    internal static let metaDataTitle = L10n.tr("Localizable", "highscoreView.metaDataTitle", fallback: "Try it yourself!")
     /// Highscores
     internal static let title = L10n.tr("Localizable", "highscoreView.title", fallback: "Highscores")
     internal enum ShareScore {
@@ -73,12 +87,20 @@ internal enum L10n {
     internal static let foundWords = L10n.tr("Localizable", "mainView.foundWords", fallback: "Words found")
   }
   internal enum MenuView {
+    /// Baseword
+    internal static let baseword = L10n.tr("Localizable", "menuView.baseword", fallback: "Baseword")
     /// End Session
     internal static let endSession = L10n.tr("Localizable", "menuView.endSession", fallback: "End Session")
+    /// Haptic Feedback
+    internal static let hapticFeedback = L10n.tr("Localizable", "menuView.hapticFeedback", fallback: "Haptic Feedback")
     /// Restart Session
     internal static let restartSession = L10n.tr("Localizable", "menuView.restartSession", fallback: "Restart Session")
+    /// Einstellungen
+    internal static let settings = L10n.tr("Localizable", "menuView.settings", fallback: "Einstellungen")
     /// Show Highscore
     internal static let showHighscore = L10n.tr("Localizable", "menuView.showHighscore", fallback: "Show Highscore")
+    /// Sound
+    internal static let sound = L10n.tr("Localizable", "menuView.sound", fallback: "Sound")
     /// Menu
     internal static let title = L10n.tr("Localizable", "menuView.title", fallback: "Menu")
   }

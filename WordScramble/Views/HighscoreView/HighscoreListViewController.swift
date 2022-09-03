@@ -68,7 +68,7 @@ extension HighscoreViewController: UIActivityItemSource {
        let url = URL(string: "wordscramble://baseword/\(locale)/\(word)") {
       metadata.originalURL = url
       metadata.url = metadata.originalURL
-      metadata.title = "Try it yourself!"
+      metadata.title = L10n.HighscoreView.metaDataTitle
       metadata.imageProvider = NSItemProvider.init(contentsOf: Bundle.main.url(forResource: "icon", withExtension: "jpg"))
       let text = L10n.HighscoreView.ShareScore.text(session.score, session.unwrappedWord)
       let ac = UIActivityViewController(activityItems: [self, text, url], applicationActivities: nil)
@@ -96,6 +96,8 @@ extension HighscoreViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let session = sessions[indexPath.row]
     let detailViewController = UIHostingController(rootView: HighscoreDetailView(session: session))
+    #warning("fix translation")
+    detailViewController.title = "Statistics"
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 

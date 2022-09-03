@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HighscoresViewRepresentable: UIViewControllerRepresentable {
+struct HighscoreListViewRepresentable: UIViewControllerRepresentable {
   typealias UIViewControllerType = HighscoreViewController
 
   func makeUIViewController(context: Context) -> HighscoreViewController {

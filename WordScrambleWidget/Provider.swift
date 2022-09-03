@@ -13,7 +13,7 @@ struct Provider: TimelineProvider {
 
   func placeholder(in context: Context) -> SimpleEntry {
     let placeholderSession = WidgetSession(baseword: "Taubenei", usedWords: ["Taube", "taub", "Tau"], maxPossibleWords: 123, wordsFound: 25, percentageWordsFound: 0.23)
-    return SimpleEntry(date: Date(), session: placeholderSession)
+    return SimpleEntry(date: Date(), session: placeholderSession, isPlaceholder: true)
   }
 
   func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
