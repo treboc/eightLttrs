@@ -302,12 +302,12 @@
 		8A70BEC228AB7C4C00455FF1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
+				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
 				8A45C1E128BB978200A136CC /* ViewModifier */,
 				8A87110828B18234004F299F /* AlertPresenter */,
 				8A99A31F28B5248700E5ABBF /* Extensions */,
-				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
-				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
