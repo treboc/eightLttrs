@@ -148,9 +148,9 @@ extension MainViewController {
 
   private func setupPublishers() {
     // Publisher -> updates title
-    gameService.$baseWord
-      .sink { [weak self] baseWord in
-        self?.didReceive(baseWord)
+    gameService.$baseword
+      .sink { [weak self] baseword in
+        self?.didReceive(baseword)
       }
       .store(in: &cancellables)
 
@@ -189,8 +189,7 @@ extension MainViewController {
     // Publisher -> enables filtering
     NotificationCenter.default
       .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
-      .debounce(for: 0.1, scheduler: RunLoop.main)
-      .receive(on: RunLoop.main)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] in
         guard
           let self = self,

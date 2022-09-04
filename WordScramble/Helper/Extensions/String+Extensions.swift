@@ -36,27 +36,6 @@ extension String {
     return score
   }
 
-  func allPossibleWords(basedOn list: Set<String>,
-                        with minStringLen: Int = 3) async -> (Set<String>, Int) {
-    let string = self
-      .map { String($0).lowercased() }
-    let permutedStringList = string.permute(minStringLen: minStringLen)
-
-    // iterate over the list passed in,
-    // only keep the string permuted words
-    let possibleWordsForString = list
-      .filter { word in
-        permutedStringList.contains(word.lowercased()) && word != self
-      }
-
-    let score = possibleWordsForString
-      .map { $0.calculatedScore() }
-      .reduce(0, +)
-
-    return (Set(possibleWordsForString), score)
-  }
-
-
   public func replacedWithStars() -> String {
     return String(self.map { _ in "✯" })
   }

@@ -81,9 +81,9 @@ extension SceneDelegate {
     guard
       context.url.scheme == "wordscramble",
       context.url.host == "baseword",
-      let locale = context.url.pathComponents[safe: 1],
+      let locale = WSLocale(rawValue: (context.url.pathComponents[1])),
       let word = context.url.pathComponents[safe: 2],
-      GameService.isValidBaseWord(word, with: locale)
+      WordService.isValidBaseword(word, with: locale)
     else { return nil }
 
     return word

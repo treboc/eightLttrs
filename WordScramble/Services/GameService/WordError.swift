@@ -12,7 +12,7 @@ struct WordErrorAlert {
   let message: String
 }
 
-enum WordError: Error {
+enum WordError: Error, Equatable {
   case notReal, notOriginal, notPossible(word: String), tooShort
 
   var alert: WordErrorAlert {

@@ -107,7 +107,7 @@ struct MenuView: View {
 extension MenuView {
   #if DEBUG
   private var allPossibleWordsSection_DEV: some View {
-    Section("Possible words for \(gameService.baseWord)") {
+    Section("Possible words for \(gameService.baseword)") {
       List {
         ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
           HStack {

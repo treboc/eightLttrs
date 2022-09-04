@@ -71,7 +71,6 @@ class SessionService {
       let widgetSession = WidgetSession(baseword: session.unwrappedWord, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
       let currentSession = CurrentSession(currentSession: widgetSession)
       currentSession.storeItem()
-      dump(currentSession)
       try context.save()
     } catch {
       print(error.localizedDescription)
