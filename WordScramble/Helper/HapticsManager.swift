@@ -11,6 +11,7 @@ class HapticManager {
   static let shared = HapticManager()
   let generator = UINotificationFeedbackGenerator()
 
+  private init() {}
 
   func notification(type: UINotificationFeedbackGenerator.FeedbackType) {
     let generator = UINotificationFeedbackGenerator()
