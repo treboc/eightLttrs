@@ -177,7 +177,7 @@ extension GameService {
 
   private func loadWords(with locale: WSLocale) {
     // load possible words to check for
-    if let possibleWordsURL = Bundle.main.url(forResource: "allWords8Letters\(locale.fileNameSuffix).txt", withExtension: nil) {
+    if let possibleWordsURL = Bundle.main.url(forResource: "possibleWords\(locale.fileNameSuffix).txt", withExtension: nil) {
       if let possibleWords = try? String(contentsOf: possibleWordsURL) {
         let possibleLowercasedWords = possibleWords.components(separatedBy: .newlines)
         self.possibleWords = Set(possibleLowercasedWords)
@@ -185,7 +185,7 @@ extension GameService {
     }
 
     // load possible startWords in the current language
-    if let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.fileNameSuffix)", withExtension: "txt") {
+    if let startWordsURL = Bundle.main.url(forResource: "basewords\(locale.fileNameSuffix)", withExtension: "txt") {
       if let startWords = try? String(contentsOf: startWordsURL) {
         self.baseWords = Set(startWords.components(separatedBy: .newlines))
       }
@@ -194,7 +194,7 @@ extension GameService {
 
   static func isValidBaseWord(_ word: String, with locale: String) -> Bool {
     if
-      let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.uppercased())", withExtension: "txt"),
+      let startWordsURL = Bundle.main.url(forResource: "basewords\(locale.uppercased())", withExtension: "txt"),
       let startWords = try? String(contentsOf: startWordsURL),
       let decodedWord = word.removingPercentEncoding
     {
@@ -206,7 +206,7 @@ extension GameService {
 
   static func isValidStartWord(_ word: String, in locale: WSLocale) -> Bool {
     if
-      let startWordsURL = Bundle.main.url(forResource: "startWords\(locale.fileNameSuffix)", withExtension: "txt"),
+      let startWordsURL = Bundle.main.url(forResource: "basewords\(locale.fileNameSuffix)", withExtension: "txt"),
       let startWords = try? String(contentsOf: startWordsURL),
       let decodedWord = word.removingPercentEncoding
     {
