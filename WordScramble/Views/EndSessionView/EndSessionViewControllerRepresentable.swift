@@ -7,25 +7,15 @@
 
 import SwiftUI
 
-struct EndSessionViewControllerRepresentable: UIViewControllerRepresentable, EndSessionDelegate {
+struct EndSessionViewControllerRepresentable: UIViewControllerRepresentable {
   @Environment(\.dismiss) private var dismiss
-
-  func cancelButtonTapped() {
-    dismiss.callAsFunction()
-  }
-
-  func submitButtonTapped(_ name: String) {
-    gameService.endGame(playerName: name)
-    dismiss.callAsFunction()
-  }
 
   typealias UIViewControllerType = EndSessionViewController
 
   let gameService: GameService
 
   func makeUIViewController(context: Context) -> EndSessionViewController {
-    let vc = EndSessionViewController(session: gameService.session)
-    vc.delegate = self
+    let vc = EndSessionViewController(gameService: gameService)
     return vc
   }
 

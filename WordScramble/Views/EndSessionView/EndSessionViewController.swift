@@ -7,23 +7,19 @@
 
 import UIKit
 
-protocol EndSessionDelegate {
-  func submitButtonTapped(_ name: String)
-  func cancelButtonTapped()
-}
-
 class EndSessionViewController: UIViewController {
-  private let session: Session
+  let gameService: GameService
 
   var endSessionView: EndSessionView {
     view as! EndSessionView
   }
 
-  var delegate: EndSessionDelegate?
-
-  init(session: Session) {
-    self.session = session
+  init(gameService: GameService) {
+    self.gameService = gameService
     super.init(nibName: nil, bundle: nil)
+
+    self.isModalInPresentation = true
+    navigationItem.hidesBackButton = true
   }
 
   required init?(coder: NSCoder) {
@@ -36,9 +32,7 @@ class EndSessionViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.isModalInPresentation = true
-    endSessionView.updateBodyLabel(with: session.unwrappedWord, score: Int(session.score), wordCount: session.usedWords.count)
-    navigationItem.hidesBackButton = true
+    endSessionView.updateBodyLabel(with: gameService.session)
     setupActions()
   }
 }
@@ -53,17 +47,15 @@ extension EndSessionViewController {
   @objc
   private func submitButtonTapped() {
     guard let name = endSessionView.textField.text,
-          !name.trimmingCharacters(in: .whitespacesAndNewlines)
-               .isEmpty
+          !name.isEmpty
     else { return }
     UserDefaults.standard.setValue(name, forKey: UserDefaultsKeys.lastPlayersName)
-    delegate?.submitButtonTapped(name)
+    gameService.endGame(playerName: name)
     self.dismiss(animated: true)
   }
 
   @objc
   private func cancelButtonTapped() {
-    delegate?.cancelButtonTapped()
     self.dismiss(animated: true)
   }
 }

@@ -15,12 +15,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var gameServiceHasUsedWords: Bool = false
+  var gameServiceHasUsedWords: Bool {
+    gameService.usedWords.isEmpty
+  }
 
   var gameService: GameService
   var audioPlayer: AVAudioPlayer?
   var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   var cancellables = Set<AnyCancellable>()
+  var filterListPublisher: AnyCancellable?
 
   init(gameService: GameService) {
     self.gameService = gameService
@@ -136,7 +139,7 @@ extension MainViewController {
   private func setupActions() {
     self.hideKeyboardOnTap()
 
-    // SubmitActions
+    // SubmitActions 
     mainView.textField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
@@ -149,6 +152,7 @@ extension MainViewController {
   private func setupPublishers() {
     // Publisher -> updates title
     gameService.$baseword
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] baseword in
         self?.didReceive(baseword)
       }
@@ -165,7 +169,7 @@ extension MainViewController {
     gameService.$usedWords
       .map { $0.count }
       .combineLatest(gameService.$maxPossibleWordsForBaseWord)
-      .receive(on: RunLoop.main)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] (usedWordsCount, possibleWordsCount) in
         self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
       }
@@ -174,31 +178,27 @@ extension MainViewController {
     // Publisher -> updates right-side scoreLabels
     gameService.$totalScore
       .combineLatest(gameService.$maxPossibleScoreForBaseWord)
-      .receive(on: RunLoop.main)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] (currentScore, possibleScore) in
         self?.updateScoreLabel(with: currentScore, and: possibleScore)
       }
       .store(in: &cancellables)
 
-    // Publisher -> disables / enables "End Session" button in menu
-    gameService.$usedWords
-      .map { !$0.isEmpty }
-      .assign(to: \.gameServiceHasUsedWords, on: self)
-      .store(in: &cancellables)
 
+  }
+
+  func subscribeFilterListPublisher() {
     // Publisher -> enables filtering
-    NotificationCenter.default
+    filterListPublisher = NotificationCenter.default
       .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
       .receive(on: DispatchQueue.main)
       .sink { [weak self] in
         guard
           let self = self,
-          let searchString = ($0.object as? UITextField)?.text,
-          UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledFiltering)
+          let searchString = ($0.object as? UITextField)?.text
         else { return }
         self.applyFilteredSnapshot(with: searchString, on: self.gameService.usedWords)
       }
-      .store(in: &cancellables)
   }
 
   func presentWordError(with alert: WordErrorAlert) {
@@ -214,14 +214,15 @@ extension MainViewController {
     mainView.submitButton.isEnabled = false
     mainView.clearTextField()
   }
-}
 
-// MARK: - Methods for Buttons
-extension MainViewController {
   private func didReceive(_ baseWord: String) {
     self.title = baseWord
     mainView.clearTextField()
   }
+}
+
+// MARK: - Methods for Buttons
+extension MainViewController {
 
   private func updateScoreLabel(with currentScore: Int, and possibleScore: Int) {
     mainView.currentScoreBodyLabel.text = "\(currentScore) / \(possibleScore)"
@@ -282,24 +283,6 @@ extension MainViewController {
   }
 }
 
-// MARK: EndSessionDelegate
-extension MainViewController: EndSessionDelegate {
-  // EndSessionDelegate
-  // -> gets called in EndSessionViewController
-  func submitButtonTapped(_ name: String) {
-    setLastPlayersName(name)
-    gameService.endGame(playerName: name)
-  }
-
-  func cancelButtonTapped() {
-//    gameService.startGame()
-  }
-
-  private func setLastPlayersName(_ name: String) {
-    UserDefaults.standard.set(name, forKey: UserDefaultsKeys.lastPlayersName)
-  }
-}
-
 // MARK: - Handle onboarding
 extension MainViewController {
   private func presentOnboarding() {
@@ -307,8 +290,6 @@ extension MainViewController {
       let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
       onboardingVC.modalPresentationStyle = .fullScreen
       self.parent?.present(onboardingVC, animated: false)
-
-      UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isFirstStart)
     }
   }
 }

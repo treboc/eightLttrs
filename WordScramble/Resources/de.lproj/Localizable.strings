@@ -56,6 +56,7 @@
 "endSessionView.body" = "Du hast %@ Punkte erreicht.";
 
 // HighscoreDetailView
+"highscoreDetailView.title" = "Details";
 "highscoreDetaiLView.name" = "Name";
 "highscoreDetaiLView.baseword" = "Grundwort";
 "highscoreDetaiLView.score" = "Punkte";

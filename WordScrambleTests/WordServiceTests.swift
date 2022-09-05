@@ -9,12 +9,6 @@ import XCTest
 @testable import WordScramble
 
 final class WordServiceTests: XCTestCase {
-  override func setUpWithError() throws {
-  }
-
-  override func tearDownWithError() throws {
-  }
-
   func test_loadBasewords_withGermanLocale_shouldReturnBasewords() {
     // Arrange
     let regionCode: WSLocale = .DE
@@ -63,18 +57,32 @@ final class WordServiceTests: XCTestCase {
     XCTAssert(basewords.contains(testWord))
   }
 
-  func test_loadBaseAndPossibleWords_withGermanLocale_shouldReturnAllWords() {
+  func test_getNewBaseordWith_GermanLocale_shouldSetGermanBaseWord() {
     // Arrange
-    let regionCode: WSLocale = .DE
-    let testBaseword = "Taubenei"
-    let testPossibleWord = "Tauben"
+    var testBaseword: String = ""
+    let allBasewords = WordService.loadBasewords(.DE)
 
     // Act
-    let (basewords, possibleWords) = WordService.loadAllWords(regionCode)
+    WordService.getNewBasewordWith(.DE) { baseword, _, _ in
+      testBaseword = baseword
+    }
 
     // Assert
-    XCTAssert(basewords.contains(testBaseword))
-    XCTAssert(possibleWords.contains(testPossibleWord))
+    XCTAssertTrue(allBasewords.contains(testBaseword))
+  }
+
+  func test_getNewBaseordWith_EnglishLocale_shouldSetEnglishBaseWord() {
+    // Arrange
+    var testBaseword: String = ""
+    let allBasewords = WordService.loadBasewords(.EN)
+
+    // Act
+    WordService.getNewBasewordWith(.EN) { baseword, _, _ in
+      testBaseword = baseword
+    }
+
+    // Assert
+    XCTAssertTrue(allBasewords.contains(testBaseword))
   }
 
   func test_isValidBaseword_withTaubenei_returnsTrue() {
@@ -148,14 +156,13 @@ final class WordServiceTests: XCTestCase {
   func test_getAllPossibleWordsFor_shouldReturnWordsAndScore() {
     // Given
     let input = "Taubenei"
-    let wordList: Set<String> = ["Taube", "Taub", "taub"]
 
     // When
     let expectation = self.expectation(description: "LoadingWords")
     var expectedWords: Set<String> = []
     var expectedScore: Int = 0
 
-    WordService.getAllPossibleWordsFor(input, basedOn: wordList) { words, score in
+    WordService.getAllPossibleWordsFor(input, withLocale: .DE) { words, score in
       expectedWords = words
       expectedScore = score
       expectation.fulfill()

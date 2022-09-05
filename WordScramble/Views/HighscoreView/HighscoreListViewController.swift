@@ -96,8 +96,7 @@ extension HighscoreViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let session = sessions[indexPath.row]
     let detailViewController = UIHostingController(rootView: HighscoreDetailView(session: session))
-    #warning("fix translation")
-    detailViewController.title = "Statistics"
+    detailViewController.title = L10n.HighscoreDetailView.title
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 

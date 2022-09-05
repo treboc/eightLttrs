@@ -128,10 +128,10 @@ extension EndSessionView {
 }
 
 extension EndSessionView {
-  func updateBodyLabel(with word: String, score: Int, wordCount: Int) {
-    bodyLabel.text = L10n.Words.count(wordCount) 
+  func updateBodyLabel(with session: Session) {
+    bodyLabel.text = L10n.Words.count(session.usedWords.count)
     + "\n"
-    + L10n.EndSessionView.body(score)
+    + L10n.EndSessionView.body(session.score)
   }
 }
 

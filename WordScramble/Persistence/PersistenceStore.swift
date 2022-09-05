@@ -14,7 +14,7 @@ class PersistenceStore {
   var container: NSPersistentContainer
   let context: NSManagedObjectContext
 
-  private init(inMemory: Bool = false) {
+  init(inMemory: Bool = false) {
     container = NSPersistentContainer(name: "WordScramble")
     context = container.viewContext
 

@@ -77,7 +77,10 @@ struct MenuView: View {
 
         #if DEBUG
         Section("Development") {
-          Button("Reset first start") { UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart) }
+          Button("Reset first start") {
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart)
+            dump(UserDefaults.standard.object(forKey: UserDefaultsKeys.isFirstStart))
+          }
         }
 
         allPossibleWordsSection_DEV
@@ -109,7 +112,7 @@ extension MenuView {
   private var allPossibleWordsSection_DEV: some View {
     Section("Possible words for \(gameService.baseword)") {
       List {
-        ForEach(Array(gameService.possibleWordsForCurrentWord).sorted(), id: \.self) { word in
+        ForEach(Array(gameService.possibleWords).sorted(), id: \.self) { word in
           HStack {
             Text(word)
               .strikethrough(gameService.usedWords.contains(word), color: .accentColor)

@@ -24,11 +24,15 @@ class WordService {
     return Set<String>()
   }
 
-  static func loadAllWords(_ wsLoacle: WSLocale) -> (Set<String>, Set<String>) {
+  static func getNewBasewordWith(_ wsLoacle: WSLocale, onCompletion: @escaping ((String, Set<String>, Int) -> Void)) {
     let basewords = WordService.loadBasewords(wsLoacle)
-    let possibleWords = WordService.loadPossibleWords(wsLoacle)
+    let baseword = basewords.randomElement()!
+    let allPossibleWords = WordService.loadPossibleWords(wsLoacle)
 
-    return (basewords, possibleWords)
+    Task {
+      let (possibleWords, score) = await getAllPossibleWordsFor(baseword, basedOn: allPossibleWords)
+      onCompletion(baseword, possibleWords, score)
+    }
   }
 
   static func isValidBaseword(_ word: String,
@@ -70,8 +74,12 @@ class WordService {
   }
 
   static func getAllPossibleWordsFor(_ word: String,
-                                     basedOn list: Set<String>,
-                                     onCompletion: @escaping (Set<String>, Int) -> Void) {
+                                     basedOn list: Set<String>) async -> (Set<String>, Int) {
+    return await allPossibleWords(for: word, basedOn: list)
+  }
+
+  static func getAllPossibleWordsFor(_ word: String, withLocale locale: WSLocale, onCompletion: @escaping (Set<String>, Int) -> Void) {
+    let list = loadPossibleWords(locale)
     Task {
       let (words, score) = await allPossibleWords(for: word, basedOn: list)
       onCompletion(words, score)

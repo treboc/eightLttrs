@@ -67,6 +67,10 @@ internal enum L10n {
     /// Score
     internal static let score = L10n.tr("Localizable", "highscoreDetaiLView.score", fallback: "Score")
   }
+  internal enum HighscoreDetailView {
+    /// Statistics
+    internal static let title = L10n.tr("Localizable", "highscoreDetailView.title", fallback: "Statistics")
+  }
   internal enum HighscoreView {
     /// Try it yourself!
     internal static let metaDataTitle = L10n.tr("Localizable", "highscoreView.metaDataTitle", fallback: "Try it yourself!")
