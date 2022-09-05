@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class GameService {
-
   @Published var session: Session
 
   @Published var baseword: String = ""
@@ -97,6 +96,7 @@ class GameService {
   }
 
   func startRndWordSession(onCompletion: (() -> Void)? = nil) {
+    usersLocale = .getStoredWSLocale()
     WordService.getNewBasewordWith(usersLocale, onCompletion: didReceiveNewBaseword)
   }
 
