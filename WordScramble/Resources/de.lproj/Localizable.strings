@@ -24,7 +24,6 @@
 "onboarding.thirdPage.body2" = "für jeden weiteren immer zwei mehr, also für den vierten 2, für den fünften 4, für den sechsten 6, etc.";
 "onboarding.thirdPage.buttonTitle" = "Los gehts!";
 
-
 // WordError
 "wordError.notReal.title" = "Kein Wort";
 "wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
@@ -78,8 +77,8 @@
 "endGameAlert.title" = "Speichern";
 "endGameAlert.message" = "Bist du dir sicher, dass dir keine weiteren Wörter einfallen?";
 
-"sharedWord.alertIfAlreadyStartedSession.title" = "Achtung!";
-"sharedWord.alertIfAlreadyStartedSession.message" = "Du hast bereits ein Spiel angefangen. Bist du dir sicher das du das aktuelle Spiel beenden und mit dem geteilten Wort neu angefangen möchtest? Dein Spiel wird nicht gespeichert!";
+"sharedWord.alert.usedWordsInCurrentSession.title" = "Achtung!";
+"sharedWord.alert.usedWordsInCurrentSession.message" = "Du hast bereits ein Spiel angefangen. Bist du dir sicher das du das aktuelle Spiel beenden und mit dem geteilten Wort neu angefangen möchtest? Dein Spiel wird nicht gespeichert!";
 
 "sharedWord.alert.noValidStartword.title" = "Fehler!";
 "sharedWord.alert.noValidStartword.message" = "Das ist kein mögliches Startwort.";
