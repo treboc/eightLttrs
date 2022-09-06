@@ -15,10 +15,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var gameServiceHasUsedWords: Bool {
-    return !gameService.usedWords.isEmpty
-  }
-
   var gameService: GameService
   var audioPlayer: AVAudioPlayer?
   var dataSource: UICollectionViewDiffableDataSource<Section, String>!
@@ -186,6 +182,7 @@ extension MainViewController {
     // Publisher -> enables filtering
     NotificationCenter.default
       .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
+      .subscribe(on: DispatchQueue.main)
       .receive(on: DispatchQueue.main)
       .sink { [weak self] in
         guard

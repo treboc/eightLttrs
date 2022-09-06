@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class GameService {
-  var session: Session
+  var session: Session = .newSession()
 
   @Published var baseword: String = ""
   @Published var usedWords: [String] = []
@@ -21,29 +21,52 @@ class GameService {
 
   var usersLocale: WSLocale
 
-  init(lastSession: Session) {
-    self.session = lastSession
-    self.usersLocale = lastSession.locIdentifier
-    startGame(with: session)
-  }
+//  init(lastSession: Session) {
+//    self.session = lastSession
+//    self.usersLocale = lastSession.locIdentifier
+//    startGame(with: session)
+//  }
 
-  init(gameType: GameType? = .random) {
-    self.usersLocale = .getStoredWSLocale()
-    self.session = Session.newSession()
+  init(gameType: GameType? = .random,
+       wsLocale: WSLocale = .getStoredWSLocale()) {
+    self.usersLocale = wsLocale
 
     switch gameType {
     case .random:
       startRndWordSession()
     case .shared(let word):
       startNewSession(with: word)
-    case .none:
+    case .continueWith(let session):
+      startGame(with: session)
+    default:
       break
     }
+
+    self.session = Session.newSession()
   }
 
   func startGame(with session: Session) {
+    self.session = session
     setupWithDataFrom(session)
     updateCurrentScore()
+  }
+
+  func startNewSession(with word: String) {
+//    self.session = Session.newSession()
+    baseword = word
+    session.baseWord = word
+    WordService.getAllPossibleWordsFor(word, withLocale: self.usersLocale) { [weak self] possibleWords, maxPossibleScore in
+      self?.possibleWords = possibleWords
+      self?.maxPossibleWordsForBaseWord = possibleWords.count
+      self?.maxPossibleScoreForBaseWord = maxPossibleScore
+    }
+    didReceiveNewBaseword(word, possibleWords: possibleWords, maxPossibleScore: maxPossibleScoreForBaseWord)
+  }
+
+  func startRndWordSession(onCompletion: (() -> Void)? = nil) {
+    self.session = Session.newSession()
+    usersLocale = .getStoredWSLocale()
+    WordService.getNewBasewordWith(usersLocale, onCompletion: didReceiveNewBaseword)
   }
 
   private func setupWithDataFrom(_ session: Session) {
@@ -76,29 +99,9 @@ class GameService {
     self.possibleWords = possibleWords
     self.maxPossibleWordsForBaseWord = possibleWords.count
     self.maxPossibleScoreForBaseWord = maxPossibleScore
-
-    DispatchQueue.main.async {
-      self.session = Session.newSession()
-      self.usedWords.removeAll()
-      self.updateCurrentScore()
-      self.save(self.session)
-    }
-  }
-
-  func startNewSession(with word: String) {
-    baseword = word
-    session.baseWord = word
-    WordService.getAllPossibleWordsFor(word, withLocale: self.usersLocale) { [weak self] possibleWords, maxPossibleScore in
-      self?.possibleWords = possibleWords
-      self?.maxPossibleWordsForBaseWord = possibleWords.count
-      self?.maxPossibleScoreForBaseWord = maxPossibleScore
-    }
-    didReceiveNewBaseword(word, possibleWords: possibleWords, maxPossibleScore: maxPossibleScoreForBaseWord)
-  }
-
-  func startRndWordSession(onCompletion: (() -> Void)? = nil) {
-    usersLocale = .getStoredWSLocale()
-    WordService.getNewBasewordWith(usersLocale, onCompletion: didReceiveNewBaseword)
+    self.session = Session.newSession()
+    self.usedWords.removeAll()
+    self.updateCurrentScore()
   }
 
   func endGame(playerName: String) {
@@ -113,8 +116,9 @@ class GameService {
                                usedWords: usedWords,
                                possibleWords: possibleWords)
       usedWords.insert(input, at: 0)
-      save(session)
       updateCurrentScore()
+      save(session)
+
       onCompletion()
     }
   }

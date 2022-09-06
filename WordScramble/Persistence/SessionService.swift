@@ -52,6 +52,14 @@ class SessionService {
     return nil
   }
 
+  static func lastOpenSessionHasWords(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> Bool {
+    if let session = returnLastSession(in: context),
+       session.usedWords.count > 0 {
+      return true
+    }
+    return false
+  }
+
   static func persistFinished(session: Session, forPlayer name: String) {
     session.playerName = name
     session.isFinished = true

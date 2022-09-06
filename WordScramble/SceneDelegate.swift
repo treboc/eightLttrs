@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       let gameService = GameService(gameType: .shared(word))
       mainVC = MainViewController(gameService: gameService)
     } else if let session = SessionService.returnLastSession() {
-      let gameService = GameService(lastSession: session)
+      let gameService = GameService(gameType: .continueWith(session))
       mainVC = MainViewController(gameService: gameService)
     } else {
       let gameService = GameService()
@@ -41,56 +41,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   // Gets called when the app is already opened (e.g. running in background) and a link is clicked
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    if
+    guard
       let scene = (scene as? UIWindowScene),
-      let context = URLContexts.first,
-      let word = extractStartWord(from: context),
-      let mainVC = getMainViewController(in: scene) {
-      if mainVC.gameServiceHasUsedWords {
-        // dismiss topViewController, to get present the Alert on the mainViewController
-        (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
-        // the "continue"-action
-        UIAlertController.presentAlertController(on: mainVC,
-                                                 title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
-                                                 message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-          mainVC.gameService.startNewSession(with: word)
-        }
-      } else {
+      let mainVC = getMainViewController(in: scene)
+    else { return }
+
+    if let word = extractStartWord(from: URLContexts.first) {
+      // dismiss topViewController, to get present the Alert on the mainViewController
+      (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
+      // the "continue"-action
+      UIAlertController.presentAlertController(on: mainVC,
+                                               title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
+                                               message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
         mainVC.gameService.startNewSession(with: word)
       }
     } else {
-      if let mainVC = getMainViewController(in: scene as! UIWindowScene) {
-        // dismiss topViewController, to get present the Alert on the mainViewController
-        mainVC.navigationController?.topViewController?.dismiss(animated: false)
-        // the "continue"-action
-        UIAlertController.presentAlertController(on: mainVC,
-                                                 title: L10n.SharedWord.Alert.NoValidStartword.title,
-                                                 message: L10n.SharedWord.Alert.NoValidStartword.message)
+      // dismiss topViewController, to get present the Alert on the mainViewController
+      mainVC.navigationController?.topViewController?.dismiss(animated: false)
+      UIAlertController.presentAlertController(on: mainVC,
+                                               title: L10n.SharedWord.Alert.NoValidStartword.title,
+                                               message: L10n.SharedWord.Alert.NoValidStartword.message)
+    }
+  }
+}
+
+  extension SceneDelegate {
+    private func extractStartWord(from context: UIOpenURLContext?) -> String? {
+      guard let context = context else { return nil }
+      if
+        context.url.scheme == "wordscramble",
+        context.url.host == "baseword",
+        let locale = WSLocale(rawValue: (context.url.pathComponents[1].uppercased())),
+        let word = context.url.pathComponents[safe: 2],
+        WordService.isValidBaseword(word, with: locale) {
+        return word
       } else {
-        return
+        return nil
       }
     }
-  }
-}
 
-extension SceneDelegate {
-  private func extractStartWord(from context: UIOpenURLContext) -> String? {
-    if
-      context.url.scheme == "wordscramble",
-      context.url.host == "baseword",
-      let locale = WSLocale(rawValue: (context.url.pathComponents[1].uppercased())),
-      let word = context.url.pathComponents[safe: 2],
-      WordService.isValidBaseword(word, with: locale) {
-      return word
-    } else {
-      return nil
+    private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
+      guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
+
+      return viewControllers.first { $0 is MainViewController } as? MainViewController
     }
   }
-
-  private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
-    guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
-
-    return viewControllers.first { $0 is MainViewController } as? MainViewController
-  }
-}
-

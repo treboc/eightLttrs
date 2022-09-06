@@ -86,6 +86,7 @@
 		8AE7ABEC28C5EAFD00B4287A /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7ABEB28C5EAFD00B4287A /* MainViewControllerTests.swift */; };
 		8AE7ABF028C5FC1D00B4287A /* TestPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7ABEF28C5FC1D00B4287A /* TestPersistenceStore.swift */; };
 		8AE9627E28C718ED00FBD9FE /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+Extensions.swift */; };
+		8AE9628028C71D7400FBD9FE /* GameServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627F28C71D7400FBD9FE /* GameServiceTests.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */; };
 		8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */; };
 /* End PBXBuildFile section */
@@ -205,6 +206,7 @@
 		8AE7ABEB28C5EAFD00B4287A /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		8AE7ABEF28C5FC1D00B4287A /* TestPersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPersistenceStore.swift; sourceTree = "<group>"; };
 		8AE9627D28C718ED00FBD9FE /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		8AE9627F28C71D7400FBD9FE /* GameServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceTests.swift; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreDetailView.swift; sourceTree = "<group>"; };
 		8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView_.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -509,7 +511,7 @@
 		8ADAB28628A5911D0083E028 /* WordScrambleTests */ = {
 			isa = PBXGroup;
 			children = (
-				8ADAB28728A5911D0083E028 /* WordServiceTests.swift */,
+				8AE9628128C71D7900FBD9FE /* ServicesTests */,
 				8AE7ABEB28C5EAFD00B4287A /* MainViewControllerTests.swift */,
 				8AE7ABEF28C5FC1D00B4287A /* TestPersistenceStore.swift */,
 			);
@@ -523,6 +525,15 @@
 				8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */,
 			);
 			path = WordScrambleUITests;
+			sourceTree = "<group>";
+		};
+		8AE9628128C71D7900FBD9FE /* ServicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAB28728A5911D0083E028 /* WordServiceTests.swift */,
+				8AE9627F28C71D7400FBD9FE /* GameServiceTests.swift */,
+			);
+			path = ServicesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -774,6 +785,7 @@
 				8ADAB28828A5911D0083E028 /* WordServiceTests.swift in Sources */,
 				8AE7ABEC28C5EAFD00B4287A /* MainViewControllerTests.swift in Sources */,
 				8AE7ABF028C5FC1D00B4287A /* TestPersistenceStore.swift in Sources */,
+				8AE9628028C71D7400FBD9FE /* GameServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
