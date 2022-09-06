@@ -16,14 +16,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   }
 
   var gameServiceHasUsedWords: Bool {
-    gameService.usedWords.isEmpty
+    return !gameService.usedWords.isEmpty
   }
 
   var gameService: GameService
   var audioPlayer: AVAudioPlayer?
   var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   var cancellables = Set<AnyCancellable>()
-  var filterListPublisher: AnyCancellable?
 
   init(gameService: GameService) {
     self.gameService = gameService
@@ -184,12 +183,8 @@ extension MainViewController {
       }
       .store(in: &cancellables)
 
-
-  }
-
-  func subscribeFilterListPublisher() {
     // Publisher -> enables filtering
-    filterListPublisher = NotificationCenter.default
+    NotificationCenter.default
       .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
       .receive(on: DispatchQueue.main)
       .sink { [weak self] in
@@ -199,6 +194,7 @@ extension MainViewController {
         else { return }
         self.applyFilteredSnapshot(with: searchString, on: self.gameService.usedWords)
       }
+      .store(in: &cancellables)
   }
 
   func presentWordError(with alert: WordErrorAlert) {

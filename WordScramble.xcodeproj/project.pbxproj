@@ -12,7 +12,7 @@
 		8A01FEE328C290190071978F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A01FEE128C290190071978F /* Assets.xcassets */; };
 		8A2A24F628C3215D00C47C27 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A24F528C3215D00C47C27 /* Color+Extension.swift */; };
 		8A2A24F728C3215D00C47C27 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A24F528C3215D00C47C27 /* Color+Extension.swift */; };
-		8A2A24F828C3244A00C47C27 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */; };
+		8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */; };
 		8A3F79D528AC59810058A272 /* possibleWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* possibleWordsEN.txt */; };
 		8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
 		8A41A52828C4AB6A0056662C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41A52728C4AB6A0056662C /* WordService.swift */; };
@@ -38,8 +38,6 @@
 		8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A794FD828B938AB00BC9CE5 /* GameType.swift */; };
 		8A794FDB28B938E700BC9CE5 /* GameServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A794FDA28B938E700BC9CE5 /* GameServiceProtocol.swift */; };
 		8A85AD2B28BDF3AF007FF4BF /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85AD2A28BDF3AF007FF4BF /* Divider.swift */; };
-		8A87110728B18217004F299F /* AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110628B18217004F299F /* AlertData.swift */; };
-		8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110B28B1824A004F299F /* AlertPresenter.swift */; };
 		8A87110E28B281C5004F299F /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110D28B281C5004F299F /* PersistenceStore.swift */; };
 		8A87111228B28216004F299F /* WordScramble.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111028B28216004F299F /* WordScramble.xcdatamodeld */; };
 		8A87111528B28322004F299F /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111328B28322004F299F /* Session+CoreDataClass.swift */; };
@@ -48,7 +46,7 @@
 		8A87111C28B2BF62004F299F /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111B28B2BF62004F299F /* EndSessionView.swift */; };
 		8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
 		8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */; };
-		8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */; };
+		8A9202FD28C1FDA8008AF8EA /* UsedWordsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */; };
 		8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
 		8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
 		8A92030628C26673008AF8EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
@@ -87,6 +85,7 @@
 		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
 		8AE7ABEC28C5EAFD00B4287A /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7ABEB28C5EAFD00B4287A /* MainViewControllerTests.swift */; };
 		8AE7ABF028C5FC1D00B4287A /* TestPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7ABEF28C5FC1D00B4287A /* TestPersistenceStore.swift */; };
+		8AE9627E28C718ED00FBD9FE /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+Extensions.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */; };
 		8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */; };
 /* End PBXBuildFile section */
@@ -162,8 +161,6 @@
 		8A794FD828B938AB00BC9CE5 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		8A794FDA28B938E700BC9CE5 /* GameServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceProtocol.swift; sourceTree = "<group>"; };
 		8A85AD2A28BDF3AF007FF4BF /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
-		8A87110628B18217004F299F /* AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertData.swift; sourceTree = "<group>"; };
-		8A87110B28B1824A004F299F /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		8A87110D28B281C5004F299F /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
 		8A87111128B28216004F299F /* WordScramble.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WordScramble.xcdatamodel; sourceTree = "<group>"; };
 		8A87111328B28322004F299F /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -173,7 +170,7 @@
 		8A87CC4128B4185900A9643B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		8A87CC4228B4185900A9643B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSizeView.swift; sourceTree = "<group>"; };
-		8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordsProgressView.swift; sourceTree = "<group>"; };
 		8A9202FE28C217F5008AF8EA /* WSLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSLocale.swift; sourceTree = "<group>"; };
 		8A99A32028B524DC00E5ABBF /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +204,7 @@
 		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		8AE7ABEB28C5EAFD00B4287A /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		8AE7ABEF28C5FC1D00B4287A /* TestPersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPersistenceStore.swift; sourceTree = "<group>"; };
+		8AE9627D28C718ED00FBD9FE /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreDetailView.swift; sourceTree = "<group>"; };
 		8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView_.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,7 +327,6 @@
 				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
 				8A45C1E128BB978200A136CC /* ViewModifier */,
-				8A87110828B18234004F299F /* AlertPresenter */,
 				8A99A31F28B5248700E5ABBF /* Extensions */,
 			);
 			path = Helper;
@@ -363,15 +360,6 @@
 				8AD9610A28B3C9B600F443FB /* BasicTextField.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8A87110828B18234004F299F /* AlertPresenter */ = {
-			isa = PBXGroup;
-			children = (
-				8A87110628B18217004F299F /* AlertData.swift */,
-				8A87110B28B1824A004F299F /* AlertPresenter.swift */,
-			);
-			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
 		8A87110F28B281F5004F299F /* Persistence */ = {
@@ -425,6 +413,7 @@
 				8ACF524F28BAD985008728BB /* Array+Extensions.swift */,
 				8A4A612D28BD406600EA126A /* Collection+Extensions.swift */,
 				8A2A24F528C3215D00C47C27 /* Color+Extension.swift */,
+				8AE9627D28C718ED00FBD9FE /* UIAlertController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -463,7 +452,7 @@
 				8ABED75928C1E4AA003457FD /* WidgetView.swift */,
 				8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */,
 				8ABED75B28C1E65D003457FD /* MediumSizeView.swift */,
-				8A9202FC28C1FDA8008AF8EA /* CircularProgressView.swift */,
+				8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -712,7 +701,7 @@
 				8ABED75628C1E458003457FD /* Provider.swift in Sources */,
 				8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */,
 				8A92030728C26690008AF8EA /* String+Extensions.swift in Sources */,
-				8A9202FD28C1FDA8008AF8EA /* CircularProgressView.swift in Sources */,
+				8A9202FD28C1FDA8008AF8EA /* UsedWordsProgressView.swift in Sources */,
 				8A01FED928C272ED0071978F /* CurrentSession.swift in Sources */,
 				8A92030628C26673008AF8EA /* Constants.swift in Sources */,
 				8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */,
@@ -742,9 +731,10 @@
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */,
 				8A41A52828C4AB6A0056662C /* WordService.swift in Sources */,
-				8A2A24F828C3244A00C47C27 /* CircularProgressView.swift in Sources */,
+				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */,
 				8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */,
+				8AE9627E28C718ED00FBD9FE /* UIAlertController+Extensions.swift in Sources */,
 				8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
@@ -761,13 +751,11 @@
 				8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
-				8A87110C28B1824A004F299F /* AlertPresenter.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				8A2A24F628C3215D00C47C27 /* Color+Extension.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ACF525028BAD985008728BB /* Array+Extensions.swift in Sources */,
 				8A45C1E528BBEB4000A136CC /* EndSessionViewControllerRepresentable.swift in Sources */,
-				8A87110728B18217004F299F /* AlertData.swift in Sources */,
 				8A87111A28B2BF5A004F299F /* EndSessionViewController.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8A45C1E328BBC30700A136CC /* ViewModfifier-PresentAlert.swift in Sources */,
