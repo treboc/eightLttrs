@@ -8,8 +8,6 @@
 import SwiftUI
 import WidgetKit
 
-
-
 struct MediumSizeView: View {
   var entry: SimpleEntry
   var session: WidgetSession {
@@ -68,6 +66,8 @@ struct MediumSizeView: View {
       }
       .frame(maxWidth: .infinity, alignment: .leading)
     }
+    .overlay(UsedWordsProgressView(progress: session.percentageWordsFound)
+      .padding(-10))
     .padding()
   }
 

@@ -26,13 +26,13 @@ struct SmallSizeView: View {
 
       Spacer()
       Text(L10n.Widget.wordsFound(session.wordsFound, session.maxPossibleWords))
+        .lineLimit(3)
         .font(.caption)
         .foregroundColor(.secondary)
       Spacer()
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    .padding(10)
-    .overlay(CircularProgressView(progress: session.percentageWordsFound)
+    .overlay(UsedWordsProgressView(progress: session.percentageWordsFound)
       .padding(-10))
     .padding()
   }

@@ -1,5 +1,5 @@
 //
-//  CircularProgressView.swift
+//  UsedWordsProgressView.swift
 //  WordScrambleWidgetExtension
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CircularProgressView: View {
+struct UsedWordsProgressView: View {
   var progress: CGFloat
   let showPercentage: Bool = false
 
@@ -19,15 +19,13 @@ struct CircularProgressView: View {
 
   var body: some View {
     ZStack {
-      RoundedRectangle(cornerRadius: 16)
+      ContainerRelativeShape()
         .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
-        .rotation(Angle(degrees: -90))
         .fill(Color.accent.opacity(0.4))
 
-      RoundedRectangle(cornerRadius: 16)
+      ContainerRelativeShape()
         .trim(from: 0, to: progress)
         .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
-        .rotation(Angle(degrees: -90))
         .fill(Color.accent)
 
       showPercentage
@@ -42,7 +40,7 @@ struct CircularProgressView: View {
 
 struct CircularProgressView_Previews: PreviewProvider {
   static var previews: some View {
-    CircularProgressView(progress: 0.242)
+    UsedWordsProgressView(progress: 0.242)
       .padding()
       .previewLayout(.sizeThatFits)
   }
