@@ -198,10 +198,7 @@ extension MainViewController {
   }
 
   func presentWordError(with alert: WordErrorAlert) {
-    let ac = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
-    let defaultAction = UIAlertAction(title: "OK", style: .default)
-    ac.addAction(defaultAction)
-    present(ac, animated: true)
+    UIAlertController.presentAlertController(on: self, title: alert.title, message: alert.message)
   }
 
   private func updateMainViewAfterSubmission() {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class GameService {
-  @Published var session: Session
+  var session: Session
 
   @Published var baseword: String = ""
   @Published var usedWords: [String] = []
@@ -93,6 +93,7 @@ class GameService {
       self?.maxPossibleWordsForBaseWord = possibleWords.count
       self?.maxPossibleScoreForBaseWord = maxPossibleScore
     }
+    didReceiveNewBaseword(word, possibleWords: possibleWords, maxPossibleScore: maxPossibleScoreForBaseWord)
   }
 
   func startRndWordSession(onCompletion: (() -> Void)? = nil) {

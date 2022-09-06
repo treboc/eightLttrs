@@ -9,7 +9,6 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   private var mainVC: MainViewController?
-
   var window: UIWindow?
 
   // Gets called on 'cold start'!
@@ -42,35 +41,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   // Gets called when the app is already opened (e.g. running in background) and a link is clicked
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    guard
+    if
       let scene = (scene as? UIWindowScene),
       let context = URLContexts.first,
-      let word = extractStartWord(from: context)
-    else {
-      if let mainVC = getMainViewController(in: scene as! UIWindowScene) {
-        // dismiss topViewController, to get present the Alert on the mainViewController
-        mainVC.navigationController?.topViewController?.dismiss(animated: false)
-        // the "continue"-action
-        presentAlertController(on: mainVC,
-                               with: L10n.SharedWord.Alert.NoValidStartword.title,
-                               and: L10n.SharedWord.Alert.NoValidStartword.message)
-      }
-      return
-    }
-    
-    // check if there is currently a session with atleast one baseWord
-    if let mainVC = getMainViewController(in: scene) {
-       if mainVC.gameServiceHasUsedWords {
+      let word = extractStartWord(from: context),
+      let mainVC = getMainViewController(in: scene) {
+      if mainVC.gameServiceHasUsedWords {
         // dismiss topViewController, to get present the Alert on the mainViewController
         (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
         // the "continue"-action
-         presentAlertController(on: mainVC,
-                                with: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
-                                and: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
+        UIAlertController.presentAlertController(on: mainVC,
+                                                 title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
+                                                 message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
           mainVC.gameService.startNewSession(with: word)
         }
       } else {
         mainVC.gameService.startNewSession(with: word)
+      }
+    } else {
+      if let mainVC = getMainViewController(in: scene as! UIWindowScene) {
+        // dismiss topViewController, to get present the Alert on the mainViewController
+        mainVC.navigationController?.topViewController?.dismiss(animated: false)
+        // the "continue"-action
+        UIAlertController.presentAlertController(on: mainVC,
+                                                 title: L10n.SharedWord.Alert.NoValidStartword.title,
+                                                 message: L10n.SharedWord.Alert.NoValidStartword.message)
+      } else {
+        return
       }
     }
   }
@@ -78,26 +75,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
   private func extractStartWord(from context: UIOpenURLContext) -> String? {
-    guard
+    if
       context.url.scheme == "wordscramble",
       context.url.host == "baseword",
-      let locale = WSLocale(rawValue: (context.url.pathComponents[1])),
+      let locale = WSLocale(rawValue: (context.url.pathComponents[1].uppercased())),
       let word = context.url.pathComponents[safe: 2],
-      WordService.isValidBaseword(word, with: locale)
-    else { return nil }
-
-    return word
+      WordService.isValidBaseword(word, with: locale) {
+      return word
+    } else {
+      return nil
+    }
   }
 
   private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
     guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
 
-    let mainVC = viewControllers.first { viewController in
-      viewController is MainViewController
-    }
-
-    return mainVC as? MainViewController
-  }
-
+    return viewControllers.first { $0 is MainViewController } as? MainViewController
   }
 }
+
