@@ -73,6 +73,9 @@
 		8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75B28C1E65D003457FD /* MediumSizeView.swift */; };
 		8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFC55D28B6162500ACC064 /* HapticsManager.swift */; };
 		8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */; };
+		8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */; };
+		8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */; };
+		8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */; };
 		8ACF525028BAD985008728BB /* Array+Permute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF524F28BAD985008728BB /* Array+Permute.swift */; };
 		8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9610A28B3C9B600F443FB /* BasicTextField.swift */; };
 		8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27028A5911C0083E028 /* AppDelegate.swift */; };
@@ -189,6 +192,9 @@
 		8ABED75B28C1E65D003457FD /* MediumSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSizeView.swift; sourceTree = "<group>"; };
 		8ABFC55D28B6162500ACC064 /* HapticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment+Extension.swift"; sourceTree = "<group>"; };
+		8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkHandlerProtocol.swift; sourceTree = "<group>"; };
+		8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
+		8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSessionDeeplinkHandler.swift; sourceTree = "<group>"; };
 		8ACF524F28BAD985008728BB /* Array+Permute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Permute.swift"; sourceTree = "<group>"; };
 		8AD9610A28B3C9B600F443FB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		8ADAB26D28A5911C0083E028 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -475,6 +481,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8ACF209E28C9BD8000B78DCE /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */,
+				8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */,
+				8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +520,7 @@
 				8A01FED528C26D940071978F /* WordScramble.entitlements */,
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
+				8ACF209E28C9BD8000B78DCE /* Coordinators */,
 				8A99A31B28B520EF00E5ABBF /* Models */,
 				8A87111728B284F9004F299F /* Views */,
 				8A27E2D328C4F3DD00CB39C5 /* Services */,
@@ -753,6 +770,7 @@
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */,
 				8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */,
+				8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */,
 				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresendAC.swift in Sources */,
 				8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
@@ -763,6 +781,7 @@
 				8A62106D28C8AE2200C8F1A7 /* EndSessionView.swift in Sources */,
 				8A794FDB28B938E700BC9CE5 /* GameServiceProtocol.swift in Sources */,
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
+				8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */,
 				8A99A32328B5255400E5ABBF /* HighscoreListViewController.swift in Sources */,
 				8A45C1E728BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,
@@ -770,6 +789,7 @@
 				8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */,
 				8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
+				8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */,
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				8A2A24F628C3215D00C47C27 /* Color+Accent.swift in Sources */,

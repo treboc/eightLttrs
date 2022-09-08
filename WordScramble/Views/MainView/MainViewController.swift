@@ -28,7 +28,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   init(viewModel: MainViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-//    self.viewModel.resetCallback = resetPublishers
+    self.viewModel.resetCallback = resetPublishers
   }
 
   required init?(coder: NSCoder) {
@@ -150,7 +150,6 @@ extension MainViewController {
   }
 
   private func setupPublishers() {
-
     // Publisher -> updates title
     viewModel.session
       .publisher(for: \.baseword, options: [.initial, .new])
@@ -204,6 +203,7 @@ extension MainViewController {
       .store(in: &cancellables)
 
     viewModel.error
+      .dropFirst()
       .compactMap { $0 }
       .sink(receiveValue: presentAlertController)
       .store(in: &cancellables)

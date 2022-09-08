@@ -30,7 +30,7 @@ class GameAPI {
   func newSession(with word: String) -> Session {
     let session: Session = .newSession()
     session.baseword = word
-    WordService.getAllPossibleWordsFor(word, withLocale: self.usersLocale) { possibleWords, maxPossibleScore in
+    WordService.getAllPossibleWords(for: word) { possibleWords, maxPossibleScore in
       session.possibleWordsSet = possibleWords
       session.maxPossibleWordsOnBaseWord = possibleWords.count
       session.maxPossibleScoreOnBaseWord = maxPossibleScore

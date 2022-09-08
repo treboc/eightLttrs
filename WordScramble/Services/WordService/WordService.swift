@@ -73,6 +73,25 @@ class WordService {
     }
   }
 
+  static func getLocale(for word: String) -> WSLocale {
+    for locale in WSLocale.allCases {
+      let basewords = loadBasewords(locale)
+      if basewords.contains(word) {
+        return locale
+      }
+    }
+    return .getStoredWSLocale()
+  }
+
+  static func getAllPossibleWords(for word: String, onCompletion: @escaping (Set<String>, Int) -> Void) {
+    let locale = getLocale(for: word)
+    let list = loadPossibleWords(locale)
+    Task {
+      let (words, score) = await allPossibleWords(for: word, basedOn: list)
+      onCompletion(words, score)
+    }
+  }
+
   static func getAllPossibleWordsFor(_ word: String,
                                      basedOn list: Set<String>) async -> (Set<String>, Int) {
     return await allPossibleWords(for: word, basedOn: list)
