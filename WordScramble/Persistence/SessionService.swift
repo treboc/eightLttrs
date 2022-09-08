@@ -76,7 +76,7 @@ class SessionService {
   static func persist(session: Session) {
     do {
       // updating widget
-      let widgetSession = WidgetSession(baseword: session.unwrappedWord, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
+      let widgetSession = WidgetSession(baseword: session.unwrappedBaseword, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
       let currentSession = CurrentSession(currentSession: widgetSession)
       currentSession.storeItem()
       try context.save()

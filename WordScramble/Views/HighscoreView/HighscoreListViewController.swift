@@ -63,14 +63,14 @@ extension HighscoreViewController: UIActivityItemSource {
   }
 
   private func shareHighscore(of session: Session) {
-    if let word = session.unwrappedWord.addingPercentEncoding(withAllowedCharacters: .letters),
+    if let word = session.unwrappedBaseword.addingPercentEncoding(withAllowedCharacters: .letters),
        let locale = session.localeIdentifier,
        let url = URL(string: "wordscramble://baseword/\(locale)/\(word)") {
       metadata.originalURL = url
       metadata.url = metadata.originalURL
       metadata.title = L10n.HighscoreView.metaDataTitle
       metadata.imageProvider = NSItemProvider.init(contentsOf: Bundle.main.url(forResource: "icon", withExtension: "jpg"))
-      let text = L10n.HighscoreView.ShareScore.text(session.score, session.unwrappedWord)
+      let text = L10n.HighscoreView.ShareScore.text(session.score, session.unwrappedBaseword)
       let ac = UIActivityViewController(activityItems: [self, text, url], applicationActivities: nil)
       present(ac, animated: true)
     }

@@ -31,7 +31,7 @@ class HighscoreCell: UITableViewCell {
   func updateLabels(with session: Session, and indexPath: IndexPath) {
     rankLabel.text = "\(indexPath.item + 1)."
     nameLabel.text = session.unwrappedName
-    wordLabel.text = "gestartet mit: \(session.unwrappedWord)"
+    wordLabel.text = "gestartet mit: \(session.unwrappedBaseword)"
     scorePointsLabel.text = String(format: "%03d", session.score)
   }
 

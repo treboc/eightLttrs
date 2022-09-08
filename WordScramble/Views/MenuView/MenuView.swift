@@ -6,16 +6,9 @@
 import UIKit
 import SwiftUI
 
-struct AlertToPresent {
-  let title: String
-  let message: String
-  let primaryActionTitle: String = L10n.ButtonTitle.imSure
-  let primaryAction: () -> Void
-}
-
 struct MenuView: View {
   // Properties
-  let gameService: GameService
+  let mainViewModel: MainViewModel
   @Environment(\.dismiss) private var dismiss
 
   // UserDefaults
@@ -34,11 +27,11 @@ struct MenuView: View {
           Button(L10n.MenuView.restartSession, action: restartSession)
 
           Button(L10n.MenuView.endSession, action: endSession)
-            .disabled(gameService.usedWords.isEmpty)
+            .disabled(mainViewModel.session.usedWords.isEmpty)
 
           NavigationLink(L10n.MenuView.showHighscore) {
-            HighscoreListViewRepresentable()
-              .navigationTitle("Highscores")
+            HighscoreListView()
+              .environment(\.managedObjectContext, PersistenceStore.shared.context)
           }
           .buttonStyle(.borderedProminent)
         }
@@ -88,7 +81,7 @@ struct MenuView: View {
         #endif
       }
       .sheet(isPresented: $endGameViewIsShown, onDismiss: endGameViewDismissed) {
-        EndSessionViewControllerRepresentable(gameService: gameService)
+        EndSessionView(session: mainViewModel.session)
       }
       .toolbar {
         ToolbarItem {
@@ -106,20 +99,20 @@ struct MenuView: View {
   }
 }
 
+#if DEBUG
 // MARK: - Views
 extension MenuView {
-  #if DEBUG
   private var allPossibleWordsSection_DEV: some View {
-    Section("Possible words for \(gameService.baseword)") {
+    Section("Possible words for \(mainViewModel.session.unwrappedBaseword)") {
       List {
-        ForEach(Array(gameService.possibleWords).sorted(), id: \.self) { word in
+        ForEach(Array(mainViewModel.session.possibleWords).sorted(), id: \.self) { word in
           HStack {
             Text(word)
-              .strikethrough(gameService.usedWords.contains(word), color: .accentColor)
+              .strikethrough(mainViewModel.session.usedWords.contains(word), color: .accentColor)
 
             Spacer()
 
-            gameService.usedWords.contains(word)
+            mainViewModel.session.usedWords.contains(word)
             ? Image(systemName: "checkmark.circle")
             : Image(systemName: "circle")
           }
@@ -127,20 +120,20 @@ extension MenuView {
       }
     }
   }
-  #endif
 }
+#endif
 
 // MARK: - Methods
 extension MenuView {
   private func restartSession() {
-    if !gameService.usedWords.isEmpty {
+    if !mainViewModel.session.usedWords.isEmpty {
       self.alertModel = AlertToPresent(title: L10n.ResetGameAlert.title,
                                        message: L10n.ResetGameAlert.message) {
-        gameService.startRndWordSession()
+        mainViewModel.startNewSession()
         dismiss.callAsFunction()
       }
     } else {
-      gameService.startRndWordSession()
+      mainViewModel.startNewSession()
       dismiss.callAsFunction()
     }
   }
@@ -154,7 +147,7 @@ extension MenuView {
 
   private func endGameViewDismissed() {
     dismiss.callAsFunction()
-    gameService.startRndWordSession()
+    mainViewModel.startNewSession()
   }
 }
 

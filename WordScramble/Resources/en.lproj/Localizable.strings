@@ -41,9 +41,9 @@
 // MenuView
 "menuView.title" = "Menu";
 "menuView.settings" = "Settings";
-"menuView.restartSession" = "Restart Session";
+"menuView.restartSession" = "New Baseword";
 "menuView.endSession" = "End Session";
-"menuView.showHighscore" = "Show Highscore";
+"menuView.showHighscore" = "Highscore";
 "menuView.baseword" = "Baseword";
 "menuView.hapticFeedback" = "Haptic Feedback";
 "menuView.sound" = "Sound";

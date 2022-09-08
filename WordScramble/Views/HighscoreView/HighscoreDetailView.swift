@@ -24,7 +24,7 @@ struct HighscoreDetailView: View {
           Text(L10n.HighscoreDetaiLView.baseword)
             .foregroundColor(.secondary)
           Spacer()
-          Text(session.unwrappedWord)
+          Text(session.unwrappedBaseword)
         }
         
         HStack {
@@ -35,7 +35,7 @@ struct HighscoreDetailView: View {
         }
       }
       
-      Section(L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFound)) {
+      Section(L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFoundString)) {
         List {
           ForEach(session.usedWords, id: \.self) { word in
             HStack {
@@ -48,6 +48,8 @@ struct HighscoreDetailView: View {
         }
       }
     }
+    .navigationTitle(L10n.HighscoreDetailView.title)
+    .roundedNavigationTitle()
   }
 }
 

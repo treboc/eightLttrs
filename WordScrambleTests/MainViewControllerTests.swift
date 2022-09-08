@@ -8,20 +8,20 @@
 import XCTest
 @testable import WordScramble
 
-class MainViewControllerTests: XCTestCase {
-  var sut: MainViewController!
-
-  override func setUpWithError() throws {
-    sut = MainViewController(gameService: .init())
-  }
-
-  override func tearDownWithError() throws {
-    sut = nil
-  }
-
-  func test_loadView_setsMainView() {
-    XCTAssertNotNil(sut.view as? MainView)
-  }
+//class MainViewControllerTests: XCTestCase {
+//  var sut: MainViewController!
+//
+//  override func setUpWithError() throws {
+//    sut = MainViewController(gameService: .init())
+//  }
+//
+//  override func tearDownWithError() throws {
+//    sut = nil
+//  }
+//
+//  func test_loadView_setsMainView() {
+//    XCTAssertNotNil(sut.view as? MainView)
+//  }
 
 //  func test_viewDidLoad_presentOnboarding_showsOnboardingOnFirstStart() {
 //    // Given
@@ -34,4 +34,4 @@ class MainViewControllerTests: XCTestCase {
 //    // Then
 //    XCTAssert(presentedVC is OnboardingViewController)
 //  }
-}
+//}

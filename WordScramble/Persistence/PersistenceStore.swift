@@ -38,15 +38,22 @@ extension PersistenceStore {
   // A test configuration for SwiftUI previews
   static var preview: PersistenceStore = {
     let store = PersistenceStore(inMemory: true)
-    let session = Session(context: store.context)
-    session.id = UUID()
-    session.playerName = "Brunhilde"
-    session.baseWord = "Sandsack"
-    session.usedWords = ["Sand", "Sack"]
-    session.possibleWordsOnBaseWord = Array(repeating: session.usedWords.randomElement()!, count: 62)
-    session.maxPossibleWordsOnBaseWord = 62
-    session.maxPossibleScoreOnBaseWord = 231
-    session.localeIdentifier = "DE"
+    for i in 0..<10 {
+      let session = Session(context: store.context)
+      session.id = UUID()
+      session.playerName = "Brunhilde"
+      session.baseword = "Sandsack"
+      session.usedWords = ["Sand", "Sack"]
+      session.possibleWords = Array(repeating: session.usedWords.randomElement()!, count: 3)
+      session.maxPossibleWordsOnBaseWord = 62
+      session.maxPossibleScoreOnBaseWord = 231
+      session.localeIdentifier = "DE"
+      session.isFinished = true
+    }
     return store
   }()
+
+  fileprivate static func makePreviewSession() -> Session {
+    return .newSession()
+  }
 }

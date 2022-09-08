@@ -23,14 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // try to start the session
     if let context = connectionOptions.urlContexts.first,
        let word = extractStartWord(from: context) {
-      let gameService = GameService(gameType: .shared(word))
-      mainVC = MainViewController(gameService: gameService)
-    } else if let session = SessionService.returnLastSession() {
-      let gameService = GameService(gameType: .continueWith(session))
-      mainVC = MainViewController(gameService: gameService)
+      let viewModel = MainViewModel(gameType: .shared(word))
+      mainVC = MainViewController(viewModel: viewModel)
     } else {
-      let gameService = GameService()
-      mainVC = MainViewController(gameService: gameService)
+      let viewModel = MainViewModel(gameType: .continueLastSession)
+      mainVC = MainViewController(viewModel: viewModel)
     }
 
     guard let mainVC = mainVC else { return }
@@ -53,10 +50,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       UIAlertController.presentAlertController(on: mainVC,
                                                title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
                                                message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-        mainVC.gameService.startNewSession(with: word)
+        let vm = MainViewModel(gameType: .shared(word))
+        mainVC.viewModel = vm
       }
     } else {
-      // dismiss topViewController, to get present the Alert on the mainViewController
+      // dismiss topViewController, to present the Alert on the mainViewController
       mainVC.navigationController?.topViewController?.dismiss(animated: false)
       UIAlertController.presentAlertController(on: mainVC,
                                                title: L10n.SharedWord.Alert.NoValidStartword.title,

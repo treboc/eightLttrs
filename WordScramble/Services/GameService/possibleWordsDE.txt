@@ -113545,9 +113545,6 @@ Zuweist
 zuwende
 Zuwende
 zuwenden
-Zuwenden
-zuwendet
-Zuwendet
 Zuwenig
 zuwerfe
 Zuwerfe
@@ -113870,11 +113867,8 @@ Zwölf
 Zwölfeck
 Zwölfer
 zwölfmal
-Zwölfmal
 zwölft
-Zwölft
 zwölfte
-Zwölfte
 Zwölftel
 zwölftem
 Zwölftem

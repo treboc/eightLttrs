@@ -29,6 +29,7 @@ struct HighscoreListView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       HighscoreListView()
+        .environment(\.managedObjectContext, PersistenceStore.preview.context)
     }
     .preferredColorScheme(.dark)
   }
@@ -38,9 +39,8 @@ struct HighscoreListRowView: View {
   let rank: Int
   let session: Session
 
-
   var body: some View {
-    HStack(alignment: .top) {
+    HStack(alignment: .center) {
       Text("\(rank).")
         .font(.headline)
         .fontWeight(.semibold)
@@ -51,7 +51,7 @@ struct HighscoreListRowView: View {
 
         Group {
           Text("gesucht war: ")
-          + Text(session.unwrappedWord)
+          + Text(session.unwrappedBaseword)
             .italic()
         }
         .font(.caption2)
@@ -67,9 +67,12 @@ struct HighscoreListRowView: View {
           .foregroundColor(.secondary)
       }
 
+      Image(systemName: "chevron.right")
+        .padding(.leading, 5)
     }
     .padding(8)
     .frame(maxWidth: .infinity)
-    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 5))
+    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 5))
+    .background(NavigationLink("", destination: HighscoreDetailView(session: session)).opacity(0).buttonStyle(.plain))
   }
 }

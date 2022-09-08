@@ -5,6 +5,13 @@
 
 import SwiftUI
 
+struct AlertToPresent {
+  let title: String
+  let message: String
+  let primaryActionTitle: String = L10n.ButtonTitle.imSure
+  let primaryAction: () -> Void
+}
+
 extension View {
   func presentAlert(with alertModel: Binding<AlertToPresent?>) -> some View {
     let alertMdl = alertModel.wrappedValue

@@ -8,23 +8,23 @@
 import XCTest
 @testable import WordScramble
 
-final class GameServiceTests: XCTestCase {
-
-
-  override func setUpWithError() throws {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-
-  override func tearDownWithError() throws {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-  }
-
-  func test_initWithRandomWord() {
-    // Given
-    let gameService = GameService()
-
-    // Then
-    XCTAssert(!gameService.baseword.isEmpty, "no baseword set")
-  }
-
-}
+//final class GameServiceTests: XCTestCase {
+//
+//
+//  override func setUpWithError() throws {
+//    // Put setup code here. This method is called before the invocation of each test method in the class.
+//  }
+//
+//  override func tearDownWithError() throws {
+//    // Put teardown code here. This method is called after the invocation of each test method in the class.
+//  }
+//
+//  func test_initWithRandomWord() {
+//    // Given
+//    let gameService = GameAPI()
+//
+//    // Then
+//    XCTAssert(!gameService.baseword.value.isEmpty, "no baseword set")
+//  }
+//
+//}

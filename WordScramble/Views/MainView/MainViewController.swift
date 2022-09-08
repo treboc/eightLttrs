@@ -15,15 +15,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var gameService: GameService
-  var audioPlayer: AVAudioPlayer?
-  var dataSource: UICollectionViewDiffableDataSource<Section, String>!
-  var cancellables = Set<AnyCancellable>()
+  var viewModel: MainViewModel {
+    didSet {
+      cancellables.removeAll()
+      setupPublishers()
+    }
+  }
 
-  init(gameService: GameService) {
-    self.gameService = gameService
+  private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+  private var cancellables = Set<AnyCancellable>()
 
+  init(viewModel: MainViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
+//    self.viewModel.resetCallback = resetPublishers
   }
 
   required init?(coder: NSCoder) {
@@ -145,67 +150,82 @@ extension MainViewController {
   }
 
   private func setupPublishers() {
+
     // Publisher -> updates title
-    gameService.$baseword
+    viewModel.session
+      .publisher(for: \.baseword, options: [.initial, .new])
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] baseword in
-        self?.didReceive(baseword)
-      }
+      .compactMap({ $0 })
+      .sink(receiveValue: didReceiveBaseword)
       .store(in: &cancellables)
 
     // Publisher -> updates collectionView
-    gameService.$usedWords
+    viewModel.session
+      .publisher(for: \.usedWords)
       .sink { [weak self] words in
         self?.applySnapshot(with: words)
       }
       .store(in: &cancellables)
 
     // Publisher -> updates left-side foundWordsLabels
-    gameService.$usedWords
+    viewModel.session
+      .publisher(for: \.usedWords)
       .map { $0.count }
-      .combineLatest(gameService.$maxPossibleWordsForBaseWord)
+      .combineLatest(viewModel.session.publisher(for: \.maxPossibleWordsOnBaseWord))
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] (usedWordsCount, possibleWordsCount) in
-        self?.updateWordsLabel(with: usedWordsCount, and: possibleWordsCount)
+      .sink { [weak self] (usedWordsCount, maxPossibleWordsCount) in
+        self?.updateWordsLabel(with: usedWordsCount, and: maxPossibleWordsCount)
       }
       .store(in: &cancellables)
 
     // Publisher -> updates right-side scoreLabels
-    gameService.$totalScore
-      .combineLatest(gameService.$maxPossibleScoreForBaseWord)
+    viewModel.session
+      .publisher(for: \.score)
+      .combineLatest(viewModel.session.publisher(for: \.maxPossibleScoreOnBaseWord))
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] (currentScore, possibleScore) in
-        self?.updateScoreLabel(with: currentScore, and: possibleScore)
-      }
+      .map({ ($0, $1) })
+      .sink(receiveValue: updateScoreLabel)
       .store(in: &cancellables)
 
     // Publisher -> enables filtering
-    NotificationCenter.default
-      .publisher(for: UITextField.textDidChangeNotification, object: mainView.textField)
+    mainView.textField.textPublisher()
       .subscribe(on: DispatchQueue.main)
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] in
-        guard
-          let self = self,
-          let searchString = ($0.object as? UITextField)?.text
-        else { return }
-        self.applyFilteredSnapshot(with: searchString, on: self.gameService.usedWords)
+      .sink { [unowned self] (value) in
+        self.applyFilteredSnapshot(with: value, on: self.viewModel.session.usedWords)
       }
+      .store(in: &cancellables)
+
+    // Publisher -> input to mainViewModel
+    mainView.textField.textPublisher()
+      .sink { [unowned self] (value) in
+        viewModel.input.send(value)
+      }
+      .store(in: &cancellables)
+
+    viewModel.error
+      .compactMap { $0 }
+      .sink(receiveValue: presentAlertController)
       .store(in: &cancellables)
   }
 
-  func presentWordError(with alert: WordErrorAlert) {
-    UIAlertController.presentAlertController(on: self, title: alert.title, message: alert.message)
+  private func resetPublishers() {
+    cancellables.removeAll(keepingCapacity: true)
+    setupPublishers()
   }
 
-  private func updateMainViewAfterSubmission() {
+  func presentAlertController(with wordError: WordError) {
+    UIAlertController.presentAlertController(on: self, title: wordError.alert.title, message: wordError.alert.message)
+  }
+
+  private func clearTextField() {
     // Maybe looking up for another solution because this needs to be done
     // because this is not like typing or removing all characters 'by hand'..
     mainView.submitButton.isEnabled = false
     mainView.clearTextField()
   }
 
-  private func didReceive(_ baseWord: String) {
+  private func didReceiveBaseword(_ baseWord: String) {
     self.title = baseWord
     mainView.clearTextField()
   }
@@ -213,9 +233,8 @@ extension MainViewController {
 
 // MARK: - Methods for Buttons
 extension MainViewController {
-
   private func updateScoreLabel(with currentScore: Int, and possibleScore: Int) {
-    mainView.currentScoreBodyLabel.text = "\(currentScore) / \(possibleScore)"
+    mainView.currentScoreBodyLabel.text = "\(viewModel.session.score) / \(possibleScore)"
   }
 
   private func updateWordsLabel(with usedWordsCount: Int, and possibleWordsCount: Int) {
@@ -236,40 +255,13 @@ extension MainViewController {
 
   @objc
   private func showMenu() {
-    let vc = UIHostingController(rootView: MenuView(gameService: gameService))
+    let vc = UIHostingController(rootView: MenuView(mainViewModel: viewModel))
     present(vc, animated: true)
   }
 
   @objc
   private func submit() {
-    guard
-      let input = mainView.textField.text,
-      !input.isEmpty
-    else { return }
-    do {
-      try gameService.submit(input, onCompletion: updateMainViewAfterSubmission)
-      HapticManager.shared.success()
-      playSound(.success)
-    } catch let error as WordError {
-      HapticManager.shared.error()
-      playSound(.error)
-      presentWordError(with: error.alert)
-    } catch {
-      fatalError(error.localizedDescription)
-    }
-  }
-
-  private func playSound(_ type: SoundType) {
-    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
-      DispatchQueue.global(qos: .background).async { [weak self] in
-        do {
-          self?.audioPlayer = try AVAudioPlayer(contentsOf: type.fileURL)
-          self?.audioPlayer?.play()
-        } catch {
-          print(error.localizedDescription)
-        }
-      }
-    }
+    viewModel.submit(onCompletion: clearTextField)
   }
 }
 

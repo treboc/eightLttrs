@@ -10,5 +10,5 @@ import Foundation
 enum GameType: Equatable {
   case random
   case shared(String)
-  case continueWith(Session)
+  case continueLastSession
 }
