@@ -15,11 +15,15 @@
 		8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */; };
 		8A3F79D528AC59810058A272 /* possibleWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* possibleWordsEN.txt */; };
 		8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
+		8A40C1EB28C9EDD6000971E4 /* ShareSessionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1EA28C9EDD6000971E4 /* ShareSessionButton.swift */; };
+		8A40C1EF28CA043B000971E4 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1EE28CA043B000971E4 /* AppearanceManager.swift */; };
+		8A40C1F128CA0D6A000971E4 /* AppearancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1F028CA0D6A000971E4 /* AppearancePicker.swift */; };
+		8A40C1F328CA38D7000971E4 /* HighscoreListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1F228CA38D7000971E4 /* HighscoreListRowView.swift */; };
+		8A40C20128CB15370067E349 /* ShowModal-EnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C20028CB15370067E349 /* ShowModal-EnvironmentKey.swift */; };
 		8A41A52828C4AB6A0056662C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41A52728C4AB6A0056662C /* WordService.swift */; };
 		8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DD28BB909500A136CC /* MenuView.swift */; };
 		8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */; };
 		8A45C1E328BBC30700A136CC /* PresentAlert-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */; };
-		8A45C1E728BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */; };
 		8A4A612E28BD406600EA126A /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A612D28BD406600EA126A /* Collection+Safe.swift */; };
 		8A4C4C8828BC327F00B643D1 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8628BC327F00B643D1 /* success.wav */; };
 		8A4C4C8928BC327F00B643D1 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8728BC327F00B643D1 /* error.wav */; };
@@ -56,11 +60,7 @@
 		8A92030B28C26786008AF8EA /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
 		8A92030C28C26789008AF8EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */; };
 		8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */; };
-		8A99A32328B5255400E5ABBF /* HighscoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */; };
-		8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32428B5256800E5ABBF /* HighscoreListView.swift */; };
 		8A99A32828B530BA00E5ABBF /* HighscoreCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */; };
-		8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */; };
-		8A99A32C28B552F900E5ABBF /* HighscoreListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */; };
 		8AAC5C7F28C875BF00AF66F6 /* UITextField+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */; };
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
@@ -91,7 +91,7 @@
 		8AE9627E28C718ED00FBD9FE /* UIAlertController+PresendAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+PresendAC.swift */; };
 		8AE9628028C71D7400FBD9FE /* GameServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627F28C71D7400FBD9FE /* GameServiceTests.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* HighscoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */; };
-		8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */; };
+		8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,11 +139,15 @@
 		8A2A24F528C3215D00C47C27 /* Color+Accent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Accent.swift"; sourceTree = "<group>"; };
 		8A3F79D428AC59810058A272 /* possibleWordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = possibleWordsEN.txt; sourceTree = "<group>"; };
 		8A3F79DD28ACE42C0058A272 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		8A40C1EA28C9EDD6000971E4 /* ShareSessionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSessionButton.swift; sourceTree = "<group>"; };
+		8A40C1EE28CA043B000971E4 /* AppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
+		8A40C1F028CA0D6A000971E4 /* AppearancePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearancePicker.swift; sourceTree = "<group>"; };
+		8A40C1F228CA38D7000971E4 /* HighscoreListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListRowView.swift; sourceTree = "<group>"; };
+		8A40C20028CB15370067E349 /* ShowModal-EnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowModal-EnvironmentKey.swift"; sourceTree = SOURCE_ROOT; };
 		8A41A52728C4AB6A0056662C /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		8A45C1DD28BB909500A136CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedNavigationTitle-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PresentAlert-ViewModifier.swift"; sourceTree = "<group>"; };
-		8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighscoreListView-ViewControllerRepresentable.swift"; sourceTree = "<group>"; };
 		8A4A612D28BD406600EA126A /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		8A4C4C8628BC327F00B643D1 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
@@ -176,11 +180,7 @@
 		8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordsProgressView.swift; sourceTree = "<group>"; };
 		8A9202FE28C217F5008AF8EA /* WSLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSLocale.swift; sourceTree = "<group>"; };
 		8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CalculatedScore.swift"; sourceTree = "<group>"; };
-		8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListViewController.swift; sourceTree = "<group>"; };
-		8A99A32428B5256800E5ABBF /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
 		8A99A32728B530BA00E5ABBF /* HighscoreCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreCellItem.swift; sourceTree = "<group>"; };
-		8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListCell.swift; sourceTree = "<group>"; };
-		8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListHeaderCell.swift; sourceTree = "<group>"; };
 		8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8ABED74628C1E332003457FD /* WordScrambleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordScrambleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +214,7 @@
 		8AE9627D28C718ED00FBD9FE /* UIAlertController+PresendAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PresendAC.swift"; sourceTree = "<group>"; };
 		8AE9627F28C71D7400FBD9FE /* GameServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceTests.swift; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreDetailView.swift; sourceTree = "<group>"; };
-		8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView_.swift; sourceTree = "<group>"; };
+		8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +284,24 @@
 			path = MenuView;
 			sourceTree = "<group>";
 		};
+		8A40C1EC28C9F7ED000971E4 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				8A40C1F028CA0D6A000971E4 /* AppearancePicker.swift */,
+				8A40C1EA28C9EDD6000971E4 /* ShareSessionButton.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		8A40C1ED28C9F7F5000971E4 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8A85AD2A28BDF3AF007FF4BF /* Divider.swift */,
+				8AD9610A28B3C9B600F443FB /* BasicTextField.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		8A41A52428C4AB380056662C /* WordService */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,8 +349,10 @@
 		8A70BEC228AB7C4C00455FF1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8A40C20028CB15370067E349 /* ShowModal-EnvironmentKey.swift */,
 				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
 				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
+				8A40C1EE28CA043B000971E4 /* AppearanceManager.swift */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
 				8A45C1E128BB978200A136CC /* ViewModifier */,
 				8A99A31F28B5248700E5ABBF /* Extensions */,
@@ -365,8 +385,8 @@
 		8A85AD2C28BDF3BD007FF4BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8A85AD2A28BDF3AF007FF4BF /* Divider.swift */,
-				8AD9610A28B3C9B600F443FB /* BasicTextField.swift */,
+				8A40C1EC28C9F7ED000971E4 /* SwiftUI */,
+				8A40C1ED28C9F7F5000971E4 /* UIKit */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,12 +448,8 @@
 		8A99A32628B5257000E5ABBF /* HighscoreView */ = {
 			isa = PBXGroup;
 			children = (
-				8A45C1E628BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift */,
-				8A99A32228B5255400E5ABBF /* HighscoreListViewController.swift */,
-				8A99A32428B5256800E5ABBF /* HighscoreListView.swift */,
-				8A99A32928B5327400E5ABBF /* HighscoreListCell.swift */,
-				8A99A32B28B552F900E5ABBF /* HighscoreListHeaderCell.swift */,
-				8AF14FE128BF9E6F00AB6646 /* HighscoreListView_.swift */,
+				8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */,
+				8A40C1F228CA38D7000971E4 /* HighscoreListRowView.swift */,
 				8AF14FDF28BF8D3D00AB6646 /* HighscoreDetailView.swift */,
 			);
 			path = HighscoreView;
@@ -762,6 +778,7 @@
 				8A99A32828B530BA00E5ABBF /* HighscoreCellItem.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
 				8A85AD2B28BDF3AF007FF4BF /* Divider.swift in Sources */,
+				8A40C20128CB15370067E349 /* ShowModal-EnvironmentKey.swift in Sources */,
 				8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */,
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
@@ -769,25 +786,23 @@
 				8A41A52828C4AB6A0056662C /* WordService.swift in Sources */,
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentSession.swift in Sources */,
-				8A99A32528B5256800E5ABBF /* HighscoreListView.swift in Sources */,
 				8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */,
 				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresendAC.swift in Sources */,
-				8AF14FE228BF9E6F00AB6646 /* HighscoreListView_.swift in Sources */,
+				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8AAC5C7F28C875BF00AF66F6 /* UITextField+Publisher.swift in Sources */,
+				8A40C1F128CA0D6A000971E4 /* AppearancePicker.swift in Sources */,
 				8A4A612E28BD406600EA126A /* Collection+Safe.swift in Sources */,
 				8A87111628B28322004F299F /* Session+CoreDataClass.swift in Sources */,
+				8A40C1EB28C9EDD6000971E4 /* ShareSessionButton.swift in Sources */,
 				8A62106D28C8AE2200C8F1A7 /* EndSessionView.swift in Sources */,
 				8A794FDB28B938E700BC9CE5 /* GameServiceProtocol.swift in Sources */,
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
 				8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */,
-				8A99A32328B5255400E5ABBF /* HighscoreListViewController.swift in Sources */,
-				8A45C1E728BBEDCE00A136CC /* HighscoreListView-ViewControllerRepresentable.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,
 				8A87111228B28216004F299F /* WordScramble.xcdatamodeld in Sources */,
 				8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */,
-				8A99A32A28B5327400E5ABBF /* HighscoreListCell.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */,
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
@@ -800,7 +815,8 @@
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8A45C1E328BBC30700A136CC /* PresentAlert-ViewModifier.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,
-				8A99A32C28B552F900E5ABBF /* HighscoreListHeaderCell.swift in Sources */,
+				8A40C1F328CA38D7000971E4 /* HighscoreListRowView.swift in Sources */,
+				8A40C1EF28CA043B000971E4 /* AppearanceManager.swift in Sources */,
 				8A78F3BD28AEBFCD00DFA6D5 /* L10n.swift in Sources */,
 				8A87110E28B281C5004F299F /* PersistenceStore.swift in Sources */,
 			);
@@ -881,7 +897,7 @@
 				INFOPLIST_FILE = WordScrambleWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -910,7 +926,7 @@
 				INFOPLIST_FILE = WordScrambleWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -978,7 +994,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1034,7 +1050,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1123,7 +1139,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScrambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1143,7 +1159,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KAQMJ37RH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.WordScrambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

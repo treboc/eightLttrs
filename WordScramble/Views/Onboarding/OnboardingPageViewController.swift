@@ -34,9 +34,19 @@ class OnboardingPageViewController: UIViewController {
 
 extension OnboardingPageViewController {
   private func style() {
+    var roundedTitleFont = UIFont.preferredFont(forTextStyle: .largeTitle)
+    roundedTitleFont = UIFont(descriptor:
+                                roundedTitleFont.fontDescriptor
+      .withDesign(.rounded)?
+      .withSymbolicTraits(.traitBold)
+                              ??
+                              roundedTitleFont.fontDescriptor,
+                              size: roundedTitleFont.pointSize
+    )
+    let titleLabelFont = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: roundedTitleFont)
+
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.font = .preferredFont(forTextStyle: .title1)
-    titleLabel.font = .boldSystemFont(ofSize: titleLabel.font.pointSize)
+    titleLabel.font = titleLabelFont
     titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
 
     bodyLabel.translatesAutoresizingMaskIntoConstraints = false

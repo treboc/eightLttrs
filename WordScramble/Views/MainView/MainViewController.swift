@@ -28,7 +28,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   init(viewModel: MainViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    self.viewModel.resetCallback = resetPublishers
+    self.viewModel.resetUICallback = resetPublishers
   }
 
   required init?(coder: NSCoder) {
@@ -144,7 +144,7 @@ extension MainViewController {
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
     // Right -> UIBarButtonItem
-    let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle"), style: .plain, target: self, action: #selector(showMenu))
+    let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
     navigationItem.rightBarButtonItem = menuButton
   }
@@ -231,7 +231,7 @@ extension MainViewController {
   }
 }
 
-// MARK: - Methods for Buttons
+// MARK: - Methods
 extension MainViewController {
   private func updateScoreLabel(with currentScore: Int, and possibleScore: Int) {
     mainView.currentScoreBodyLabel.text = "\(viewModel.session.score) / \(possibleScore)"
@@ -255,7 +255,7 @@ extension MainViewController {
 
   @objc
   private func showMenu() {
-    let vc = UIHostingController(rootView: MenuView(mainViewModel: viewModel))
+    let vc = UIHostingController(rootView: MenuView().environmentObject(viewModel))
     present(vc, animated: true)
   }
 

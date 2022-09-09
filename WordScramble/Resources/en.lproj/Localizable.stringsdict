@@ -2,22 +2,54 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>words.count</key>
+	<key>shareSessionMessage</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@words@</string>
-		<key>words</key>
+		<string>%#@wordsCount@ %#@score@</string>
+		<key>wordsCount</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>Sorry, you&apos;ve found no words!</string>
-			<key>one</key>
-			<string>Awesome, you&apos;ve found a word!</string>
 			<key>other</key>
-			<string>You found %d words, that&apos;s awesome! Next time there will be even more, I&apos;m sure!</string>
+			<string>I&apos;ve found %d words</string>
+			<key>one</key>
+			<string>I&apos;ve found one word</string>
+		</dict>
+		<key>score</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>and my score is %d.</string>
+		</dict>
+	</dict>
+	<key>endSessionBody</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@wordsCount@ %#@score@</string>
+		<key>wordsCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Awesome, you&apos;ve found a word and</string>
+			<key>other</key>
+			<string>Awesome! You&apos;ve found %d words and</string>
+		</dict>
+		<key>score</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>get %d points.</string>
 		</dict>
 	</dict>
 </dict>

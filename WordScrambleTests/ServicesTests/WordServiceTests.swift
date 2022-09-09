@@ -153,6 +153,56 @@ final class WordServiceTests: XCTestCase {
     }
   }
 
+  func test_getLocale_forHolzzaun_shouldReturn_DE() {
+    // Arrange
+    let baseword = "Holzzaun"
+    let storedLocale: WSLocale = .EN
+    storedLocale.persistWSLocale()
+
+    // Act
+    let locale = WordService.getLocale(for: baseword)
+
+    // Assert
+    XCTAssertEqual(locale, .DE)
+  }
+
+  func test_getLocale_fordDemeaned_shouldReturn_DE() {
+    // Arrange
+    let baseword = "demeaned"
+    let storedLocale: WSLocale = .DE
+    storedLocale.persistWSLocale()
+
+    // Act
+    let locale = WordService.getLocale(for: baseword)
+
+    // Assert
+    XCTAssertEqual(locale, .EN)
+  }
+
+  func test_getAllPossibleWords_forTaubenei_shouldContain_Taube() {
+    // Arrange
+    let baseword = "Taubenei"
+    var possibleWords = Set<String>()
+
+    // Act
+    WordService.getAllPossibleWords(for: baseword) { list, _ in
+      possibleWords = list
+      XCTAssertTrue(possibleWords.contains("Taube"))
+    }
+  }
+
+  func test_getAllPossibleWords_forDemeaned_shouldContain_mean() {
+    // Arrange
+    let baseword = "demeaned"
+    var possibleWords = Set<String>()
+
+    // Act
+    WordService.getAllPossibleWords(for: baseword) { list, _ in
+      possibleWords = list
+      XCTAssertTrue(possibleWords.contains("mean"))
+    }
+  }
+
   func test_getAllPossibleWordsFor_shouldReturnWordsAndScore() {
     // Given
     let input = "Taubenei"

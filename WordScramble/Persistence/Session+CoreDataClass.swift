@@ -19,6 +19,7 @@ public class Session: NSManagedObject, Identifiable {
      let session = Session(context: PersistenceStore.shared.context)
      session.id = UUID()
      session.startedAt = .now
+     session.locIdentifier = .getStoredWSLocale()
      session.isFinished = false
      return session
   }
@@ -53,6 +54,13 @@ extension Session {
       return string
     }
     return "0 %"
+  }
+
+  var sharableURL: URL? {
+    let locale = locIdentifier.rawValue.lowercased()
+    let baseword = unwrappedBaseword
+
+    return URL(string: "wordscramble://baseword/\(locale)/\(baseword)")
   }
 
   @objc dynamic var possibleWordsSet: Set<String> {
@@ -94,9 +102,9 @@ extension Session {
   var locIdentifier: WSLocale {
     get {
       if let identifier = localeIdentifier {
-        return .init(rawValue: identifier) ?? .EN
+        return .init(rawValue: identifier) ?? WSLocale.getStoredWSLocale()
       } else {
-        return .EN
+        return WSLocale.getStoredWSLocale()
       }
     }
 

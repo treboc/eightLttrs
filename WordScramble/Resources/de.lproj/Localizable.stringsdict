@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>words.count</key>
-    <dict>
-      <key>NSStringLocalizedFormatKey</key>
-      <string>%#@words@</string>
-      <key>words</key>
-      <dict>
-        <key>NSStringFormatSpecTypeKey</key>
-        <string>NSStringPluralRuleType</string>
-        <key>NSStringFormatValueTypeKey</key>
-        <string>d</string>
-        <key>zero</key>
-        <string>Sorry, du hast diesmal leider keine Wörter gefunden!</string>
-        <key>one</key>
-        <string>Diesmal nur ein Wort, aber immerhin!</string>
-        <key>other</key>
-        <string>Du hast %d Wörter gebildet, das ist eine klasse Leistung!</string>
-      </dict>
-    </dict>
-  </dict>
+<dict>
+	<key>shareSessionMessage</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@wordsCount@ %#@score@</string>
+		<key>wordsCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>Ich habe %d Wörter gefunden</string>
+			<key>one</key>
+			<string>Ich habe ein Wort gefunden</string>
+		</dict>
+		<key>score</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>und habe %d Punkte.</string>
+			<key>one</key>
+			<string>und habe einen Punkt.</string>
+		</dict>
+	</dict>
+	<key>endSessionBody</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@wordsCount@ %#@score@</string>
+		<key>wordsCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Leider nur ein Wort, aber es gibt dafür</string>
+			<key>other</key>
+			<string>Du hast %d Wörter gebildet, das ist eine klasse Leistung dafür gibt es</string>
+		</dict>
+		<key>score</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d Punkte.</string>
+		</dict>
+	</dict>
+</dict>
 </plist>
-

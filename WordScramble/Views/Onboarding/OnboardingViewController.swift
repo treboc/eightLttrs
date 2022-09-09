@@ -45,7 +45,8 @@ extension OnboardingViewController {
     let page2 = OnboardingPageViewController(
       title: L10n.Onboarding.SecondPage.title,
       body: [L10n.Onboarding.SecondPage.body1,
-             L10n.Onboarding.SecondPage.body2])
+             L10n.Onboarding.SecondPage.body2,
+             L10n.Onboarding.SecondPage.body3])
     let page3 = OnboardingPageViewController(
       title: L10n.Onboarding.ThirdPage.title,
       body: [L10n.Onboarding.ThirdPage.body1,
@@ -152,9 +153,9 @@ extension OnboardingViewController: UIPageViewControllerDelegate {
   }
 
   private func hideControls() {
-    pageControlBottomAnchor?.constant = 80
-    skipButtonTopAnchor?.constant = -80
-    nextButtonTopAnchor?.constant = -80
+    pageControlBottomAnchor?.constant = 100
+    skipButtonTopAnchor?.constant = -100
+    nextButtonTopAnchor?.constant = -100
   }
 
   private func showControls() {

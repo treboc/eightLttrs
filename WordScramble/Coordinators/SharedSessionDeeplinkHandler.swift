@@ -24,13 +24,11 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
     mainViewController.navigationController?.topViewController?.dismiss(animated: false)
     
     if let word = extractStartWord(from: url) {
-      if !mainViewController.viewModel.session.usedWords.isEmpty {
-        UIAlertController.presentAlertController(on: mainViewController,
-                                                 title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
-                                                 message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-          let viewModel = MainViewModel(gameType: .shared(word))
-          mainViewController.viewModel = viewModel
-        }
+      UIAlertController.presentAlertController(on: mainViewController,
+                                               title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
+                                               message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
+        let viewModel = MainViewModel(gameType: .shared(word))
+        mainViewController.viewModel = viewModel
       }
     } else {
       UIAlertController.presentAlertController(on: mainViewController,

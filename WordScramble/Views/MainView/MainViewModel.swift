@@ -9,14 +9,14 @@ import Combine
 import Foundation
 import AVFAudio
 
-final class MainViewModel {
+final class MainViewModel: ObservableObject {
   var audioPlayer: AVAudioPlayer?
   let gameAPI: GameAPI
   var session: Session
 
   var input = CurrentValueSubject<String, Never>("")
   var error = CurrentValueSubject<WordError?, Never>(nil)
-  var resetCallback: (() -> Void)? = nil
+  var resetUICallback: (() -> Void)? = nil
 
   private var subscriptions = Set<AnyCancellable>()
 
@@ -51,7 +51,12 @@ final class MainViewModel {
 
   func startNewSession() {
     self.session = gameAPI.randomWordSession()
-    resetCallback?()
+    resetUICallback?()
+  }
+
+  func startNewSession(with word: String) {
+    self.session = gameAPI.newSession(with: word)
+    resetUICallback?()
   }
 }
 

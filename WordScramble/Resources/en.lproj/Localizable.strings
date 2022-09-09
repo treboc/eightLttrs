@@ -11,14 +11,16 @@
 "baseword" = "baseword";
 "basewords" = "basewords";
 "lastAdded" = "last added";
+"score" = "Score";
 
 // Onboarding
 "onboarding.firstPage.title" = "What's the game about?";
-"onboarding.firstPage.body1" = "based on a project of 100daysOfSwift by Paul Hudson";
-"onboarding.firstPage.body2" = "try to find as many words as possible out of a random starting word";
+"onboarding.firstPage.body1" = "you get a starting word. It has eight letters. You just make as many other words out of it as you can.";
+"onboarding.firstPage.body2" = "take your time - the only important thing here is to find as many words as you can, no matter how long it takes.";
 "onboarding.secondPage.title" = "Rules";
 "onboarding.secondPage.body1" = "all starting words are eight letters long";
 "onboarding.secondPage.body2" = "your word must contain at least a minimum of three letters";
+"onboarding.secondPage.body3" = "possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more. In addition, of course, it depends on the upper and lower case.";
 "onboarding.thirdPage.title" = "Scoring";
 "onboarding.thirdPage.body1" = "for the first three letters there is one point each";
 "onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
@@ -47,24 +49,32 @@
 "menuView.baseword" = "Baseword";
 "menuView.hapticFeedback" = "Haptic Feedback";
 "menuView.sound" = "Sound";
-"menuView.filter" = "Filter Used Words";
+"menuView.filter" = "Filter Words";
 "menuView.filterDescription" = "When enabled, the list of already used words gets dynamically filtered.";
+"menuView.changedLanguage.title" = "Changed Language";
+"menuView.changedLanguage.message" = "You're now playing with different basewords.\n\nThis change will take effect on the next session.";
 
 // EndSessionView
 "endSessionView.title" = "Congratulations! 🎉";
-"endSessionView.body" = "You have reached %@ points.";
+
+// HighscoreListView
+"highscoreListView.title" = "Highscores";
+
+// HighscoreListRowView
+"highscoreListRowView.basewordWas" = "Grundwort war: %@";
 
 // HighscoreDetailView
 "highscoreDetailView.title" = "Statistics";
 "highscoreDetaiLView.name" = "Name";
 "highscoreDetaiLView.baseword" = "Baseword";
 "highscoreDetaiLView.score" = "Score";
-"highscoreDetaiLView.foundWordsPercentage" = "Found %@ %";
+"highscoreDetaiLView.foundWordsPercentage" = "Found %@";
+"highscoreDetailView.tryAgain" = "Try again";
 
-// HighscoreView -> Sharing
-"highscoreView.shareScore.text" = "Hey look, I've scored %@ points on \"%@\"!\nTry it and see if you can beat this!";
-"highscoreView.metaDataTitle" = "Try it yourself!";
-"highscoreView.title" = "Highscores";
+// ShareLink
+"shareLink.previewMessage" = "\"%@\" will be shared.\nWho should try it?";
+"shareLink.message" = "I'd like to know if you can do better. My baseword was %@.\n";
+"shareLink.subject" = "Try it yourself!";
 
 // Widgets
 "widget.wordsFound" = "Found %@ of %@ possible words.";
@@ -92,3 +102,4 @@
 "ButtonTitle.next" = "Next";
 "ButtonTitle.continue" = "Continue";
 "ButtonTitle.ok" = "OK";
+"ButtonTitle.shareSession" = "Share Session";

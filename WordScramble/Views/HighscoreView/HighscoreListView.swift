@@ -1,55 +1,57 @@
 //
-//  HighscoreView.swift
+//  HighscoreListView.swift
 //  WordScramble
 //
-//  Created by Marvin Lee Kobert on 23.08.22.
+//  Created by Marvin Lee Kobert on 31.08.22.
 //
 
-import UIKit
+import SwiftUI
 
-class HighscoreView: UIView {
-  private let stackView = UIStackView()
-  private let headerCell = HighscoreListHeaderCell()
-  private(set) var tableView = UITableView()
-  private let divider = Divider(height: 1)
+struct HighscoreListView: View {
+  @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "isFinished = %d", true))
+  private var sessions: FetchedResults<Session>
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setupViews()
-    setupLayout()
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-}
-
-// MARK: - View setup
-extension HighscoreView {
-  private func setupViews() {
-    self.backgroundColor = .systemBackground
-    stackView.axis = .vertical
+  var body: some View {
+    Group {
+      if sessions.isEmpty {
+        emptyListPlaceholder()
+      } else {
+        List {
+          ForEach(Array(zip(sessions.indices, sessions)), id: \.0) { index, session in
+            HighscoreListRowView(rank: index + 1, session: session)
+          }
+        }
+        .listStyle(.plain)
+      }
+    }
+    .navigationTitle(L10n.HighscoreListView.title)
+    .roundedNavigationTitle()
   }
 }
 
-// MARK: - Layout setup
-extension HighscoreView {
-  private func setupLayout() {
-    let safeArea = safeAreaLayoutGuide
-    stackView.translatesAutoresizingMaskIntoConstraints = false
 
-    stackView.addArrangedSubview(headerCell)
-    stackView.addArrangedSubview(divider)
-    stackView.addArrangedSubview(tableView)
+struct HighscoreListView_Previews: PreviewProvider {
+  static var previews: some View {
+    NavigationView {
+      HighscoreListView()
+        .environment(\.managedObjectContext, PersistenceStore.preview.context)
+    }
+    .preferredColorScheme(.dark)
+  }
+}
 
-    addSubview(stackView)
 
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-      stackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-      divider.heightAnchor.constraint(equalToConstant: 1)
-    ])
+
+struct emptyListPlaceholder: View {
+  var body: some View {
+    VStack(spacing: 20) {
+      Text("No saved sessions yet!")
+        .font(.system(.title2, design: .rounded, weight: .bold))
+      Text("Find some words and come back later.")
+        .font(.system(.body, design: .rounded, weight: .semibold))
+      Spacer()
+    }
+    .multilineTextAlignment(.center)
+    .padding(50)
   }
 }

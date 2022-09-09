@@ -11,21 +11,23 @@
 "baseword" = "Grundwort";
 "basewords" = "Grundwörter";
 "lastAdded" = "zuletzt hinzugefügt";
+"score" = "Punkte";
 
 // Onboarding
 "onboarding.firstPage.title" = "Worum geht's?";
-"onboarding.firstPage.body1" = "das Spiel basiert auf einem Projekt aus dem Kurs '100daysOfSwift' von Paul Hudson";
-"onboarding.firstPage.body2" = "versuch so viele Worte wie möglich aus dem zufällig gewähltem Startwort zu bilden";
+"onboarding.firstPage.body1" = "Du bekommst ein Startwort. Es hat acht Buchstaben. Du machst einfach so viele andere Worte daraus, wie dir nur möglich ist.";
+"onboarding.firstPage.body2" = "nimm dir Zeit – wichtig ist hier nur, so viele Wörter zu finden, wie es dir möglich ist, egal wie lang es dauert.";
 "onboarding.secondPage.title" = "Regeln";
 "onboarding.secondPage.body1" = "alle Startworte haben acht Buchstaben";
-"onboarding.secondPage.body2" = "stelle die Buchstaben um, lass welche weg, dein Wort muss lediglich mindestens drei Buchstaben haben";
+"onboarding.secondPage.body2" = "stelle die Buchstaben um, lass welche weg – dein Wort muss lediglich mindestens drei Buchstaben haben";
+"onboarding.secondPage.body3" = "mögliche Worte sind Substantive, Adjektive und Verben in all ihren Formen. Außerdem noch Namen, Abkürzungen, Zahlwörter und vieles mehr. Noch dazu kommt es natürlich auf auf die Groß- und Kleinschreibung an.";
 "onboarding.thirdPage.title" = "Punkteberechnung";
 "onboarding.thirdPage.body1" = "für die ersten drei Buchstaben deines Wortes gibt es drei Punkte";
 "onboarding.thirdPage.body2" = "für jeden weiteren immer zwei mehr, also für den vierten 2, für den fünften 4, für den sechsten 6, etc.";
 "onboarding.thirdPage.buttonTitle" = "Los gehts!";
 
 // WordError
-"wordError.notReal.title" = "Kein Wort";
+"wordError.notReal.title" = "Unbekanntes Wort";
 "wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
 "wordError.notOriginal.title" = "Schon genutzt";
 "wordError.notOriginal.message" = "Das hatten wir schon, denk' dir was neues aus.";
@@ -47,24 +49,32 @@
 "menuView.baseword" = "Grundwort";
 "menuView.hapticFeedback" = "Haptisches Feedback";
 "menuView.sound" = "Ton";
-"menuView.filter" = "Filter Bekannte Wörter";
-"menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits bekannten Wörter.";
+"menuView.filter" = "Wortlistenfilter";
+"menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits gefundenen Wörter.";
+"menuView.changedLanguage.title" = "Sprache gewechselt";
+"menuView.changedLanguage.message" = "Du spielst jetzt mit anderen Grundworte.\n\nDiese Änderung tritt bei der nächsten Runde in Kraft.";
 
 // EndSessionView
 "endSessionView.title" = "Herzlichen Glückwunsch! 🎉";
-"endSessionView.body" = "Du hast %@ Punkte erreicht.";
+
+// HighscoreListView
+"highscoreListView.title" = "Highscores";
+
+// HighscoreListRowView
+"highscoreListRowView.basewordWas" = "baseword was: %@";
 
 // HighscoreDetailView
 "highscoreDetailView.title" = "Details";
 "highscoreDetaiLView.name" = "Name";
 "highscoreDetaiLView.baseword" = "Grundwort";
 "highscoreDetaiLView.score" = "Punkte";
-"highscoreDetaiLView.foundWordsPercentage" = "%@ % gefunden";
+"highscoreDetaiLView.foundWordsPercentage" = "%@ gefunden";
+"highscoreDetailView.tryAgain" = "Versuchs nochmal";
 
-// HighscoreView -> Sharing
-"highscoreView.shareScore.text" = "Hey schau' mal! Ich habe %@ Punkte bei \"%@\" erreicht!\nVersuch es auch, und sieh ob du es besser kannst!";
-"highscoreView.metaDataTitle" = "Versuch's selbst!";
-"highscoreView.title" = "Highscores";
+// ShareLink
+"shareLink.previewMessage" = "\"%@\" wird geteilt.\nWer soll es versuchen?";
+"shareLink.message" = "Ich möchte wissen, ob du es besser kannst. Mein Grundwort war %@.\n";
+"shareLink.subject" = "Versuch es auch einmal!";
 
 // Widgets
 "widget.wordsFound" = "%@ von %@ möglichen Wörtern gefunden.";
@@ -92,3 +102,4 @@
 "ButtonTitle.next" = "Weiter";
 "ButtonTitle.continue" = "Fortfahren";
 "ButtonTitle.ok" = "Okay";
+"ButtonTitle.shareSession" = "Spiel teilen";

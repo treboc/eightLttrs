@@ -1,5 +1,5 @@
 //
-//  WSLocaleManager.swift
+//  WSLocale.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
@@ -49,7 +49,7 @@ enum WSLocale: String, CaseIterable, Identifiable {
 
   static func regionHasChanged() -> Bool {
     guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaultsKeys.regionCode),
-          let currentRegionCode = Locale.autoupdatingCurrent.regionCode
+          let currentRegionCode = Locale.autoupdatingCurrent.region?.identifier
     else { return true }
 
     if storedRegionCode == currentRegionCode {
@@ -61,8 +61,8 @@ enum WSLocale: String, CaseIterable, Identifiable {
 
   static func wsLocaleBasedOnRegion() -> WSLocale {
     guard
-      let regionCode = Locale.autoupdatingCurrent.regionCode,
-      let wsLocale = WSLocale.init(rawValue: regionCode)
+      let regionCode = Locale.autoupdatingCurrent.region,
+      let wsLocale = WSLocale.init(rawValue: regionCode.identifier)
     else { return .EN }
 
     return wsLocale

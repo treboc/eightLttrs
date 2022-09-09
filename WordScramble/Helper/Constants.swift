@@ -10,6 +10,8 @@ import SwiftUI
 struct Constants {
   static let widthPadding: CGFloat = 16
   static let cornerRadius: CGFloat = 8
+
+  static let twitterURL: URL = URL(string: "https://twitter.com/treb0c")!
 }
 
 struct UserDefaultsKeys {

@@ -21,50 +21,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     return window?.rootViewController as? UINavigationController
   }
 
-  // Gets called on 'cold start'!
-  // App is currently not running, whether in background nor active
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
     window.rootViewController = UINavigationController(rootViewController: mainVC)
-
-
-
     window.makeKeyAndVisible()
     self.window = window
+
+    UserDefaults.standard.addObserver(self, forKeyPath: "Appearance", options: [.new], context: nil)
 
     if let firstURL = connectionOptions.urlContexts.first?.url {
       deeplinkCoordinator.handleURL(firstURL)
     }
   }
 
-  // Gets called when the app is already opened (e.g. running in background) and a link is clicked
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     guard let firstURL = URLContexts.first?.url else { return }
 
     deeplinkCoordinator.handleURL(firstURL)
-//    guard
-//      let scene = (scene as? UIWindowScene),
-//      let mainVC = getMainViewController(in: scene)
-//    else { return }
-//
-//    if let word = extractStartWord(from: URLContexts.first) {
-//      // dismiss topViewController, to get present the Alert on the mainViewController
-//      (scene.keyWindow?.rootViewController as? UINavigationController)?.topViewController?.dismiss(animated: false)
-//      // the "continue"-action
-//      UIAlertController.presentAlertController(on: mainVC,
-//                                               title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
-//                                               message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-//        let vm = MainViewModel(gameType: .shared(word))
-//        mainVC.viewModel = vm
-//      }
-//    } else {
-//      // dismiss topViewController, to present the Alert on the mainViewController
-//      mainVC.navigationController?.topViewController?.dismiss(animated: false)
-//      UIAlertController.presentAlertController(on: mainVC,
-//                                               title: L10n.SharedWord.Alert.NoValidStartword.title,
-//                                               message: L10n.SharedWord.Alert.NoValidStartword.message)
-//    }
+  }
+
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    print("fired")
+    guard
+      let change = change,
+      object != nil,
+      keyPath == "Appearance",
+      let themeValue = change[.newKey] as? String,
+      let theme = AppearanceManager.Appearance(rawValue: themeValue)?.uiStyle
+    else { return }
+
+    UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: { [weak self] in
+      self?.window?.overrideUserInterfaceStyle = theme
+    }, completion: .none)
   }
 }
 
