@@ -1,4 +1,4 @@
-# WordScramble
+# 8lttrs
 This game is a project in the 100daysWithSwiftUI aswell as in the UIKit course by Paul Hudson. My wife started playing it, so I built in some features to make it more replayable.
 
 ## What's the goal?
