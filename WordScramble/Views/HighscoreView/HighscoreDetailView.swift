@@ -131,6 +131,8 @@ extension HighscoreDetailView {
     HStack {
       if editMode?.wrappedValue.isEditing == true {
         TextField("Name", text: $session.unwrappedName)
+          .autocorrectionDisabled()
+          .keyboardType(.namePhonePad)
       } else {
         Text(L10n.HighscoreDetaiLView.name)
           .foregroundColor(.secondary)

@@ -25,6 +25,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   private var cancellables = Set<AnyCancellable>()
 
+  var menuButton: UIBarButtonItem!
+
   init(viewModel: MainViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -35,12 +37,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - loadView()
   override func loadView() {
     view = MainView()
   }
 
-  // MARK: - viewDidLoad()
   override func viewDidLoad() {
     super.viewDidLoad()
     presentOnboarding()
@@ -49,12 +49,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     setupCollectionView()
     setupActions()
     setupPublishers()
+    setupAccessibility()
 
     mainView.textField.delegate = self
   }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
   enum Section {
     case wordList
@@ -144,7 +144,7 @@ extension MainViewController {
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
     // Right -> UIBarButtonItem
-    let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
+    menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
     navigationItem.rightBarButtonItem = menuButton
   }
@@ -273,6 +273,19 @@ extension MainViewController {
       onboardingVC.modalPresentationStyle = .fullScreen
       self.parent?.present(onboardingVC, animated: false)
     }
+  }
+
+  private func setupAccessibility() {
+    guard let menuButton = menuButton,
+          let collectionView = mainView.collectionView else { return }
+    accessibilityElements = [menuButton, mainView.textField, mainView.submitButton, mainView.numberOfWordsBodyLabel, mainView.currentScoreBodyLabel, collectionView]
+
+    mainView.textField.accessibilityLabel = L10n.A11y.MainView.Textfield.label
+    mainView.textField.accessibilityHint = L10n.A11y.MainView.Textfield.hint
+
+    mainView.numberOfWordsBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.usedWords.count, viewModel.session.maxPossibleWordsOnBaseWord)
+
+    mainView.currentScoreBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.score, viewModel.session.maxPossibleScoreOnBaseWord)
   }
 }
 

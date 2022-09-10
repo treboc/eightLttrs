@@ -33,9 +33,8 @@ class PersistenceStore {
   }
 }
 
-// For SwiftUI Previews
+// SwiftUI Previews
 extension PersistenceStore {
-  // A test configuration for SwiftUI previews
   static var preview: PersistenceStore = {
     let store = PersistenceStore(inMemory: true)
     for i in 0..<10 {

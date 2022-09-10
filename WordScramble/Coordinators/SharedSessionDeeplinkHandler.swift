@@ -36,19 +36,16 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
                                                message: L10n.SharedWord.Alert.NoValidStartword.message)
     }
   }
-}
 
-extension SharedSessionDeeplinkHandler {
-  private func extractStartWord(from url: URL) -> String? {
-    if
+  func extractStartWord(from url: URL) -> String? {
+    guard
       url.scheme == "wordscramble",
       url.host == "baseword",
       let locale = WSLocale(rawValue: (url.pathComponents[1].uppercased())),
       let word = url.pathComponents[safe: 2],
-      WordService.isValidBaseword(word, with: locale) {
-      return word
-    } else {
+      WordService.isValidBaseword(word, with: locale) else {
       return nil
     }
+    return word
   }
 }

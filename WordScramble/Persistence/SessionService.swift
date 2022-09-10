@@ -8,8 +8,6 @@
 import CoreData
 import Foundation
 
-// MARK: - Saving & Loading Scores
-
 class SessionService {
   internal static let context = PersistenceStore.shared.context
 

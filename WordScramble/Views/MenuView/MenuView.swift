@@ -7,12 +7,10 @@ import UIKit
 import SwiftUI
 
 struct MenuView: View {
-  // Properties
   @State var showModal: Bool = true
   @Environment(\.dismiss) private var dismiss
   @EnvironmentObject private var mainViewModel: MainViewModel
 
-  // UserDefaults
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
   @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
@@ -100,7 +98,7 @@ struct MenuView: View {
         }
         .tint(.accentColor)
 
-        Section {
+        Section("Contact Me") {
           Link(destination: Constants.twitterURL) {
             HStack {
               Image("twitter")

@@ -53,6 +53,28 @@ internal enum L10n {
     /// Submit
     internal static let submit = L10n.tr("Localizable", "ButtonTitle.submit", fallback: "Submit")
   }
+  internal enum A11y {
+    internal enum MainView {
+      internal enum ScoreLabels {
+        /// %@ of @% possible score
+        internal static func label(_ p1: Any, _ p2: UnsafeRawPointer) -> String {
+          return L10n.tr("Localizable", "a11y.mainView.scoreLabels.label", String(describing: p1), Int(bitPattern: p2), fallback: "%@ of @% possible score")
+        }
+      }
+      internal enum Textfield {
+        /// Put your guessed word here.
+        internal static let hint = L10n.tr("Localizable", "a11y.mainView.textfield.hint", fallback: "Put your guessed word here.")
+        /// Textfield
+        internal static let label = L10n.tr("Localizable", "a11y.mainView.textfield.label", fallback: "Textfield")
+      }
+      internal enum WordsLabels {
+        /// found %@ of %@ words
+        internal static func label(_ p1: Any, _ p2: Any) -> String {
+          return L10n.tr("Localizable", "a11y.mainView.wordsLabels.label", String(describing: p1), String(describing: p2), fallback: "found %@ of %@ words")
+        }
+      }
+    }
+  }
   internal enum EndGameAlert {
     /// Are you sure, you don't know any other words?
     internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: "Are you sure, you don't know any other words?")
@@ -82,9 +104,9 @@ internal enum L10n {
     internal static let tryAgain = L10n.tr("Localizable", "highscoreDetailView.tryAgain", fallback: "Try again")
   }
   internal enum HighscoreListRowView {
-    /// Grundwort war: %@
+    /// baseword war: %@
     internal static func basewordWas(_ p1: Any) -> String {
-      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "Grundwort war: %@")
+      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "baseword war: %@")
     }
   }
   internal enum HighscoreListView {
@@ -129,10 +151,10 @@ internal enum L10n {
   }
   internal enum Onboarding {
     internal enum FirstPage {
-      /// based on a project of 100daysOfSwift by Paul Hudson
-      internal static let body1 = L10n.tr("Localizable", "onboarding.firstPage.body1", fallback: "based on a project of 100daysOfSwift by Paul Hudson")
-      /// try to find as many words as possible out of a random starting word
-      internal static let body2 = L10n.tr("Localizable", "onboarding.firstPage.body2", fallback: "try to find as many words as possible out of a random starting word")
+      /// you get a starting word. It has eight letters. You just make as many other words out of it as you can.
+      internal static let body1 = L10n.tr("Localizable", "onboarding.firstPage.body1", fallback: "you get a starting word. It has eight letters. You just make as many other words out of it as you can.")
+      /// take your time - the only important thing here is to find as many words as you can, no matter how long it takes.
+      internal static let body2 = L10n.tr("Localizable", "onboarding.firstPage.body2", fallback: "take your time - the only important thing here is to find as many words as you can, no matter how long it takes.")
       /// What's the game about?
       internal static let title = L10n.tr("Localizable", "onboarding.firstPage.title", fallback: "What's the game about?")
     }

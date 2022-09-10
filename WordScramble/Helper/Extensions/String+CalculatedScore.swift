@@ -8,23 +8,15 @@
 import Foundation
 
 extension String {
-  /*
-   Word scoring:
-   - for each letter of the first 3, there is 1 point
-   - 2 points for the 4th letter,
-   - 4 points for the 5th,
-   - 6 points for the 6th, etc.
-   */
   func calculatedScore() -> Int {
     var score = 0
     var scoreMultiplier = 2
     var length = self.count
 
     switch length {
-    case 3:
+    case ...3:
       score = 3
     case 4...:
-      score += 3
       length -= 3
       for _ in 0..<length {
         score += scoreMultiplier

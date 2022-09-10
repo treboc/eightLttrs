@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WordService {
   static func loadBasewords(_ wsLocale: WSLocale) -> Set<String> {

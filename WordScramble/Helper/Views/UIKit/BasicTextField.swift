@@ -23,7 +23,6 @@ class BasicTextField: UITextField {
     self.returnKeyType = .go
     self.becomeFirstResponder()
     self.autocapitalizationType = .none
-    self.accessibilityLabel = "Textfield"
   }
 
   // Disable pasting

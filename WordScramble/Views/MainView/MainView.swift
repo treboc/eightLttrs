@@ -9,10 +9,8 @@ import Combine
 import UIKit
 
 class MainView: UIView {
-  // MARK: - NotificationCenter Publishers
   var cancellables = Set<AnyCancellable>()
 
-  // MARK: - Views
   let textField = BasicTextField()
   let submitButton = UIButton()
 
@@ -26,7 +24,6 @@ class MainView: UIView {
 
   private(set) var collectionView: UICollectionView!
 
-  // MARK: - init()
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = .systemBackground
@@ -41,7 +38,6 @@ class MainView: UIView {
   }
 }
 
-// MARK: - Setting up Layout
 extension MainView {
   private func setupViews() {
     let semiBoldFont = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: .semibold)
@@ -56,7 +52,6 @@ extension MainView {
     plusImage.withTintColor(.label, renderingMode: .automatic)
     submitButton.setImage(plusImage, for: .normal)
 
-    // NumberOfWordsTitleLabel
     numberOfWordsTitleLabel.textAlignment = .left
     numberOfWordsTitleLabel.text = L10n.MainView.foundWords
     numberOfWordsTitleLabel.numberOfLines = 0
@@ -65,13 +60,11 @@ extension MainView {
     numberOfWordsTitleLabel.textColor = .secondaryLabel
     numberOfWordsTitleLabel.adjustsFontForContentSizeCategory = true
 
-    // NumberOfWordsBodyLabel
     numberOfWordsBodyLabel.textAlignment = .left
     numberOfWordsBodyLabel.text = "0 / 0"
     numberOfWordsBodyLabel.adjustsFontForContentSizeCategory = true
     numberOfWordsBodyLabel.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: semiBoldFont)
 
-    // CurrentScoreTitleLabel
     currentScoreTitleLabel.textAlignment = .right
     currentScoreTitleLabel.text = L10n.MainView.currentScore
     currentScoreTitleLabel.numberOfLines = 0
@@ -80,13 +73,11 @@ extension MainView {
     currentScoreTitleLabel.textColor = .secondaryLabel
     currentScoreTitleLabel.adjustsFontForContentSizeCategory = true
 
-    // CurrentScoreTitleLabel
     currentScoreBodyLabel.textAlignment = .right
     currentScoreBodyLabel.text = "0 / 0"
     currentScoreBodyLabel.adjustsFontForContentSizeCategory = true
     currentScoreBodyLabel.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: semiBoldFont)
 
-    // CollectionView
     let config = UICollectionLayoutListConfiguration(appearance: .plain)
     let layout = UICollectionViewCompositionalLayout.list(using: config)
     self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -146,7 +137,6 @@ extension MainView {
 
 // MARK: - Setting up publishers
 extension MainView {
-  // Observing the textField's text, to determine if the button should be enabled
   fileprivate func setupPublishers() {
     NotificationCenter.default
       .publisher(for: UITextField.textDidChangeNotification, object: textField)

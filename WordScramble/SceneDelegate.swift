@@ -28,8 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
     self.window = window
 
-    UserDefaults.standard.addObserver(self, forKeyPath: "Appearance", options: [.new], context: nil)
-
     if let firstURL = connectionOptions.urlContexts.first?.url {
       deeplinkCoordinator.handleURL(firstURL)
     }
@@ -40,38 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     deeplinkCoordinator.handleURL(firstURL)
   }
-
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-    print("fired")
-    guard
-      let change = change,
-      object != nil,
-      keyPath == "Appearance",
-      let themeValue = change[.newKey] as? String,
-      let theme = AppearanceManager.Appearance(rawValue: themeValue)?.uiStyle
-    else { return }
-
-    UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: { [weak self] in
-      self?.window?.overrideUserInterfaceStyle = theme
-    }, completion: .none)
-  }
 }
 
 extension SceneDelegate {
-  private func extractStartWord(from context: UIOpenURLContext?) -> String? {
-    guard let context = context else { return nil }
-    if
-      context.url.scheme == "wordscramble",
-      context.url.host == "baseword",
-      let locale = WSLocale(rawValue: (context.url.pathComponents[1].uppercased())),
-      let word = context.url.pathComponents[safe: 2],
-      WordService.isValidBaseword(word, with: locale) {
-      return word
-    } else {
-      return nil
-    }
-  }
-
   private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
     guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
 

@@ -61,7 +61,7 @@
 "highscoreListView.title" = "Highscores";
 
 // HighscoreListRowView
-"highscoreListRowView.basewordWas" = "baseword was: %@";
+"highscoreListRowView.basewordWas" = "Grundwort war: *%@*";
 
 // HighscoreDetailView
 "highscoreDetailView.title" = "Details";

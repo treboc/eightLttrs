@@ -69,7 +69,7 @@ extension HighscoreListRowView {
         Text(session.unwrappedName)
 
 
-        Text(L10n.HighscoreListRowView.basewordWas(session.unwrappedBaseword))
+        Text(LocalizedStringKey(L10n.HighscoreListRowView.basewordWas(session.unwrappedBaseword)))
           .font(.caption2)
           .foregroundColor(.secondary)
       }

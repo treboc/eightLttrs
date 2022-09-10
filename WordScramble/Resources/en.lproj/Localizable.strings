@@ -61,7 +61,7 @@
 "highscoreListView.title" = "Highscores";
 
 // HighscoreListRowView
-"highscoreListRowView.basewordWas" = "Grundwort war: %@";
+"highscoreListRowView.basewordWas" = "baseword war: *%@*";
 
 // HighscoreDetailView
 "highscoreDetailView.title" = "Statistics";
@@ -103,3 +103,10 @@
 "ButtonTitle.continue" = "Continue";
 "ButtonTitle.ok" = "OK";
 "ButtonTitle.shareSession" = "Share Session";
+
+// Accessibility
+"a11y.mainView.textfield.label" = "Textfield";
+"a11y.mainView.textfield.hint" = "Put your guessed word here.";
+
+"a11y.mainView.wordsLabels.label" = "found %@ of %@ words";
+"a11y.mainView.scoreLabels.label" = "%@ of @% possible score";

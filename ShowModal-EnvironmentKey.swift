@@ -2,7 +2,7 @@
 //  ShowModal-EnvironmentKey.swift
 //  WordScramble
 //
-// https://stackoverflow.com/a/59825996/8366079
+// Quelle: https://stackoverflow.com/a/59825996/8366079
 //
 
 import SwiftUI
