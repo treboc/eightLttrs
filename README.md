@@ -1,4 +1,8 @@
 # 8lttrs
+<p align="center">
+  <img src="./screenshots/github-header.png" width=600>
+</p>
+
 This game is a project in the 100daysWithSwiftUI aswell as in the UIKit course by Paul Hudson. My wife started playing it, so I built in some features to make it more replayable.
 
 ## What's the goal?
