@@ -48,6 +48,7 @@ extension OnboardingPageViewController {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = titleLabelFont
     titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    titleLabel.numberOfLines = 0
 
     bodyLabel.translatesAutoresizingMaskIntoConstraints = false
     bodyLabel.textColor = .secondaryLabel

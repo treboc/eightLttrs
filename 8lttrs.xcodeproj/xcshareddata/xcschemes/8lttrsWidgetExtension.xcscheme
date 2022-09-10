@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ABED74528C1E332003457FD"
-               BuildableName = "WordScrambleWidgetExtension.appex"
-               BlueprintName = "WordScrambleWidgetExtension"
-               ReferencedContainer = "container:WordScramble.xcodeproj">
+               BuildableName = "8lttrsWidgetExtension.appex"
+               BlueprintName = "8lttrsWidgetExtension"
+               ReferencedContainer = "container:8lttrs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-               BuildableName = "WordScramble.app"
-               BlueprintName = "WordScramble"
-               ReferencedContainer = "container:WordScramble.xcodeproj">
+               BuildableName = "8lttrs.app"
+               BlueprintName = "8lttrs"
+               ReferencedContainer = "container:8lttrs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -63,18 +63,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8ABED74528C1E332003457FD"
-            BuildableName = "WordScrambleWidgetExtension.appex"
-            BlueprintName = "WordScrambleWidgetExtension"
-            ReferencedContainer = "container:WordScramble.xcodeproj">
+            BuildableName = "8lttrsWidgetExtension.appex"
+            BlueprintName = "8lttrsWidgetExtension"
+            ReferencedContainer = "container:8lttrs.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-            BuildableName = "WordScramble.app"
-            BlueprintName = "WordScramble"
-            ReferencedContainer = "container:WordScramble.xcodeproj">
+            BuildableName = "8lttrs.app"
+            BlueprintName = "8lttrs"
+            ReferencedContainer = "container:8lttrs.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -108,9 +108,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-            BuildableName = "WordScramble.app"
-            BlueprintName = "WordScramble"
-            ReferencedContainer = "container:WordScramble.xcodeproj">
+            BuildableName = "8lttrs.app"
+            BlueprintName = "8lttrs"
+            ReferencedContainer = "container:8lttrs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

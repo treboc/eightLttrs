@@ -15,7 +15,7 @@ class PersistenceStore {
   let context: NSManagedObjectContext
 
   init(inMemory: Bool = false) {
-    container = NSPersistentContainer(name: "WordScramble")
+    container = NSPersistentContainer(name: "8lttrs")
     context = container.viewContext
 
     if inMemory {
