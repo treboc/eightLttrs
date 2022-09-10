@@ -11,3 +11,4 @@ This game is a project in the 100daysWithSwiftUI aswell as in the UIKit course b
 * filtering the list of already found words – this makes it easier to check if you've already used the word
 * currently English and German localization and basewords
 * widgets, so you can keep track of the current session
+* light and dark mode support
