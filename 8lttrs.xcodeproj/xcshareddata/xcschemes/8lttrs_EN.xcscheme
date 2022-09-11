@@ -50,6 +50,17 @@
                ReferencedContainer = "container:8lttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8A50F88628CD5116003F5234"
+               BuildableName = "fastlaneUITests.xctest"
+               BlueprintName = "fastlaneUITests"
+               ReferencedContainer = "container:8lttrs.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
