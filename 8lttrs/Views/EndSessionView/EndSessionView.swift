@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EndSessionView: View {
-  @Environment(\.dismiss) private var dismiss
+  @Environment(\.modalMode) private var modalMode
   @ObservedObject var session: Session
   @FocusState private var isFocused
   @AppStorage(UserDefaultsKeys.lastPlayersName) private var name: String = ""
@@ -34,10 +34,10 @@ struct EndSessionView: View {
         .onAppear { isFocused.toggle() }
 
       HStack {
-        Button(L10n.ButtonTitle.cancel, role: .destructive, action: dismiss.callAsFunction)
+        Button(L10n.ButtonTitle.cancel, role: .destructive) { modalMode.wrappedValue = false }
         Button(L10n.ButtonTitle.save) {
           SessionService.persistFinished(session: session, forPlayer: name)
-          dismiss()
+          modalMode.wrappedValue = false
         }
         .disabled(name.isEmpty)
       }
