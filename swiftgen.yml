@@ -12,10 +12,10 @@
 ##   SwiftGen will parse all `.strings` files found in that folder.
 strings:
   inputs:
-    - 8lttrs/Resources/en.lproj
+    - eightLttrs/Resources/en.lproj
   outputs:
     - templateName: structured-swift5
-      output: 8lttrs/Resources/L10n.swift
+      output: eightLttrs/Resources/L10n.swift
 
 
 ## Generate constants for your Assets Catalogs, including constants for images, colors, ARKit resources, etc.

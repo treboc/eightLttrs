@@ -98,8 +98,8 @@ internal enum L10n {
     internal static let score = L10n.tr("Localizable", "highscoreDetaiLView.score", fallback: "Score")
   }
   internal enum HighscoreDetailView {
-    /// Statistics
-    internal static let statistics = L10n.tr("Localizable", "highscoreDetailView.statistics", fallback: "Statistics")
+    /// Words / poss. Score
+    internal static let statistics = L10n.tr("Localizable", "highscoreDetailView.statistics", fallback: "Words / poss. Score")
     /// Details
     internal static let title = L10n.tr("Localizable", "highscoreDetailView.title", fallback: "Details")
     /// Try again
@@ -114,6 +114,10 @@ internal enum L10n {
   internal enum HighscoreListView {
     /// Highscores
     internal static let title = L10n.tr("Localizable", "highscoreListView.title", fallback: "Highscores")
+  }
+  internal enum LegalNoticeView {
+    /// Legal Notice
+    internal static let title = L10n.tr("Localizable", "legalNoticeView.title", fallback: "Legal Notice")
   }
   internal enum MainView {
     /// Current Score

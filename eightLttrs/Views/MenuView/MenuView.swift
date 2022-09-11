@@ -109,6 +109,8 @@ struct MenuView: View {
               Text("@treb0c")
             }
           }
+
+          NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)
         }
 
         #if DEBUG

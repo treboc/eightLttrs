@@ -26,16 +26,6 @@
 "onboarding.thirdPage.body2" = "für jeden weiteren immer zwei mehr, also für den vierten 2, für den fünften 4, für den sechsten 6, etc.";
 "onboarding.thirdPage.buttonTitle" = "Los gehts!";
 
-// WordError
-"wordError.notReal.title" = "Unbekanntes Wort";
-"wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
-"wordError.notOriginal.title" = "Schon genutzt";
-"wordError.notOriginal.message" = "Das hatten wir schon, denk' dir was neues aus.";
-"wordError.notPossible.title" = "Nicht möglich!";
-"wordError.notPossible.message" = "Aus den Buchstaben kannst du \"%@\" nicht machen.";
-"wordError.tooShort.title" = "Zu kurz";
-"wordError.tooShort.message" = "Ein bisschen länger sollte es schon sein.";
-
 // MainView
 "mainView.currentScore" = "Gesamtpunktzahl";
 "mainView.foundWords" = "Wörter gefunden";
@@ -53,6 +43,9 @@
 "menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits gefundenen Wörter.";
 "menuView.changedLanguage.title" = "Sprache gewechselt";
 "menuView.changedLanguage.message" = "Du spielst jetzt mit anderen Grundworte.\n\nDiese Änderung tritt bei der nächsten Runde in Kraft.";
+
+// LegalNoticeView
+"legalNoticeView.title" = "Impressum";
 
 // EndSessionView
 "endSessionView.title" = "Herzlichen Glückwunsch! 🎉";
@@ -77,9 +70,37 @@
 "shareLink.message" = "Ich möchte wissen, ob du es besser kannst. Mein Grundwort war %@.\n";
 "shareLink.subject" = "Versuch es auch einmal!";
 
-// Widgets
+// Widget
 "widget.wordsFound" = "%@ von %@ möglichen Wörtern gefunden.";
 "widget.noWords" = "Noch kein Wort gefunden. Worauf wartest du?";
+
+// ButtonTitles
+"ButtonTitle.submit" = "Okay";
+"ButtonTitle.cancel" = "Abbrechen";
+"ButtonTitle.save" = "Speichern";
+"ButtonTitle.imSure" = "Ja, ich bin sicher";
+"ButtonTitle.skip" = "Überspringen";
+"ButtonTitle.next" = "Weiter";
+"ButtonTitle.continue" = "Fortfahren";
+"ButtonTitle.ok" = "Okay";
+"ButtonTitle.shareSession" = "Spiel teilen";
+
+// Accessibility
+"a11y.mainView.textfield.label" = "Textfeld";
+"a11y.mainView.textfield.hint" = "hier kommt dein Wort rein";
+
+"a11y.mainView.wordsLabels.label" = "%@ von %@ Wörtern gefunden";
+"a11y.mainView.scoreLabels.label" = "%@ von @% möglichen Punkten";
+
+// WordError
+"wordError.notReal.title" = "Unbekanntes Wort";
+"wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
+"wordError.notOriginal.title" = "Schon genutzt";
+"wordError.notOriginal.message" = "Das hatten wir schon, denk' dir was neues aus.";
+"wordError.notPossible.title" = "Nicht möglich!";
+"wordError.notPossible.message" = "Aus den Buchstaben kannst du \"%@\" nicht machen.";
+"wordError.tooShort.title" = "Zu kurz";
+"wordError.tooShort.message" = "Ein bisschen länger sollte es schon sein.";
 
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";
@@ -93,14 +114,3 @@
 
 "sharedWord.alert.noValidStartword.title" = "Fehler!";
 "sharedWord.alert.noValidStartword.message" = "Das ist kein mögliches Startwort.";
-
-// ButtonTitles
-"ButtonTitle.submit" = "Okay";
-"ButtonTitle.cancel" = "Abbrechen";
-"ButtonTitle.save" = "Speichern";
-"ButtonTitle.imSure" = "Ja, ich bin sicher";
-"ButtonTitle.skip" = "Überspringen";
-"ButtonTitle.next" = "Weiter";
-"ButtonTitle.continue" = "Fortfahren";
-"ButtonTitle.ok" = "Okay";
-"ButtonTitle.shareSession" = "Spiel teilen";
