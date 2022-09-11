@@ -14,6 +14,7 @@
 		8A2A24F728C3215D00C47C27 /* Color+Accent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2A24F528C3215D00C47C27 /* Color+Accent.swift */; };
 		8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */; };
 		8A357E9928CD360C00C511F1 /* ShowModal-EnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A357E9828CD360C00C511F1 /* ShowModal-EnvironmentKey.swift */; };
+		8A3A344028CE507B006439AC /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A343F28CE507B006439AC /* LegalNoticeView.swift */; };
 		8A3F79D528AC59810058A272 /* possibleWordsEN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F79D428AC59810058A272 /* possibleWordsEN.txt */; };
 		8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F79DD28ACE42C0058A272 /* SessionService.swift */; };
 		8A40C1EB28C9EDD6000971E4 /* ShareSessionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1EA28C9EDD6000971E4 /* ShareSessionButton.swift */; };
@@ -61,6 +62,7 @@
 		8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */; };
 		8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */; };
 		8AAC5C7F28C875BF00AF66F6 /* UITextField+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */; };
+		8AB2626A28CE89DD00307D97 /* SessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2626928CE89DD00307D97 /* SessionServiceTests.swift */; };
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
 		8ABED74828C1E333003457FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */; };
@@ -141,6 +143,7 @@
 		8A01FEE128C290190071978F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A2A24F528C3215D00C47C27 /* Color+Accent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Accent.swift"; sourceTree = "<group>"; };
 		8A357E9828CD360C00C511F1 /* ShowModal-EnvironmentKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShowModal-EnvironmentKey.swift"; sourceTree = "<group>"; };
+		8A3A343F28CE507B006439AC /* LegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeView.swift; sourceTree = "<group>"; };
 		8A3F79D428AC59810058A272 /* possibleWordsEN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = possibleWordsEN.txt; sourceTree = "<group>"; };
 		8A3F79DD28ACE42C0058A272 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		8A40C1EA28C9EDD6000971E4 /* ShareSessionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSessionButton.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 		8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CalculatedScore.swift"; sourceTree = "<group>"; };
 		8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailChartView.swift; sourceTree = "<group>"; };
 		8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
+		8AB2626928CE89DD00307D97 /* SessionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionServiceTests.swift; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = eightLttrsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightLttrsWidget.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 			children = (
 				8A40C1EC28C9F7ED000971E4 /* SwiftUI */,
 				8A40C1ED28C9F7F5000971E4 /* UIKit */,
+				8A3A343F28CE507B006439AC /* LegalNoticeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAB28728A5911D0083E028 /* WordServiceTests.swift */,
+				8AB2626928CE89DD00307D97 /* SessionServiceTests.swift */,
 			);
 			path = ServicesTests;
 			sourceTree = "<group>";
@@ -867,6 +873,7 @@
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				8A2A24F628C3215D00C47C27 /* Color+Accent.swift in Sources */,
+				8A3A344028CE507B006439AC /* LegalNoticeView.swift in Sources */,
 				8A62106F28C8E32B00C8F1A7 /* UIFont+Weight.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ACF525028BAD985008728BB /* Array+Permute.swift in Sources */,
@@ -884,6 +891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB2626A28CE89DD00307D97 /* SessionServiceTests.swift in Sources */,
 				8ADAB28828A5911D0083E028 /* WordServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

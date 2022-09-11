@@ -63,9 +63,8 @@ final class WordServiceTests: XCTestCase {
     let allBasewords = WordService.loadBasewords(.DE)
 
     // Act
-    WordService.getNewBasewordWith(.DE) { baseword, _, _ in
-      testBaseword = baseword
-    }
+    let (baseword, _, _) = WordService.getNewBasewordWith(.DE)
+    testBaseword = baseword
 
     // Assert
     XCTAssertTrue(allBasewords.contains(testBaseword))
@@ -77,9 +76,8 @@ final class WordServiceTests: XCTestCase {
     let allBasewords = WordService.loadBasewords(.EN)
 
     // Act
-    WordService.getNewBasewordWith(.EN) { baseword, _, _ in
-      testBaseword = baseword
-    }
+    let (baseword, _, _) = WordService.getNewBasewordWith(.EN)
+    testBaseword = baseword
 
     // Assert
     XCTAssertTrue(allBasewords.contains(testBaseword))
@@ -185,10 +183,11 @@ final class WordServiceTests: XCTestCase {
     var possibleWords = Set<String>()
 
     // Act
-    WordService.getAllPossibleWords(for: baseword) { list, _ in
-      possibleWords = list
-      XCTAssertTrue(possibleWords.contains("Taube"))
-    }
+    let (list, _) = WordService.getAllPossibleWords(for: baseword)
+    possibleWords = list
+
+    // Assert
+    XCTAssertTrue(possibleWords.contains("Taube"))
   }
 
   func test_getAllPossibleWords_forDemeaned_shouldContain_mean() {
@@ -197,10 +196,11 @@ final class WordServiceTests: XCTestCase {
     var possibleWords = Set<String>()
 
     // Act
-    WordService.getAllPossibleWords(for: baseword) { list, _ in
-      possibleWords = list
-      XCTAssertTrue(possibleWords.contains("mean"))
-    }
+    let (list, _) = WordService.getAllPossibleWords(for: baseword)
+    possibleWords = list
+
+    // Assert
+    XCTAssertTrue(possibleWords.contains("mean"))
   }
 
   func test_getAllPossibleWordsFor_shouldReturnWordsAndScore() {
