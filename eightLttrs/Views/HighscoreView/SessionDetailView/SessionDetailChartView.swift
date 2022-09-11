@@ -1,6 +1,6 @@
 //
 //  SessionDetailChartView.swift
-//  8lttrs
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 11.09.22.
 //

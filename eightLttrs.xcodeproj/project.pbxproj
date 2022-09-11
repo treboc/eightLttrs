@@ -44,7 +44,7 @@
 		8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A794FD828B938AB00BC9CE5 /* GameType.swift */; };
 		8A85AD2B28BDF3AF007FF4BF /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85AD2A28BDF3AF007FF4BF /* Divider.swift */; };
 		8A87110E28B281C5004F299F /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87110D28B281C5004F299F /* PersistenceStore.swift */; };
-		8A87111228B28216004F299F /* 8lttrs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111028B28216004F299F /* 8lttrs.xcdatamodeld */; };
+		8A87111228B28216004F299F /* eightLttrs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111028B28216004F299F /* eightLttrs.xcdatamodeld */; };
 		8A87111628B28322004F299F /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87111428B28322004F299F /* Session+CoreDataClass.swift */; };
 		8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
 		8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */; };
@@ -64,8 +64,8 @@
 		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
 		8ABED74828C1E333003457FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */; };
-		8ABED74B28C1E333003457FD /* 8lttrsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED74A28C1E333003457FD /* 8lttrsWidget.swift */; };
-		8ABED75128C1E333003457FD /* 8lttrsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8ABED74628C1E332003457FD /* 8lttrsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8ABED74B28C1E333003457FD /* eightLttrsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */; };
+		8ABED75128C1E333003457FD /* eightLttrsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8ABED75628C1E458003457FD /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75528C1E458003457FD /* Provider.swift */; };
 		8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75728C1E471003457FD /* SimpleEntry.swift */; };
 		8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75928C1E4AA003457FD /* WidgetView.swift */; };
@@ -128,7 +128,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8ABED75128C1E333003457FD /* 8lttrsWidgetExtension.appex in Embed Foundation Extensions */,
+				8ABED75128C1E333003457FD /* eightLttrsWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +136,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A01FED528C26D940071978F /* 8lttrs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 8lttrs.entitlements; sourceTree = "<group>"; };
+		8A01FED528C26D940071978F /* eightLttrs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eightLttrs.entitlements; sourceTree = "<group>"; };
 		8A01FED728C2706A0071978F /* CurrentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
 		8A01FEE128C290190071978F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A2A24F528C3215D00C47C27 /* Color+Accent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Accent.swift"; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		8A78F3B828AEBD6A00DFA6D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A78F3BB28AEBD9200DFA6D5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
-		8A79305228CD4CCF0020EC3B /* 8lttrsWidgetExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = 8lttrsWidgetExtension.entitlements; sourceTree = "<group>"; };
+		8A79305228CD4CCF0020EC3B /* eightLttrsWidgetExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = eightLttrsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		8A794FD828B938AB00BC9CE5 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		8A85AD2A28BDF3AF007FF4BF /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		8A87110D28B281C5004F299F /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 		8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailChartView.swift; sourceTree = "<group>"; };
 		8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
 		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		8ABED74628C1E332003457FD /* 8lttrsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = 8lttrsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ABED74A28C1E333003457FD /* 8lttrsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 8lttrsWidget.swift; sourceTree = "<group>"; };
+		8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = eightLttrsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightLttrsWidget.swift; sourceTree = "<group>"; };
 		8ABED74E28C1E333003457FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ABED75528C1E458003457FD /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		8ABED75728C1E471003457FD /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
@@ -201,15 +201,15 @@
 		8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSessionDeeplinkHandler.swift; sourceTree = "<group>"; };
 		8ACF524F28BAD985008728BB /* Array+Permute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Permute.swift"; sourceTree = "<group>"; };
 		8AD9610A28B3C9B600F443FB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
-		8ADAB26D28A5911C0083E028 /* 8lttrs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8lttrs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ADAB26D28A5911C0083E028 /* eightLttrs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eightLttrs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB27028A5911C0083E028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27228A5911C0083E028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8ADAB27428A5911C0083E028 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8ADAB27928A5911D0083E028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADAB27E28A5911D0083E028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8ADAB28328A5911D0083E028 /* 8lttrsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 8lttrsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ADAB28328A5911D0083E028 /* eightLttrsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eightLttrsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB28728A5911D0083E028 /* WordServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordServiceTests.swift; sourceTree = "<group>"; };
-		8ADAB28D28A5911D0083E028 /* 8lttrsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 8lttrsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ADAB28D28A5911D0083E028 /* eightLttrsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eightLttrsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8ADAB2A428A5941B0083E028 /* GameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAPI.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 				8A3F79DD28ACE42C0058A272 /* SessionService.swift */,
 				8A87110D28B281C5004F299F /* PersistenceStore.swift */,
 				8A87111428B28322004F299F /* Session+CoreDataClass.swift */,
-				8A87111028B28216004F299F /* 8lttrs.xcdatamodeld */,
+				8A87111028B28216004F299F /* eightLttrs.xcdatamodeld */,
 				8A01FED728C2706A0071978F /* CurrentSession.swift */,
 			);
 			path = Persistence;
@@ -486,11 +486,11 @@
 			path = PublisherHelper;
 			sourceTree = "<group>";
 		};
-		8ABED74928C1E333003457FD /* 8lttrsWidget */ = {
+		8ABED74928C1E333003457FD /* eightLttrsWidget */ = {
 			isa = PBXGroup;
 			children = (
-				8A79305228CD4CCF0020EC3B /* 8lttrsWidgetExtension.entitlements */,
-				8ABED74A28C1E333003457FD /* 8lttrsWidget.swift */,
+				8A79305228CD4CCF0020EC3B /* eightLttrsWidgetExtension.entitlements */,
+				8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */,
 				8ABED75728C1E471003457FD /* SimpleEntry.swift */,
 				8ABED75528C1E458003457FD /* Provider.swift */,
 				8ABED74E28C1E333003457FD /* Info.plist */,
@@ -498,7 +498,7 @@
 				8AC3AAB828C1F351004C355A /* Extensions */,
 				8A01FEE128C290190071978F /* Assets.xcassets */,
 			);
-			path = 8lttrsWidget;
+			path = eightLttrsWidget;
 			sourceTree = "<group>";
 		};
 		8ABED75F28C1E66C003457FD /* Views */ = {
@@ -533,10 +533,10 @@
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
-				8ADAB26F28A5911C0083E028 /* 8lttrs */,
-				8ADAB28628A5911D0083E028 /* 8lttrsTests */,
-				8ADAB29028A5911D0083E028 /* 8lttrsUITests */,
-				8ABED74928C1E333003457FD /* 8lttrsWidget */,
+				8ADAB26F28A5911C0083E028 /* eightLttrs */,
+				8ADAB28628A5911D0083E028 /* eightLttrsTests */,
+				8ADAB29028A5911D0083E028 /* eightLttrsUITests */,
+				8ABED74928C1E333003457FD /* eightLttrsWidget */,
 				8A50F88828CD5116003F5234 /* fastlaneUITests */,
 				8A6A3B8428C09FEF00A409E3 /* Frameworks */,
 				8ADAB26E28A5911C0083E028 /* Products */,
@@ -546,19 +546,19 @@
 		8ADAB26E28A5911C0083E028 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8ADAB26D28A5911C0083E028 /* 8lttrs.app */,
-				8ADAB28328A5911D0083E028 /* 8lttrsTests.xctest */,
-				8ADAB28D28A5911D0083E028 /* 8lttrsUITests.xctest */,
-				8ABED74628C1E332003457FD /* 8lttrsWidgetExtension.appex */,
+				8ADAB26D28A5911C0083E028 /* eightLttrs.app */,
+				8ADAB28328A5911D0083E028 /* eightLttrsTests.xctest */,
+				8ADAB28D28A5911D0083E028 /* eightLttrsUITests.xctest */,
+				8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */,
 				8A50F88728CD5116003F5234 /* fastlaneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8ADAB26F28A5911C0083E028 /* 8lttrs */ = {
+		8ADAB26F28A5911C0083E028 /* eightLttrs */ = {
 			isa = PBXGroup;
 			children = (
-				8A01FED528C26D940071978F /* 8lttrs.entitlements */,
+				8A01FED528C26D940071978F /* eightLttrs.entitlements */,
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
 				8ACF209E28C9BD8000B78DCE /* Coordinators */,
@@ -571,24 +571,24 @@
 				8ADAB27928A5911D0083E028 /* Assets.xcassets */,
 				8ADAB27E28A5911D0083E028 /* Info.plist */,
 			);
-			path = 8lttrs;
+			path = eightLttrs;
 			sourceTree = "<group>";
 		};
-		8ADAB28628A5911D0083E028 /* 8lttrsTests */ = {
+		8ADAB28628A5911D0083E028 /* eightLttrsTests */ = {
 			isa = PBXGroup;
 			children = (
 				8AE9628128C71D7900FBD9FE /* ServicesTests */,
 			);
-			path = 8lttrsTests;
+			path = eightLttrsTests;
 			sourceTree = "<group>";
 		};
-		8ADAB29028A5911D0083E028 /* 8lttrsUITests */ = {
+		8ADAB29028A5911D0083E028 /* eightLttrsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */,
 				8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */,
 			);
-			path = 8lttrsUITests;
+			path = eightLttrsUITests;
 			sourceTree = "<group>";
 		};
 		8AE9628128C71D7900FBD9FE /* ServicesTests */ = {
@@ -620,9 +620,9 @@
 			productReference = 8A50F88728CD5116003F5234 /* fastlaneUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		8ABED74528C1E332003457FD /* 8lttrsWidgetExtension */ = {
+		8ABED74528C1E332003457FD /* eightLttrsWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "8lttrsWidgetExtension" */;
+			buildConfigurationList = 8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "eightLttrsWidgetExtension" */;
 			buildPhases = (
 				8ABED74228C1E332003457FD /* Sources */,
 				8ABED74328C1E332003457FD /* Frameworks */,
@@ -632,14 +632,14 @@
 			);
 			dependencies = (
 			);
-			name = 8lttrsWidgetExtension;
+			name = eightLttrsWidgetExtension;
 			productName = WordScrambleWidgetExtension;
-			productReference = 8ABED74628C1E332003457FD /* 8lttrsWidgetExtension.appex */;
+			productReference = 8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		8ADAB26C28A5911C0083E028 /* 8lttrs */ = {
+		8ADAB26C28A5911C0083E028 /* eightLttrs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8ADAB29728A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrs" */;
+			buildConfigurationList = 8ADAB29728A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrs" */;
 			buildPhases = (
 				8ADAB26928A5911C0083E028 /* Sources */,
 				8ADAB26A28A5911C0083E028 /* Frameworks */,
@@ -651,14 +651,14 @@
 			dependencies = (
 				8ABED75028C1E333003457FD /* PBXTargetDependency */,
 			);
-			name = 8lttrs;
+			name = eightLttrs;
 			productName = WordScramble;
-			productReference = 8ADAB26D28A5911C0083E028 /* 8lttrs.app */;
+			productReference = 8ADAB26D28A5911C0083E028 /* eightLttrs.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8ADAB28228A5911D0083E028 /* 8lttrsTests */ = {
+		8ADAB28228A5911D0083E028 /* eightLttrsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8ADAB29A28A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrsTests" */;
+			buildConfigurationList = 8ADAB29A28A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrsTests" */;
 			buildPhases = (
 				8ADAB27F28A5911D0083E028 /* Sources */,
 				8ADAB28028A5911D0083E028 /* Frameworks */,
@@ -669,14 +669,14 @@
 			dependencies = (
 				8ADAB28528A5911D0083E028 /* PBXTargetDependency */,
 			);
-			name = 8lttrsTests;
+			name = eightLttrsTests;
 			productName = WordScrambleTests;
-			productReference = 8ADAB28328A5911D0083E028 /* 8lttrsTests.xctest */;
+			productReference = 8ADAB28328A5911D0083E028 /* eightLttrsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8ADAB28C28A5911D0083E028 /* 8lttrsUITests */ = {
+		8ADAB28C28A5911D0083E028 /* eightLttrsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8ADAB29D28A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrsUITests" */;
+			buildConfigurationList = 8ADAB29D28A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrsUITests" */;
 			buildPhases = (
 				8ADAB28928A5911D0083E028 /* Sources */,
 				8ADAB28A28A5911D0083E028 /* Frameworks */,
@@ -687,9 +687,9 @@
 			dependencies = (
 				8ADAB28F28A5911D0083E028 /* PBXTargetDependency */,
 			);
-			name = 8lttrsUITests;
+			name = eightLttrsUITests;
 			productName = WordScrambleUITests;
-			productReference = 8ADAB28D28A5911D0083E028 /* 8lttrsUITests.xctest */;
+			productReference = 8ADAB28D28A5911D0083E028 /* eightLttrsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -722,7 +722,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8ADAB26828A5911C0083E028 /* Build configuration list for PBXProject "8lttrs" */;
+			buildConfigurationList = 8ADAB26828A5911C0083E028 /* Build configuration list for PBXProject "eightLttrs" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -736,10 +736,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8ADAB26C28A5911C0083E028 /* 8lttrs */,
-				8ADAB28228A5911D0083E028 /* 8lttrsTests */,
-				8ADAB28C28A5911D0083E028 /* 8lttrsUITests */,
-				8ABED74528C1E332003457FD /* 8lttrsWidgetExtension */,
+				8ADAB26C28A5911C0083E028 /* eightLttrs */,
+				8ADAB28228A5911D0083E028 /* eightLttrsTests */,
+				8ADAB28C28A5911D0083E028 /* eightLttrsUITests */,
+				8ABED74528C1E332003457FD /* eightLttrsWidgetExtension */,
 				8A50F88628CD5116003F5234 /* fastlaneUITests */,
 			);
 		};
@@ -823,7 +823,7 @@
 				8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */,
 				8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */,
 				8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */,
-				8ABED74B28C1E333003457FD /* 8lttrsWidget.swift in Sources */,
+				8ABED74B28C1E333003457FD /* eightLttrsWidget.swift in Sources */,
 				8A92030928C26699008AF8EA /* Collection+Safe.swift in Sources */,
 				8A92030A28C26783008AF8EA /* L10n.swift in Sources */,
 			);
@@ -860,7 +860,7 @@
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
 				8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,
-				8A87111228B28216004F299F /* 8lttrs.xcdatamodeld in Sources */,
+				8A87111228B28216004F299F /* eightLttrs.xcdatamodeld in Sources */,
 				8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */,
@@ -902,22 +902,22 @@
 /* Begin PBXTargetDependency section */
 		8A50F88E28CD5116003F5234 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8ADAB26C28A5911C0083E028 /* 8lttrs */;
+			target = 8ADAB26C28A5911C0083E028 /* eightLttrs */;
 			targetProxy = 8A50F88D28CD5116003F5234 /* PBXContainerItemProxy */;
 		};
 		8ABED75028C1E333003457FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8ABED74528C1E332003457FD /* 8lttrsWidgetExtension */;
+			target = 8ABED74528C1E332003457FD /* eightLttrsWidgetExtension */;
 			targetProxy = 8ABED74F28C1E333003457FD /* PBXContainerItemProxy */;
 		};
 		8ADAB28528A5911D0083E028 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8ADAB26C28A5911C0083E028 /* 8lttrs */;
+			target = 8ADAB26C28A5911C0083E028 /* eightLttrs */;
 			targetProxy = 8ADAB28428A5911D0083E028 /* PBXContainerItemProxy */;
 		};
 		8ADAB28F28A5911D0083E028 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8ADAB26C28A5911C0083E028 /* 8lttrs */;
+			target = 8ADAB26C28A5911C0083E028 /* eightLttrs */;
 			targetProxy = 8ADAB28E28A5911D0083E028 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -956,7 +956,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 8lttrs;
+				TEST_TARGET_NAME = eightLttrs;
 			};
 			name = Debug;
 		};
@@ -972,7 +972,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 8lttrs;
+				TEST_TARGET_NAME = eightLttrs;
 			};
 			name = Release;
 		};
@@ -981,12 +981,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = 8lttrsWidget/8lttrsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = 8lttrsWidget/Info.plist;
+				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -996,7 +996,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.8lttrs.8lttrs-widgetExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.eightLttrs.eightLttrs-widgetExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1010,12 +1010,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = 8lttrsWidget/8lttrsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = 8lttrsWidget/Info.plist;
+				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1025,7 +1025,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.8lttrs.8lttrs-widgetExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.eightLttrs.eightLttrs-widgetExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1159,12 +1159,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = 8lttrs/8lttrs.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = 8lttrs/Info.plist;
+				INFOPLIST_FILE = eightLttrs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = 8lttrs;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1176,7 +1176,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.8lttrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.eightLttrs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1194,12 +1194,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = 8lttrs/8lttrs.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = 8lttrs/Info.plist;
+				INFOPLIST_FILE = eightLttrs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = 8lttrs;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1211,7 +1211,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.8lttrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.eightLttrs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1238,7 +1238,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/8lttrs.app/8lttrs";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eightLttrs.app/eightLttrs";
 			};
 			name = Debug;
 		};
@@ -1258,7 +1258,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/8lttrs.app/8lttrs";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eightLttrs.app/eightLttrs";
 			};
 			name = Release;
 		};
@@ -1310,7 +1310,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "8lttrsWidgetExtension" */ = {
+		8ABED75228C1E333003457FD /* Build configuration list for PBXNativeTarget "eightLttrsWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8ABED75328C1E333003457FD /* Debug */,
@@ -1319,7 +1319,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ADAB26828A5911C0083E028 /* Build configuration list for PBXProject "8lttrs" */ = {
+		8ADAB26828A5911C0083E028 /* Build configuration list for PBXProject "eightLttrs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8ADAB29528A5911E0083E028 /* Debug */,
@@ -1328,7 +1328,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ADAB29728A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrs" */ = {
+		8ADAB29728A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8ADAB29828A5911E0083E028 /* Debug */,
@@ -1337,7 +1337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ADAB29A28A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrsTests" */ = {
+		8ADAB29A28A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8ADAB29B28A5911E0083E028 /* Debug */,
@@ -1346,7 +1346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8ADAB29D28A5911E0083E028 /* Build configuration list for PBXNativeTarget "8lttrsUITests" */ = {
+		8ADAB29D28A5911E0083E028 /* Build configuration list for PBXNativeTarget "eightLttrsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8ADAB29E28A5911E0083E028 /* Debug */,
@@ -1358,13 +1358,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8A87111028B28216004F299F /* 8lttrs.xcdatamodeld */ = {
+		8A87111028B28216004F299F /* eightLttrs.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				8A87111128B28216004F299F /* WordScramble.xcdatamodel */,
 			);
 			currentVersion = 8A87111128B28216004F299F /* WordScramble.xcdatamodel */;
-			path = 8lttrs.xcdatamodeld;
+			path = eightLttrs.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-               BuildableName = "8lttrs.app"
-               BlueprintName = "8lttrs"
-               ReferencedContainer = "container:8lttrs.xcodeproj">
+               BuildableName = "eightLttrs.app"
+               BlueprintName = "eightLttrs"
+               ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ADAB28228A5911D0083E028"
-               BuildableName = "8lttrsTests.xctest"
-               BlueprintName = "8lttrsTests"
-               ReferencedContainer = "container:8lttrs.xcodeproj">
+               BuildableName = "eightLttrsTests.xctest"
+               BlueprintName = "eightLttrsTests"
+               ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,9 +45,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ADAB28C28A5911D0083E028"
-               BuildableName = "8lttrsUITests.xctest"
-               BlueprintName = "8lttrsUITests"
-               ReferencedContainer = "container:8lttrs.xcodeproj">
+               BuildableName = "eightLttrsUITests.xctest"
+               BlueprintName = "eightLttrsUITests"
+               ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -58,7 +58,7 @@
                BlueprintIdentifier = "8A50F88628CD5116003F5234"
                BuildableName = "fastlaneUITests.xctest"
                BlueprintName = "fastlaneUITests"
-               ReferencedContainer = "container:8lttrs.xcodeproj">
+               ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,7 +67,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      launchStyle = "1"
+      launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -78,9 +78,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-            BuildableName = "8lttrs.app"
-            BlueprintName = "8lttrs"
-            ReferencedContainer = "container:8lttrs.xcodeproj">
+            BuildableName = "eightLttrs.app"
+            BlueprintName = "eightLttrs"
+            ReferencedContainer = "container:eightLttrs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8ADAB26C28A5911C0083E028"
-            BuildableName = "8lttrs.app"
-            BlueprintName = "8lttrs"
-            ReferencedContainer = "container:8lttrs.xcodeproj">
+            BuildableName = "eightLttrs.app"
+            BlueprintName = "eightLttrs"
+            ReferencedContainer = "container:eightLttrs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

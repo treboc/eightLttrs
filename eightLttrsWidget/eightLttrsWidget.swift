@@ -1,6 +1,6 @@
 //
-//  8lttrsWidget.swift
-//  8lttrsWidget
+//  eightLttrsWidget.swift
+//  eightLttrsWidget
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
 //
@@ -10,8 +10,8 @@ import SwiftUI
 
 
 @main
-struct eightlttrsWidget: Widget {
-  let kind: String = "eightlttrsWidget"
+struct eightLttrsWidget: Widget {
+  let kind: String = "eightLttrsWidget"
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in

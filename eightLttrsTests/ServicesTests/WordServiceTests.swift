@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import WordScramble
+@testable import eightLttrs
 
 final class WordServiceTests: XCTestCase {
   func test_loadBasewords_withGermanLocale_shouldReturnBasewords() {
