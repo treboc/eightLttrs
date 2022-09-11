@@ -54,6 +54,6 @@ extension PersistenceStore {
   }()
 
   fileprivate static func makePreviewSession() -> Session {
-    return .newSession()
+    return .newSession(with: "Taubenei")
   }
 }

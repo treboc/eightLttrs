@@ -15,13 +15,14 @@ public class Session: NSManagedObject, Identifiable {
     return NSFetchRequest<Session>(entityName: "Score")
   }
 
-   class func newSession() -> Session {
-     let session = Session(context: PersistenceStore.shared.context)
-     session.id = UUID()
-     session.startedAt = .now
-     session.locIdentifier = .getStoredWSLocale()
-     session.isFinished = false
-     return session
+  class func newSession(with baseword: String, in context: NSManagedObjectContext = PersistenceStore.shared.context) -> Session {
+    let session = Session(context: context)
+    session.id = UUID()
+    session.startedAt = .now
+    session.baseword = baseword
+    session.locIdentifier = .getStoredWSLocale()
+    session.isFinished = false
+    return session
   }
 
   @NSManaged public var id: UUID?
@@ -56,11 +57,9 @@ extension Session {
     return "0 %"
   }
 
-  var sharableURL: URL? {
-    let locale = locIdentifier.rawValue.lowercased()
-    let baseword = unwrappedBaseword
-
-    return URL(string: "wordscramble://baseword/\(locale)/\(baseword)")
+  var sharableURL: URL {
+    let encodedBaseWord = unwrappedBaseword.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
+    return URL(string: "wordscramble://baseword/\(locIdentifier.regionCode)/\(encodedBaseWord)")!
   }
 
   @objc dynamic var possibleWordsSet: Set<String> {
@@ -69,12 +68,12 @@ extension Session {
   }
 
   var unwrappedBaseword: String {
-    get { baseword ?? "Unknown Word" }
+    get { baseword ?? "UnknownWord" }
     set { baseword = newValue }
   }
 
   var unwrappedName: String {
-    get { playerName ?? "Unknown Name" }
+    get { playerName ?? "UnknownName" }
     set { playerName = newValue }
   }
 
@@ -97,7 +96,6 @@ extension Session {
     get { Int(maxPossibleScoreOnBaseWordIntern) }
     set { maxPossibleScoreOnBaseWordIntern = Int16(newValue) }
   }
-
 
   var locIdentifier: WSLocale {
     get {

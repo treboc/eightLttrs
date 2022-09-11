@@ -32,6 +32,15 @@ enum WSLocale: String, CaseIterable, Identifiable {
     }
   }
 
+  var regionCode: String {
+    switch self {
+    case .DE, .AT, .CH:
+      return "de"
+    case .EN:
+      return "en"
+    }
+  }
+
   static func availableLanguages() -> [WSLocale] {
     return [.DE, .EN]
   }

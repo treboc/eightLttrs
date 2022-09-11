@@ -28,25 +28,22 @@ class GameAPI {
   }
 
   func newSession(with word: String) -> Session {
-    let session: Session = .newSession()
-    session.baseword = word
-    WordService.getAllPossibleWords(for: word) { possibleWords, maxPossibleScore in
-      session.possibleWordsSet = possibleWords
-      session.maxPossibleWordsOnBaseWord = possibleWords.count
-      session.maxPossibleScoreOnBaseWord = maxPossibleScore
-    }
+    let session: Session = .newSession(with: word)
+    let (possibleWords, maxPossibleScore) = WordService.getAllPossibleWords(for: word)
+    session.possibleWordsSet = possibleWords
+    session.maxPossibleWordsOnBaseWord = possibleWords.count
+    session.maxPossibleScoreOnBaseWord = maxPossibleScore
     return session
   }
 
   func randomWordSession() -> Session {
-    let session: Session = .newSession()
     usersLocale = .getStoredWSLocale()
-    WordService.getNewBasewordWith(usersLocale) { (baseword, possibleWords, maxPossibleScore) in
-      session.baseword = baseword
-      session.possibleWords = Array(possibleWords)
-      session.maxPossibleWordsOnBaseWord = possibleWords.count
-      session.maxPossibleScoreOnBaseWord = maxPossibleScore
-    }
+    let (baseword, possibleWords, maxPossibleScore) = WordService.getNewBasewordWith(usersLocale)
+    let session: Session = .newSession(with: baseword)
+    session.possibleWords = Array(possibleWords)
+    session.maxPossibleWordsOnBaseWord = possibleWords.count
+    session.maxPossibleScoreOnBaseWord = maxPossibleScore
+    SessionService.persist(session: session)
     return session
   }
 

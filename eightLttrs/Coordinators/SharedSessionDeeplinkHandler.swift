@@ -41,7 +41,7 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
       url.scheme == "wordscramble",
       url.host == "baseword",
       let locale = WSLocale(rawValue: (url.pathComponents[1].uppercased())),
-      let word = url.pathComponents[safe: 2],
+      let word = url.pathComponents[safe: 2]?.removingPercentEncoding,
       WordService.isValidBaseword(word, with: locale) else {
       return nil
     }

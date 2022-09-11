@@ -25,15 +25,13 @@ class WordService {
     return Set<String>()
   }
 
-  static func getNewBasewordWith(_ wsLoacle: WSLocale, onCompletion: @escaping ((String, Set<String>, Int) -> Void)) {
+  static func getNewBasewordWith(_ wsLoacle: WSLocale) -> (String, Set<String>, Int) {
     let basewords = WordService.loadBasewords(wsLoacle)
     let baseword = basewords.randomElement()!
     let allPossibleWords = WordService.loadPossibleWords(wsLoacle)
 
-    Task {
-      let (possibleWords, score) = await getAllPossibleWordsFor(baseword, basedOn: allPossibleWords)
-      onCompletion(baseword, possibleWords, score)
-    }
+    let (possibleWords, score) = getAllPossibleWordsFor(baseword, basedOn: allPossibleWords)
+    return (baseword, possibleWords, score)
   }
 
   static func isValidBaseword(_ word: String,
@@ -84,38 +82,32 @@ class WordService {
     return .getStoredWSLocale()
   }
 
-  static func getAllPossibleWords(for word: String, onCompletion: @escaping (Set<String>, Int) -> Void) {
+  static func getAllPossibleWords(for word: String) -> (Set<String>, Int) {
     let locale = getLocale(for: word)
     let list = loadPossibleWords(locale)
-    Task {
-      let (words, score) = await allPossibleWords(for: word, basedOn: list)
-      onCompletion(words, score)
-    }
+    return allPossibleWords(for: word, basedOn: list)
   }
 
   static func getAllPossibleWordsFor(_ word: String,
-                                     basedOn list: Set<String>) async -> (Set<String>, Int) {
-    return await allPossibleWords(for: word, basedOn: list)
+                                     basedOn list: Set<String>) -> (Set<String>, Int) {
+    return allPossibleWords(for: word, basedOn: list)
   }
 
   static func getAllPossibleWordsFor(_ word: String, withLocale locale: WSLocale, onCompletion: @escaping (Set<String>, Int) -> Void) {
     let list = loadPossibleWords(locale)
     Task {
-      let (words, score) = await allPossibleWords(for: word, basedOn: list)
+      let (words, score) = allPossibleWords(for: word, basedOn: list)
       onCompletion(words, score)
     }
   }
 
   private class func allPossibleWords(for baseword: String,
                                 basedOn list: Set<String>,
-                                with minStringLen: Int = 3) async -> (Set<String>, Int) {
+                                with minStringLen: Int = 3) -> (Set<String>, Int) {
     let stringArr = baseword
       .map { String($0).lowercased() }
     let permutedStringList = stringArr.permute(minStringLen: minStringLen)
 
-    // iterate over the list passed in,
-    // only keep the string permuted words
-    
     let possibleWordsForWord = list.filter { word in
       permutedStringList.contains(word.lowercased()) && word != baseword
     }
