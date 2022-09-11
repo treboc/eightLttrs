@@ -1,5 +1,5 @@
 //
-//  HighscoreDetailView.swift
+//  SessionDetailView.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 31.08.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HighscoreDetailView: View {
+struct SessionDetailView: View {
   @EnvironmentObject private var viewModel: MainViewModel
   @Environment(\.modalMode) private var modalMode
   @Environment(\.editMode) private var editMode
@@ -47,6 +47,10 @@ struct HighscoreDetailView: View {
       }
       .disabled(session.baseword == nil)
       .presentAlert(with: $alertModel)
+
+      Section(L10n.HighscoreDetailView.statistics) {
+        SessionDetailChartView(session: session)
+      }
       
       Section(session.usedWords.count > 0
               ? L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFoundString)
@@ -77,13 +81,13 @@ struct ScoreDetailView_Previews: PreviewProvider {
   
   static var previews: some View {
     NavigationView {
-      HighscoreDetailView(session: session)
+      SessionDetailView(session: session)
         .preferredColorScheme(.dark)
     }
   }
 }
 
-extension HighscoreDetailView {
+extension SessionDetailView {
   private func retrySession() {
     if viewModel.session.usedWords.isEmpty {
       viewModel.startNewSession(with: session.unwrappedBaseword)
@@ -115,7 +119,7 @@ extension HighscoreDetailView {
   }
 }
 
-extension HighscoreDetailView {
+extension SessionDetailView {
   private var isEditing: Bool {
     return editMode?.wrappedValue.isEditing == true
   }

@@ -20,7 +20,7 @@ struct HighscoreListRowView: View {
         regularLayout
       }
     }
-    .background(NavigationLink("", destination: HighscoreDetailView(session: session)).opacity(0).buttonStyle(.plain))
+    .background(NavigationLink("", destination: SessionDetailView(session: session)).opacity(0).buttonStyle(.plain))
   }
 }
 
