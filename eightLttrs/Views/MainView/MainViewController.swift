@@ -188,7 +188,9 @@ extension MainViewController {
 
     // Publisher -> enables filtering
     mainView.textField.textPublisher()
+      .removeDuplicates()
       .subscribe(on: DispatchQueue.main)
+      .debounce(for: 0.3, scheduler: DispatchQueue.main)
       .receive(on: DispatchQueue.main)
       .sink { [unowned self] (value) in
         self.applyFilteredSnapshot(with: value, on: self.viewModel.session.usedWords)
