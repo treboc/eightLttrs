@@ -17,7 +17,7 @@ struct EndSessionView: View {
     VStack {
       VStack(spacing: 30) {
         Text(L10n.EndSessionView.title)
-          .font(.system(.title2, design: .rounded))
+          .font(.system(.title, design: .rounded))
           .fontWeight(.semibold)
           .foregroundColor(.accent)
 

@@ -11,7 +11,7 @@ import SwiftUI
 
 @main
 struct eightlttrsWidget: Widget {
-  let kind: String = "8lttrsWidget"
+  let kind: String = "eightlttrsWidget"
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in

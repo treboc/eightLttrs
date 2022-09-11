@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
-  @AppStorage(UserDefaultsKeys.currentSession, store: UserDefaults(suiteName: "group.com.marvinlee.WordScramble")) private var currentSessionData: Data = Data()
+  @AppStorage(UserDefaultsKeys.currentSession, store: UserDefaults(suiteName: "group.com.marvinleekobert.8lttrs")) private var currentSessionData: Data = Data()
 
   func placeholder(in context: Context) -> SimpleEntry {
     let placeholderSession = WidgetSession(baseword: "Taubenei", usedWords: ["Taube", "taub", "Tau"], maxPossibleWords: 123, wordsFound: 25, percentageWordsFound: 0.23)

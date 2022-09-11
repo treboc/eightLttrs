@@ -38,9 +38,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Awesome, you&apos;ve found a word and</string>
+			<string>Awesome, you&apos;ve found a word</string>
 			<key>other</key>
-			<string>Awesome! You&apos;ve found %d words and</string>
+			<string>Awesome! You&apos;ve found %d words</string>
 		</dict>
 		<key>score</key>
 		<dict>
@@ -49,7 +49,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>get %d points.</string>
+			<string>for %d points.</string>
 		</dict>
 	</dict>
 </dict>

@@ -40,9 +40,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Leider nur ein Wort, aber es gibt dafür</string>
+			<string>Leider nur ein Wort,</string>
 			<key>other</key>
-			<string>Du hast %d Wörter gebildet, das ist eine klasse Leistung dafür gibt es</string>
+			<string>Du hast %d Wörter gebildet,</string>
 		</dict>
 		<key>score</key>
 		<dict>
@@ -51,7 +51,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d Punkte.</string>
+			<string>dafür gibt es %d Punkte. Klasse Leistung!</string>
 		</dict>
 	</dict>
 </dict>

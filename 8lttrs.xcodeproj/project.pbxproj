@@ -984,7 +984,7 @@
 				CODE_SIGN_ENTITLEMENTS = 8lttrsWidget/8lttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8KAQMJ37RH;
+				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = 8lttrsWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
@@ -996,7 +996,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.8lttrs.8lttrsWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.8lttrs.8lttrs-widgetExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1013,7 +1013,7 @@
 				CODE_SIGN_ENTITLEMENTS = 8lttrsWidget/8lttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8KAQMJ37RH;
+				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = 8lttrsWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordScrambleWidget;
@@ -1025,7 +1025,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.8lttrs.8lttrsWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marvinleekobert.8lttrs.8lttrs-widgetExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1162,7 +1162,7 @@
 				CODE_SIGN_ENTITLEMENTS = 8lttrs/8lttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8KAQMJ37RH;
+				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = 8lttrs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = 8lttrs;
@@ -1176,7 +1176,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.8lttrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.8lttrs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1197,7 +1197,7 @@
 				CODE_SIGN_ENTITLEMENTS = 8lttrs/8lttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8KAQMJ37RH;
+				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = 8lttrs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = 8lttrs;
@@ -1211,7 +1211,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marvinlee.8lttrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marvinleekobert.8lttrs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
