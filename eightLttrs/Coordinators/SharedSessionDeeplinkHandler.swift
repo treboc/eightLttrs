@@ -27,8 +27,7 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
       UIAlertController.presentAlertController(on: mainViewController,
                                                title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
                                                message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
-        let viewModel = MainViewModel(gameType: .shared(word))
-        mainViewController.viewModel = viewModel
+        mainViewController.viewModel.startNewSession(with: word)
       }
     } else {
       UIAlertController.presentAlertController(on: mainViewController,
