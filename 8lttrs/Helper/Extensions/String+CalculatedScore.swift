@@ -9,26 +9,14 @@ import Foundation
 
 extension String {
   func calculatedScore() -> Int {
-    var score = 0
-    var scoreMultiplier = 2
-    var length = self.count
-
-    switch length {
-    case ...3:
-      score = 3
-    case 4...:
-      length -= 3
-      for _ in 0..<length {
-        score += scoreMultiplier
-        scoreMultiplier += 2
-      }
-    default:
-      break
+    switch self.count {
+    case 3: return 3
+    case 4: return 5
+    case 5: return 9
+    case 6: return 15
+    case 7: return 23
+    case 8: return 33
+    default: return 0
     }
-    return score
-  }
-
-  public func replacedWithStars() -> String {
-    return String(self.map { _ in "✯" })
   }
 }
