@@ -99,14 +99,16 @@ internal enum L10n {
   }
   internal enum HighscoreDetailView {
     /// Statistics
-    internal static let title = L10n.tr("Localizable", "highscoreDetailView.title", fallback: "Statistics")
+    internal static let statistics = L10n.tr("Localizable", "highscoreDetailView.statistics", fallback: "Statistics")
+    /// Details
+    internal static let title = L10n.tr("Localizable", "highscoreDetailView.title", fallback: "Details")
     /// Try again
     internal static let tryAgain = L10n.tr("Localizable", "highscoreDetailView.tryAgain", fallback: "Try again")
   }
   internal enum HighscoreListRowView {
-    /// baseword war: %@
+    /// baseword war: *%@*
     internal static func basewordWas(_ p1: Any) -> String {
-      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "baseword war: %@")
+      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "baseword war: *%@*")
     }
   }
   internal enum HighscoreListView {

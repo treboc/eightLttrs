@@ -64,10 +64,11 @@
 "highscoreListRowView.basewordWas" = "baseword war: *%@*";
 
 // HighscoreDetailView
-"highscoreDetailView.title" = "Statistics";
+"highscoreDetailView.title" = "Details";
 "highscoreDetaiLView.name" = "Name";
 "highscoreDetaiLView.baseword" = "Baseword";
 "highscoreDetaiLView.score" = "Score";
+"highscoreDetailView.statistics" = "Words / poss. Score";
 "highscoreDetaiLView.foundWordsPercentage" = "Found %@";
 "highscoreDetailView.tryAgain" = "Try again";
 

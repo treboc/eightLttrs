@@ -42,7 +42,7 @@ extension PersistenceStore {
       session.id = UUID()
       session.playerName = "Brunhilde"
       session.baseword = "Sandsack"
-      session.usedWords = ["Sand", "Sack"]
+      session.usedWords = ["Sand", "Sack", "Sacke", "Sacken", "Sandsack", "Sandsac"]
       session.score = 20
       session.possibleWords = Array(repeating: session.usedWords.randomElement()!, count: 3)
       session.maxPossibleWordsOnBaseWord = 62

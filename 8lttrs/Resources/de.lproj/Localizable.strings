@@ -68,6 +68,7 @@
 "highscoreDetaiLView.name" = "Name";
 "highscoreDetaiLView.baseword" = "Grundwort";
 "highscoreDetaiLView.score" = "Punkte";
+"highscoreDetailView.statistics" = "Worte / möglicher Score";
 "highscoreDetaiLView.foundWordsPercentage" = "%@ gefunden";
 "highscoreDetailView.tryAgain" = "Versuchs nochmal";
 
