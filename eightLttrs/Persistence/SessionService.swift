@@ -72,15 +72,20 @@ class SessionService {
   }
 
   static func persist(session: Session) {
-    do {
-      // updating widget
       let widgetSession = WidgetSession(baseword: session.unwrappedBaseword, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
-      let currentSession = CurrentSession(currentSession: widgetSession)
+      let currentSession = CurrentWidgetSession(currentSession: widgetSession)
       currentSession.storeItem()
-      try context.save()
-    } catch {
-      print(error.localizedDescription)
-      context.rollback()
+
+    Task {
+      guard let context = session.managedObjectContext else { return }
+      if context.hasChanges {
+        do {
+          try context.save()
+        } catch {
+          print(error.localizedDescription)
+        }
+      }
     }
+
   }
 }
