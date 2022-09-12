@@ -1,5 +1,5 @@
 //
-//  CurrentSession.swift
+//  CurrentWidgetSession.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
@@ -16,7 +16,7 @@ struct WidgetSession: Codable {
   let percentageWordsFound: Double
 }
 
-struct CurrentSession {
+struct CurrentWidgetSession {
   @AppStorage(UserDefaultsKeys.currentSession, store: UserDefaults(suiteName: "group.com.marvinleekobert.eightLttrs")) private var currentSessionData: Data = Data()
   
   let currentSession: WidgetSession
