@@ -18,6 +18,10 @@ struct WidgetView: View {
       SmallSizeView(entry: entry)
     case .systemMedium:
       MediumSizeView(entry: entry)
+    case .accessoryCircular:
+      AccessoryCircularView(entry: entry)
+    case .accessoryRectangular:
+      AccessoryRectangularView(entry: entry)
     default:
       Text("Not implemented.")
     }

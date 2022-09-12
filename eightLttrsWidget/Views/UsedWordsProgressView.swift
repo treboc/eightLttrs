@@ -38,7 +38,7 @@ struct UsedWordsProgressView: View {
   }
 }
 
-struct CircularProgressView_Previews: PreviewProvider {
+struct UsedWordsProgressView_Previews: PreviewProvider {
   static var previews: some View {
     UsedWordsProgressView(progress: 0.242)
       .padding()

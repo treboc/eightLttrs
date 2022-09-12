@@ -57,7 +57,7 @@ final class GameAPITests: XCTestCase {
   }
 
   func test_submit_withValidInput_shouldPersistSession() {
-    var session = Session(context: moc)
+    let session = Session(context: moc)
     session.isFinished = false
     session.baseword = "Taubenei"
     session.possibleWords = ["Taube"]

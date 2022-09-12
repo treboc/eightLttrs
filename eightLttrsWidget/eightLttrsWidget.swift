@@ -17,7 +17,7 @@ struct eightLttrsWidget: Widget {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
       WidgetView(entry: entry)
     }
-    .supportedFamilies([.systemSmall, .systemMedium])
+    .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular])
     .configurationDisplayName("Baseword")
     .description("Show the current baseword.")
   }

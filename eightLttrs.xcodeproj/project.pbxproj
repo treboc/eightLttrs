@@ -25,6 +25,8 @@
 		8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DD28BB909500A136CC /* MenuView.swift */; };
 		8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */; };
 		8A45C1E328BBC30700A136CC /* PresentAlert-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */; };
+		8A4941E428CFB216000BC0E1 /* AccessoryCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4941E328CFB216000BC0E1 /* AccessoryCircularView.swift */; };
+		8A4941E628CFB6DB000BC0E1 /* AccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */; };
 		8A4A612E28BD406600EA126A /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A612D28BD406600EA126A /* Collection+Safe.swift */; };
 		8A4C4C8828BC327F00B643D1 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8628BC327F00B643D1 /* success.wav */; };
 		8A4C4C8928BC327F00B643D1 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8728BC327F00B643D1 /* error.wav */; };
@@ -156,6 +158,8 @@
 		8A45C1DD28BB909500A136CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedNavigationTitle-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PresentAlert-ViewModifier.swift"; sourceTree = "<group>"; };
+		8A4941E328CFB216000BC0E1 /* AccessoryCircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularView.swift; sourceTree = "<group>"; };
+		8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessoryRectangularView.swift; path = eightLttrsWidget/Views/AccessoryRectangularView.swift; sourceTree = "<group>"; };
 		8A4A612D28BD406600EA126A /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		8A4C4C8628BC327F00B643D1 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 				8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */,
 				8ABED75B28C1E65D003457FD /* MediumSizeView.swift */,
 				8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */,
+				8A4941E328CFB216000BC0E1 /* AccessoryCircularView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
+				8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */,
 				8ADAB26F28A5911C0083E028 /* eightLttrs */,
 				8ADAB28628A5911D0083E028 /* eightLttrsTests */,
 				8ADAB29028A5911D0083E028 /* eightLttrsUITests */,
@@ -832,7 +838,9 @@
 				8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */,
 				8A92030828C26699008AF8EA /* Array+Permute.swift in Sources */,
 				8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */,
+				8A4941E428CFB216000BC0E1 /* AccessoryCircularView.swift in Sources */,
 				8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */,
+				8A4941E628CFB6DB000BC0E1 /* AccessoryRectangularView.swift in Sources */,
 				8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */,
 				8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */,
 				8ABED74B28C1E333003457FD /* eightLttrsWidget.swift in Sources */,
