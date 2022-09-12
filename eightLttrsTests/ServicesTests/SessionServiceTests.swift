@@ -130,11 +130,14 @@ final class SessionServiceTests: XCTestCase {
     // Arrange
     let session = Session(context: context)
     session.usedWords.append("Hello")
+    session.isFinished = false
 
     // Act
     SessionService.persist(session: session)
+    XCTAssert(session.usedWords.count == 1)
 
     // Assert
-    XCTAssert(session.usedWords.count == 1)
+    let savedSession = SessionService.returnLastSession(in: context)
+    XCTAssertNotNil(savedSession)
   }
 }
