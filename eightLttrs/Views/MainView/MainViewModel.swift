@@ -18,8 +18,6 @@ final class MainViewModel: ObservableObject {
   var error = CurrentValueSubject<WordError?, Never>(nil)
   var resetUICallback: (() -> Void)? = nil
 
-  private var subscriptions = Set<AnyCancellable>()
-
   init(gameType: GameType = .continueLastSession) {
     self.gameAPI = GameAPI()
     self.session = gameAPI.continueLastSession()
@@ -37,6 +35,7 @@ final class MainViewModel: ObservableObject {
   func submit(onCompletion: () -> Void) {
     do {
       try gameAPI.submit(input.value, session: session)
+      input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
       playSound(.success)
