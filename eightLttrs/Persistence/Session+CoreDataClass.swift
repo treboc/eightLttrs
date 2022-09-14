@@ -47,6 +47,11 @@ public class Session: NSManagedObject, Identifiable {
 
 // MARK: - Unwrapped optional properties
 extension Session {
+  var sharableURL: URL {
+    let encodedBaseWord = unwrappedBaseword.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
+    return URL(string: "wordscramble://baseword/\(locIdentifier.regionCode)/\(encodedBaseWord)")!
+  }
+
   var percentageWordsFound: Double {
     return Double(usedWords.count) / Double(maxPossibleWordsOnBaseWord)
   }
@@ -63,9 +68,8 @@ extension Session {
     return "0 %"
   }
 
-  var sharableURL: URL {
-    let encodedBaseWord = unwrappedBaseword.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
-    return URL(string: "wordscramble://baseword/\(locIdentifier.regionCode)/\(encodedBaseWord)")!
+  var averagePointsPerWord: Double {
+    return Double(score) / Double(usedWords.count)
   }
 
   @objc dynamic var possibleWordsSet: Set<String> {
