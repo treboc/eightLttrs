@@ -15,8 +15,14 @@ public class Session: NSManagedObject, Identifiable {
     return NSFetchRequest<Session>(entityName: "Score")
   }
 
-  class func newSession(with baseword: String, in context: NSManagedObjectContext = PersistenceStore.shared.context) -> Session {
-    let session = Session(context: context)
+  convenience init(using context: NSManagedObjectContext) {
+    let name = String(describing: type(of: self))
+    let description = NSEntityDescription.entity(forEntityName: name, in: context)!
+    self.init(entity: description, insertInto: context)
+  }
+
+  class func newSession(with baseword: String, in context: NSManagedObjectContext = PersistenceController.shared.context) -> Session {
+    let session = Session(using: context)
     session.id = UUID()
     session.startedAt = .now
     session.baseword = baseword
