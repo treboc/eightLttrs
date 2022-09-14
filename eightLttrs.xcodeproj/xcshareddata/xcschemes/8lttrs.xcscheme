@@ -24,18 +24,17 @@
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "YES"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8A50F88628CD5116003F5234"
-               BuildableName = "fastlaneUITests.xctest"
-               BlueprintName = "fastlaneUITests"
+               BlueprintIdentifier = "8ADAB28C28A5911D0083E028"
+               BuildableName = "eightLttrsUITests.xctest"
+               BlueprintName = "eightLttrsUITests"
                ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>

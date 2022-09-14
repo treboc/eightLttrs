@@ -85,6 +85,9 @@ extension MainView {
     // Accessibility
     numberOfWordsTitleLabel.accessibilityElementsHidden = true
     currentScoreTitleLabel.accessibilityElementsHidden = true
+
+    textField.accessibilityIdentifier = "inputField"
+    submitButton.accessibilityIdentifier = "submitBtn"
   }
 
   private func setupLayout() {
