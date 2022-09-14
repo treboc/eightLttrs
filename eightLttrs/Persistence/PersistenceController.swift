@@ -31,6 +31,29 @@ struct PersistenceController {
       }
     })
   }
+
+  func chieldViewContext() -> NSManagedObjectContext {
+    let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    context.parent = container.viewContext
+    return context
+  }
+
+  func copyForEditing<T: NSManagedObject>(of object: T,
+                                          in context: NSManagedObjectContext) -> T {
+    guard let object = (try? context.existingObject(with: object.objectID)) as? T else {
+      fatalError("Requested copy of a managed object that does not exist.")
+    }
+
+    return object
+  }
+
+  func persist(_ object: NSManagedObject) throws {
+    try object.managedObjectContext?.save()
+
+    if let parent = object.managedObjectContext?.parent {
+      try parent.save()
+    }
+  }
 }
 
 // SwiftUI Previews
