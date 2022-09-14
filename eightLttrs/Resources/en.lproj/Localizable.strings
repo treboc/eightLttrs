@@ -20,7 +20,7 @@
 "onboarding.secondPage.title" = "Rules";
 "onboarding.secondPage.body1" = "all starting words are eight letters long";
 "onboarding.secondPage.body2" = "your word must contain at least a minimum of three letters";
-"onboarding.secondPage.body3" = "possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more. In addition, of course, it depends on the upper and lower case.";
+"onboarding.secondPage.body3" = "possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more.";
 "onboarding.thirdPage.title" = "Scoring";
 "onboarding.thirdPage.body1" = "for the first three letters there is one point each";
 "onboarding.thirdPage.body2" = "for every following letter two points, then four, six and so on";
@@ -65,6 +65,10 @@
 "highscoreDetailView.statistics" = "Words / poss. Score";
 "highscoreDetaiLView.foundWordsPercentage" = "Found %@";
 "highscoreDetailView.tryAgain" = "Try again";
+
+// SessionDetailChartView
+"sessionDetailChartView.title" = "Words Per Points";
+"sessionDetailChartView.subtitle" = "avg. %@ pts. per word";
 
 // ShareLink
 "shareLink.previewMessage" = "\"%@\" will be shared.\nWho should try it?";

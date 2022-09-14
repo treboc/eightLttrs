@@ -191,6 +191,14 @@ internal enum L10n {
     /// Are you sure?
     internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: "Are you sure?")
   }
+  internal enum SessionDetailChartView {
+    /// avg. %@ pts. per word
+    internal static func subtitle(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "sessionDetailChartView.subtitle", String(describing: p1), fallback: "avg. %@ pts. per word")
+    }
+    /// Words Per Points
+    internal static let title = L10n.tr("Localizable", "sessionDetailChartView.title", fallback: "Words Per Points")
+  }
   internal enum ShareLink {
     /// I'd like to know if you can do better. My baseword was %@.
     /// 

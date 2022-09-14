@@ -65,6 +65,10 @@
 "highscoreDetaiLView.foundWordsPercentage" = "%@ gefunden";
 "highscoreDetailView.tryAgain" = "Versuchs nochmal";
 
+// SessionDetailChartView
+"sessionDetailChartView.title" = "Punkteverteilung";
+"sessionDetailChartView.subtitle" = "ø %@ Pkt. pro Wort";
+
 // ShareLink
 "shareLink.previewMessage" = "\"%@\" wird geteilt.\nWer soll es versuchen?";
 "shareLink.message" = "Ich möchte wissen, ob du es besser kannst. Mein Grundwort war %@.\n";
