@@ -5,6 +5,7 @@
 //  Created by Marvin Lee Kobert on 31.08.22.
 //
 
+import CoreData
 import SwiftUI
 
 struct SessionDetailView: View {
@@ -13,7 +14,14 @@ struct SessionDetailView: View {
   @Environment(\.editMode) private var editMode
   @State private var alertModel: AlertToPresent? = nil
 
+  let context: NSManagedObjectContext
   @ObservedObject var session: Session
+
+  init(session: Session) {
+    self.context = PersistenceController.shared.chieldViewContext()
+    let sessionCopy = PersistenceController.shared.copyForEditing(of: session, in: context)
+    self._session = ObservedObject(wrappedValue: sessionCopy)
+  }
 
   var body: some View {
     Form {
@@ -77,7 +85,7 @@ struct SessionDetailView: View {
 }
 
 struct ScoreDetailView_Previews: PreviewProvider {
-  static let session = SessionService.allObjects(Session.self, in: PersistenceStore.preview.context).first!
+  static let session = SessionService.allObjects(Session.self, in: PersistenceController.preview.context).first!
   
   static var previews: some View {
     NavigationView {
@@ -102,19 +110,15 @@ extension SessionDetailView {
   }
 
   private func isEditingChanged(_ isEditing: Bool) {
+    guard let name = session.playerName,
+          name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
+
     if isEditing == false {
       do {
-        try PersistenceStore.shared.context.save()
+        try PersistenceController.shared.persist(session)
       } catch {
         alertModel = AlertToPresent(simpleAlert: true, title: "Error", message: "Sorry, an error occurred while saving the session.") {}
-        PersistenceStore.shared.context.rollback()
       }
-    }
-  }
-
-  private func rollbackOnDisappear() {
-    if session.hasChanges {
-      PersistenceStore.shared.context.rollback()
     }
   }
 }
@@ -146,6 +150,5 @@ extension SessionDetailView {
     }
     .animation(.none, value: editMode?.wrappedValue)
     .onChange(of: isEditing, perform: isEditingChanged)
-    .onDisappear(perform: rollbackOnDisappear)
   }
 }
