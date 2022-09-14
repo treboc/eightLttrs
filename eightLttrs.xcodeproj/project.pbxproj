@@ -163,7 +163,7 @@
 		8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedNavigationTitle-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PresentAlert-ViewModifier.swift"; sourceTree = "<group>"; };
 		8A4941E328CFB216000BC0E1 /* AccessoryCircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularView.swift; sourceTree = "<group>"; };
-		8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessoryRectangularView.swift; path = eightLttrsWidget/Views/AccessoryRectangularView.swift; sourceTree = "<group>"; };
+		8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectangularView.swift; sourceTree = "<group>"; };
 		8A4A612D28BD406600EA126A /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		8A4C4C8628BC327F00B643D1 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
@@ -526,6 +526,7 @@
 				8ABED75B28C1E65D003457FD /* MediumSizeView.swift */,
 				8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */,
 				8A4941E328CFB216000BC0E1 /* AccessoryCircularView.swift */,
+				8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -551,7 +552,6 @@
 		8ADAB26428A5911C0083E028 = {
 			isa = PBXGroup;
 			children = (
-				8A4941E528CFB6DB000BC0E1 /* AccessoryRectangularView.swift */,
 				8ADAB26F28A5911C0083E028 /* eightLttrs */,
 				8ABED74928C1E333003457FD /* eightLttrsWidget */,
 				8ADAB28628A5911D0083E028 /* eightLttrsTests */,

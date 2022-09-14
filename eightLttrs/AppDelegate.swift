@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // german for de/at/ch, else en
     let wsLocale = WSLocale.wsLocaleBasedOnRegion()
 
+    application.accessibilityLanguage = Locale.autoupdatingCurrent.language.region?.identifier
+
     // register settings
     UserDefaults.standard.register(
       defaults: [

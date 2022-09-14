@@ -283,7 +283,6 @@ extension MainViewController {
           let collectionView = mainView.collectionView else { return }
     accessibilityElements = [menuButton, mainView.textField, mainView.submitButton, mainView.numberOfWordsBodyLabel, mainView.currentScoreBodyLabel, collectionView]
 
-
     mainView.textField.accessibilityHint = L10n.A11y.MainView.Textfield.hint
     mainView.numberOfWordsBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.usedWords.count, viewModel.session.maxPossibleWordsOnBaseWord)
     mainView.currentScoreBodyLabel.accessibilityLabel = L10n.A11y.MainView.ScoreLabels.label(viewModel.session.score, viewModel.session.maxPossibleScoreOnBaseWord)
