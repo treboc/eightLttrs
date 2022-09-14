@@ -56,7 +56,7 @@ struct SessionDetailView: View {
       .disabled(session.baseword == nil)
       .presentAlert(with: $alertModel)
 
-      Section(L10n.HighscoreDetailView.statistics) {
+      Section {
         SessionDetailChartView(session: session)
       }
       
