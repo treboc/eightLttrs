@@ -39,6 +39,7 @@ struct SessionDetailView: View {
             .foregroundColor(.secondary)
           Spacer()
           Text("\(session.score) / \(session.maxPossibleScoreOnBaseWord)")
+            .accessibilityLabel(L10n.A11y.SessionDetailView.score(session.score, session.maxPossibleScoreOnBaseWord))
         }
       }
 
@@ -60,9 +61,7 @@ struct SessionDetailView: View {
         SessionDetailChartView(session: session)
       }
       
-      Section(session.usedWords.count > 0
-              ? L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFoundString)
-              : "") {
+      Section(L10n.HighscoreDetaiLView.foundWordsPercentage(session.percentageWordsFoundString)) {
         List {
           ForEach(session.usedWords, id: \.self) { word in
             HStack {
@@ -71,6 +70,8 @@ struct SessionDetailView: View {
               
               Text(word)
             }
+            .accessibilityElement()
+            .accessibilityLabel(L10n.A11y.MainView.Cell.label(word, word.calculatedScore()))
           }
         }
       }

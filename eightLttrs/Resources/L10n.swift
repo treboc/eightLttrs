@@ -33,32 +33,28 @@ internal enum L10n {
   internal static func shareSessionMessage(_ p1: Int, _ p2: Int) -> String {
     return L10n.tr("Localizable", "shareSessionMessage", p1, p2, fallback: "Plural format key: \"%#@wordsCount@ %#@score@\"")
   }
-  internal enum ButtonTitle {
-    /// Cancel
-    internal static let cancel = L10n.tr("Localizable", "ButtonTitle.cancel", fallback: "Cancel")
-    /// Continue
-    internal static let `continue` = L10n.tr("Localizable", "ButtonTitle.continue", fallback: "Continue")
-    /// Yes, I'm sure
-    internal static let imSure = L10n.tr("Localizable", "ButtonTitle.imSure", fallback: "Yes, I'm sure")
-    /// Next
-    internal static let next = L10n.tr("Localizable", "ButtonTitle.next", fallback: "Next")
-    /// OK
-    internal static let ok = L10n.tr("Localizable", "ButtonTitle.ok", fallback: "OK")
-    /// Save
-    internal static let save = L10n.tr("Localizable", "ButtonTitle.save", fallback: "Save")
-    /// Share Session
-    internal static let shareSession = L10n.tr("Localizable", "ButtonTitle.shareSession", fallback: "Share Session")
-    /// Skip
-    internal static let skip = L10n.tr("Localizable", "ButtonTitle.skip", fallback: "Skip")
-    /// Submit
-    internal static let submit = L10n.tr("Localizable", "ButtonTitle.submit", fallback: "Submit")
-  }
   internal enum A11y {
+    internal enum HighscoreListRowView {
+      /// %@, %@, %@ Points
+      internal static func label(_ p1: Any, _ p2: Any, _ p3: Any) -> String {
+        return L10n.tr("Localizable", "a11y.highscoreListRowView.label", String(describing: p1), String(describing: p2), String(describing: p3), fallback: "%@, %@, %@ Points")
+      }
+    }
     internal enum MainView {
+      /// %@, base word
+      internal static func title(_ p1: Any) -> String {
+        return L10n.tr("Localizable", "a11y.mainView.title", String(describing: p1), fallback: "%@, base word")
+      }
+      internal enum Cell {
+        /// %@, %@ points
+        internal static func label(_ p1: Any, _ p2: Any) -> String {
+          return L10n.tr("Localizable", "a11y.mainView.cell.label", String(describing: p1), String(describing: p2), fallback: "%@, %@ points")
+        }
+      }
       internal enum ScoreLabels {
-        /// %@ of @% possible score
-        internal static func label(_ p1: Any, _ p2: UnsafeRawPointer) -> String {
-          return L10n.tr("Localizable", "a11y.mainView.scoreLabels.label", String(describing: p1), Int(bitPattern: p2), fallback: "%@ of @% possible score")
+        /// %@ of %@ possible points
+        internal static func label(_ p1: Any, _ p2: Any) -> String {
+          return L10n.tr("Localizable", "a11y.mainView.scoreLabels.label", String(describing: p1), String(describing: p2), fallback: "%@ of %@ possible points")
         }
       }
       internal enum Textfield {
@@ -74,6 +70,34 @@ internal enum L10n {
         }
       }
     }
+    internal enum SessionDetailView {
+      /// %@ of %@ Points
+      internal static func score(_ p1: Any, _ p2: Any) -> String {
+        return L10n.tr("Localizable", "a11y.sessionDetailView.score", String(describing: p1), String(describing: p2), fallback: "%@ of %@ Points")
+      }
+    }
+  }
+  internal enum ButtonTitle {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "buttonTitle.cancel", fallback: "Cancel")
+    /// Close
+    internal static let close = L10n.tr("Localizable", "buttonTitle.close", fallback: "Close")
+    /// Continue
+    internal static let `continue` = L10n.tr("Localizable", "buttonTitle.continue", fallback: "Continue")
+    /// Yes, I'm sure
+    internal static let imSure = L10n.tr("Localizable", "buttonTitle.imSure", fallback: "Yes, I'm sure")
+    /// Next
+    internal static let next = L10n.tr("Localizable", "buttonTitle.next", fallback: "Next")
+    /// OK
+    internal static let ok = L10n.tr("Localizable", "buttonTitle.ok", fallback: "OK")
+    /// Save
+    internal static let save = L10n.tr("Localizable", "buttonTitle.save", fallback: "Save")
+    /// Share Session
+    internal static let shareSession = L10n.tr("Localizable", "buttonTitle.shareSession", fallback: "Share Session")
+    /// Skip
+    internal static let skip = L10n.tr("Localizable", "buttonTitle.skip", fallback: "Skip")
+    /// Submit
+    internal static let submit = L10n.tr("Localizable", "buttonTitle.submit", fallback: "Submit")
   }
   internal enum EndGameAlert {
     /// Are you sure, you don't know any other words?
@@ -169,8 +193,8 @@ internal enum L10n {
       internal static let body1 = L10n.tr("Localizable", "onboarding.secondPage.body1", fallback: "all starting words are eight letters long")
       /// your word must contain at least a minimum of three letters
       internal static let body2 = L10n.tr("Localizable", "onboarding.secondPage.body2", fallback: "your word must contain at least a minimum of three letters")
-      /// possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more. In addition, of course, it depends on the upper and lower case.
-      internal static let body3 = L10n.tr("Localizable", "onboarding.secondPage.body3", fallback: "possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more. In addition, of course, it depends on the upper and lower case.")
+      /// possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more.
+      internal static let body3 = L10n.tr("Localizable", "onboarding.secondPage.body3", fallback: "possible words are nouns, adjectives and verbs in all their forms. In addition, names, abbreviations, numerals and much more.")
       /// Rules
       internal static let title = L10n.tr("Localizable", "onboarding.secondPage.title", fallback: "Rules")
     }

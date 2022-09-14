@@ -42,15 +42,15 @@ extension MainView {
   private func setupViews() {
     let semiBoldFont = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: .semibold)
 
-    // Submit Button
     var configuration = UIButton.Configuration.borderedProminent()
     configuration.baseForegroundColor = .systemBackground
     submitButton.configuration = configuration
     submitButton.isEnabled = false
     let imageConf = UIImage.SymbolConfiguration(pointSize: 12)
-    let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf)!
-    plusImage.withTintColor(.label, renderingMode: .automatic)
-    submitButton.setImage(plusImage, for: .normal)
+    if let plusImage = UIImage(systemName: "plus", withConfiguration: imageConf) {
+      plusImage.withTintColor(.label, renderingMode: .automatic)
+      submitButton.setImage(plusImage, for: .normal)
+    }
 
     numberOfWordsTitleLabel.textAlignment = .left
     numberOfWordsTitleLabel.text = L10n.MainView.foundWords
@@ -81,6 +81,10 @@ extension MainView {
     let config = UICollectionLayoutListConfiguration(appearance: .plain)
     let layout = UICollectionViewCompositionalLayout.list(using: config)
     self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+    // Accessibility
+    numberOfWordsTitleLabel.accessibilityElementsHidden = true
+    currentScoreTitleLabel.accessibilityElementsHidden = true
   }
 
   private func setupLayout() {

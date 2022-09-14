@@ -80,22 +80,29 @@
 "widget.noWords" = "No words found yet. What are you waiting for?";
 
 // ButtonTitles
-"ButtonTitle.submit" = "Submit";
-"ButtonTitle.cancel" = "Cancel";
-"ButtonTitle.save" = "Save";
-"ButtonTitle.imSure" = "Yes, I'm sure";
-"ButtonTitle.skip" = "Skip";
-"ButtonTitle.next" = "Next";
-"ButtonTitle.continue" = "Continue";
-"ButtonTitle.ok" = "OK";
-"ButtonTitle.shareSession" = "Share Session";
+"buttonTitle.submit" = "Submit";
+"buttonTitle.cancel" = "Cancel";
+"buttonTitle.save" = "Save";
+"buttonTitle.imSure" = "Yes, I'm sure";
+"buttonTitle.skip" = "Skip";
+"buttonTitle.next" = "Next";
+"buttonTitle.continue" = "Continue";
+"buttonTitle.ok" = "OK";
+"buttonTitle.shareSession" = "Share Session";
+"buttonTitle.close" = "Close";
 
 // Accessibility
+"a11y.mainView.title" = "%@, base word";
+
 "a11y.mainView.textfield.label" = "Textfield";
 "a11y.mainView.textfield.hint" = "Put your guessed word here.";
-
 "a11y.mainView.wordsLabels.label" = "found %@ of %@ words";
-"a11y.mainView.scoreLabels.label" = "%@ of @% possible score";
+"a11y.mainView.scoreLabels.label" = "%@ of %@ possible points";
+"a11y.mainView.cell.label" = "%@, %@ points";
+
+"a11y.highscoreListRowView.label" = "%@, %@, %@ Points"; // Rank, Name, Points
+
+"a11y.sessionDetailView.score" = "%@ of %@ Points"; // Score, PossibleScore
 
 // WordError
 "wordError.notReal.title" = "Word Not Recognized";

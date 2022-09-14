@@ -67,7 +67,7 @@
 
 // SessionDetailChartView
 "sessionDetailChartView.title" = "Punkteverteilung";
-"sessionDetailChartView.subtitle" = "ø %@ Pkt. pro Wort";
+"sessionDetailChartView.subtitle" = "⌀ %@ Punkte pro Wort";
 
 // ShareLink
 "shareLink.previewMessage" = "\"%@\" wird geteilt.\nWer soll es versuchen?";
@@ -79,22 +79,29 @@
 "widget.noWords" = "Noch kein Wort gefunden. Worauf wartest du?";
 
 // ButtonTitles
-"ButtonTitle.submit" = "Okay";
-"ButtonTitle.cancel" = "Abbrechen";
-"ButtonTitle.save" = "Speichern";
-"ButtonTitle.imSure" = "Ja, ich bin sicher";
-"ButtonTitle.skip" = "Überspringen";
-"ButtonTitle.next" = "Weiter";
-"ButtonTitle.continue" = "Fortfahren";
-"ButtonTitle.ok" = "Okay";
-"ButtonTitle.shareSession" = "Spiel teilen";
+"buttonTitle.submit" = "Okay";
+"buttonTitle.cancel" = "Abbrechen";
+"buttonTitle.save" = "Speichern";
+"buttonTitle.imSure" = "Ja, ich bin sicher";
+"buttonTitle.skip" = "Überspringen";
+"buttonTitle.next" = "Weiter";
+"buttonTitle.continue" = "Fortfahren";
+"buttonTitle.ok" = "Okay";
+"buttonTitle.shareSession" = "Spiel teilen";
+"buttonTitle.close" = "Schließen";
 
 // Accessibility
+"a11y.mainView.title" = "%@, Grundwort";
+
 "a11y.mainView.textfield.label" = "Textfeld";
 "a11y.mainView.textfield.hint" = "hier kommt dein Wort rein";
-
 "a11y.mainView.wordsLabels.label" = "%@ von %@ Wörtern gefunden";
-"a11y.mainView.scoreLabels.label" = "%@ von @% möglichen Punkten";
+"a11y.mainView.scoreLabels.label" = "%@ von %@ möglichen Punkten";
+"a11y.mainView.cell.label" = "%@, %@ Punkte";
+
+"a11y.highscoreListRowView.label" = "%@, %@, %@ Punkte"; // Rank, Name, Points
+
+"a11y.sessionDetailView.score" = "%@ von %@ Punkten"; // Score, PossibleScore
 
 // WordError
 "wordError.notReal.title" = "Unbekanntes Wort";

@@ -75,6 +75,7 @@ extension MainViewController: UICollectionViewDelegate {
 
       // Assign content configuration to cell
       cell.contentConfiguration = content
+      cell.accessibilityLabel = L10n.A11y.MainView.Cell.label(word, points)
     }
 
     dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView) {
@@ -228,6 +229,7 @@ extension MainViewController {
 
   private func didReceiveBaseword(_ baseWord: String) {
     self.title = baseWord
+    navigationItem.accessibilityLabel = L10n.A11y.MainView.title(baseWord)
     mainView.clearTextField()
   }
 }
@@ -281,12 +283,10 @@ extension MainViewController {
           let collectionView = mainView.collectionView else { return }
     accessibilityElements = [menuButton, mainView.textField, mainView.submitButton, mainView.numberOfWordsBodyLabel, mainView.currentScoreBodyLabel, collectionView]
 
-    mainView.textField.accessibilityLabel = L10n.A11y.MainView.Textfield.label
+
     mainView.textField.accessibilityHint = L10n.A11y.MainView.Textfield.hint
-
     mainView.numberOfWordsBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.usedWords.count, viewModel.session.maxPossibleWordsOnBaseWord)
-
-    mainView.currentScoreBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.score, viewModel.session.maxPossibleScoreOnBaseWord)
+    mainView.currentScoreBodyLabel.accessibilityLabel = L10n.A11y.MainView.ScoreLabels.label(viewModel.session.score, viewModel.session.maxPossibleScoreOnBaseWord)
   }
 }
 

@@ -72,6 +72,18 @@ extension Session {
     return Double(score) / Double(usedWords.count)
   }
 
+  var averagePointsPerWordString: String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 0
+
+    if let string = formatter.string(from: averagePointsPerWord as NSNumber) {
+      return string
+    }
+    return "0"
+  }
+
   @objc dynamic var possibleWordsSet: Set<String> {
     get { Set(possibleWords) }
     set { possibleWords = Array(newValue) }

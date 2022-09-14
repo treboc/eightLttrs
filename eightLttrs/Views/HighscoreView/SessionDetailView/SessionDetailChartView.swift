@@ -18,10 +18,6 @@ struct WordsFoundChartData {
 struct SessionDetailChartView: View {
   let session: Session
 
-  var avgPoints: String {
-    return String(format: "%.02f", session.averagePointsPerWord)
-  }
-
   var data: [WordsFoundChartData] {
     return WordsFoundChartData.possibleScores.map { score in
       return WordsFoundChartData(score: score.description,
@@ -60,7 +56,7 @@ extension SessionDetailChartView {
   }
 
   private var chartSubtitle: some View {
-    Text(L10n.SessionDetailChartView.subtitle(avgPoints))
+    Text(L10n.SessionDetailChartView.subtitle(session.averagePointsPerWordString))
       .font(.system(.caption, design: .rounded, weight: .semibold))
       .foregroundColor(.secondary)
   }

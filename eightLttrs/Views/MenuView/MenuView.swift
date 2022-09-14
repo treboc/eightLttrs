@@ -99,17 +99,7 @@ struct MenuView: View {
         .tint(.accentColor)
 
         Section("Contact Me") {
-          Link(destination: Constants.twitterURL) {
-            HStack {
-              Image("twitter")
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 25, height: 25)
-
-              Text("@treb0c")
-            }
-          }
-
+          twitterLink
           NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)
         }
 
@@ -130,7 +120,7 @@ struct MenuView: View {
       .toolbar {
         ToolbarItem {
           Button(action: dismiss.callAsFunction) {
-            Label("Close", systemImage: "x.circle.fill")
+            Label(L10n.ButtonTitle.close, systemImage: "x.circle.fill")
               .foregroundColor(.accentColor)
           }
         }
@@ -214,3 +204,18 @@ extension MenuView {
   }
 }
 
+extension MenuView {
+  private var twitterLink: some View {
+    Link(destination: Constants.twitterURL) {
+      HStack {
+        Image("twitter")
+          .resizable()
+          .aspectRatio(1, contentMode: .fit)
+          .frame(width: 25, height: 25)
+
+        Text("@treb0c")
+      }
+    }
+    .accessibilityLabel("Twitterhandle treboc")
+  }
+}
