@@ -9,9 +9,9 @@ import CoreData
 import Foundation
 
 class SessionService {
-  internal static let context = PersistenceStore.shared.context
+  internal static let context = PersistenceController.shared.context
 
-  static func allObjects<T: NSManagedObject>(_ type: T.Type, in context: NSManagedObjectContext = PersistenceStore.shared.context) -> [T] {
+  static func allObjects<T: NSManagedObject>(_ type: T.Type, in context: NSManagedObjectContext = PersistenceController.shared.context) -> [T] {
     let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: T.description())
     do {
       let result = try context.fetch(fetchRequest)
@@ -22,7 +22,7 @@ class SessionService {
     return []
   }
 
-  static func loadHighscores(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> [Session] {
+  static func loadHighscores(in context: NSManagedObjectContext = PersistenceController.shared.context) -> [Session] {
     let fetchRequest: NSFetchRequest<Session> = NSFetchRequest<Session>(entityName: Session.description())
     do {
       let result = try context.fetch(fetchRequest)
@@ -35,7 +35,7 @@ class SessionService {
     return []
   }
 
-  static func returnLastSession(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> Session? {
+  static func returnLastSession(in context: NSManagedObjectContext = PersistenceController.shared.context) -> Session? {
     let result = SessionService.allObjects(Session.self, in: context)
       .filter { !$0.isFinished }
       .sorted { $0.unwrappedStartedAt < $1.unwrappedStartedAt }
@@ -50,7 +50,7 @@ class SessionService {
     return nil
   }
 
-  static func lastOpenSessionHasWords(in context: NSManagedObjectContext = PersistenceStore.shared.context) -> Bool {
+  static func lastOpenSessionHasWords(in context: NSManagedObjectContext = PersistenceController.shared.context) -> Bool {
     if let session = returnLastSession(in: context),
        session.usedWords.count > 0 {
       return true
@@ -72,20 +72,17 @@ class SessionService {
   }
 
   static func persist(session: Session) {
-      let widgetSession = WidgetSession(baseword: session.unwrappedBaseword, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
-      let currentSession = CurrentWidgetSession(currentSession: widgetSession)
-      currentSession.storeItem()
+    let widgetSession = WidgetSession(baseword: session.unwrappedBaseword, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
+    let currentSession = CurrentWidgetSession(currentSession: widgetSession)
+    currentSession.storeItem()
 
-    Task {
-      guard let context = session.managedObjectContext else { return }
-      if context.hasChanges {
-        do {
-          try context.save()
-        } catch {
-          print(error.localizedDescription)
-        }
+    guard let context = session.managedObjectContext else { return }
+    if context.hasChanges {
+      do {
+        try context.save()
+      } catch {
+        print(error.localizedDescription)
       }
     }
-
   }
 }

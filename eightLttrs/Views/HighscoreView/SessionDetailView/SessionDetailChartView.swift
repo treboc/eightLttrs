@@ -31,13 +31,12 @@ struct SessionDetailChartView: View {
       BarMark(x: .value("Scores", entry.score), y: .value("Number of Words found", entry.wordsFound))
         .foregroundStyle(Color.accentColor.gradient)
     }
-    .padding()
     .frame(height: 200)
   }
 }
 
 struct SessionDetailChartView_Previews: PreviewProvider {
-  static var session: Session = SessionService.allObjects(Session.self, in: PersistenceStore.preview.context).first!
+  static var session: Session = SessionService.allObjects(Session.self, in: PersistenceController.preview.context).first!
 
   static var previews: some View {
     SessionDetailChartView(session: session)

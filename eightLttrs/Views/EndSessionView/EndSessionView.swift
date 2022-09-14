@@ -52,7 +52,7 @@ struct EndSessionView: View {
 }
 
 struct EndSessionView_Previews: PreviewProvider {
-  static let session: Session = SessionService.allObjects(Session.self, in: PersistenceStore.preview.context).first!
+  static let session: Session = SessionService.allObjects(Session.self, in: PersistenceController.preview.context).first!
 
   static var previews: some View {
     EndSessionView(session: session)

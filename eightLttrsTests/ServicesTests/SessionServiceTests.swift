@@ -10,23 +10,27 @@ import CoreData
 import XCTest
 
 final class SessionServiceTests: XCTestCase {
-  var persistenceStore: PersistenceStore!
+  var container: NSPersistentContainer!
   var context: NSManagedObjectContext {
-    return persistenceStore.context
+    return container.viewContext
   }
 
   override func setUpWithError() throws {
-    persistenceStore = PersistenceStore(inMemory: true)
+    container = NSPersistentContainer(name: "eightLttrs")
+    container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
+    container.loadPersistentStores { (description, error) in
+      XCTAssertNil(error)
+    }
   }
 
   override func tearDownWithError() throws {
-    persistenceStore = nil
+    container = nil
   }
 
   func test_allObjects_shouldReturn3_when3ObjectsInstantiated() {
     // Arrange
     for _ in 0..<3 {
-      let _ = Session(context: context)
+      let _ = Session(using: context)
     }
 
     // Act
@@ -51,7 +55,7 @@ final class SessionServiceTests: XCTestCase {
   func test_loadHighscores_shouldOnlyReturnFinishedSessions() {
     // Arrange
     for i in 0..<10 {
-      let session = Session(context: context)
+      let session = Session(using: context)
       if i.isMultiple(of: 2) { session.isFinished = true }
     }
 
@@ -68,7 +72,7 @@ final class SessionServiceTests: XCTestCase {
     var unfinishedSessionID: UUID!
 
     for i in 0..<3 {
-      let session = Session(context: context)
+      let session = Session(using: context)
       session.id = UUID()
       if i.isMultiple(of: 2) {
         session.isFinished = true
@@ -88,7 +92,7 @@ final class SessionServiceTests: XCTestCase {
   func test_returnLastSession_shouldDeleteAllOtherUnfinishedSessions() {
     // Arrange
     for _ in 0..<3 {
-      let session = Session(context: context)
+      let session = Session(using: context)
       session.isFinished = false
     }
 
@@ -103,7 +107,7 @@ final class SessionServiceTests: XCTestCase {
 
   func test_lastOpenSessionHasWords_given3Words_shouldReturnTrue() {
     // Arrange
-    let session = Session(context: context)
+    let session = Session(using: context)
     session.usedWords = ["Taube", "Taubenei", "taub"]
     session.isFinished = false
 
@@ -116,7 +120,7 @@ final class SessionServiceTests: XCTestCase {
 
   func test_persistFinished_shouldSetName_whenGivenThomas() {
     // Arrange
-    let session = Session(context: context)
+    let session = Session(using: context)
 
     // Act
     SessionService.persistFinished(session: session, forPlayer: "Thomas")
@@ -128,7 +132,7 @@ final class SessionServiceTests: XCTestCase {
 
   func test_persist_shouldSaveSession() {
     // Arrange
-    let session = Session(context: context)
+    let session = Session(using: context)
     session.usedWords.append("Hello")
     session.isFinished = false
 

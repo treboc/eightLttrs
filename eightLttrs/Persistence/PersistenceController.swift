@@ -1,5 +1,5 @@
 //
-//  PersistenceStore.swift
+//  PersistenceController.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 21.08.22.
@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-class PersistenceStore {
-  static let shared = PersistenceStore()
+struct PersistenceController {
+  static let shared = PersistenceController()
 
   var container: NSPersistentContainer
   let context: NSManagedObjectContext
@@ -34,9 +34,9 @@ class PersistenceStore {
 }
 
 // SwiftUI Previews
-extension PersistenceStore {
-  static var preview: PersistenceStore = {
-    let store = PersistenceStore(inMemory: true)
+extension PersistenceController {
+  static var preview: PersistenceController = {
+    let store = PersistenceController(inMemory: true)
     for i in 0..<10 {
       let session = Session(context: store.context)
       session.id = UUID()

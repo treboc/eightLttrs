@@ -34,7 +34,7 @@ struct HighscoreListView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       HighscoreListView()
-        .environment(\.managedObjectContext, PersistenceStore.preview.context)
+        .environment(\.managedObjectContext, PersistenceController.preview.context)
     }
     .preferredColorScheme(.dark)
   }

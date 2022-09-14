@@ -25,7 +25,7 @@ struct HighscoreListRowView: View {
 }
 
 struct HighscoreListRowView_Previews: PreviewProvider {
-  static var session = SessionService.allObjects(Session.self, in: PersistenceStore.preview.context).first!
+  static var session = SessionService.allObjects(Session.self, in: PersistenceController.preview.context).first!
 
   static var previews: some View {
     Group {

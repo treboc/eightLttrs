@@ -15,7 +15,8 @@ final class GameAPITests: XCTestCase {
 
   override func setUpWithError() throws {
     sut = GameAPI()
-    moc = PersistenceStore(inMemory: true).context
+    let store = PersistenceController(inMemory: true)
+    moc = store.context
   }
 
   override func tearDownWithError() throws {
@@ -25,7 +26,7 @@ final class GameAPITests: XCTestCase {
 
   func test_startGame_withUnfinishedSession_shouldReturnThisSession() {
     // Arrange
-    let session = Session(context: moc)
+    let session = Session(using: moc)
     session.isFinished = false
     session.id = UUID()
     try? moc.save()
@@ -57,7 +58,7 @@ final class GameAPITests: XCTestCase {
   }
 
   func test_submit_withValidInput_shouldPersistSession() {
-    let session = Session(context: moc)
+    let session = Session.init(using: moc)
     session.isFinished = false
     session.baseword = "Taubenei"
     session.possibleWords = ["Taube"]

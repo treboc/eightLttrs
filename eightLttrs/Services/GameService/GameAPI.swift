@@ -12,7 +12,7 @@ import UIKit
 
 class GameAPI {
   var usersLocale: WSLocale
-  static let moc = PersistenceStore.shared.context
+  static let moc = PersistenceController.shared.context
 
   init(wsLocale: WSLocale = .getStoredWSLocale()) {
     self.usersLocale = wsLocale

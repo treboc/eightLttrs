@@ -44,7 +44,7 @@ struct MenuView: View {
 
           NavigationLink(L10n.MenuView.showHighscore) {
             HighscoreListView()
-              .environment(\.managedObjectContext, PersistenceStore.shared.context)
+              .environment(\.managedObjectContext, PersistenceController.shared.context)
           }
           .tint(.accentColor)
         }
