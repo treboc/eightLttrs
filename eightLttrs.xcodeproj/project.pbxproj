@@ -33,8 +33,6 @@
 		8A4C4C8828BC327F00B643D1 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8628BC327F00B643D1 /* success.wav */; };
 		8A4C4C8928BC327F00B643D1 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8728BC327F00B643D1 /* error.wav */; };
 		8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C4C8B28BC34F800B643D1 /* SoundType.swift */; };
-		8A50F88A28CD5116003F5234 /* fastlaneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A50F88928CD5116003F5234 /* fastlaneUITests.swift */; };
-		8A50F88C28CD5116003F5234 /* fastlaneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A50F88B28CD5116003F5234 /* fastlaneUITestsLaunchTests.swift */; };
 		8A5D2A0928C7C8CE008898E0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D2A0828C7C8CE008898E0 /* MainViewModel.swift */; };
 		8A62106D28C8AE2200C8F1A7 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62106C28C8AE2200C8F1A7 /* EndSessionView.swift */; };
 		8A62106F28C8E32B00C8F1A7 /* UIFont+Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62106E28C8E32B00C8F1A7 /* UIFont+Weight.swift */; };
@@ -169,8 +167,6 @@
 		8A4C4C8728BC327F00B643D1 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
 		8A4C4C8B28BC34F800B643D1 /* SoundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundType.swift; sourceTree = "<group>"; };
 		8A50F88728CD5116003F5234 /* fastlaneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fastlaneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A50F88928CD5116003F5234 /* fastlaneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fastlaneUITests.swift; sourceTree = "<group>"; };
-		8A50F88B28CD5116003F5234 /* fastlaneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fastlaneUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A5D2A0828C7C8CE008898E0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8A62106C28C8AE2200C8F1A7 /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
 		8A62106E28C8E32B00C8F1A7 /* UIFont+Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Weight.swift"; sourceTree = "<group>"; };
@@ -348,15 +344,6 @@
 				8A4C4C8728BC327F00B643D1 /* error.wav */,
 			);
 			path = Sounds;
-			sourceTree = "<group>";
-		};
-		8A50F88828CD5116003F5234 /* fastlaneUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8A50F88928CD5116003F5234 /* fastlaneUITests.swift */,
-				8A50F88B28CD5116003F5234 /* fastlaneUITestsLaunchTests.swift */,
-			);
-			path = fastlaneUITests;
 			sourceTree = "<group>";
 		};
 		8A6A3B8428C09FEF00A409E3 /* Frameworks */ = {
@@ -556,7 +543,6 @@
 				8ABED74928C1E333003457FD /* eightLttrsWidget */,
 				8ADAB28628A5911D0083E028 /* eightLttrsTests */,
 				8ADAB29028A5911D0083E028 /* eightLttrsUITests */,
-				8A50F88828CD5116003F5234 /* fastlaneUITests */,
 				8A6A3B8428C09FEF00A409E3 /* Frameworks */,
 				8ADAB26E28A5911C0083E028 /* Products */,
 			);
@@ -825,8 +811,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A50F88C28CD5116003F5234 /* fastlaneUITestsLaunchTests.swift in Sources */,
-				8A50F88A28CD5116003F5234 /* fastlaneUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
