@@ -782,8 +782,6 @@ bassinet
 bassists
 bassoons
 basswood
-bastards
-bastardy
 bastions
 batching
 bathetic
@@ -817,7 +815,6 @@ beatings
 beatniks
 beauties
 beautify
-beavered
 becalmed
 beckoned
 beclouds
@@ -1374,7 +1371,6 @@ buffeted
 buffoons
 bugaboos
 bugbears
-buggered
 buggiest
 builders
 building
@@ -3032,8 +3028,6 @@ diatomic
 diatonic
 diatribe
 dibbling
-dickered
-dickhead
 dictated
 dictates
 dictator

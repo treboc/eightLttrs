@@ -28,6 +28,7 @@ extension View {
         Button(alertModel.wrappedValue?.primaryActionTitle ?? "No Button Title", role: .destructive) {
           alertModel.wrappedValue?.primaryAction()
         }
+        .accessibilityIdentifier("continueBtn")
       }
     } message: {
       Text(alertModel.wrappedValue?.message ?? "No Message")

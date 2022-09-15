@@ -20,7 +20,12 @@ struct HighscoreListRowView: View {
         regularLayout
       }
     }
-    .background(NavigationLink("", destination: SessionDetailView(session: session)).opacity(0).buttonStyle(.plain))
+    .background(
+      NavigationLink("", destination: SessionDetailView(session: session))
+        .opacity(0)
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("highscoreListRowNavLink")
+    )
     .accessibilityElement()
     .accessibilityLabel("\(rank)., \(session.unwrappedName), \(session.score) Points")
   }

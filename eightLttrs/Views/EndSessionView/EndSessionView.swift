@@ -40,6 +40,7 @@ struct EndSessionView: View {
           modalMode.wrappedValue = false
         }
         .disabled(name.isEmpty)
+        .accessibilityIdentifier("saveBtn")
       }
       .frame(maxWidth: .infinity)
       .buttonStyle(.bordered)

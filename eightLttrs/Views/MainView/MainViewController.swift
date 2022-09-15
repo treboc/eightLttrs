@@ -147,6 +147,7 @@ extension MainViewController {
     // Right -> UIBarButtonItem
     menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
+    menuButton.accessibilityIdentifier = "menuBtn"
     navigationItem.rightBarButtonItem = menuButton
   }
 

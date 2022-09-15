@@ -23,74 +23,17 @@ struct MenuView: View {
     NavigationView {
       Form {
         Section {
-          Button(action: restartSession) {
-            HStack {
-              Image(systemName: "arrow.counterclockwise.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-              Text(L10n.MenuView.restartSession)
-            }
-          }
-
-          Button(action: endSession) {
-            HStack {
-              Image(systemName: "stop.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-              Text(L10n.MenuView.endSession)
-            }
-          }
-          .disabled(mainViewModel.session.usedWords.isEmpty)
-
+          restartSessionButton
+          endSessionButton
           ShareSessionButton(session: mainViewModel.session)
-
-          NavigationLink(L10n.MenuView.showHighscore) {
-            HighscoreListView()
-              .environment(\.managedObjectContext, PersistenceController.shared.context)
-          }
-          .tint(.accentColor)
+          showHighscoreNavLink
         }
 
         Section {
-          Picker(selection: $chosenBasewordLocale) {
-            ForEach(WSLocale.availableLanguages()) { locale in
-              Text(locale.description)
-                .tag(locale)
-            }
-          } label: {
-            HStack {
-              Image(systemName: "book.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .foregroundColor(.accentColor)
-              Text(L10n.MenuView.baseword)
-            }
-          }
-          .onChange(of: chosenBasewordLocale, perform: didReceiveWSLocaleChange)
-
-          Toggle(isOn: $enabledVibration) {
-            HStack {
-              Image(systemName: enabledVibration ? "iphone.radiowaves.left.and.right.circle.fill" : "iphone.slash.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .foregroundColor(.accentColor)
-              Text(L10n.MenuView.hapticFeedback)
-            }
-          }
-
-          Toggle(isOn: $enabledSound) {
-            HStack {
-              Image(systemName: enabledSound ? "speaker.circle.fill" : "speaker.slash.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .foregroundColor(.accentColor)
-              Text(L10n.MenuView.sound)
-            }
-          }
-
-          Toggle(isOn: $enabledFiltering) {
-            HStack {
-              Image(systemName: "magnifyingglass.circle.fill")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .foregroundColor(.accentColor)
-              Text(L10n.MenuView.filter)
-            }
-          }
+          basewordLanguagePicker
+          enableVibrationToggle
+          enableSoundToggle
+          enableFilteringToggle
         } header: {
           Text(L10n.MenuView.settings)
         } footer: {
@@ -103,16 +46,14 @@ struct MenuView: View {
           NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)
         }
 
-        #if DEBUG
+#if DEBUG
         Section("Development") {
           Button("Reset Onboarding") {
             UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart)
           }
         }
-
         allPossibleWordsSection_DEV
-
-        #endif
+#endif
       }
       .sheet(isPresented: $endGameViewIsShown, onDismiss: endGameViewDismissed) {
         EndSessionView(session: mainViewModel.session)
@@ -132,12 +73,9 @@ struct MenuView: View {
     }
     .navigationViewStyle(.stack)
     .environment(\.modalMode, self.$showModal)
-    .onChange(of: showModal) { showModal in
-      if showModal == false {
-        dismiss()
-      }
-    }
+    .onChange(of: showModal, perform: dismissModal)
   }
+
 }
 
 #if DEBUG
@@ -171,7 +109,14 @@ extension MenuView {
 
 // MARK: - Methods
 extension MenuView {
-  private func restartSession() {
+  private func didReceiveWSLocaleChange(_ locale: WSLocale) {
+    alertModel = AlertToPresent(simpleAlert: true,
+                                title: L10n.MenuView.ChangedLanguage.title,
+                                message: L10n.MenuView.ChangedLanguage.message,
+                                primaryAction: {})
+  }
+
+  private func restartSessionTapped() {
     if !mainViewModel.session.usedWords.isEmpty {
       self.alertModel = AlertToPresent(title: L10n.ResetGameAlert.title,
                                        message: L10n.ResetGameAlert.message) {
@@ -180,11 +125,11 @@ extension MenuView {
       }
     } else {
       mainViewModel.startNewSession()
-        showModal = false
+      showModal = false
     }
   }
 
-  private func endSession() {
+  private func endSessionTapped() {
     self.alertModel = AlertToPresent(title: L10n.EndGameAlert.title,
                                      message: L10n.EndGameAlert.message) {
       endGameViewIsShown.toggle()
@@ -196,15 +141,44 @@ extension MenuView {
     mainViewModel.startNewSession()
   }
 
-  private func didReceiveWSLocaleChange(_ locale: WSLocale) {
-    alertModel = AlertToPresent(simpleAlert: true,
-                                title: L10n.MenuView.ChangedLanguage.title,
-                                message: L10n.MenuView.ChangedLanguage.message,
-                                primaryAction: {})
+  private func dismissModal(_ showModal: Bool) {
+    if showModal == false {
+      dismiss()
+    }
   }
 }
 
 extension MenuView {
+  private var restartSessionButton: some View {
+    Button(action: restartSessionTapped) {
+      HStack {
+        Image(systemName: "arrow.counterclockwise.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+        Text(L10n.MenuView.restartSession)
+      }
+    }
+  }
+
+  private var endSessionButton: some View {
+    Button(action: endSessionTapped) {
+      HStack {
+        Image(systemName: "stop.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+        Text(L10n.MenuView.endSession)
+      }
+    }
+    .disabled(mainViewModel.session.usedWords.isEmpty)
+    .accessibilityIdentifier("endSessionBtn")
+  }
+
+  private var showHighscoreNavLink: some View {
+    NavigationLink(L10n.MenuView.showHighscore) {
+      HighscoreListView()
+        .environment(\.managedObjectContext, PersistenceController.shared.context)
+    }
+    .accessibilityIdentifier("showHighscoreNavLink")
+  }
+
   private var twitterLink: some View {
     Link(destination: Constants.twitterURL) {
       HStack {
@@ -217,5 +191,55 @@ extension MenuView {
       }
     }
     .accessibilityLabel("Twitterhandle treboc")
+  }
+
+  private var basewordLanguagePicker: some View {
+    Picker(selection: $chosenBasewordLocale) {
+      ForEach(WSLocale.availableLanguages()) { locale in
+        Text(locale.description)
+          .tag(locale)
+      }
+    } label: {
+      HStack {
+        Image(systemName: "book.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+          .foregroundColor(.accentColor)
+        Text(L10n.MenuView.baseword)
+      }
+    }
+    .onChange(of: chosenBasewordLocale, perform: didReceiveWSLocaleChange)
+  }
+
+  private var enableVibrationToggle: some View {
+    Toggle(isOn: $enabledVibration) {
+      HStack {
+        Image(systemName: enabledVibration ? "iphone.radiowaves.left.and.right.circle.fill" : "iphone.slash.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+          .foregroundColor(.accentColor)
+        Text(L10n.MenuView.hapticFeedback)
+      }
+    }
+  }
+
+  private var enableSoundToggle: some View {
+    Toggle(isOn: $enabledSound) {
+      HStack {
+        Image(systemName: enabledSound ? "speaker.circle.fill" : "speaker.slash.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+          .foregroundColor(.accentColor)
+        Text(L10n.MenuView.sound)
+      }
+    }
+  }
+
+  private var enableFilteringToggle: some View {
+    Toggle(isOn: $enabledFiltering) {
+      HStack {
+        Image(systemName: "magnifyingglass.circle.fill")
+          .font(.system(.title2, design: .rounded, weight: .bold))
+          .foregroundColor(.accentColor)
+        Text(L10n.MenuView.filter)
+      }
+    }
   }
 }

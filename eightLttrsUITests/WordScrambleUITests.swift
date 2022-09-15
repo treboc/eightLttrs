@@ -12,7 +12,6 @@ final class WordScrambleUITests: XCTestCase {
   let app = XCUIApplication()
 
   override func setUpWithError() throws {
-//    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isFirstStart)
     continueAfterFailure = false
   }
 
@@ -20,35 +19,37 @@ final class WordScrambleUITests: XCTestCase {
   }
 
   func testExample() throws {
+    let language = Locale.autoupdatingCurrent.language
     setupSnapshot(app)
     app.launch()
-    open(appPath: "")
+
+    open(language.languageCode == "en" ? "en" : "de")
+
     app.alerts.matching(identifier: "alertController").buttons.matching(identifier: "continueBtn").element.tap()
 
-    input("Taube")
-    input("taub")
-    input("Tauben")
-    input("taube")
-    input("tauben")
+    if language.languageCode == "en" {
+      input("air")
+      input("port")
+      input("sport")
+      input("airport")
+    } else {
+      input("Taube")
+      input("taub")
+      input("Tauben")
+      input("taube")
+      input("tauben")
+    }
 
-    snapshot("0Launch")
+    snapshot("0wordlist")
 
-    app.buttons["Menu"].tap()
+    app.buttons["menuBtn"].tap()
+    app.buttons["endSessionBtn"].tap()
 
-//    let collectionViewsQuery = app.collectionViews
-//    collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["End Session"]/*[[".cells.buttons[\"End Session\"]",".buttons[\"End Session\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//    app.alerts["Saving"].scrollViews.otherElements.buttons["Yes, I'm sure"].tap()
-//
-//    let mKey = app.keys["Marvin"]
-//    mKey.tap()
-//    mKey.tap()
-//    app.buttons["Save"].tap()
-//    app.navigationBars["Sumerern"].buttons["Menu"].tap()
-//    collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Highscore"]/*[[".cells.buttons[\"Highscore\"]",".buttons[\"Highscore\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//    collectionViewsQuery/*@START_MENU_TOKEN@*/.otherElements["1., M, 53 Points"]/*[[".cells.otherElements[\"1., M, 53 Points\"]",".otherElements[\"1., M, 53 Points\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//    collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Share Session"].press(forDuration: 1.1);/*[[".cells.buttons[\"Share Session\"]",".tap()",".press(forDuration: 1.1);",".buttons[\"Share Session\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
-//    app.navigationBars["Details"].buttons["Highscores"].tap()
+    app.alerts.firstMatch.buttons.matching(identifier: "continueBtn").element.tap()
 
+    app.buttons["saveBtn"].tap()
+
+    snapshot("1HighscoreDetail")
   }
 
   func input(_ word: String) {
@@ -57,8 +58,15 @@ final class WordScrambleUITests: XCTestCase {
     app.buttons["submitBtn"].tap()
   }
 
-  func open(appPath pathString: String) {
-    openFromSafari("wordscramble://baseword/de/Taubenei")
+  func open(_ identifier: String) {
+    var baseString = ""
+
+    if identifier == "en" {
+      baseString = "wordscramble://baseword/en/airports"
+    } else {
+      baseString = "wordscramble://baseword/de/Taubenei"
+    }
+    openFromSafari(baseString)
     XCTAssert(app.wait(for: .runningForeground, timeout: 5))
   }
 
