@@ -42,7 +42,7 @@ class SessionService {
     // deleting all older, not finished sessions, but the last
     for session in result {
       if session != result.last {
-        context.delete(session)
+        Self.delete(session)
       } else {
         return session
       }
@@ -56,6 +56,17 @@ class SessionService {
       return true
     }
     return false
+  }
+
+  static func delete(_ session: Session, in context: NSManagedObjectContext = PersistenceController.shared.context) {
+    context.delete(session)
+    if context.hasChanges {
+      do {
+        try context.save()
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
   }
 
   static func persistFinished(session: Session, forPlayer name: String) {
