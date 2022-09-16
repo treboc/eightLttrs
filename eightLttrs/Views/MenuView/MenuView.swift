@@ -182,12 +182,9 @@ extension MenuView {
   private var twitterLink: some View {
     Link(destination: Constants.twitterURL) {
       HStack {
-        Image("twitter")
-          .resizable()
-          .aspectRatio(1, contentMode: .fit)
-          .frame(width: 25, height: 25)
-
         Text("@treb0c")
+        Spacer()
+        Image(systemName: "arrow.up.right")
       }
     }
     .accessibilityLabel("Twitterhandle treboc")

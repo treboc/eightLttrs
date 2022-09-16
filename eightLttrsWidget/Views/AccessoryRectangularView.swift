@@ -29,7 +29,6 @@ struct AccessoryRectangularView: View {
       Gauge(value: session.percentageWordsFound) {
         Text("\(wordsFoundFormattedString) words found")
           .font(.caption)
-          .foregroundColor(.secondary)
       }
       .gaugeStyle(.accessoryLinearCapacity)
     }
