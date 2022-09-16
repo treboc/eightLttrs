@@ -400,8 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				8A87110D28B281C5004F299F /* PersistenceController.swift */,
-				8A87111428B28322004F299F /* Session+CoreDataClass.swift */,
 				8A87111028B28216004F299F /* eightLttrs.xcdatamodeld */,
+				8A87111428B28322004F299F /* Session+CoreDataClass.swift */,
 				8A3F79DD28ACE42C0058A272 /* SessionService.swift */,
 				8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */,
 			);

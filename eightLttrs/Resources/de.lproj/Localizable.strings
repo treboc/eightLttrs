@@ -53,6 +53,10 @@
 // HighscoreListView
 "highscoreListView.title" = "Highscores";
 
+// HighscoreListEmptyPlaceholder
+"highscoreListEmptyListPlaceholder.title" = "Noch ziemlich leer hier.";
+"highscoreListEmptyListPlaceholder.body" = "Finde ein paar Wörter, speichere das Spiel und komm später wieder";
+
 // HighscoreListRowView
 "highscoreListRowView.basewordWas" = "Grundwort war: *%@*";
 

@@ -45,9 +45,9 @@ struct HighscoreListView_Previews: PreviewProvider {
 struct emptyListPlaceholder: View {
   var body: some View {
     VStack(spacing: 20) {
-      Text("No saved sessions yet!")
+      Text(L10n.HighscoreListEmptyListPlaceholder.title)
         .font(.system(.title2, design: .rounded, weight: .bold))
-      Text("Find some words and come back later.")
+      Text(L10n.HighscoreListEmptyListPlaceholder.body)
         .font(.system(.body, design: .rounded, weight: .semibold))
       Spacer()
     }

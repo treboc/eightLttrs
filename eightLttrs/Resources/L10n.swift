@@ -129,6 +129,12 @@ internal enum L10n {
     /// Try again
     internal static let tryAgain = L10n.tr("Localizable", "highscoreDetailView.tryAgain", fallback: "Try again")
   }
+  internal enum HighscoreListEmptyListPlaceholder {
+    /// Find some words, save your session and come back again later.
+    internal static let body = L10n.tr("Localizable", "highscoreListEmptyListPlaceholder.body", fallback: "Find some words, save your session and come back again later.")
+    /// It's empty here
+    internal static let title = L10n.tr("Localizable", "highscoreListEmptyListPlaceholder.title", fallback: "It's empty here")
+  }
   internal enum HighscoreListRowView {
     /// baseword war: *%@*
     internal static func basewordWas(_ p1: Any) -> String {
