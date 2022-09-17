@@ -17,7 +17,7 @@ struct HighscoreListView: View {
         emptyListPlaceholder()
       } else {
         List {
-          ForEach(Array(zip(sessions.indices, sessions)), id: \.0) { index, session in
+          ForEach(Array(zip(sessions.indices, sessions.sorted(by: highscore))), id: \.0) { index, session in
             HighscoreListRowView(rank: index + 1, session: session)
           }
         }
@@ -27,8 +27,11 @@ struct HighscoreListView: View {
     .navigationTitle(L10n.HighscoreListView.title)
     .roundedNavigationTitle()
   }
-}
 
+  private func highscore(_ lhs: Session, _ rhs: Session) -> Bool {
+    lhs.score > rhs.score
+  }
+}
 
 struct HighscoreListView_Previews: PreviewProvider {
   static var previews: some View {
@@ -39,8 +42,6 @@ struct HighscoreListView_Previews: PreviewProvider {
     .preferredColorScheme(.dark)
   }
 }
-
-
 
 struct emptyListPlaceholder: View {
   var body: some View {

@@ -10,6 +10,7 @@
 "english" = "English";
 "baseword" = "baseword";
 "basewords" = "basewords";
+"possibleWords" = "possible words";
 "lastAdded" = "last added";
 "score" = "Score";
 
@@ -122,7 +123,9 @@
 
 // Alerts
 "resetGameAlert.title" = "Are you sure?";
-"resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost.";
+"resetGameAlert.message" = "When you reset the game, all words and your score will be reset and lost. Do you want to see all words that have been possible on the current base word?";
+"resetGameAlert.buttonTitle.showPossibleWords" = "Yes, show me the list";
+"resetGameAlert.buttonTitle.justReset" = "Just reset the session";
 
 "endGameAlert.title" = "Saving";
 "endGameAlert.message" = "Are you sure, you don't know any other words?";

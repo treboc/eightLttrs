@@ -120,14 +120,17 @@ extension MenuView {
   private func restartSessionTapped() {
     if !mainViewModel.session.usedWords.isEmpty {
       self.alertModel = AlertToPresent(title: L10n.ResetGameAlert.title,
-                                       message: L10n.ResetGameAlert.message) {
-        mainViewModel.startNewSession()
-        showModal = false
-      }
+                                       message: L10n.ResetGameAlert.message,
+                                       primaryAction: restartSession,
+                                       primaryActionTitle: L10n.ButtonTitle.imSure)
     } else {
-      mainViewModel.startNewSession()
-      showModal = false
+      restartSession()
     }
+  }
+
+  private func restartSession() {
+    mainViewModel.startNewSession()
+    showModal = false
   }
 
   private func endSessionTapped() {

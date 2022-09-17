@@ -6,32 +6,47 @@
 import SwiftUI
 
 struct AlertToPresent {
-  let simpleAlert: Bool
+  let isSimpleAlert: Bool
   let title: String
   let message: String
-  let primaryActionTitle: String = L10n.ButtonTitle.imSure
+  let primaryActionTitle: String
   let primaryAction: () -> Void
 
-  init(simpleAlert: Bool = false, title: String, message: String, primaryAction: @escaping () -> Void) {
-    self.simpleAlert = simpleAlert
+  init(simpleAlert: Bool = false,
+       title: String,
+       message: String,
+       primaryAction: @escaping () -> Void,
+       primaryActionTitle: String = L10n.ButtonTitle.imSure
+  ) {
+    self.isSimpleAlert = simpleAlert
     self.title = title
     self.message = message
     self.primaryAction = primaryAction
+    self.primaryActionTitle = primaryActionTitle
   }
 }
 
 extension View {
+  @ViewBuilder
   func presentAlert(with alertModel: Binding<AlertToPresent?>) -> some View {
-    return alert(alertModel.wrappedValue?.title ?? "No Title", isPresented: .constant(alertModel.wrappedValue != nil)) {
-      if let simpleAlert = alertModel.wrappedValue?.simpleAlert,
-         !simpleAlert {
-        Button(alertModel.wrappedValue?.primaryActionTitle ?? "No Button Title", role: .destructive) {
-          alertModel.wrappedValue?.primaryAction()
+    if let unwrappedAlert = alertModel.wrappedValue {
+      if unwrappedAlert.isSimpleAlert {
+        alert(unwrappedAlert.title, isPresented: .constant(alertModel.wrappedValue != nil)) {
+        } message: {
+          Text(unwrappedAlert.message)
         }
-        .accessibilityIdentifier("continueBtn")
+      } else {
+        alert(unwrappedAlert.title, isPresented: .constant(alertModel.wrappedValue != nil)) {
+          Button(unwrappedAlert.primaryActionTitle, role: .destructive) {
+            unwrappedAlert.primaryAction()
+          }
+          .accessibilityIdentifier("continueBtn")
+        } message: {
+          Text(unwrappedAlert.message)
+        }
       }
-    } message: {
-      Text(alertModel.wrappedValue?.message ?? "No Message")
+    } else {
+      alert("Backup", isPresented: .constant(alertModel.wrappedValue != nil)) {}
     }
   }
 }

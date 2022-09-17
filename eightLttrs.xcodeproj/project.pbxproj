@@ -81,6 +81,7 @@
 		8ACC060628D5DFC9005569C8 /* ReviewRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */; };
 		8ACC060828D65344005569C8 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */; };
 		8ACC060A28D653BB005569C8 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */; };
+		8ACC060C28D65CE1005569C8 /* PossibleWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060B28D65CE1005569C8 /* PossibleWordList.swift */; };
 		8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */; };
 		8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */; };
 		8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */; };
@@ -205,6 +206,7 @@
 		8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment+Extension.swift"; sourceTree = "<group>"; };
 		8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestService.swift; sourceTree = "<group>"; };
 		8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		8ACC060B28D65CE1005569C8 /* PossibleWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleWordList.swift; sourceTree = "<group>"; };
 		8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkHandlerProtocol.swift; sourceTree = "<group>"; };
 		8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSessionDeeplinkHandler.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				8A62106C28C8AE2200C8F1A7 /* EndSessionView.swift */,
+				8ACC060B28D65CE1005569C8 /* PossibleWordList.swift */,
 			);
 			path = EndSessionView;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				8A87111628B28322004F299F /* Session+CoreDataClass.swift in Sources */,
 				8A40C1EB28C9EDD6000971E4 /* ShareSessionButton.swift in Sources */,
 				8A62106D28C8AE2200C8F1A7 /* EndSessionView.swift in Sources */,
+				8ACC060C28D65CE1005569C8 /* PossibleWordList.swift in Sources */,
 				8A45C1E028BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift in Sources */,
 				8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */,
 				8AD9610B28B3C9B600F443FB /* BasicTextField.swift in Sources */,

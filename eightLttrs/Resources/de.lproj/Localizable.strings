@@ -10,6 +10,7 @@
 "english" = "Englisch";
 "baseword" = "Grundwort";
 "basewords" = "Grundwörter";
+"possibleWords" = "Mögliche Wörter";
 "lastAdded" = "zuletzt hinzugefügt";
 "score" = "Punkte";
 
@@ -121,7 +122,9 @@
 
 // Alerts
 "resetGameAlert.title" = "Bist du sicher?";
-"resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt.";
+"resetGameAlert.message" = "Wenn du das Spiel neu startest, werden alle deine Worte und die Punktzahl zurückgesetzt. Möchtest du nach dem Zurücksetzen noch sehen, welche Worte bei dem aktuellen Grundwort möglich gewesen wären?";
+"resetGameAlert.buttonTitle.showPossibleWords" = "Ja, zeig mir die Liste";
+"resetGameAlert.buttonTitle.justReset" = "Nur zurücksetzen";
 
 "endGameAlert.title" = "Speichern";
 "endGameAlert.message" = "Bist du dir sicher, dass dir keine weiteren Wörter einfallen?";
