@@ -12,17 +12,6 @@ struct Constants {
   static let cornerRadius: CGFloat = 8
 
   static let twitterURL: URL = URL(string: "https://twitter.com/treb0c")!
-}
-
-struct UserDefaultsKeys {
-  static let flagUppercaseHintAlreadyShown = "flagUppercaseHintAlreadyShown"
-
-  static let isFirstStart = "isFirstStart"
-  static let lastPlayersName = "lastPlayersName"
-  static let currentSession = "currentSession"
-
-  static let enabledVibration = "enabledVibration"
-  static let enabledSound = "enabledSound"
-  static let enabledFiltering = "enabledFiltering"
-  static let regionCode = "chosenBasewordLocale"
+  // TODO: add correct id!
+  static let reviewURL: URL = URL(string: "https://apps.apple.com/app/idXXXXXXXXXX?action=write-review")!
 }

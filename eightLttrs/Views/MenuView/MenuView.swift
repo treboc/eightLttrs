@@ -43,6 +43,7 @@ struct MenuView: View {
 
         Section("Contact Me") {
           twitterLink
+          reviewLink
           NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)
         }
 
@@ -188,6 +189,16 @@ extension MenuView {
       }
     }
     .accessibilityLabel("Twitterhandle treboc")
+  }
+
+  private var reviewLink: some View {
+    Link(destination: Constants.reviewURL) {
+      HStack {
+        Text("Rate This App ❤️")
+        Spacer()
+        Image(systemName: "arrow.up.right")
+      }
+    }
   }
 
   private var basewordLanguagePicker: some View {

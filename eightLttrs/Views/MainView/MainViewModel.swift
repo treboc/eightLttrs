@@ -14,6 +14,8 @@ final class MainViewModel: ObservableObject {
   let gameAPI: GameAPI
   var session: Session
 
+  private let reviewService = ReviewRequestService()
+
   var input = CurrentValueSubject<String, Never>("")
   var error = CurrentValueSubject<WordError?, Never>(nil)
   var resetUICallback: (() -> Void)? = nil
@@ -35,6 +37,7 @@ final class MainViewModel: ObservableObject {
   func submit(onCompletion: () -> Void) {
     do {
       try gameAPI.submit(input.value, session: session)
+      reviewService.incrementCounterForRequest()
       input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
@@ -49,6 +52,7 @@ final class MainViewModel: ObservableObject {
   }
 
   func startNewSession() {
+    reviewService.presentReviewRequestIfPossible()
     self.session = gameAPI.randomWordSession()
     resetUICallback?()
   }

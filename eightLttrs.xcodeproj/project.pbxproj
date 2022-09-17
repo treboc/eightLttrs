@@ -68,7 +68,6 @@
 		8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */; };
 		8AAC5C7F28C875BF00AF66F6 /* UITextField+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */; };
 		8AB2626A28CE89DD00307D97 /* SessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2626928CE89DD00307D97 /* SessionServiceTests.swift */; };
-		8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB2DEE328B7F21A00F165B9 /* icon.png */; };
 		8ABED74728C1E333003457FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8528C09FEF00A409E3 /* WidgetKit.framework */; };
 		8ABED74828C1E333003457FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A3B8728C09FEF00A409E3 /* SwiftUI.framework */; };
 		8ABED74B28C1E333003457FD /* eightLttrsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */; };
@@ -79,6 +78,9 @@
 		8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED75B28C1E65D003457FD /* MediumSizeView.swift */; };
 		8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFC55D28B6162500ACC064 /* HapticsManager.swift */; };
 		8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */; };
+		8ACC060628D5DFC9005569C8 /* ReviewRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */; };
+		8ACC060828D65344005569C8 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */; };
+		8ACC060A28D653BB005569C8 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */; };
 		8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */; };
 		8ACF20A428C9BDE300B78DCE /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */; };
 		8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */; };
@@ -192,7 +194,6 @@
 		8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailChartView.swift; sourceTree = "<group>"; };
 		8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
 		8AB2626928CE89DD00307D97 /* SessionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionServiceTests.swift; sourceTree = "<group>"; };
-		8AB2DEE328B7F21A00F165B9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8ABED74628C1E332003457FD /* eightLttrsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = eightLttrsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABED74A28C1E333003457FD /* eightLttrsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightLttrsWidget.swift; sourceTree = "<group>"; };
 		8ABED74E28C1E333003457FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +203,8 @@
 		8ABED75B28C1E65D003457FD /* MediumSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSizeView.swift; sourceTree = "<group>"; };
 		8ABFC55D28B6162500ACC064 /* HapticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		8AC3AAB628C1F34E004C355A /* VerticalAlignment+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignment+Extension.swift"; sourceTree = "<group>"; };
+		8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestService.swift; sourceTree = "<group>"; };
+		8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		8ACF209F28C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkHandlerProtocol.swift; sourceTree = "<group>"; };
 		8ACF20A328C9BDE300B78DCE /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		8ACF20A528C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSessionDeeplinkHandler.swift; sourceTree = "<group>"; };
@@ -261,6 +264,7 @@
 		8A27E2D328C4F3DD00CB39C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */,
 				8A41A52428C4AB380056662C /* WordService */,
 				8A3F79D328AC55E90058A272 /* GameService */,
 			);
@@ -356,6 +360,7 @@
 			children = (
 				8A357E9828CD360C00C511F1 /* ShowModal-EnvironmentKey.swift */,
 				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
+				8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */,
 				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
 				8A45C1E128BB978200A136CC /* ViewModifier */,
@@ -378,7 +383,6 @@
 			isa = PBXGroup;
 			children = (
 				8A4C4C8A28BC34EB00B643D1 /* Sounds */,
-				8AB2DEE328B7F21A00F165B9 /* icon.png */,
 				8A78F3BC28AEBFCD00DFA6D5 /* L10n.swift */,
 				8A87CC4028B4185900A9643B /* Localizable.stringsdict */,
 				8A78F3B928AEBD6A00DFA6D5 /* Localizable.strings */,
@@ -742,7 +746,6 @@
 				8A78F3B728AEBD6A00DFA6D5 /* Localizable.strings in Resources */,
 				8A73D73928C0DE3F000F81CA /* basewordsEN.txt in Resources */,
 				8A4C4C8928BC327F00B643D1 /* error.wav in Resources */,
-				8AB2DEE428B7F21A00F165B9 /* icon.png in Resources */,
 				8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +777,7 @@
 				8A92030728C26690008AF8EA /* String+CalculatedScore.swift in Sources */,
 				8A9202FD28C1FDA8008AF8EA /* UsedWordsProgressView.swift in Sources */,
 				8A01FED928C272ED0071978F /* CurrentWidgetSession.swift in Sources */,
+				8ACC060A28D653BB005569C8 /* UserDefaultsKeys.swift in Sources */,
 				8A92030628C26673008AF8EA /* Constants.swift in Sources */,
 				8ABED75828C1E471003457FD /* SimpleEntry.swift in Sources */,
 				8A92030828C26699008AF8EA /* Array+Permute.swift in Sources */,
@@ -798,10 +802,12 @@
 				8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */,
 				8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */,
 				8A85AD2B28BDF3AF007FF4BF /* Divider.swift in Sources */,
+				8ACC060628D5DFC9005569C8 /* ReviewRequestService.swift in Sources */,
 				8A357E9928CD360C00C511F1 /* ShowModal-EnvironmentKey.swift in Sources */,
 				8A45C1DE28BB909500A136CC /* MenuView.swift in Sources */,
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
+				8ACC060828D65344005569C8 /* UserDefaultsKeys.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* SessionDetailView.swift in Sources */,
 				8A41A52828C4AB6A0056662C /* WordService.swift in Sources */,
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
