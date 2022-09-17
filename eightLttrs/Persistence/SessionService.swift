@@ -70,15 +70,17 @@ class SessionService {
   }
 
   static func persistFinished(session: Session, forPlayer name: String) {
-    session.playerName = name
-    session.isFinished = true
-    session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
+    context.perform {
+      session.playerName = name
+      session.isFinished = true
+      session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
 
-    do {
-      try context.save()
-    } catch {
-      print(error.localizedDescription)
-      context.rollback()
+      do {
+        try context.save()
+      } catch {
+        print(error.localizedDescription)
+        context.rollback()
+      }
     }
   }
 
