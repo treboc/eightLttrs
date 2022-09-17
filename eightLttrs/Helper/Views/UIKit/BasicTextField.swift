@@ -20,7 +20,7 @@ class BasicTextField: UITextField {
     self.clearButtonMode = .whileEditing
     self.keyboardType = .asciiCapable
     self.autocorrectionType = .no
-    self.returnKeyType = .go
+    self.returnKeyType = .send
     self.becomeFirstResponder()
     self.autocapitalizationType = .none
   }
