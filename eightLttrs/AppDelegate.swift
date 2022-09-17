@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaultsKeys.regionCode: wsLocale.rawValue,
         UserDefaultsKeys.enabledVibration: true,
         UserDefaultsKeys.enabledSound: true,
-        UserDefaultsKeys.enabledFiltering: true
+        UserDefaultsKeys.enabledFiltering: true,
+        UserDefaultsKeys.flagUppercaseHintAlreadyShown: false
       ]
     )
     return true

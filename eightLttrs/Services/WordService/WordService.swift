@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class WordService {
+  static var flagUppercaseHintAlreadyShown: Bool {
+    return UserDefaults.standard.bool(forKey: UserDefaultsKeys.flagUppercaseHintAlreadyShown)
+  }
+
   static func loadBasewords(_ wsLocale: WSLocale) -> Set<String> {
     if let basewordsURL = Bundle.main.url(forResource: "basewords\(wsLocale.fileNameSuffix)", withExtension: "txt"),
        let basewords = try? String(contentsOf: basewordsURL) {
@@ -49,6 +53,14 @@ class WordService {
                        baseword: String,
                        usedWords: [String],
                        possibleWords: Set<String>) throws {
+
+    if let isLower = word.first?.isLowercase, isLower && Self.flagUppercaseHintAlreadyShown == false {
+      if !possibleWords.contains(word) && possibleWords.contains(word.uppercased()) {
+        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.flagUppercaseHintAlreadyShown)
+        throw WordError.tryUppercaseHint
+      }
+    }
+
     if word.count < 3 {
       throw WordError.tooShort
     }

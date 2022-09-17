@@ -15,6 +15,8 @@ struct Constants {
 }
 
 struct UserDefaultsKeys {
+  static let flagUppercaseHintAlreadyShown = "flagUppercaseHintAlreadyShown"
+
   static let isFirstStart = "isFirstStart"
   static let lastPlayersName = "lastPlayersName"
   static let currentSession = "currentSession"

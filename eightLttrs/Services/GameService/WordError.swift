@@ -13,10 +13,14 @@ struct WordErrorAlert {
 }
 
 enum WordError: Error, Equatable {
-  case notReal, notOriginal, notPossible(word: String), tooShort
+  case tryUppercaseHint, notReal, notOriginal, notPossible(word: String), tooShort
 
   var alert: WordErrorAlert {
     switch self {
+      // TODO: add localisation
+    case .tryUppercaseHint:
+      return WordErrorAlert(title: L10n.WordError.TryUppercaseHint.title,
+                            message: L10n.WordError.TryUppercaseHint.message)
     case .notReal:
       return WordErrorAlert(title: L10n.WordError.NotReal.title,
                    message: L10n.WordError.NotReal.message)
