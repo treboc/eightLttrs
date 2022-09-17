@@ -33,7 +33,8 @@ struct SessionDetailChartView: View {
       }
 
       Chart(data, id: \.score) { entry in
-        BarMark(x: .value("Scores", entry.score), y: .value("Number of Words found", entry.wordsFound))
+        BarMark(x: .value("Scores", entry.score),
+                y: .value("Number of Words found", entry.wordsFound))
           .foregroundStyle(Color.accentColor.gradient)
       }
       .frame(height: 200)
