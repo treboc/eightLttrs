@@ -12,6 +12,7 @@ struct EndSessionView: View {
   @ObservedObject var session: Session
   @FocusState private var isFocused
   @AppStorage(UserDefaultsKeys.lastPlayersName) private var name: String = ""
+  @State private var cancelAlertIsShowing: Bool = false
 
   var body: some View {
     Form {
@@ -39,7 +40,7 @@ struct EndSessionView: View {
         }
         .disabled(name.isEmpty)
 
-        Button(L10n.ButtonTitle.cancel, role: .destructive) { modalMode.wrappedValue = false }
+        Button(L10n.ButtonTitle.cancel, role: .destructive) { cancelAlertIsShowing = true }
       }
 
       Section(L10n.possibleWords) {
@@ -47,6 +48,11 @@ struct EndSessionView: View {
                          usedWords: session.usedWords)
       }
     }
+    .alert(L10n.ResetGameAlert.title, isPresented: $cancelAlertIsShowing, actions: {
+      Button(L10n.ButtonTitle.imSure, role: .destructive) { modalMode.wrappedValue = false }
+    }, message: {
+      Text("You're about to cancel the save process, your session will be reset anyway. Are you sure?")
+    })
     .interactiveDismissDisabled()
     .scrollIndicators(.hidden)
   }

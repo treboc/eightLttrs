@@ -24,17 +24,27 @@
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ADAB28C28A5911D0083E028"
                BuildableName = "eightLttrsUITests.xctest"
                BlueprintName = "eightLttrsUITests"
+               ReferencedContainer = "container:eightLttrs.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8ADAB28228A5911D0083E028"
+               BuildableName = "eightLttrsTests.xctest"
+               BlueprintName = "eightLttrsTests"
                ReferencedContainer = "container:eightLttrs.xcodeproj">
             </BuildableReference>
          </TestableReference>
