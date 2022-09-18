@@ -218,16 +218,10 @@ internal enum L10n {
     }
   }
   internal enum ResetGameAlert {
-    /// When you reset the game, all words and your score will be reset and lost. Do you want to see all words that have been possible on the current base word?
-    internal static let message = L10n.tr("Localizable", "resetGameAlert.message", fallback: "When you reset the game, all words and your score will be reset and lost. Do you want to see all words that have been possible on the current base word?")
+    /// When you reset the game, all words and your score will be reset and not saved.
+    internal static let message = L10n.tr("Localizable", "resetGameAlert.message", fallback: "When you reset the game, all words and your score will be reset and not saved.")
     /// Are you sure?
     internal static let title = L10n.tr("Localizable", "resetGameAlert.title", fallback: "Are you sure?")
-    internal enum ButtonTitle {
-      /// Just reset the session
-      internal static let justReset = L10n.tr("Localizable", "resetGameAlert.buttonTitle.justReset", fallback: "Just reset the session")
-      /// Yes, show me the list
-      internal static let showPossibleWords = L10n.tr("Localizable", "resetGameAlert.buttonTitle.showPossibleWords", fallback: "Yes, show me the list")
-    }
   }
   internal enum SessionDetailChartView {
     /// avg. %@ pts. per word
