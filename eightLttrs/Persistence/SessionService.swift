@@ -42,7 +42,7 @@ class SessionService {
     // deleting all older, not finished sessions, but the last
     for session in result {
       if session != result.last {
-        Self.delete(session)
+        Self.delete(session, in: context)
       } else {
         return session
       }
@@ -70,17 +70,15 @@ class SessionService {
   }
 
   static func persistFinished(session: Session, forPlayer name: String) {
-    context.perform {
-      session.playerName = name
-      session.isFinished = true
-      session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
-
-      do {
-        try context.save()
-      } catch {
-        print(error.localizedDescription)
-        context.rollback()
-      }
+    session.playerName = name
+    session.isFinished = true
+    session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
+    
+    do {
+      try context.save()
+    } catch {
+      print(error.localizedDescription)
+      context.rollback()
     }
   }
 
