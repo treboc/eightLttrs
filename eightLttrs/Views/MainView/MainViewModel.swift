@@ -5,9 +5,9 @@
 //  Created by Marvin Lee Kobert on 06.09.22.
 //
 
-import Combine
-import Foundation
 import AVFAudio
+import Combine
+import UIKit
 
 final class MainViewModel: ObservableObject {
   var audioPlayer: AVAudioPlayer?
@@ -60,6 +60,16 @@ final class MainViewModel: ObservableObject {
   func startNewSession(with word: String) {
     self.session = gameAPI.newSession(with: word)
     resetUICallback?()
+  }
+
+  func resetSession(on viewController: UIViewController) {
+    if !session.usedWords.isEmpty {
+      UIAlertController.presentAlertController(on: viewController, with: .wordsInSession) { [unowned self] _ in
+        self.startNewSession()
+      }
+    } else {
+      startNewSession()
+    }
   }
 }
 

@@ -15,10 +15,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
+  var viewModel: MainViewModel
   private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   private var cancellables = Set<AnyCancellable>()
 
-  var menuButton: UIBarButtonItem!
+  private var menuButton: UIBarButtonItem!
+  private var resetButton: UIBarButtonItem!
 
   init(viewModel: MainViewModel) {
     self.viewModel = viewModel
@@ -113,7 +115,6 @@ extension MainViewController: UICollectionViewDelegate {
   }
 }
 
-// MARK: - MainViewControllerSetup
 extension MainViewController {
   private func setupNavigationController() {
     self.navigationItem.largeTitleDisplayMode = .always
@@ -138,10 +139,14 @@ extension MainViewController {
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
     // Right -> UIBarButtonItem
+    resetButton = UIBarButtonItem(image: UIImage(systemName: "arrow.counterclockwise.circle.fill"), style: .plain, target: self, action: #selector(resetButtonTapped))
+    resetButton.accessibilityLabel = L10n.MenuView.restartSession
+
     menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
     menuButton.accessibilityLabel = L10n.MenuView.title
     menuButton.accessibilityIdentifier = "menuBtn"
-    navigationItem.rightBarButtonItem = menuButton
+
+    navigationItem.rightBarButtonItems = [menuButton, resetButton]
   }
 
   private func setupPublishers() {
@@ -254,6 +259,11 @@ extension MainViewController {
   private func showMenu() {
     let vc = UIHostingController(rootView: MenuView().environmentObject(viewModel))
     present(vc, animated: true)
+  }
+
+  @objc
+  private func resetButtonTapped() {
+    viewModel.resetSession(on: self)
   }
 
   @objc
