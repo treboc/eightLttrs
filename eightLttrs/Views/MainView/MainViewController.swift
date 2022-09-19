@@ -15,13 +15,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     view as! MainView
   }
 
-  var viewModel: MainViewModel {
-    didSet {
-      cancellables.removeAll()
-      setupPublishers()
-    }
-  }
-
   private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   private var cancellables = Set<AnyCancellable>()
 
