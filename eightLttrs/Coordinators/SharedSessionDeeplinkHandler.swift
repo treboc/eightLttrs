@@ -25,14 +25,12 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
     
     if let word = extractStartWord(from: url) {
       UIAlertController.presentAlertController(on: mainViewController,
-                                               title: L10n.SharedWord.Alert.UsedWordsInCurrentSession.title,
-                                               message: L10n.SharedWord.Alert.UsedWordsInCurrentSession.message) { _ in
+                                               with: .wordsInSession) { _ in
         mainViewController.viewModel.startNewSession(with: word)
       }
     } else {
       UIAlertController.presentAlertController(on: mainViewController,
-                                               title: L10n.SharedWord.Alert.NoValidStartword.title,
-                                               message: L10n.SharedWord.Alert.NoValidStartword.message)
+                                               with: .noValidStartWord)
     }
   }
 

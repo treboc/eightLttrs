@@ -35,6 +35,7 @@ class GameAPI {
     session.possibleWordsSet = possibleWords
     session.maxPossibleWordsOnBaseWord = possibleWords.count
     session.maxPossibleScoreOnBaseWord = maxPossibleScore
+    SessionService.persist(session: session)
     return session
   }
 

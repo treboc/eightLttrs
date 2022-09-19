@@ -216,7 +216,9 @@ extension MainViewController {
   }
 
   func presentAlertController(with wordError: WordError) {
-    UIAlertController.presentAlertController(on: self, title: wordError.alert.title, message: wordError.alert.message)
+    let title = wordError.alert.title
+    let message = wordError.alert.message
+    UIAlertController.presentAlertController(on: self, with: .custom(title: title, message: message))
   }
 
   private func clearTextField() {

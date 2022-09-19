@@ -8,10 +8,30 @@
 import UIKit
 
 extension UIAlertController {
+  enum AlertControllerType {
+    case noValidStartWord
+    case wordsInSession
+    case custom(title: String, message: String)
+  }
+
   static func presentAlertController(on viewController: UIViewController,
-                                     title: String,
-                                     message: String,
+                                     with type: AlertControllerType,
                                      onContinuePressed: ((UIAlertAction) -> Void)? = nil ) {
+    var title = ""
+    var message = ""
+
+    switch type {
+    case .noValidStartWord:
+      title = L10n.SharedWord.Alert.NoValidStartword.title
+      message = L10n.SharedWord.Alert.NoValidStartword.message
+    case .wordsInSession:
+      title = L10n.SharedWord.Alert.UsedWordsInCurrentSession.title
+      message = L10n.SharedWord.Alert.UsedWordsInCurrentSession.message
+    case .custom(let acTitle, let acMessage):
+      title = acTitle
+      message = acMessage
+    }
+
     let ac = UIAlertController(title: title,
                                message: message,
                                preferredStyle: .alert)

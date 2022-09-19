@@ -95,7 +95,7 @@
 		8ADAB29228A5911D0083E028 /* WordScrambleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */; };
 		8ADAB29428A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */; };
 		8ADAB2A528A5941B0083E028 /* GameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameAPI.swift */; };
-		8AE9627E28C718ED00FBD9FE /* UIAlertController+PresendAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+PresendAC.swift */; };
+		8AE9627E28C718ED00FBD9FE /* UIAlertController+PresentAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* SessionDetailView.swift */; };
 		8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */; };
 /* End PBXBuildFile section */
@@ -224,7 +224,7 @@
 		8ADAB29128A5911D0083E028 /* WordScrambleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITests.swift; sourceTree = "<group>"; };
 		8ADAB29328A5911E0083E028 /* WordScrambleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8ADAB2A428A5941B0083E028 /* GameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAPI.swift; sourceTree = "<group>"; };
-		8AE9627D28C718ED00FBD9FE /* UIAlertController+PresendAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PresendAC.swift"; sourceTree = "<group>"; };
+		8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PresentAC.swift"; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -451,7 +451,7 @@
 				8ACF524F28BAD985008728BB /* Array+Permute.swift */,
 				8A4A612D28BD406600EA126A /* Collection+Safe.swift */,
 				8A2A24F528C3215D00C47C27 /* Color+Accent.swift */,
-				8AE9627D28C718ED00FBD9FE /* UIAlertController+PresendAC.swift */,
+				8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -816,7 +816,7 @@
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentWidgetSession.swift in Sources */,
 				8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */,
-				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresendAC.swift in Sources */,
+				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresentAC.swift in Sources */,
 				8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */,
 				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
@@ -923,7 +923,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
@@ -952,7 +952,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
@@ -1101,7 +1101,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1137,7 +1137,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -73,7 +73,7 @@ class SessionService {
     session.playerName = name
     session.isFinished = true
     session.timeElapsed = session.unwrappedStartedAt.distance(to: .now)
-    
+
     do {
       try context.save()
     } catch {
@@ -83,7 +83,11 @@ class SessionService {
   }
 
   static func persist(session: Session) {
-    let widgetSession = WidgetSession(baseword: session.unwrappedBaseword, usedWords: Array(session.usedWords.prefix(3)), maxPossibleWords: session.maxPossibleWordsOnBaseWord, wordsFound: session.usedWords.count, percentageWordsFound: session.percentageWordsFound)
+    let widgetSession = WidgetSession(baseword: session.unwrappedBaseword,
+                                      usedWords: Array(session.usedWords.prefix(3)),
+                                      maxPossibleWords: session.maxPossibleWordsOnBaseWord,
+                                      wordsFound: session.usedWords.count,
+                                      percentageWordsFound: session.percentageWordsFound)
     let currentSession = CurrentWidgetSession(currentSession: widgetSession)
     currentSession.storeItem()
 
