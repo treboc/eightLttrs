@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NSReviewUtility
 
 struct EndSessionView: View {
   @Environment(\.modalMode) private var modalMode
@@ -35,12 +36,15 @@ struct EndSessionView: View {
           .onAppear { isFocused.toggle() }
 
         Button(L10n.ButtonTitle.save) {
+          NSReviewUtility.shared.incrementHappiness()
           SessionService.persistFinished(session: session, forPlayer: name)
           modalMode.wrappedValue = false
         }
         .disabled(name.isEmpty)
 
-        Button(L10n.ButtonTitle.cancel, role: .destructive) { cancelAlertIsShowing = true }
+        Button(L10n.ButtonTitle.cancel, role: .destructive) {
+          cancelAlertIsShowing = true
+        }
       }
 
       Section(L10n.possibleWords) {
