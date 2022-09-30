@@ -50,7 +50,6 @@ final class ReviewRequestService {
       currentWordCounter = 0
       UserDefaults.standard.set(currentVersion, forKey: UserDefaultsKeys.lastVersionPromptedForReviewKey)
       UserDefaults.standard.set(currentWordCounter, forKey: UserDefaultsKeys.wordCounterForRequestKey)
-      UserDefaults.standard.set(neededWordCounter += 50, forKey: UserDefaultsKeys.neededWordCounterForRequestKey)
     }
   }
 }

@@ -52,7 +52,6 @@ final class MainViewModel: ObservableObject {
   }
 
   func startNewSession() {
-    reviewService.presentReviewRequestIfPossible()
     self.session = gameAPI.randomWordSession()
     resetUICallback?()
   }

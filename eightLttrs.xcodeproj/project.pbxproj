@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
 		8A01FED828C2706A0071978F /* CurrentWidgetSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */; };
 		8A01FED928C272ED0071978F /* CurrentWidgetSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */; };
 		8A01FEE328C290190071978F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A01FEE128C290190071978F /* Assets.xcassets */; };
@@ -243,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				8ACC060528D5DFC9005569C8 /* ReviewRequestService.swift */,
-				8A41A52428C4AB380056662C /* WordService */,
 				8A3F79D328AC55E90058A272 /* GameService */,
+				8A41A52428C4AB380056662C /* WordService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -638,6 +640,9 @@
 				8ABED75028C1E333003457FD /* PBXTargetDependency */,
 			);
 			name = eightLttrs;
+			packageProductDependencies = (
+				4528208D28E76BB700DDDB5B /* NSReviewUtility */,
+			);
 			productName = WordScramble;
 			productReference = 8ADAB26D28A5911C0083E028 /* eightLttrs.app */;
 			productType = "com.apple.product-type.application";
@@ -714,6 +719,9 @@
 				de,
 			);
 			mainGroup = 8ADAB26428A5911C0083E028;
+			packageReferences = (
+				4528208C28E76BB600DDDB5B /* XCRemoteSwiftPackageReference "NSReviewUtility" */,
+			);
 			productRefGroup = 8ADAB26E28A5911C0083E028 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1101,7 +1109,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1137,7 +1145,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1301,6 +1309,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4528208C28E76BB600DDDB5B /* XCRemoteSwiftPackageReference "NSReviewUtility" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NickAtGit/NSReviewUtility";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4528208D28E76BB700DDDB5B /* NSReviewUtility */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4528208C28E76BB600DDDB5B /* XCRemoteSwiftPackageReference "NSReviewUtility" */;
+			productName = NSReviewUtility;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8A87111028B28216004F299F /* eightLttrs.xcdatamodeld */ = {
