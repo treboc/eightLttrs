@@ -37,7 +37,6 @@ final class MainViewModel: ObservableObject {
   func submit(onCompletion: () -> Void) {
     do {
       try gameAPI.submit(input.value, session: session)
-      reviewService.incrementCounterForRequest()
       input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
@@ -72,7 +71,6 @@ final class MainViewModel: ObservableObject {
   }
 }
 
-// MARK: - Calculation of Scores
 extension MainViewModel {
   private func playSound(_ type: SoundType) {
     if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
