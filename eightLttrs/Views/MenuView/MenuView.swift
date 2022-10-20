@@ -31,6 +31,7 @@ struct MenuView: View {
 
         Section {
           basewordLanguagePicker
+          AppearancePicker()
           enableVibrationToggle
           enableSoundToggle
           enableFilteringToggle
@@ -218,6 +219,7 @@ extension MenuView {
         Text(L10n.MenuView.baseword)
       }
     }
+    .pickerStyle(.menu)
     .onChange(of: chosenBasewordLocale, perform: didReceiveWSLocaleChange)
   }
 

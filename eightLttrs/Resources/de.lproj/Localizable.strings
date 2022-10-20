@@ -45,6 +45,12 @@
 "menuView.changedLanguage.title" = "Sprache gewechselt";
 "menuView.changedLanguage.message" = "Du spielst jetzt mit anderen Grundworte.\n\nDiese Änderung tritt bei der nächsten Runde in Kraft.";
 
+// ColorPicker
+"colorPicker.title" = "Erscheinungsbild";
+"colorPicker.light" = "Hell";
+"colorPicker.dark" = "Dunkel";
+"colorPicker.system" = "System";
+
 // LegalNoticeView
 "legalNoticeView.title" = "Impressum";
 
