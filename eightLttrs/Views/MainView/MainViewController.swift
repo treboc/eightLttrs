@@ -163,7 +163,9 @@ extension MainViewController {
     viewModel.session
       .publisher(for: \.usedWords)
       .sink { [weak self] words in
-        self?.applySnapshot(with: words)
+        guard let self else { return }
+        self.applySnapshot(with: words)
+        self.resetButton.isHidden = !words.isEmpty
       }
       .store(in: &cancellables)
 
