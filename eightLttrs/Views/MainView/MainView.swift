@@ -124,7 +124,6 @@ extension MainView {
       currentScoreTitleLabel.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor),
       currentScoreTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width / 2),
 
-
       divider.topAnchor.constraint(equalTo: numberOfWordsTitleLabel.bottomAnchor, constant: 8),
       divider.widthAnchor.constraint(equalTo: widthAnchor),
       divider.centerXAnchor.constraint(equalTo: centerXAnchor),

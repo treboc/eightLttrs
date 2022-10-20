@@ -49,12 +49,14 @@ extension OnboardingPageViewController {
     titleLabel.font = titleLabelFont
     titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
     titleLabel.numberOfLines = 0
-    titleLabel.lineBreakMode = .byCharWrapping
+    titleLabel.lineBreakMode = .byWordWrapping
+    titleLabel.adjustsFontForContentSizeCategory = true
 
     bodyLabel.translatesAutoresizingMaskIntoConstraints = false
     bodyLabel.textColor = .secondaryLabel
     bodyLabel.numberOfLines = 0
     bodyLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+    bodyLabel.adjustsFontForContentSizeCategory = true
 
     if isLastPage {
       startButton.translatesAutoresizingMaskIntoConstraints = false
