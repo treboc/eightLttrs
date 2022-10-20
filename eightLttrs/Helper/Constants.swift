@@ -12,6 +12,5 @@ struct Constants {
   static let cornerRadius: CGFloat = 8
 
   static let twitterURL: URL = URL(string: "https://twitter.com/treb0c")!
-  // TODO: add correct id!
-  static let reviewURL: URL = URL(string: "https://apps.apple.com/app/idXXXXXXXXXX?action=write-review")!
+  static let reviewURL: URL = URL(string: "https://apps.apple.com/app/id1644529450?action=write-review")!
 }
