@@ -11,17 +11,8 @@ import SwiftUI
 struct SessionDetailView: View {
   @EnvironmentObject private var viewModel: MainViewModel
   @Environment(\.modalMode) private var modalMode
-  @Environment(\.editMode) private var editMode
   @State private var alertModel: AlertToPresent? = nil
-
-  let context: NSManagedObjectContext
-  @ObservedObject var session: Session
-
-  init(session: Session) {
-    self.context = PersistenceController.shared.chieldViewContext()
-    let sessionCopy = PersistenceController.shared.copyForEditing(of: session, in: context)
-    self._session = ObservedObject(wrappedValue: sessionCopy)
-  }
+  let session: Session
 
   var body: some View {
     Form {
@@ -76,10 +67,6 @@ struct SessionDetailView: View {
         }
       }
     }
-    .toolbar {
-      EditButton()
-        .disabled(nameIsValid == false)
-    }
     .navigationTitle(L10n.HighscoreDetailView.title)
     .roundedNavigationTitle()
   }
@@ -109,47 +96,15 @@ extension SessionDetailView {
       }
     }
   }
-
-  private func isEditingChanged(_ isEditing: Bool) {
-    guard let name = session.playerName,
-          name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
-
-    if isEditing == false {
-      do {
-        try PersistenceController.shared.persist(session)
-      } catch {
-        alertModel = AlertToPresent(simpleAlert: true, title: "Error", message: "Sorry, an error occurred while saving the session.") {}
-      }
-    }
-  }
 }
 
 extension SessionDetailView {
-  private var isEditing: Bool {
-    return editMode?.wrappedValue.isEditing == true
-  }
-
-  private var nameIsValid: Bool {
-    return session.unwrappedName
-      .trimmingCharacters(in: .whitespacesAndNewlines)
-      .isEmpty == false
-  }
-
-  @ViewBuilder
   private var nameField: some View {
     HStack {
-      if editMode?.wrappedValue.isEditing == true {
-        TextField("Name", text: $session.unwrappedName)
-          .autocorrectionDisabled()
-          .keyboardType(.namePhonePad)
-      } else {
-        Text(L10n.HighscoreDetaiLView.name)
-          .foregroundColor(.secondary)
-        Spacer()
-        Text(session.unwrappedName)
-      }
+      Text(L10n.HighscoreDetaiLView.name)
+        .foregroundColor(.secondary)
+      Spacer()
+      Text(session.unwrappedName)
     }
-    .animation(.none, value: editMode?.wrappedValue)
-    .onChange(of: isEditing, perform: isEditingChanged)
   }
 }
