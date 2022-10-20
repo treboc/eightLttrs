@@ -7,6 +7,7 @@
 
 import AVFoundation
 import Combine
+import Popovers
 import UIKit
 import SwiftUI
 
@@ -206,13 +207,25 @@ extension MainViewController {
     viewModel.error
       .dropFirst()
       .compactMap { $0 }
-      .sink(receiveValue: presentAlertController)
+      .sink(receiveValue: presentPopover)
       .store(in: &cancellables)
   }
 
   private func resetPublishers() {
     cancellables.removeAll(keepingCapacity: true)
     setupPublishers()
+  }
+
+  func presentPopover(with wordError: WordError) {
+    var popOver = Popover { ErrorPopover(error: wordError) }
+    popOver.attributes.sourceFrame = self.mainView.windowFrame
+    popOver.attributes.presentation.transition = .slide
+    popOver.attributes.dismissal.transition = .slide
+    popOver.attributes.position = .absolute(originAnchor: .center, popoverAnchor: .center)
+    present(popOver)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+      popOver.dismiss()
+    }
   }
 
   func presentAlertController(with wordError: WordError) {

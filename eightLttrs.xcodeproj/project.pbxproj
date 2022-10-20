@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
+		459E767F290148AF009664BF /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 459E767E290148AF009664BF /* Popovers */; };
+		459E768129014938009664BF /* ErrorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768029014938009664BF /* ErrorPopover.swift */; };
 		8A01FED828C2706A0071978F /* CurrentWidgetSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */; };
 		8A01FED928C272ED0071978F /* CurrentWidgetSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */; };
 		8A01FEE328C290190071978F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A01FEE128C290190071978F /* Assets.xcassets */; };
@@ -140,6 +142,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		459E768029014938009664BF /* ErrorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopover.swift; sourceTree = "<group>"; };
 		8A01FED528C26D940071978F /* eightLttrs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eightLttrs.entitlements; sourceTree = "<group>"; };
 		8A01FED728C2706A0071978F /* CurrentWidgetSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWidgetSession.swift; sourceTree = "<group>"; };
 		8A01FEE128C290190071978F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459E767F290148AF009664BF /* Popovers in Frameworks */,
 				4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +383,7 @@
 				8A6703C828A9A77000BBF5F1 /* MainView.swift */,
 				8A5D2A0828C7C8CE008898E0 /* MainViewModel.swift */,
 				8ADAB27428A5911C0083E028 /* MainViewController.swift */,
+				459E768029014938009664BF /* ErrorPopover.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 			name = eightLttrs;
 			packageProductDependencies = (
 				4528208D28E76BB700DDDB5B /* NSReviewUtility */,
+				459E767E290148AF009664BF /* Popovers */,
 			);
 			productName = WordScramble;
 			productReference = 8ADAB26D28A5911C0083E028 /* eightLttrs.app */;
@@ -721,6 +727,7 @@
 			mainGroup = 8ADAB26428A5911C0083E028;
 			packageReferences = (
 				4528208C28E76BB600DDDB5B /* XCRemoteSwiftPackageReference "NSReviewUtility" */,
+				459E767D290148AF009664BF /* XCRemoteSwiftPackageReference "Popovers" */,
 			);
 			productRefGroup = 8ADAB26E28A5911C0083E028 /* Products */;
 			projectDirPath = "";
@@ -828,6 +835,7 @@
 				8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */,
 				8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */,
 				8A4C4C8C28BC34F800B643D1 /* SoundType.swift in Sources */,
+				459E768129014938009664BF /* ErrorPopover.swift in Sources */,
 				8A78F3B128AE928C00DFA6D5 /* OnboardingPageViewController.swift in Sources */,
 				8AAC5C7F28C875BF00AF66F6 /* UITextField+Publisher.swift in Sources */,
 				8A4A612E28BD406600EA126A /* Collection+Safe.swift in Sources */,
@@ -1319,6 +1327,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		459E767D290148AF009664BF /* XCRemoteSwiftPackageReference "Popovers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Popovers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1326,6 +1342,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4528208C28E76BB600DDDB5B /* XCRemoteSwiftPackageReference "NSReviewUtility" */;
 			productName = NSReviewUtility;
+		};
+		459E767E290148AF009664BF /* Popovers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 459E767D290148AF009664BF /* XCRemoteSwiftPackageReference "Popovers" */;
+			productName = Popovers;
 		};
 /* End XCSwiftPackageProductDependency section */
 
