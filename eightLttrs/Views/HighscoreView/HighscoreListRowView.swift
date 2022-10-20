@@ -72,26 +72,26 @@ extension HighscoreListRowView {
         .fontWeight(.semibold)
         .frame(width: 30, alignment: .center)
 
-      VStack(alignment: .leading) {
-        Text(session.unwrappedName)
-
-
-        Text(LocalizedStringKey(L10n.HighscoreListRowView.basewordWas(session.unwrappedBaseword)))
-          .font(.caption2)
+      VStack(alignment: .leading, spacing: 0) {
+        Text("\(L10n.baseword):")
           .foregroundColor(.secondary)
+          .font(.caption)
+        Text(session.unwrappedBaseword)
+          .font(.system(.headline, design: .rounded, weight: .semibold))
       }
 
       Spacer()
 
       VStack(alignment: .trailing) {
-        Text("\(session.score)")
         Text(L10n.score)
           .font(.caption2)
           .foregroundColor(.secondary)
+        Text("\(session.score)")
       }
 
       Image(systemName: "chevron.right")
         .padding(.leading, 5)
     }
+    .padding(.vertical, 5)
   }
 }
