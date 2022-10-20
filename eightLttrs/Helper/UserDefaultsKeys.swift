@@ -14,6 +14,7 @@ struct UserDefaultsKeys {
   static let lastPlayersName = "lastPlayersName"
   static let currentSession = "currentSession"
 
+  static let appearance = "Appearance"
   static let enabledVibration = "enabledVibration"
   static let enabledSound = "enabledSound"
   static let enabledFiltering = "enabledFiltering"

@@ -27,6 +27,7 @@ class MainView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = .systemBackground
+    AppearanceManager.shared.setAppearance()
 
     setupViews()
     setupLayout()

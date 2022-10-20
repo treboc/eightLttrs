@@ -101,6 +101,16 @@ internal enum L10n {
     /// Submit
     internal static let submit = L10n.tr("Localizable", "buttonTitle.submit", fallback: "Submit")
   }
+  internal enum ColorPicker {
+    /// Dark
+    internal static let dark = L10n.tr("Localizable", "colorPicker.dark", fallback: "Dark")
+    /// Light
+    internal static let light = L10n.tr("Localizable", "colorPicker.light", fallback: "Light")
+    /// System
+    internal static let system = L10n.tr("Localizable", "colorPicker.system", fallback: "System")
+    /// Color Scheme
+    internal static let title = L10n.tr("Localizable", "colorPicker.title", fallback: "Color Scheme")
+  }
   internal enum EndGameAlert {
     /// Are you sure, you don't know any other words?
     internal static let message = L10n.tr("Localizable", "endGameAlert.message", fallback: "Are you sure, you don't know any other words?")
