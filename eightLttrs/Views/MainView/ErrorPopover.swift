@@ -28,7 +28,7 @@ struct ErrorPopover: View {
     .background(
       RoundedRectangle(cornerRadius: Constants.cornerRadius)
         .fill(.ultraThinMaterial)
-        .shadow(color: .accent, radius: 5)
+        .shadow(radius: 5)
     )
   }
 }
