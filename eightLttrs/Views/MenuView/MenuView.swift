@@ -198,7 +198,7 @@ extension MenuView {
   private var reviewLink: some View {
     Link(destination: Constants.reviewURL) {
       HStack {
-        Text("Rate This App ❤️")
+        Text("Rate This App \(Image(systemName: "heart.fill"))")
         Spacer()
         Image(systemName: "arrow.up.right")
       }
