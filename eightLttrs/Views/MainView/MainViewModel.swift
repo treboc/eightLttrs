@@ -5,12 +5,11 @@
 //  Created by Marvin Lee Kobert on 06.09.22.
 //
 
-import AVFAudio
 import Combine
 import UIKit
 
 final class MainViewModel: ObservableObject {
-  var audioPlayer: AVAudioPlayer?
+  let audioPlayer = AudioPlayer()
   let gameAPI: GameAPI
   var session: Session
 
@@ -40,10 +39,10 @@ final class MainViewModel: ObservableObject {
       input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
-      playSound(.success)
+      audioPlayer.play(type: .success)
     } catch let error as WordError {
       HapticManager.shared.error()
-      playSound(.error)
+      audioPlayer.play(type: .error)
       self.error.send(error)
     } catch {
       fatalError(error.localizedDescription)
@@ -67,21 +66,6 @@ final class MainViewModel: ObservableObject {
       }
     } else {
       startNewSession()
-    }
-  }
-}
-
-extension MainViewModel {
-  private func playSound(_ type: SoundType) {
-    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
-      DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-        do {
-          self?.audioPlayer = try AVAudioPlayer(contentsOf: type.fileURL)
-          self?.audioPlayer?.play()
-        } catch {
-          print(error.localizedDescription)
-        }
-      }
     }
   }
 }

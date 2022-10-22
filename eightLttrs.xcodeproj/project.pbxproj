@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
+		45589C3B2903E7FA000AEBE1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */; };
 		459E767F290148AF009664BF /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 459E767E290148AF009664BF /* Popovers */; };
 		459E768129014938009664BF /* ErrorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768029014938009664BF /* ErrorPopover.swift */; };
 		459E768329015044009664BF /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768229015044009664BF /* AppearanceManager.swift */; };
@@ -144,6 +145,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		459E768029014938009664BF /* ErrorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopover.swift; sourceTree = "<group>"; };
 		459E768229015044009664BF /* AppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		459E7684290151B9009664BF /* AppearancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePicker.swift; sourceTree = "<group>"; };
@@ -273,6 +275,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45589C392903E79F000AEBE1 /* EnvironmentKey */ = {
+			isa = PBXGroup;
+			children = (
+				8A357E9828CD360C00C511F1 /* ShowModal-EnvironmentKey.swift */,
+			);
+			path = EnvironmentKey;
+			sourceTree = "<group>";
+		};
+		45589C3C2903E810000AEBE1 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */,
+				8A4C4C8B28BC34F800B643D1 /* SoundType.swift */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
 		8A27E2D328C4F3DD00CB39C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,11 +390,12 @@
 		8A70BEC228AB7C4C00455FF1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				8A357E9828CD360C00C511F1 /* ShowModal-EnvironmentKey.swift */,
 				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
+				45589C3C2903E810000AEBE1 /* AudioPlayer */,
 				8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */,
 				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 				459E768229015044009664BF /* AppearanceManager.swift */,
+				45589C392903E79F000AEBE1 /* EnvironmentKey */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
 				8A45C1E128BB978200A136CC /* ViewModifier */,
 				8A99A31F28B5248700E5ABBF /* Extensions */,
@@ -446,14 +466,6 @@
 				8ACC060B28D65CE1005569C8 /* PossibleWordList.swift */,
 			);
 			path = EndSessionView;
-			sourceTree = "<group>";
-		};
-		8A99A31B28B520EF00E5ABBF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8A4C4C8B28BC34F800B643D1 /* SoundType.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		8A99A31F28B5248700E5ABBF /* Extensions */ = {
@@ -573,7 +585,6 @@
 				8ADAB27028A5911C0083E028 /* AppDelegate.swift */,
 				8ADAB27228A5911C0083E028 /* SceneDelegate.swift */,
 				8ACF209E28C9BD8000B78DCE /* Coordinators */,
-				8A99A31B28B520EF00E5ABBF /* Models */,
 				8A87111728B284F9004F299F /* Views */,
 				8A27E2D328C4F3DD00CB39C5 /* Services */,
 				8A87110F28B281F5004F299F /* Persistence */,
@@ -832,6 +843,7 @@
 				8A794FD928B938AB00BC9CE5 /* GameType.swift in Sources */,
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8ACC060828D65344005569C8 /* UserDefaultsKeys.swift in Sources */,
+				45589C3B2903E7FA000AEBE1 /* AudioPlayer.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* SessionDetailView.swift in Sources */,
 				8A41A52828C4AB6A0056662C /* WordService.swift in Sources */,
 				459E7685290151B9009664BF /* AppearancePicker.swift in Sources */,
