@@ -27,5 +27,6 @@ struct AccessoryCircularView: View {
         .font(.caption)
     }
     .gaugeStyle(.accessoryCircularCapacity)
+    .accessibilityLabel("\(session.baseword), \(wordsFoundFormattedString)")
   }
 }

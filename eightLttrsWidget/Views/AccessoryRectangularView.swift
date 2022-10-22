@@ -32,5 +32,7 @@ struct AccessoryRectangularView: View {
       }
       .gaugeStyle(.accessoryLinearCapacity)
     }
+    .accessibilityElement()
+    .accessibilityLabel("\(session.baseword), \(wordsFoundFormattedString) words found")
   }
 }

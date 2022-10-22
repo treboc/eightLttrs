@@ -17,21 +17,9 @@ struct SessionDetailView: View {
   var body: some View {
     Form {
       Section {
-        nameField
-        HStack {
-          Text(L10n.HighscoreDetaiLView.baseword)
-            .foregroundColor(.secondary)
-          Spacer()
-          Text(session.unwrappedBaseword)
-        }
-        
-        HStack {
-          Text(L10n.HighscoreDetaiLView.score)
-            .foregroundColor(.secondary)
-          Spacer()
-          Text("\(session.score) / \(session.maxPossibleScoreOnBaseWord)")
-            .accessibilityLabel(L10n.A11y.SessionDetailView.score(session.score, session.maxPossibleScoreOnBaseWord))
-        }
+        nameRow
+        basewordRow
+        scoreRow
       }
 
       Section {
@@ -99,12 +87,36 @@ extension SessionDetailView {
 }
 
 extension SessionDetailView {
-  private var nameField: some View {
+  private var nameRow: some View {
     HStack {
       Text(L10n.HighscoreDetaiLView.name)
         .foregroundColor(.secondary)
       Spacer()
       Text(session.unwrappedName)
     }
+    .accessibilityElement()
+    .accessibilityLabel("\(L10n.HighscoreDetaiLView.name), \(session.unwrappedName)")
+  }
+
+  private var basewordRow: some View {
+    HStack {
+      Text(L10n.HighscoreDetaiLView.baseword)
+        .foregroundColor(.secondary)
+      Spacer()
+      Text(session.unwrappedBaseword)
+    }
+    .accessibilityElement()
+    .accessibilityLabel("\(L10n.HighscoreDetaiLView.baseword), \(session.unwrappedBaseword)")
+  }
+
+  private var scoreRow: some View {
+    HStack {
+      Text(L10n.HighscoreDetaiLView.score)
+        .foregroundColor(.secondary)
+      Spacer()
+      Text("\(session.score) / \(session.maxPossibleScoreOnBaseWord)")
+    }
+    .accessibilityElement()
+    .accessibilityLabel("\(L10n.HighscoreDetaiLView.score), \(L10n.A11y.SessionDetailView.score(session.score, session.maxPossibleScoreOnBaseWord))")
   }
 }
