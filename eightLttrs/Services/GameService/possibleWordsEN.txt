@@ -5149,9 +5149,6 @@ assets
 assever
 assevers
 assez
-asshole
-assholes
-assiege
 assieged
 assieges
 assiento
@@ -9956,15 +9953,6 @@ bistroic
 bistros
 bit
 bitable
-bitch
-bitched
-bitchen
-bitchery
-bitches
-bitchier
-bitchily
-bitching
-bitchy
 bite
 biteable
 biter
@@ -11068,8 +11056,6 @@ bolling
 bollix
 bollixed
 bollixes
-bollock
-bollocks
 bollox
 bolloxed
 bolloxes
@@ -68565,7 +68551,6 @@ outbeg
 outbegs
 outbid
 outbids
-outbitch
 outblaze
 outbleat
 outbless
@@ -103344,8 +103329,6 @@ tosing
 toss
 tossed
 tossen
-tosser
-tossers
 tosses
 tossier
 tossiest
@@ -111291,8 +111274,6 @@ wanion
 wanions
 wank
 wanked
-wanker
-wankers
 wankier
 wankiest
 wanking

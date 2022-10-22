@@ -533,7 +533,6 @@ asserted
 assessed
 assesses
 assessor
-assholes
 assigned
 assigner
 assignor
@@ -995,9 +994,6 @@ biscuits
 bisected
 bisector
 bisexual
-bitchier
-bitchily
-bitching
 bitingly
 bitterer
 bitterly
@@ -1155,7 +1151,6 @@ bolivars
 bollards
 bollixed
 bollixes
-bollocks
 bolsters
 bolthole
 bombards
