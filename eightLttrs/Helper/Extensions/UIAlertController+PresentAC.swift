@@ -35,12 +35,10 @@ extension UIAlertController {
     let ac = UIAlertController(title: title,
                                message: message,
                                preferredStyle: .alert)
-    ac.view.accessibilityIdentifier = "alertController"
     if let handler = onContinuePressed {
       let cancelAction = UIAlertAction(title: L10n.ButtonTitle.cancel, style: .cancel)
       ac.addAction(cancelAction)
       let proceedAction = UIAlertAction(title: L10n.ButtonTitle.continue, style: .destructive, handler: handler)
-      proceedAction.accessibilityIdentifier = "continueBtn"
       ac.addAction(proceedAction)
     } else {
       ac.addAction(UIAlertAction(title: L10n.ButtonTitle.ok, style: .default))

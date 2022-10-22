@@ -40,7 +40,6 @@ extension View {
           Button(unwrappedAlert.primaryActionTitle, role: .destructive) {
             unwrappedAlert.primaryAction()
           }
-          .accessibilityIdentifier("continueBtn")
         } message: {
           Text(unwrappedAlert.message)
         }

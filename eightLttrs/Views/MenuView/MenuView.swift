@@ -173,7 +173,6 @@ extension MenuView {
       }
     }
     .disabled(mainViewModel.session.usedWords.isEmpty)
-    .accessibilityIdentifier("endSessionBtn")
   }
 
   private var showHighscoreNavLink: some View {
@@ -181,7 +180,6 @@ extension MenuView {
       HighscoreListView()
         .environment(\.managedObjectContext, PersistenceController.shared.context)
     }
-    .accessibilityIdentifier("showHighscoreNavLink")
   }
 
   private var twitterLink: some View {
