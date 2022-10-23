@@ -21,7 +21,7 @@
 "onboarding.secondPage.title" = "Regeln";
 "onboarding.secondPage.body1" = "alle Startworte haben acht Buchstaben";
 "onboarding.secondPage.body2" = "stelle die Buchstaben um, lass welche weg – dein Wort muss lediglich mindestens drei Buchstaben haben";
-"onboarding.secondPage.body3" = "mögliche Worte sind Substantive, Adjektive und Verben in all ihren Formen. Außerdem noch Namen, Abkürzungen, Zahlwörter und vieles mehr. Noch dazu kommt es natürlich auf auf die Groß- und Kleinschreibung an.";
+"onboarding.secondPage.body3" = "mögliche Worte sind Substantive, Adjektive und Verben in all ihren Formen. Außerdem noch Namen, Abkürzungen, Zahlwörter und vieles mehr.";
 "onboarding.thirdPage.title" = "Punkte";
 "onboarding.thirdPage.body1" = "für die ersten drei Buchstaben deines Wortes gibt es drei Punkte";
 "onboarding.thirdPage.body2" = "für jeden weiteren immer zwei mehr, also für den vierten 2, für den fünften 4, für den sechsten 6, etc.";
