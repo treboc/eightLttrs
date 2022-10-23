@@ -13,8 +13,10 @@ final class AudioPlayer {
   
   func play(type: SoundType) {
     do {
-      player = try AVAudioPlayer(contentsOf: type.fileURL)
-      player?.play()
+      if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
+        player = try AVAudioPlayer(contentsOf: type.fileURL)
+        player?.play()
+      }
     } catch {
       print(error.localizedDescription)
     }
