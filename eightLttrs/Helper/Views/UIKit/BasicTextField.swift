@@ -10,7 +10,6 @@ import UIKit
 class BasicTextField: UITextField {
   override init(frame: CGRect) {
     super.init(frame: frame)
-
     self.layer.cornerRadius = 5
     self.backgroundColor = .secondarySystemBackground
     self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
@@ -18,11 +17,12 @@ class BasicTextField: UITextField {
     self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
     self.rightViewMode = .unlessEditing
     self.clearButtonMode = .whileEditing
-    self.keyboardType = .asciiCapable
+    self.textContentType = .nickname
+    self.spellCheckingType = .no
     self.autocorrectionType = .no
     self.returnKeyType = .send
     self.becomeFirstResponder()
-    self.autocapitalizationType = .none
+    self.autocapitalizationType = .allCharacters
   }
 
   // Disable pasting
