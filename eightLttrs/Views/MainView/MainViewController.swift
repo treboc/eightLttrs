@@ -219,8 +219,8 @@ extension MainViewController {
 
   private func presentPopover(with wordError: WordError) {
     var popOver = Popover { ErrorPopover(error: wordError) }
-    popOver.attributes.sourceFrame = self.mainView.windowFrame
-    popOver.attributes.position = .absolute(originAnchor: .center, popoverAnchor: .center)
+    popOver.attributes.sourceFrame = self.mainView.divider.windowFrame
+    popOver.attributes.position = .absolute(originAnchor: .top, popoverAnchor: .top)
     present(popOver)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
       popOver.dismiss()

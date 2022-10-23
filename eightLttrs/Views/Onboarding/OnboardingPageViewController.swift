@@ -61,6 +61,7 @@ extension OnboardingPageViewController {
     if isLastPage {
       startButton.translatesAutoresizingMaskIntoConstraints = false
       startButton.setTitle(L10n.Onboarding.ThirdPage.buttonTitle, for: .normal)
+      startButton.setTitleColor(.systemBackground, for: .normal)
       startButton.configuration = .borderedProminent()
       startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }

@@ -16,7 +16,7 @@
 
 // Onboarding
 "onboarding.firstPage.title" = "Worum geht's?";
-"onboarding.firstPage.body1" = "Du bekommst ein Startwort. Es hat acht Buchstaben. Du machst einfach so viele andere Worte daraus, wie dir nur möglich ist.";
+"onboarding.firstPage.body1" = "Jede Runde hat ein Startwort mit acht Buchstaben und Du machst einfach so viele andere Worte daraus, wie dir einfallen.";
 "onboarding.firstPage.body2" = "nimm dir Zeit – wichtig ist hier nur, so viele Wörter zu finden, wie es dir möglich ist, egal wie lang es dauert.";
 "onboarding.secondPage.title" = "Regeln";
 "onboarding.secondPage.body1" = "alle Startworte haben acht Buchstaben";
