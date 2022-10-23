@@ -35,7 +35,7 @@ final class MainViewModel: ObservableObject {
 
   func submit(onCompletion: () -> Void) {
     do {
-      try gameAPI.submit(input.value, session: session)
+      try gameAPI.submit(input.value.uppercased(), session: session)
       input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
