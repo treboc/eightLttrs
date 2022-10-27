@@ -23,3 +23,6 @@ This game is a project in the 100daysWithSwiftUI aswell as in the UIKit course b
   <img src="./screenshots/screenshot2.png" width="200" />
   <img src="./screenshots/screenshot3.png" width="200" />
 </p>
+
+## AppStore
+[eightLttrs on the Appstore!](https://apps.apple.com/us/app/eightlttrs/id1644529450)
