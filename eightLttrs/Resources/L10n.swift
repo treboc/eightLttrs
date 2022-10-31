@@ -196,6 +196,12 @@ internal enum L10n {
       /// Changed Language
       internal static let title = L10n.tr("Localizable", "menuView.changedLanguage.title", fallback: "Changed Language")
     }
+    internal enum SupportEmail {
+      /// Contact Support
+      internal static let buttonHeader = L10n.tr("Localizable", "menuView.supportEmail.buttonHeader", fallback: "Contact Support")
+      /// e.g. for requesting a missing word
+      internal static let buttonSubtitle = L10n.tr("Localizable", "menuView.supportEmail.buttonSubtitle", fallback: "e.g. for requesting a missing word")
+    }
   }
   internal enum Onboarding {
     internal enum FirstPage {

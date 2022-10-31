@@ -9,6 +9,7 @@ import SwiftUI
 struct MenuView: View {
   @State var showModal: Bool = true
   @Environment(\.dismiss) private var dismiss
+  @Environment(\.openURL) private var openURL
   @EnvironmentObject private var mainViewModel: MainViewModel
 
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
@@ -44,6 +45,8 @@ struct MenuView: View {
 
         Section("Contact Me") {
           twitterLink
+          // SUPPORT EMAIL
+          supportEmailLink
           reviewLink
           NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)
         }
@@ -192,6 +195,27 @@ extension MenuView {
     }
     .accessibilityLabel("Twitterhandle treboc")
   }
+
+  private var supportEmailLink: some View {
+    Button {
+      SupportEmail.send(openURL: openURL)
+    } label: {
+      HStack {
+        VStack(alignment: .leading) {
+          Text(L10n.MenuView.SupportEmail.buttonHeader)
+          Text(L10n.MenuView.SupportEmail.buttonSubtitle)
+            .font(.caption2)
+            .foregroundColor(.secondary)
+            .lineLimit(1)
+        }
+
+        Spacer()
+
+        Image(systemName: "envelope.fill")
+      }
+    }
+  }
+
 
   private var reviewLink: some View {
     Link(destination: Constants.reviewURL) {

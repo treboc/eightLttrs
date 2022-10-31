@@ -44,6 +44,8 @@
 "menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits gefundenen Wörter.";
 "menuView.changedLanguage.title" = "Sprache gewechselt";
 "menuView.changedLanguage.message" = "Du spielst jetzt mit anderen Grundworte.\n\nDiese Änderung tritt bei der nächsten Runde in Kraft.";
+"menuView.supportEmail.buttonHeader" = "Support kontaktieren";
+"menuView.supportEmail.buttonSubtitle" = "z.B. um auf ein fehlendes Wort hinzuweisen.";
 
 // ColorPicker
 "colorPicker.title" = "Erscheinungsbild";

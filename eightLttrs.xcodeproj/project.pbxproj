@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
 		45589C3B2903E7FA000AEBE1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */; };
+		45836CC4290FC9D300DF7308 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45836CC3290FC9D300DF7308 /* SupportEmail.swift */; };
+		45836CC6290FCADB00DF7308 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45836CC5290FCADB00DF7308 /* Bundle+Extensions.swift */; };
 		459E767F290148AF009664BF /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 459E767E290148AF009664BF /* Popovers */; };
 		459E768129014938009664BF /* ErrorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768029014938009664BF /* ErrorPopover.swift */; };
 		459E768329015044009664BF /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768229015044009664BF /* AppearanceManager.swift */; };
@@ -146,6 +148,8 @@
 
 /* Begin PBXFileReference section */
 		45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		45836CC3290FC9D300DF7308 /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
+		45836CC5290FCADB00DF7308 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		459E768029014938009664BF /* ErrorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopover.swift; sourceTree = "<group>"; };
 		459E768229015044009664BF /* AppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		459E7684290151B9009664BF /* AppearancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePicker.swift; sourceTree = "<group>"; };
@@ -292,6 +296,14 @@
 			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
+		45F99CF0290FC9A60050AC6F /* EmailContact */ = {
+			isa = PBXGroup;
+			children = (
+				45836CC3290FC9D300DF7308 /* SupportEmail.swift */,
+			);
+			path = EmailContact;
+			sourceTree = "<group>";
+		};
 		8A27E2D328C4F3DD00CB39C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +402,7 @@
 		8A70BEC228AB7C4C00455FF1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				45F99CF0290FC9A60050AC6F /* EmailContact */,
 				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
 				45589C3C2903E810000AEBE1 /* AudioPlayer */,
 				8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */,
@@ -477,6 +490,7 @@
 				8A4A612D28BD406600EA126A /* Collection+Safe.swift */,
 				8A2A24F528C3215D00C47C27 /* Color+Accent.swift */,
 				8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */,
+				45836CC5290FCADB00DF7308 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -871,12 +885,14 @@
 				8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */,
 				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
+				45836CC6290FCADB00DF7308 /* Bundle+Extensions.swift in Sources */,
 				8A2A24F628C3215D00C47C27 /* Color+Accent.swift in Sources */,
 				8A3A344028CE507B006439AC /* LegalNoticeView.swift in Sources */,
 				8A62106F28C8E32B00C8F1A7 /* UIFont+Weight.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				8ACF525028BAD985008728BB /* Array+Permute.swift in Sources */,
 				8A5D2A0928C7C8CE008898E0 /* MainViewModel.swift in Sources */,
+				45836CC4290FC9D300DF7308 /* SupportEmail.swift in Sources */,
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8A45C1E328BBC30700A136CC /* PresentAlert-ViewModifier.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,

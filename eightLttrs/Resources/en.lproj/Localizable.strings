@@ -45,6 +45,8 @@
 "menuView.filterDescription" = "When enabled, the list of already used words gets dynamically filtered.";
 "menuView.changedLanguage.title" = "Changed Language";
 "menuView.changedLanguage.message" = "You're now playing with different basewords.\n\nThis change will take effect on the next session.";
+"menuView.supportEmail.buttonHeader" = "Contact Support";
+"menuView.supportEmail.buttonSubtitle" = "e.g. for requesting a missing word";
 
 // ColorPicker
 "colorPicker.title" = "Color Scheme";
