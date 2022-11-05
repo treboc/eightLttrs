@@ -91,6 +91,23 @@
 "widget.wordsFound" = "%@ von %@ möglichen Wörtern gefunden.";
 "widget.noWords" = "Noch kein Wort gefunden. Worauf wartest du?";
 
+// CoinShop
+"coinShopView.buyPage.heading" = "Wie viele Wörter möchtest du kaufen?";
+"coinShopView.buyPage.oneWord" = "Ein Wort";
+"coinShopView.buyPage.threeWords" = "Drei Wörter";
+"coinShopView.buyPage.fiveWords" = "Fünf Wörter";
+"coinShopView.buyPage.price %@" = "Preis: %@P";
+"coinShopView.buyPage.strikethroughPrice %@ %@" = "Preis: ~%@P~ %@P";
+"coinShopView.buyPage.buyButtonTitle" = "Kaufen";
+"coinShopView.buyPage.infoPageSelectionButtonTitle" = "Info";
+"coinShopView.infoPage.heading" = "Wie bekomme ich Punkte?";
+"coinShopView.infoPage.20correctWords" = "20 richtige Wörter";
+"coinShopView.infoPage.50percentReached" = "50%% gefundene Wörter";
+"coinShopView.infoPage.100percentReached" = "Abschließen eines Wortes";
+"coinShopView.infoPage.statusBar.50percentReached" = "50% erreicht!";
+"coinShopView.infoPage.statusBar.100percentReached" = "100% erreicht!";
+"coinShopView.infoPage.shopPageSelectionButtonTitle" = "Shop";
+
 // ButtonTitles
 "buttonTitle.submit" = "Okay";
 "buttonTitle.cancel" = "Abbrechen";

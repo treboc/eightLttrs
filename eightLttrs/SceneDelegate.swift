@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: scene)
-    window.rootViewController = UINavigationController(rootViewController: mainVC)
+    window.rootViewController = mainVC
     window.makeKeyAndVisible()
     self.window = window
 
@@ -35,15 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     guard let firstURL = URLContexts.first?.url else { return }
-
     deeplinkCoordinator.handleURL(firstURL)
-  }
-}
-
-extension SceneDelegate {
-  private func getMainViewController(in scene: UIWindowScene) -> MainViewController? {
-    guard let viewControllers = (scene.keyWindow?.rootViewController as? UINavigationController)?.viewControllers else { return nil }
-
-    return viewControllers.first { $0 is MainViewController } as? MainViewController
   }
 }

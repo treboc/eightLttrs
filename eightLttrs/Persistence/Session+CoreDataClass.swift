@@ -41,6 +41,7 @@ public class Session: NSManagedObject, Identifiable {
   @NSManaged public var scoreIntern: Int16
   @NSManaged public var maxPossibleWordsOnBaseWordIntern: Int16
   @NSManaged public var maxPossibleScoreOnBaseWordIntern: Int16
+  @NSManaged public var fiftyPercentReached: Bool
   @NSManaged public var isFinished: Bool
   @NSManaged public var localeIdentifier: String?
 }

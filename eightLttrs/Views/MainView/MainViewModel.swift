@@ -13,11 +13,12 @@ final class MainViewModel: ObservableObject {
   let gameAPI: GameAPI
   var session: Session
 
-  private let reviewService = ReviewRequestService()
-
   var input = CurrentValueSubject<String, Never>("")
   var error = CurrentValueSubject<WordError?, Never>(nil)
   var resetUICallback: (() -> Void)? = nil
+
+  @Published var coinShopManager = CoinShopManager.shared
+  @Published var shopIsShown: Bool = false
 
   init(gameType: GameType = .continueLastSession) {
     self.gameAPI = GameAPI()
@@ -36,6 +37,7 @@ final class MainViewModel: ObservableObject {
   func submit(onCompletion: () -> Void) {
     do {
       try gameAPI.submit(input.value.uppercased(), session: session)
+      coinShopManager.enteredCorrectWord(on: session)
       input.value.removeAll()
       onCompletion()
       HapticManager.shared.success()
@@ -46,6 +48,18 @@ final class MainViewModel: ObservableObject {
       self.error.send(error)
     } catch {
       fatalError(error.localizedDescription)
+    }
+  }
+
+  func buyWordButtonTapped(_ selection: CoinShopManager.BuyWords) {
+    coinShopManager.buy(words: selection, for: session) { [weak self] result in
+      guard let self else { return }
+      switch result {
+      case .success(let amount):
+        self.gameAPI.boughtWords(amount, session: self.session)
+      case .failure(let error):
+        print(error.localizedDescription)
+      }
     }
   }
 

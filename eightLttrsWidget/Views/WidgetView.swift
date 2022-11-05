@@ -25,7 +25,6 @@ struct WidgetView: View {
     default:
       Text("Not implemented.")
     }
-
   }
 }
 

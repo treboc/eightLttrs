@@ -1,5 +1,5 @@
 //
-//  Divider.swift
+//  UIKitDivider.swift
 //  WordScramble
 //
 //  Created by Marvin Lee Kobert on 30.08.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Divider: UIView {
+class UIKitDivider: UIView {
   let gradient = CAGradientLayer()
 
   init(height: CGFloat = 1) {

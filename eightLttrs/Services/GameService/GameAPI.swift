@@ -5,7 +5,6 @@
 //  Created by Marvin Lee Kobert on 11.08.22.
 //
 
-import Combine
 import CoreData
 import Foundation
 import UIKit
@@ -69,9 +68,21 @@ class GameAPI {
     }
   }
 
+  func boughtWords(_ amount: Int, session: Session) {
+    for _ in 0..<amount {
+      guard let randomWord = WordService.getRandomWord(for: session) else { return }
+      session.usedWords.insert(randomWord, at: 0)
+    }
+
+    session.score = calculatedScore(for: session.usedWords)
+    SessionService.persist(session: session)
+  }
+
   private func calculatedScore(for words: [String]) -> Int {
     return words
       .map { $0.calculatedScore() }
       .reduce(0, +)
   }
+
+
 }

@@ -2,6 +2,54 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>coinShopInfoPage.to100percent</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@to100percent@</string>
+		<key>to100percent</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d words to 100%%</string>
+			<key>one</key>
+			<string>%d word to 100%%</string>
+		</dict>
+	</dict>
+	<key>coinShopInfoPage.to50percent</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@to50percent@</string>
+		<key>to50percent</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d words to 50%%</string>
+			<key>one</key>
+			<string>%d word to 50%%</string>
+		</dict>
+	</dict>
+	<key>coinShopInfoPage.wordsLeft</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@wordsLeft@</string>
+		<key>wordsLeft</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>Enter %d more words.</string>
+			<key>one</key>
+			<string>Enter one more word.</string>
+		</dict>
+	</dict>
 	<key>shareSessionMessage</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

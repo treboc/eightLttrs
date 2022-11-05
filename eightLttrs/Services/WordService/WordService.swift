@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 
 class WordService {
-  static var flagUppercaseHintAlreadyShown: Bool {
-    return UserDefaults.standard.bool(forKey: UserDefaultsKeys.flagUppercaseHintAlreadyShown)
-  }
-
   static func loadBasewords(_ wsLocale: WSLocale) -> Set<String> {
     if let basewordsURL = Bundle.main.url(forResource: "basewords\(wsLocale.fileNameSuffix)", withExtension: "txt"),
        let basewords = try? String(contentsOf: basewordsURL) {
@@ -38,6 +34,13 @@ class WordService {
     return (baseword, possibleWords, score)
   }
 
+  static func getRandomWord(for session: Session) -> String? {
+    if session.possibleWords.count > session.usedWords.count {
+      return session.possibleWordsSet.filter({ !session.usedWords.contains($0) }).randomElement()
+    }
+    return nil
+  }
+
   static func isValidBaseword(_ word: String,
                               in wordList: Set<String>) -> Bool {
     return wordList.contains(word)
@@ -53,14 +56,6 @@ class WordService {
                        baseword: String,
                        usedWords: [String],
                        possibleWords: Set<String>) throws {
-
-    if let isLower = word.first?.isLowercase, isLower && Self.flagUppercaseHintAlreadyShown == false {
-      if !possibleWords.contains(word) && possibleWords.contains(word.uppercased()) {
-        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.flagUppercaseHintAlreadyShown)
-        throw WordError.tryUppercaseHint
-      }
-    }
-
     if word.count < 3 {
       throw WordError.tooShort
     }

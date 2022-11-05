@@ -5,7 +5,6 @@
 //  Created by Marvin Lee Kobert on 11.08.22.
 //
 
-import AVFoundation
 import Combine
 import Popovers
 import UIKit
@@ -19,9 +18,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
   var viewModel: MainViewModel
   private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
   private var cancellables = Set<AnyCancellable>()
-
-  private var menuButton: UIBarButtonItem!
-  private var resetButton: UIBarButtonItem!
 
   init(viewModel: MainViewModel) {
     self.viewModel = viewModel
@@ -41,19 +37,35 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     presentOnboarding()
 
-    setupNavigationController()
     setupCollectionView()
+    setupCoinsDisplayView()
     setupActions()
     setupPublishers()
     setupAccessibility()
 
     mainView.textField.delegate = self
+    view.bringSubviewToFront(mainView.shopButton)
   }
 }
 
 extension MainViewController: UICollectionViewDelegate {
   enum Section {
     case wordList
+  }
+
+  private func setupCoinsDisplayView() {
+    let childView = UIHostingController(rootView: CoinsDisplayView(coinShopManager: viewModel.coinShopManager))
+    addChild(childView)
+    childView.view.translatesAutoresizingMaskIntoConstraints = false
+    mainView.coinsDisplayView.addSubview(childView.view)
+    childView.didMove(toParent: self)
+
+    NSLayoutConstraint.activate([
+      childView.view.leadingAnchor.constraint(equalTo: mainView.coinsDisplayView.leadingAnchor),
+      childView.view.trailingAnchor.constraint(equalTo: mainView.coinsDisplayView.trailingAnchor),
+      childView.view.topAnchor.constraint(equalTo: mainView.coinsDisplayView.topAnchor),
+      childView.view.bottomAnchor.constraint(equalTo: mainView.coinsDisplayView.bottomAnchor),
+    ])
   }
 
   private func setupCollectionView() {
@@ -117,36 +129,14 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController {
-  private func setupNavigationController() {
-    self.navigationItem.largeTitleDisplayMode = .always
-    self.navigationController?.navigationBar.prefersLargeTitles = true
-
-    // Set NavTitle to rounded design
-    var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle)
-    titleFont = UIFont(descriptor: titleFont
-      .fontDescriptor
-      .withDesign(.rounded)?
-      .withSymbolicTraits(.traitBold)
-                       ?? titleFont.fontDescriptor, size: titleFont.pointSize
-    )
-    self.navigationController?.navigationBar.largeTitleTextAttributes = [.font: titleFont]
-  }
-
   private func setupActions() {
-    self.hideKeyboardOnTap()
-
-    // SubmitActions 
+    // SubmitActions
     mainView.textField.addTarget(self, action: #selector(submit), for: .primaryActionTriggered)
     mainView.submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
 
-    // Right -> UIBarButtonItem
-    resetButton = UIBarButtonItem(image: UIImage(systemName: "arrow.counterclockwise.circle.fill"), style: .plain, target: self, action: #selector(resetButtonTapped))
-    resetButton.accessibilityLabel = L10n.MenuView.restartSession
-
-    menuButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.circle.fill"), style: .plain, target: self, action: #selector(showMenu))
-    menuButton.accessibilityLabel = L10n.MenuView.title
-
-    navigationItem.rightBarButtonItems = [menuButton, resetButton]
+    mainView.menuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
+    mainView.resetButton.addTarget(self, action: #selector(newBaseword), for: .touchUpInside)
+    mainView.shopButton.addTarget(self, action: #selector(showShop), for: .touchUpInside)
   }
 
   private func setupPublishers() {
@@ -164,7 +154,7 @@ extension MainViewController {
       .sink { [weak self] words in
         guard let self else { return }
         self.applySnapshot(with: words)
-        self.resetButton.isHidden = !words.isEmpty
+        self.mainView.resetButton.isHidden = words.count == 0 ? false : true
       }
       .store(in: &cancellables)
 
@@ -198,10 +188,51 @@ extension MainViewController {
       }
       .store(in: &cancellables)
 
+    // Publisher -> color baseword with input
+    viewModel.input
+      .sink { [unowned self] value in
+        mainView.basewordLabel.attributedText = colorString(input: value, baseword: viewModel.session.unwrappedBaseword)
+      }
+      .store(in: &cancellables)
+
+    func colorString(input: String, baseword: String) -> NSAttributedString {
+      let markedAttribute: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.label.withAlphaComponent(0.2)]
+      let attributedString = NSMutableAttributedString()
+      var tmpInput = input
+      for letter in baseword {
+        if tmpInput.contains(letter) {
+          let attributedLetter = NSAttributedString(string: String(letter), attributes: markedAttribute)
+          attributedString.append(attributedLetter)
+          if let index = tmpInput.firstIndex(of: letter) {
+            tmpInput.remove(at: index)
+          }
+        } else {
+          let attributedLetter = NSAttributedString(string: String(letter))
+          attributedString.append(attributedLetter)
+        }
+      }
+      return attributedString
+    }
+
     // Publisher -> input to mainViewModel
     mainView.textField.textPublisher()
       .sink { [unowned self] (value) in
         viewModel.input.send(value)
+      }
+      .store(in: &cancellables)
+
+    viewModel.$shopIsShown
+      .dropFirst()
+      .sink { [weak self] shopIsShown in
+        if shopIsShown {
+          self?.hideButtons()
+        } else {
+          self?.showButtons()
+        }
+
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+          self?.view.layoutIfNeeded()
+        }, completion: nil)
       }
       .store(in: &cancellables)
 
@@ -227,7 +258,7 @@ extension MainViewController {
     }
   }
 
-  func presentAlertController(with wordError: WordError) {
+  private func presentAlertController(with wordError: WordError) {
     let title = wordError.alert.title
     let message = wordError.alert.message
     UIAlertController.presentAlertController(on: self, with: .custom(title: title, message: message))
@@ -240,9 +271,8 @@ extension MainViewController {
     mainView.clearTextField()
   }
 
-  private func didReceiveBaseword(_ baseWord: String) {
-    self.title = baseWord
-    navigationItem.accessibilityLabel = L10n.A11y.MainView.title(baseWord)
+  private func didReceiveBaseword(_ baseword: String) {
+    mainView.basewordLabel.text = baseword
     mainView.clearTextField()
   }
 }
@@ -257,32 +287,46 @@ extension MainViewController {
     mainView.numberOfWordsBodyLabel.text = "\(usedWordsCount) / \(possibleWordsCount)"
   }
 
-  // dismiss keyboard on tap anywhere outside the keyboard
-  fileprivate func hideKeyboardOnTap() {
-    let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-    tap.cancelsTouchesInView = false
-    view.addGestureRecognizer(tap)
-  }
-
-  @objc
-  fileprivate func hideKeyboard() {
-    view.endEditing(true)
-  }
-
   @objc
   private func showMenu() {
-    let vc = UIHostingController(rootView: MenuView().environmentObject(viewModel))
+    let vc = UIHostingController(rootView: MenuView()
+      .environmentObject(viewModel))
     present(vc, animated: true)
   }
 
   @objc
-  private func resetButtonTapped() {
+  private func showShop() {
+    let vc = UIHostingController(rootView: CoinShopView()
+      .environmentObject(viewModel))
+    vc.modalPresentationStyle = .overCurrentContext
+    vc.modalTransitionStyle = .crossDissolve
+    vc.view.backgroundColor = .clear
+    viewModel.shopIsShown = true
+    present(vc, animated: true)
+  }
+
+  @objc
+  private func newBaseword() {
     viewModel.resetSession(on: self)
   }
 
   @objc
   private func submit() {
     viewModel.submit(onCompletion: clearTextField)
+  }
+
+  private func showButtons() {
+    mainView.coinsDisplayTopAnchor?.constant = -Constants.widthPadding
+    mainView.resetButtonTopAnchor?.constant = 0
+    mainView.menuButtonTopAnchor?.constant = 0
+    mainView.shopButtonTrailingAnchor?.constant = -Constants.widthPadding
+  }
+
+  private func hideButtons() {
+    mainView.coinsDisplayTopAnchor?.constant = -300
+    mainView.resetButtonTopAnchor?.constant = -300
+    mainView.menuButtonTopAnchor?.constant = -300
+    mainView.shopButtonTrailingAnchor?.constant = 300
   }
 }
 
@@ -297,9 +341,8 @@ extension MainViewController {
   }
 
   private func setupAccessibility() {
-    guard let menuButton = menuButton,
-          let collectionView = mainView.collectionView else { return }
-    accessibilityElements = [menuButton, mainView.textField, mainView.submitButton, mainView.numberOfWordsBodyLabel, mainView.currentScoreBodyLabel, collectionView]
+    guard let collectionView = mainView.collectionView else { return }
+    accessibilityElements = [mainView.textField, mainView.submitButton, mainView.numberOfWordsBodyLabel, mainView.currentScoreBodyLabel, collectionView]
 
     mainView.textField.accessibilityHint = L10n.A11y.MainView.Textfield.hint
     mainView.numberOfWordsBodyLabel.accessibilityLabel = L10n.A11y.MainView.WordsLabels.label(viewModel.session.usedWords.count, viewModel.session.maxPossibleWordsOnBaseWord)

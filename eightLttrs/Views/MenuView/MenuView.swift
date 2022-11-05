@@ -12,6 +12,8 @@ struct MenuView: View {
   @Environment(\.openURL) private var openURL
   @EnvironmentObject private var mainViewModel: MainViewModel
 
+  @StateObject private var coinShop = CoinShopManager.shared
+
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
   @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
@@ -29,6 +31,33 @@ struct MenuView: View {
           ShareSessionButton(session: mainViewModel.session)
           showHighscoreNavLink
         }
+
+#if DEBUG
+        Section {
+          HStack {
+            Text("Available Coins")
+            Spacer()
+            Text("\(coinShop.availableCoins)")
+          }
+
+          Button("Buy word") {
+            mainViewModel.buyWordButtonTapped(.one)
+          }
+          .disabled(!coinShop.canBuyWord(mainViewModel.session))
+
+          Button("+15 Coins") {
+            for _ in 0..<20 {
+              CoinShopManager.shared.enteredCorrectWord(on: mainViewModel.session)
+            }
+          }
+
+          Button("+150 Coins") {
+            for _ in 0..<200 {
+              CoinShopManager.shared.enteredCorrectWord(on: mainViewModel.session)
+            }
+          }
+        }
+#endif
 
         Section {
           basewordLanguagePicker
