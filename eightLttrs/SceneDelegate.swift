@@ -13,13 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
     return DeeplinkCoordinator(handlers: [
-      SharedSessionDeeplinkHandler(navViewController: navController)
+      SharedSessionDeeplinkHandler(mainViewController: mainVC)
     ])
   }()
-
-  var navController: UINavigationController? {
-    return window?.rootViewController as? UINavigationController
-  }
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }

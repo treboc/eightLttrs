@@ -8,12 +8,11 @@
 import Foundation
 import UIKit
 
-// TODO: - Fix me!
 final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
-  private weak var navViewController: UINavigationController?
+  private weak var mainViewController: UIViewController?
 
-  init(navViewController: UINavigationController?) {
-    self.navViewController = navViewController
+  init(mainViewController: UIViewController?) {
+    self.mainViewController = mainViewController
   }
 
   func canOpenURL(_ url: URL) -> Bool {
@@ -21,9 +20,9 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
   }
   
   func openURL(_ url: URL) {
-    guard let mainViewController = navViewController?.viewControllers.first as? MainViewController else { return }
-    mainViewController.navigationController?.topViewController?.dismiss(animated: false)
-    
+    guard let mainViewController = mainViewController as? MainViewController else { return }
+    mainViewController.presentedViewController?.dismiss(animated: false)
+
     if let word = extractStartWord(from: url) {
       UIAlertController.presentAlertController(on: mainViewController,
                                                with: .wordsInSession) { _ in
