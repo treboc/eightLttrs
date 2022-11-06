@@ -99,29 +99,31 @@ extension CoinShopManager {
       correctWordsEntered += 1
     }
 
-    if session.usedWords.count == session.possibleWordsSet.count {
-      increaseCoins(by: .wordCompleted)
-    }
-
     if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
       increaseCoins(by: .wordHalfwayThrough)
       session.fiftyPercentReached = true
+    }
+
+    if session.usedWords.count == session.possibleWordsSet.count {
+      increaseCoins(by: .wordCompleted)
     }
   }
 
   func buy(words: BuyWords, for session: Session, completionHandler: @escaping (Result<Int, CoinShopError>) -> Void) {
     let wordsLeft = session.possibleWords.count - session.usedWords.count
     if words.canBuyAmount(wordsLeft: wordsLeft, availableCoins: availableCoins) {
+      completionHandler(.success(words.amount))
       availableCoins -= words.price
-      if session.usedWords.count == session.possibleWordsSet.count {
+
+      if session.usedWords.count == session.possibleWords.count {
         increaseCoins(by: .wordCompleted)
       }
-      completionHandler(.success(words.amount))
 
       if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
         increaseCoins(by: .wordHalfwayThrough)
         session.fiftyPercentReached = true
       }
+
     } else {
       let missingCoins = words.price - availableCoins
       completionHandler(.failure(CoinShopError.missingCoins(missingCoins)))
