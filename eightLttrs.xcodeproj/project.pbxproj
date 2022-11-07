@@ -11,6 +11,7 @@
 		451CD11829156E410062384A /* CoinShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451CD11729156E410062384A /* CoinShopView.swift */; };
 		451CD11A29159ADF0062384A /* ReadSize-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451CD11929159ADF0062384A /* ReadSize-ViewModifier.swift */; };
 		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
+		45435A722918E64C00FCDB42 /* CoinShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */; };
 		45535C6C2915A36600BEB2B7 /* CoinShopView+BuySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */; };
 		45535C6E2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */; };
 		45535C702915A3E500BEB2B7 /* CoinShopView+BuyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */; };
@@ -161,6 +162,7 @@
 		451CD112291406030062384A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "eightLttrs/Views/MainView/UIFont+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		451CD11729156E410062384A /* CoinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopView.swift; sourceTree = "<group>"; };
 		451CD11929159ADF0062384A /* ReadSize-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadSize-ViewModifier.swift"; sourceTree = "<group>"; };
+		45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopViewModel.swift; sourceTree = "<group>"; };
 		45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelection.swift"; sourceTree = "<group>"; };
 		45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelectionButton.swift"; sourceTree = "<group>"; };
 		45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuyPage.swift"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				451CD11729156E410062384A /* CoinShopView.swift */,
+				45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */,
 				45535C782915AC3C00BEB2B7 /* InfoPage */,
 				45535C752915AC1E00BEB2B7 /* BuyPage */,
 				45535C712915A45700BEB2B7 /* CoinShopView+PageBackground.swift */,
@@ -968,6 +971,7 @@
 				8ADAB27128A5911C0083E028 /* AppDelegate.swift in Sources */,
 				8A45C1E328BBC30700A136CC /* PresentAlert-ViewModifier.swift in Sources */,
 				8ADAB27328A5911C0083E028 /* SceneDelegate.swift in Sources */,
+				45435A722918E64C00FCDB42 /* CoinShopViewModel.swift in Sources */,
 				8A40C1F328CA38D7000971E4 /* HighscoreListRowView.swift in Sources */,
 				8A78F3BD28AEBFCD00DFA6D5 /* L10n.swift in Sources */,
 				8A87110E28B281C5004F299F /* PersistenceController.swift in Sources */,
