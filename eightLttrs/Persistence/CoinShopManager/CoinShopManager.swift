@@ -109,25 +109,28 @@ extension CoinShopManager {
     }
   }
 
-  func buy(words: BuyWords, for session: Session, completionHandler: @escaping (Result<Int, CoinShopError>) -> Void) {
-    let wordsLeft = session.possibleWords.count - session.usedWords.count
-    if words.canBuyAmount(wordsLeft: wordsLeft, availableCoins: availableCoins) {
-      completionHandler(.success(words.amount))
-      availableCoins -= words.price
+  func buy(words: BuyWords, for session: Session) {
+    availableCoins -= words.price
+    boughtWords(words.amount, session: session)
 
-      if session.usedWords.count == session.possibleWords.count {
-        increaseCoins(by: .wordCompleted)
-      }
-
-      if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
-        increaseCoins(by: .wordHalfwayThrough)
-        session.fiftyPercentReached = true
-      }
-
-    } else {
-      let missingCoins = words.price - availableCoins
-      completionHandler(.failure(CoinShopError.missingCoins(missingCoins)))
+    if session.usedWords.count == session.possibleWords.count {
+      increaseCoins(by: .wordCompleted)
     }
+
+    if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
+      increaseCoins(by: .wordHalfwayThrough)
+      session.fiftyPercentReached = true
+    }
+  }
+
+  private func boughtWords(_ amount: Int, session: Session) {
+    for _ in 0..<amount {
+      guard let randomWord = WordService.getRandomWord(for: session) else { return }
+      session.usedWords.insert(randomWord, at: 0)
+    }
+
+    session.score = GameAPI.calculatedScore(for: session.usedWords)
+    SessionService.persist(session: session)
   }
 
   private func getRandomWord(from session: Session) -> String? {
@@ -140,7 +143,8 @@ extension CoinShopManager {
 
 extension CoinShopManager {
   private func increaseCoins(by coins: GetCoins) {
-    availableCoins += coins.rawValue
+    let currentCoins = availableCoins + coins.rawValue
+    availableCoins = currentCoins
   }
 
   func canBuyWord(_ session: Session) -> Bool {

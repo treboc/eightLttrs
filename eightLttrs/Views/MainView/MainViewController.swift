@@ -296,8 +296,10 @@ extension MainViewController {
 
   @objc
   private func showShop() {
-    let vc = UIHostingController(rootView: CoinShopView()
-      .environmentObject(viewModel))
+    let vc = UIHostingController(rootView: CoinShopView(session: viewModel.session) { [weak self] in
+      self?.viewModel.shopIsShown = false
+    }
+    )
     vc.modalPresentationStyle = .overCurrentContext
     vc.modalTransitionStyle = .crossDissolve
     vc.view.backgroundColor = .clear
@@ -317,15 +319,11 @@ extension MainViewController {
 
   private func showButtons() {
     mainView.coinsDisplayTopAnchor?.constant = -Constants.widthPadding
-    mainView.resetButtonTopAnchor?.constant = 0
-    mainView.menuButtonTopAnchor?.constant = 0
     mainView.shopButtonTrailingAnchor?.constant = -Constants.widthPadding
   }
 
   private func hideButtons() {
     mainView.coinsDisplayTopAnchor?.constant = -300
-    mainView.resetButtonTopAnchor?.constant = -300
-    mainView.menuButtonTopAnchor?.constant = -300
     mainView.shopButtonTrailingAnchor?.constant = 300
   }
 }

@@ -9,13 +9,11 @@ import SwiftUI
 
 extension CoinShopView {
   struct BuyPage: View {
-    @Binding var shopState: CoinShopViewModel.CoinShopPageSelection
-    @AppStorage("buySelection") private var selection: CoinShopManager.BuyWords = .one
+    @EnvironmentObject private var viewModel: CoinShopViewModel
+    @Environment(\.dismiss) private var dismiss
+
     @State private var buttonSize: CGSize = .zero
     @Namespace private var buyButton
-    @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var mainViewModel: MainViewModel
-    @ObservedObject private var shopManager = CoinShopManager.shared
 
     var body: some View {
       ZStack {
@@ -23,8 +21,8 @@ extension CoinShopView {
           .fill(.black.opacity(0.5))
           .ignoresSafeArea()
           .onTapGesture {
+            viewModel.onDismiss()
             dismiss.callAsFunction()
-            mainViewModel.shopIsShown = false
           }
 
         ZStack {
@@ -49,34 +47,30 @@ extension CoinShopView {
             Spacer()
 
             VStack(spacing: 20) {
-              BuySelectionButton(buttonSelection: .one, selection: $selection, namespace: buyButton)
-              BuySelectionButton(buttonSelection: .three, selection: $selection, namespace: buyButton)
-              BuySelectionButton(buttonSelection: .five, selection: $selection, namespace: buyButton)
+              BuySelectionButton(buttonSelection: .one, selection: $viewModel.buyOptionSelection, namespace: buyButton)
+              BuySelectionButton(buttonSelection: .three, selection: $viewModel.buyOptionSelection, namespace: buyButton)
+              BuySelectionButton(buttonSelection: .five, selection: $viewModel.buyOptionSelection, namespace: buyButton)
             }
 
             Spacer()
 
             HStack {
-              Button {
-                dismiss.callAsFunction()
-                mainViewModel.shopIsShown = false
-              } label: {
+              Button(action: dismissShop) {
                 Text(L10n.ButtonTitle.close)
                   .frame(maxWidth: .infinity)
               }
               .buttonStyle(.bordered)
 
               Button {
-                mainViewModel.buyWordButtonTapped(selection)
-                dismiss.callAsFunction()
-                mainViewModel.shopIsShown = false
+                viewModel.buyWordButtonTapped()
+                dismissShop()
               } label: {
                 Text(L10n.CoinShopView.BuyPage.buyButtonTitle)
                   .frame(maxWidth: .infinity)
               }
               .buttonStyle(.borderedProminent)
               .foregroundColor(Color(uiColor: .systemBackground))
-              .disabled(buyButtonDisabled())
+              .disabled(viewModel.buyButtonDisabled)
             }
             .controlSize(.large)
             .padding([.horizontal, .bottom])
@@ -84,19 +78,13 @@ extension CoinShopView {
         }
         .padding()
         .padding(.vertical, 50)
-        .animation(.default, value: selection)
+        .animation(.default, value: viewModel.buyOptionSelection)
       }
     }
 
-    private func buyButtonDisabled() -> Bool {
-      let wordsLeft = mainViewModel.session.possibleWords.count - mainViewModel.session.usedWords.count
-      return !selection.canBuyAmount(wordsLeft: wordsLeft, availableCoins: shopManager.availableCoins)
-    }
-
-    private func setPage(_ shopState: CoinShopViewModel.CoinShopPageSelection) {
-      withAnimation {
-        self.shopState = shopState
-      }
+    private func dismissShop() {
+      viewModel.onDismiss()
+      dismiss.callAsFunction()
     }
 
     private var pageSelectionButton: some View {
@@ -105,7 +93,9 @@ extension CoinShopView {
         Spacer()
         // Info Button
         Button {
-          setPage(.info)
+          withAnimation {
+            viewModel.pageSelection = .info
+          }
         } label: {
           HStack {
             Text(L10n.CoinShopView.BuyPage.infoPageSelectionButtonTitle)

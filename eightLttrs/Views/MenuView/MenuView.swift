@@ -12,7 +12,9 @@ struct MenuView: View {
   @Environment(\.openURL) private var openURL
   @EnvironmentObject private var mainViewModel: MainViewModel
 
+  #if DEBUG
   @StateObject private var coinShop = CoinShopManager.shared
+  #endif
 
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
@@ -34,6 +36,8 @@ struct MenuView: View {
 
 #if DEBUG
         Section {
+          let session = mainViewModel.session
+
           HStack {
             Text("Available Coins")
             Spacer()
@@ -41,19 +45,19 @@ struct MenuView: View {
           }
 
           Button("Buy word") {
-            mainViewModel.buyWordButtonTapped(.one)
+            coinShop.buy(words: .one, for: session)
           }
-          .disabled(!coinShop.canBuyWord(mainViewModel.session))
+          .disabled(!coinShop.canBuyWord(session))
 
           Button("+15 Coins") {
             for _ in 0..<20 {
-              CoinShopManager.shared.enteredCorrectWord(on: mainViewModel.session)
+              coinShop.enteredCorrectWord(on: session)
             }
           }
 
           Button("+150 Coins") {
             for _ in 0..<200 {
-              CoinShopManager.shared.enteredCorrectWord(on: mainViewModel.session)
+              coinShop.enteredCorrectWord(on: session)
             }
           }
         }

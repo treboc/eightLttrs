@@ -51,17 +51,7 @@ final class MainViewModel: ObservableObject {
     }
   }
 
-  func buyWordButtonTapped(_ selection: CoinShopManager.BuyWords) {
-    coinShopManager.buy(words: selection, for: session) { [weak self] result in
-      guard let self else { return }
-      switch result {
-      case .success(let amount):
-        self.gameAPI.boughtWords(amount, session: self.session)
-      case .failure(let error):
-        print(error.localizedDescription)
-      }
-    }
-  }
+
 
   func startNewSession() {
     self.session = gameAPI.randomWordSession()

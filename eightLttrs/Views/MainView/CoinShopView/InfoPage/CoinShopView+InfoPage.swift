@@ -9,9 +9,7 @@ import SwiftUI
 
 extension CoinShopView {
   struct InfoPage: View {
-    @Binding var shopState: CoinShopViewModel.CoinShopPageSelection
-    @ObservedObject private var shopManager = CoinShopManager.shared
-    @EnvironmentObject private var viewModel: MainViewModel
+    @EnvironmentObject private var viewModel: CoinShopViewModel
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -19,10 +17,7 @@ extension CoinShopView {
         Rectangle()
           .fill(.black.opacity(0.5))
           .ignoresSafeArea()
-          .onTapGesture {
-            dismiss.callAsFunction()
-            viewModel.shopIsShown = false
-          }
+          .onTapGesture(perform: dismissShop)
 
         ZStack {
           RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -35,7 +30,7 @@ extension CoinShopView {
             ScrollView {
               VStack {
                 // 1. Bar for next word
-                InfoPageGauge20Words(correctWords: shopManager.correctWordsEntered)
+                InfoPageGauge20Words(correctWords: viewModel.shopManager.correctWordsEntered)
 
                 // 2. Bar for 50%/Session
                 InfoPageGauge50Percent(session: viewModel.session)
@@ -96,17 +91,18 @@ extension CoinShopView {
       }
     }
 
-    private func setPage(_ shopState: CoinShopViewModel.CoinShopPageSelection) {
-      withAnimation {
-        self.shopState = shopState
-      }
+    private func dismissShop() {
+      viewModel.onDismiss()
+      dismiss.callAsFunction()
     }
 
     private var pageSelectionButton: some View {
       HStack {
         // Info Button
         Button {
-          setPage(.shop)
+          withAnimation {
+            viewModel.pageSelection = .shop
+          }
         } label: {
           HStack {
             Image(systemName: "chevron.left")

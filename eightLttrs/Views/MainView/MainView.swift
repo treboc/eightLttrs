@@ -19,11 +19,7 @@ class MainView: UIView {
   var shopButtonTrailingAnchor: NSLayoutConstraint?
 
   let resetButton = UIButton()
-  var resetButtonTopAnchor: NSLayoutConstraint?
-
   let menuButton = UIButton()
-  var menuButtonTopAnchor: NSLayoutConstraint?
-
   let basewordLabel = UILabel()
 
   let textField = BasicTextField()
@@ -137,7 +133,9 @@ extension MainView {
       shopButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -Constants.widthPadding),
 
       resetButton.trailingAnchor.constraint(equalTo: menuButton.leadingAnchor, constant: -Constants.widthPadding),
+      resetButton.centerYAnchor.constraint(equalTo: coinsDisplayView.centerYAnchor),
       menuButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.widthPadding),
+      menuButton.centerYAnchor.constraint(equalTo: coinsDisplayView.centerYAnchor),
 
       basewordLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.widthPadding * 4),
       basewordLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
@@ -183,12 +181,6 @@ extension MainView {
 
     shopButtonTrailingAnchor = shopButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.widthPadding)
     shopButtonTrailingAnchor?.isActive = true
-
-    menuButtonTopAnchor = resetButton.topAnchor.constraint(equalTo: safeArea.topAnchor)
-    menuButtonTopAnchor?.isActive = true
-
-    resetButtonTopAnchor = menuButton.topAnchor.constraint(equalTo: safeArea.topAnchor)
-    resetButtonTopAnchor?.isActive = true
   }
 
   func clearTextField() {

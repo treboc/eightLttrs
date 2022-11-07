@@ -68,21 +68,15 @@ class GameAPI {
     }
   }
 
-  func boughtWords(_ amount: Int, session: Session) {
-    for _ in 0..<amount {
-      guard let randomWord = WordService.getRandomWord(for: session) else { return }
-      session.usedWords.insert(randomWord, at: 0)
-    }
-
-    session.score = calculatedScore(for: session.usedWords)
-    SessionService.persist(session: session)
-  }
-
   private func calculatedScore(for words: [String]) -> Int {
     return words
       .map { $0.calculatedScore() }
       .reduce(0, +)
   }
 
-
+  static func calculatedScore(for words: [String]) -> Int {
+    return words
+      .map { $0.calculatedScore() }
+      .reduce(0, +)
+  }
 }
