@@ -48,7 +48,7 @@ final class CoinShopManager: ObservableObject {
 }
 
 extension CoinShopManager {
-  enum BuyWords: Int {
+  enum BuyOption: Int {
     case one, three, five
 
     var amount: Int {
@@ -76,11 +76,11 @@ extension CoinShopManager {
     func canBuyAmount(wordsLeft: Int, availableCoins: Int) -> Bool {
       switch self {
       case .one:
-        return wordsLeft >= 1 && availableCoins >= BuyWords.one.price
+        return wordsLeft >= 1 && availableCoins >= BuyOption.one.price
       case .three:
-        return wordsLeft >= 3 && availableCoins >= BuyWords.three.price
+        return wordsLeft >= 3 && availableCoins >= BuyOption.three.price
       case .five:
-        return wordsLeft >= 5 && availableCoins >= BuyWords.five.price
+        return wordsLeft >= 5 && availableCoins >= BuyOption.five.price
       }
     }
   }
@@ -109,23 +109,29 @@ extension CoinShopManager {
     }
   }
 
-  func buy(words: BuyWords, for session: Session) {
-    availableCoins -= words.price
-    boughtWords(words.amount, session: session)
+  func buy(option: BuyOption, for session: Session) -> Result<Int, Error> {
+    do {
+      try addBoughtWords(option.amount, session: session)
+      availableCoins -= option.price
 
-    if session.usedWords.count == session.possibleWords.count {
-      increaseCoins(by: .wordCompleted)
-    }
+      if session.usedWords.count == session.possibleWords.count {
+        increaseCoins(by: .wordCompleted)
+      }
 
-    if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
-      increaseCoins(by: .wordHalfwayThrough)
-      session.fiftyPercentReached = true
+      if (Double(session.usedWords.count) / Double(session.possibleWordsSet.count)) >= 0.5 && !session.fiftyPercentReached {
+        increaseCoins(by: .wordHalfwayThrough)
+        session.fiftyPercentReached = true
+      }
+
+      return .success(option.amount)
+    } catch let error {
+      return .failure(error)
     }
   }
 
-  private func boughtWords(_ amount: Int, session: Session) {
+  private func addBoughtWords(_ amount: Int, session: Session) throws {
     for _ in 0..<amount {
-      guard let randomWord = WordService.getRandomWord(for: session) else { return }
+      guard let randomWord = WordService.getRandomWord(for: session) else { throw CoinShopError.addingWords }
       session.usedWords.insert(randomWord, at: 0)
     }
 
@@ -170,5 +176,6 @@ extension CoinShopManager {
   enum CoinShopError: Error {
     case missingCoins(Int)
     case gettingWord
+    case addingWords
   }
 }

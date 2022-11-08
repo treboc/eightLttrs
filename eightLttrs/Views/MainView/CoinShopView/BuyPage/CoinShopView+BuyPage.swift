@@ -62,8 +62,9 @@ extension CoinShopView {
               .buttonStyle(.bordered)
 
               Button {
-                viewModel.buyWordButtonTapped()
-                dismissShop()
+                viewModel.buyWordButtonTapped {
+                  dismissShop()
+                }
               } label: {
                 Text(L10n.CoinShopView.BuyPage.buyButtonTitle)
                   .frame(maxWidth: .infinity)

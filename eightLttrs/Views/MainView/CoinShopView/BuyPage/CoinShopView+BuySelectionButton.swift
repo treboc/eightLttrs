@@ -9,8 +9,8 @@ import SwiftUI
 
 extension CoinShopView {
   struct BuySelectionButton: View {
-    let buttonSelection: CoinShopManager.BuyWords
-    @Binding var selection: CoinShopManager.BuyWords
+    let buttonSelection: CoinShopManager.BuyOption
+    @Binding var selection: CoinShopManager.BuyOption
     let namespace: Namespace.ID
     @State private var buttonSize: CGSize = .zero
 
@@ -49,19 +49,19 @@ extension CoinShopView {
       .padding()
       .frame(maxWidth: .infinity)
       .background(
-        RoundedRectangle(cornerRadius: Constants.cornerRadius)
-          .fill(Color.accent.gradient)
-          .overlay {
-            if selection == buttonSelection {
-              RoundedRectangle(cornerRadius: Constants.cornerRadius)
-                .stroke(Color(uiColor: .tertiarySystemBackground).gradient, lineWidth: 3)
-            }
-          }
-          .readSize(onChange: { buttonSize in
-            self.buttonSize = buttonSize
-          })
-          .overlay { selection == buttonSelection ? checkmarkOverlay : nil }
+        Color.accent
+          .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
       )
+      .overlay {
+        if selection == buttonSelection {
+          RoundedRectangle(cornerRadius: Constants.cornerRadius)
+            .stroke(Color(uiColor: .tertiarySystemBackground).gradient, lineWidth: 3)
+        }
+      }
+      .readSize(onChange: { buttonSize in
+        self.buttonSize = buttonSize
+      })
+      .overlay { selection == buttonSelection ? checkmarkOverlay : nil }
       .onTapGesture { selection = buttonSelection }
       .padding(.horizontal, 50)
     }

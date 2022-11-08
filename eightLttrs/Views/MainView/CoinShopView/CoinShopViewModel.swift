@@ -16,8 +16,9 @@ final class CoinShopViewModel: ObservableObject {
 
   @Published var shopManager = CoinShopManager.shared
   @Published var pageSelection: CoinShopPageSelection = .shop
-  @Published var buyOptionSelection: CoinShopManager.BuyWords = .one
+  @Published var buyOptionSelection: CoinShopManager.BuyOption = .one
   @Published var popoverIsPresented: Bool = false
+  @Published var buyingError: Error?
 
   let session: Session
   var onDismiss: () -> Void
@@ -37,13 +38,23 @@ final class CoinShopViewModel: ObservableObject {
     return !buyOptionSelection.canBuyAmount(wordsLeft: wordsLeft, availableCoins: shopManager.availableCoins)
   }
 
-  func buyWordButtonTapped() {
-    shopManager.buy(words: buyOptionSelection, for: session)
+  func buyWordButtonTapped(onCompletion: @escaping () -> Void) {
+    let result = shopManager.buy(option: buyOptionSelection, for: session)
+    switch result {
+    case .success(_):
+      popoverIsPresented.toggle()
+    case .failure(let failure):
+      self.buyingError = failure
+      popoverIsPresented.toggle()
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      onCompletion()
+    }
   }
 
   private func loadBuyOptionSelection() {
     let selection = UserDefaults.standard.integer(forKey: "buySelection")
-    buyOptionSelection = CoinShopManager.BuyWords(rawValue: selection) ?? .one
+    buyOptionSelection = CoinShopManager.BuyOption(rawValue: selection) ?? .one
   }
 
   private func setupBuyOptionSelectionPublisher() {

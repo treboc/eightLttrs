@@ -45,7 +45,7 @@ struct MenuView: View {
           }
 
           Button("Buy word") {
-            coinShop.buy(words: .one, for: session)
+            let _ = coinShop.buy(option: .one, for: session)
           }
           .disabled(!coinShop.canBuyWord(session))
 

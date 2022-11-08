@@ -12,10 +12,10 @@
 		451CD11A29159ADF0062384A /* ReadSize-ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451CD11929159ADF0062384A /* ReadSize-ViewModifier.swift */; };
 		4528208E28E76BB700DDDB5B /* NSReviewUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 4528208D28E76BB700DDDB5B /* NSReviewUtility */; };
 		45435A722918E64C00FCDB42 /* CoinShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */; };
+		45435A742918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435A732918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift */; };
 		45535C6C2915A36600BEB2B7 /* CoinShopView+BuySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */; };
 		45535C6E2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */; };
 		45535C702915A3E500BEB2B7 /* CoinShopView+BuyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */; };
-		45535C722915A45700BEB2B7 /* CoinShopView+PageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C712915A45700BEB2B7 /* CoinShopView+PageBackground.swift */; };
 		45535C742915A56100BEB2B7 /* CoinDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C732915A56100BEB2B7 /* CoinDisplayView.swift */; };
 		45535C772915AC3700BEB2B7 /* CoinShopView+InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C762915AC3700BEB2B7 /* CoinShopView+InfoPage.swift */; };
 		45535C7A2916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C792916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift */; };
@@ -163,10 +163,10 @@
 		451CD11729156E410062384A /* CoinShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopView.swift; sourceTree = "<group>"; };
 		451CD11929159ADF0062384A /* ReadSize-ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadSize-ViewModifier.swift"; sourceTree = "<group>"; };
 		45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopViewModel.swift; sourceTree = "<group>"; };
+		45435A732918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuyActionPopover.swift"; sourceTree = "<group>"; };
 		45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelection.swift"; sourceTree = "<group>"; };
 		45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelectionButton.swift"; sourceTree = "<group>"; };
 		45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuyPage.swift"; sourceTree = "<group>"; };
-		45535C712915A45700BEB2B7 /* CoinShopView+PageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+PageBackground.swift"; sourceTree = "<group>"; };
 		45535C732915A56100BEB2B7 /* CoinDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDisplayView.swift; sourceTree = "<group>"; };
 		45535C762915AC3700BEB2B7 /* CoinShopView+InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+InfoPage.swift"; sourceTree = "<group>"; };
 		45535C792916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+CoinDisplayView.swift"; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 				45435A712918E64C00FCDB42 /* CoinShopViewModel.swift */,
 				45535C782915AC3C00BEB2B7 /* InfoPage */,
 				45535C752915AC1E00BEB2B7 /* BuyPage */,
-				45535C712915A45700BEB2B7 /* CoinShopView+PageBackground.swift */,
+				45435A732918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift */,
 			);
 			path = CoinShopView;
 			sourceTree = "<group>";
@@ -933,6 +933,7 @@
 				459E7685290151B9009664BF /* AppearancePicker.swift in Sources */,
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentWidgetSession.swift in Sources */,
+				45435A742918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift in Sources */,
 				8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */,
 				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresentAC.swift in Sources */,
 				8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */,
@@ -964,7 +965,6 @@
 				8A62106F28C8E32B00C8F1A7 /* UIFont+Weight.swift in Sources */,
 				8A6703CB28A9B32900BBF5F1 /* Constants.swift in Sources */,
 				451CD113291406030062384A /* UIFont+Extension.swift in Sources */,
-				45535C722915A45700BEB2B7 /* CoinShopView+PageBackground.swift in Sources */,
 				8ACF525028BAD985008728BB /* Array+Permute.swift in Sources */,
 				8A5D2A0928C7C8CE008898E0 /* MainViewModel.swift in Sources */,
 				45836CC4290FC9D300DF7308 /* SupportEmail.swift in Sources */,

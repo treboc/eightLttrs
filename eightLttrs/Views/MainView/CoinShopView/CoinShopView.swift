@@ -23,12 +23,10 @@ struct CoinShopView: View {
           .transition(.move(edge: .trailing))
       }
     }
+    .buyActionOverlay(isPresented: $viewModel.popoverIsPresented,
+                      selection: viewModel.buyOptionSelection,
+                      error: viewModel.buyingError)
     .environmentObject(viewModel)
-    .popover(present: $viewModel.popoverIsPresented) { popover in
-      popover.onDismiss = dismiss.callAsFunction
-    } view: {
-      Text("Hello World!")
-    }
   }
 
   init(session: Session, onDismiss: @escaping () -> Void) {
