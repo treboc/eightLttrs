@@ -8,12 +8,12 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLIconFile</key>
-			<string>icon</string>
+			<string>URLIcon</string>
 			<key>CFBundleURLName</key>
-			<string>com.example.wordscramble.word</string>
+			<string>com.marvinleekobert.eightlttrs.baseword</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wordscramble</string>
+				<string>eightlttrs</string>
 			</array>
 		</dict>
 	</array>

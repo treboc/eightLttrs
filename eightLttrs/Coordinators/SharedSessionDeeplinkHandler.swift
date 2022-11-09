@@ -16,7 +16,7 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
   }
 
   func canOpenURL(_ url: URL) -> Bool {
-    return url.absoluteString.hasPrefix("wordscramble://baseword")
+    return url.absoluteString.hasPrefix("eightlttrs://baseword")
   }
   
   func openURL(_ url: URL) {
@@ -36,7 +36,7 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
 
   func extractStartWord(from url: URL) -> String? {
     guard
-      url.scheme == "wordscramble",
+      url.scheme == "eightlttrs",
       url.host == "baseword",
       let locale = WSLocale(rawValue: (url.pathComponents[1].uppercased())),
       let word = url.pathComponents[safe: 2]?.removingPercentEncoding,

@@ -50,7 +50,7 @@ public class Session: NSManagedObject, Identifiable {
 extension Session {
   var sharableURL: URL {
     let encodedBaseWord = unwrappedBaseword.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
-    return URL(string: "wordscramble://baseword/\(locIdentifier.regionCode)/\(encodedBaseWord)")!
+    return URL(string: "eightlttrs://baseword/\(locIdentifier.regionCode)/\(encodedBaseWord)")!
   }
 
   var percentageWordsFound: Double {
