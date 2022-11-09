@@ -45,10 +45,12 @@ final class CoinShopViewModel: ObservableObject {
     case .success(_):
       popoverIsPresented.toggle()
       audioPlayer.play(type: .buyAction)
+      HapticManager.shared.notification(type: .success)
     case .failure(let failure):
       self.buyingError = failure
       audioPlayer.play(type: .error)
       popoverIsPresented.toggle()
+      HapticManager.shared.notification(type: .error)
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       onCompletion()

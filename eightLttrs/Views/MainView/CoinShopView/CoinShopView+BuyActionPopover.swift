@@ -22,12 +22,11 @@ struct CoinShopBuyActionPopover<PresetingOn>: View where PresetingOn: View {
 
       self.presentedOn()
         .blur(radius: isPresented ? 5 : 0)
+        .allowsHitTesting(!isPresented)
 
       if isPresented {
         VStack(spacing: 20) {
-          Image(systemName: error == nil ? "checkmark" : "xmark")
-            .font(.largeTitle)
-            .fontWeight(.bold)
+          AnimatedCheckmark(animationDuration: 0.6)
 
           Text(error == nil ? "Purchase successful completed!" : "Error buying words.")
         }
