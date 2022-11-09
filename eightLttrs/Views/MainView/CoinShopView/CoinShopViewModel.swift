@@ -20,6 +20,7 @@ final class CoinShopViewModel: ObservableObject {
   @Published var popoverIsPresented: Bool = false
   @Published var buyingError: Error?
 
+  let audioPlayer = AudioPlayer()
   let session: Session
   var onDismiss: () -> Void
 
@@ -43,8 +44,10 @@ final class CoinShopViewModel: ObservableObject {
     switch result {
     case .success(_):
       popoverIsPresented.toggle()
+      audioPlayer.play(type: .buyAction)
     case .failure(let failure):
       self.buyingError = failure
+      audioPlayer.play(type: .error)
       popoverIsPresented.toggle()
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -8,7 +8,7 @@
 import Foundation
 
 enum SoundType: String {
-  case success, error
+  case success, error, buyAction
 
   var fileURL: URL {
     return Bundle.main.url(forResource: self.rawValue, withExtension: "wav")!

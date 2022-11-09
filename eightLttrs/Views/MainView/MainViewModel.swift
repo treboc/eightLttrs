@@ -51,8 +51,6 @@ final class MainViewModel: ObservableObject {
     }
   }
 
-
-
   func startNewSession() {
     self.session = gameAPI.randomWordSession()
     resetUICallback?()
