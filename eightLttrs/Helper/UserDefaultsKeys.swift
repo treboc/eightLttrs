@@ -17,6 +17,7 @@ struct UserDefaultsKeys {
   static let appearance = "Appearance"
   static let enabledVibration = "enabledVibration"
   static let enabledSound = "enabledSound"
+  static let setVolume = "setVolume"
   static let enabledFiltering = "enabledFiltering"
   static let regionCode = "chosenBasewordLocale"
 

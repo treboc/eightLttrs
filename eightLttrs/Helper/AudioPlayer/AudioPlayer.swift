@@ -14,7 +14,10 @@ final class AudioPlayer {
   func play(type: SoundType) {
     do {
       if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledSound) {
+        try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+        try AVAudioSession.sharedInstance().setActive(true)
         player = try AVAudioPlayer(contentsOf: type.fileURL)
+        player?.volume = Float(UserDefaults.standard.double(forKey: UserDefaultsKeys.setVolume))
         player?.play()
       }
     } catch {

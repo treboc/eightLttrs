@@ -18,6 +18,7 @@ struct MenuView: View {
 
   @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
+  @AppStorage(UserDefaultsKeys.setVolume) private var setVolume: Double = 0.5
   @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
   @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: WSLocale = .DE
 
@@ -68,6 +69,7 @@ struct MenuView: View {
           AppearancePicker()
           enableVibrationToggle
           enableSoundToggle
+          setVolumeSlider
           enableFilteringToggle
         } header: {
           Text(L10n.MenuView.settings)
@@ -297,6 +299,24 @@ extension MenuView {
           .foregroundColor(.accentColor)
         Text(L10n.MenuView.sound)
       }
+    }
+  }
+
+  @ViewBuilder
+  private var setVolumeSlider: some View {
+    if enabledSound {
+      HStack {
+        Image(systemName: "speaker.wave.2.circle.fill", variableValue: setVolume)
+          .symbolVariant(.fill)
+          .font(.system(.title2, design: .rounded, weight: .bold))
+          .foregroundColor(.accentColor)
+
+        Slider(value: $setVolume, in: 0...1, step: 0.1)
+          .onChange(of: setVolume) { newValue in
+            HapticManager.shared.impact(style: .soft)
+          }
+      }
+      .transition(.slide.combined(with: .opacity))
     }
   }
 
