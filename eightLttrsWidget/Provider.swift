@@ -1,6 +1,6 @@
 //
 //  Provider.swift
-//  WordScrambleWidgetExtension
+//  eightLttrsWidgetExtension
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
 //

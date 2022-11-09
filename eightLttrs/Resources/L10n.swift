@@ -21,7 +21,7 @@ internal enum L10n {
   /// English
   internal static let english = L10n.tr("Localizable", "english", fallback: "English")
   /// Localizable.strings
-  ///  WordScramble
+  ///  eightLttrs
   /// 
   ///  Created by Marvin Lee Kobert on 18.08.22.
   internal static let german = L10n.tr("Localizable", "german", fallback: "German")

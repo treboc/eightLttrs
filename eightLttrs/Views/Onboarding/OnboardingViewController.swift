@@ -1,6 +1,6 @@
 //
 //  OnboardingViewController.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 16.08.22.
 //

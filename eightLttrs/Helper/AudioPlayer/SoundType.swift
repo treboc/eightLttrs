@@ -1,6 +1,6 @@
 //
 //  SoundManager.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 29.08.22.
 //

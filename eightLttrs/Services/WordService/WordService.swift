@@ -1,6 +1,6 @@
 //
 //  WordService.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 04.09.22.
 //

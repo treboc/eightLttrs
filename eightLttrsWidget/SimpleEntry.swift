@@ -1,6 +1,6 @@
 //
 //  SimpleEntry.swift
-//  WordScrambleWidgetExtension
+//  eightLttrsWidgetExtension
 //
 
 import WidgetKit

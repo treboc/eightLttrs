@@ -1,6 +1,6 @@
 //
 //  CurrentWidgetSession.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
 //

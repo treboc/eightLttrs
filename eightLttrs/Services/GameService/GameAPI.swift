@@ -1,6 +1,6 @@
 //
 //  GameAPI.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 11.08.22.
 //

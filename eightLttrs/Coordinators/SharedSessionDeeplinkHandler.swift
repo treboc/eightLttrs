@@ -1,6 +1,6 @@
 //
 //  SharedSessionDeeplinkHandler.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 08.09.22.
 //

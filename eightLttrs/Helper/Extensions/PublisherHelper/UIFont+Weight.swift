@@ -1,6 +1,6 @@
 //
 //  UIFont+Weight.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 07.09.22.
 //

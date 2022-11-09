@@ -1,6 +1,6 @@
 //
 //  PersistenceController.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 21.08.22.
 //

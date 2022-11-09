@@ -1,6 +1,6 @@
 //
 //  ShowModal-EnvironmentKey.swift
-//  WordScramble
+//  eightLttrs
 //
 // Quelle: https://stackoverflow.com/a/59825996/8366079
 //

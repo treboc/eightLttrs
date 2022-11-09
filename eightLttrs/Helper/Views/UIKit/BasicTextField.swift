@@ -1,6 +1,6 @@
 //
 //  BasicTextField.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 22.08.22.
 //

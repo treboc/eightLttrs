@@ -1,6 +1,6 @@
 //
 //  MenuView.swift
-//  WordScramble
+//  eightLttrs
 //
 
 import UIKit

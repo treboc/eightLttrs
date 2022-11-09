@@ -1,6 +1,6 @@
 //
 //  UITextField+Publisher.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 07.09.22.
 //

@@ -1,6 +1,6 @@
 //
 //  String+CalculatedScore.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 23.08.22.
 //

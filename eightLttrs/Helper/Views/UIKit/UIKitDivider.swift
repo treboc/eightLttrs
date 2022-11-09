@@ -1,6 +1,6 @@
 //
 //  UIKitDivider.swift
-//  WordScramble
+//  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 30.08.22.
 //
