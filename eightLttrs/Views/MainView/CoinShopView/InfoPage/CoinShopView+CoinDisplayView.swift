@@ -57,6 +57,8 @@ extension CoinShopView {
         RoundedRectangle(cornerRadius: Constants.cornerRadius)
           .fill(.ultraThinMaterial)
       )
+      .accessibilityElement()
+      .accessibilityLabel(L10n.CoinShopView.BuyPage.CoinDisplayView.a11yLabel(coins))
     }
   }
 }

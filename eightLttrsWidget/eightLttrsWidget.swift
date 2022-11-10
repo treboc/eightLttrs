@@ -18,7 +18,7 @@ struct eightLttrsWidget: Widget {
       WidgetView(entry: entry)
     }
     .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular])
-    .configurationDisplayName("Baseword")
-    .description("Show the current baseword.")
+    .configurationDisplayName(L10n.Widget.configurationDisplayName)
+    .description(L10n.Widget.description)
   }
 }

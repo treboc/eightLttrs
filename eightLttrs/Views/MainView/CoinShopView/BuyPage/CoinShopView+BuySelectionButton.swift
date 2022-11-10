@@ -14,6 +14,17 @@ extension CoinShopView {
     let namespace: Namespace.ID
     @State private var buttonSize: CGSize = .zero
 
+    var accessibiltyLabel: String {
+      switch buttonSelection {
+      case .one:
+        return "\(L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.oneWord(15)) \(selection == buttonSelection ? L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.isSelected : "")"
+      case .three:
+        return "\(L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.threeWords(25)) \(selection == buttonSelection ? L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.isSelected : "")"
+      case .five:
+        return "\(L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.fiveWords(37)) \(selection == buttonSelection ? L10n.CoinShopView.BuyPage.BuySelectionButton.A11yLabel.isSelected : "")"
+      }
+    }
+
     private var price: Text {
       switch buttonSelection {
       case .one:
@@ -52,6 +63,9 @@ extension CoinShopView {
         Color.accent
           .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
       )
+      .accessibilityElement()
+      .accessibilityLabel(accessibiltyLabel)
+      .accessibilityAddTraits(.isButton)
       .overlay {
         if selection == buttonSelection {
           RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -63,6 +77,7 @@ extension CoinShopView {
       })
       .overlay { selection == buttonSelection ? checkmarkOverlay : nil }
       .onTapGesture { selection = buttonSelection }
+
       .padding(.horizontal, 50)
     }
 

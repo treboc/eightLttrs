@@ -8,8 +8,8 @@
 //
 "german" = "German";
 "english" = "English";
-"baseword" = "baseword";
-"basewords" = "basewords";
+"baseword" = "base word";
+"basewords" = "base words";
 "possibleWords" = "possible words";
 "lastAdded" = "last added";
 "score" = "Score";
@@ -36,7 +36,7 @@
 // MenuView
 "menuView.title" = "Menu";
 "menuView.settings" = "Settings";
-"menuView.restartSession" = "New Baseword";
+"menuView.restartSession" = "New Base Word";
 "menuView.endSession" = "End Session";
 "menuView.showHighscore" = "Highscore";
 "menuView.baseword" = "Baseword";
@@ -45,7 +45,7 @@
 "menuView.filter" = "Filter Words";
 "menuView.filterDescription" = "When enabled, the list of already used words gets dynamically filtered.";
 "menuView.changedLanguage.title" = "Changed Language";
-"menuView.changedLanguage.message" = "You're now playing with different basewords.\n\nThis change will take effect on the next session.";
+"menuView.changedLanguage.message" = "You're now playing with different base words.\n\nThis change will take effect on the next session.";
 "menuView.supportEmail.buttonHeader" = "Contact Support";
 "menuView.supportEmail.buttonSubtitle" = "e.g. for requesting a missing word";
 
@@ -69,12 +69,12 @@
 "highscoreListEmptyListPlaceholder.body" = "Find some words, save your session and come back again later.";
 
 // HighscoreListRowView
-"highscoreListRowView.basewordWas" = "baseword war: *%@*";
+"highscoreListRowView.basewordWas" = "base word was: *%@*";
 
 // HighscoreDetailView
 "highscoreDetailView.title" = "Details";
 "highscoreDetaiLView.name" = "Name";
-"highscoreDetaiLView.baseword" = "Baseword";
+"highscoreDetaiLView.baseword" = "Base Word";
 "highscoreDetaiLView.score" = "Score";
 "highscoreDetailView.statistics" = "Words / poss. Score";
 "highscoreDetaiLView.foundWordsPercentage" = "Found %@";
@@ -105,6 +105,11 @@
 "coinShopView.buyPage.infoPageSelectionButtonTitle" = "Info";
 "coinShopView.buyPage.buyAction.successful" = "Purchase completed";
 "coinShopView.buyPage.buyAction.error %@" = "Error buying words:\n%@";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.oneWord %@" = "buy one word for %@ points, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.threeWords %@" = "buy three words for %@ points, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.fiveWords %@" = "buy five words for %@ points, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.isSelected" = "is selected";
+"coinShopView.buyPage.coinDisplayView.a11yLabel %@" = "you have %@ points";
 
 // InfoPage
 "coinShopView.infoPage.heading" = "How to get points?";
@@ -164,3 +169,7 @@
 
 "sharedWord.alert.noValidStartword.title" = "Error!";
 "sharedWord.alert.noValidStartword.message" = "This is not a valid start word!";
+
+// Widget
+"widget.configurationDisplayName" = "Base Word";
+"widget.description" = "Show the current base word and how many words you've found.";

@@ -104,6 +104,11 @@
 "coinShopView.buyPage.infoPageSelectionButtonTitle" = "Info";
 "coinShopView.buyPage.buyAction.successful" = "Kauf abgeschlossen";
 "coinShopView.buyPage.buyAction.error %@" = "Es ist ein Fehler aufgetreten:\n%@";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.oneWord %@" = "kaufe ein Wort für %@ Punkte, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.threeWords %@" = "kaufe drei Wörter für %@ Punkte, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.fiveWords %@" = "kaufe fünf Wörter for %@ Punkte, ";
+"coinShopView.buyPage.buySelectionButton.a11yLabel.isSelected" = "ausgewählt";
+"coinShopView.buyPage.coinDisplayView.a11yLabel %@" = "du hast %@ Punkte";
 
 // InfoPage
 "coinShopView.infoPage.heading" = "Wie bekomme ich Punkte?";
@@ -163,3 +168,7 @@
 
 "sharedWord.alert.noValidStartword.title" = "Fehler!";
 "sharedWord.alert.noValidStartword.message" = "Das ist kein mögliches Startwort.";
+
+// Widget
+"widget.configurationDisplayName" = "Grundwort";
+"widget.description" = "Zeigt das aktuelle Grundwort und wie viele Wörter gefunden wurden.";
