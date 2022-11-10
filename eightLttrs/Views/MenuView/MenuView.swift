@@ -1,3 +1,4 @@
+
 //
 //  MenuView.swift
 //  eightLttrs
@@ -310,11 +311,13 @@ extension MenuView {
           .symbolVariant(.fill)
           .font(.system(.title2, design: .rounded, weight: .bold))
           .foregroundColor(.accentColor)
+          .accessibilityHidden(true)
 
         Slider(value: $setVolume, in: 0...1, step: 0.1)
           .onChange(of: setVolume) { newValue in
             HapticManager.shared.impact(style: .soft)
           }
+          .accessibilityLabel("Sets Volume of sound effects.")
       }
       .transition(.slide.combined(with: .opacity))
     }

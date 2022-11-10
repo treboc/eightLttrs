@@ -112,11 +112,7 @@ extension MainViewController: UICollectionViewDelegate {
       return
     }
     let filteredItems = items.filter { $0.lowercased().contains(string.lowercased()) }
-
-    var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-    snapshot.appendSections([.wordList])
-    snapshot.appendItems(filteredItems, toSection: .wordList)
-    dataSource.apply(snapshot)
+    applySnapshot(with: filteredItems)
   }
 
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -191,28 +187,9 @@ extension MainViewController {
     // Publisher -> color baseword with input
     viewModel.input
       .sink { [unowned self] value in
-        mainView.basewordLabel.attributedText = colorString(input: value, baseword: viewModel.session.unwrappedBaseword)
+        mainView.basewordLabel.attributedText = highlighted(input: value, onString: viewModel.session.unwrappedBaseword)
       }
       .store(in: &cancellables)
-
-    func colorString(input: String, baseword: String) -> NSAttributedString {
-      let markedAttribute: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.label.withAlphaComponent(0.2)]
-      let attributedString = NSMutableAttributedString()
-      var tmpInput = input
-      for letter in baseword {
-        if tmpInput.contains(letter) {
-          let attributedLetter = NSAttributedString(string: String(letter), attributes: markedAttribute)
-          attributedString.append(attributedLetter)
-          if let index = tmpInput.firstIndex(of: letter) {
-            tmpInput.remove(at: index)
-          }
-        } else {
-          let attributedLetter = NSAttributedString(string: String(letter))
-          attributedString.append(attributedLetter)
-        }
-      }
-      return attributedString
-    }
 
     // Publisher -> input to mainViewModel
     mainView.textField.textPublisher()
@@ -325,6 +302,30 @@ extension MainViewController {
   private func hideButtons() {
     mainView.coinsDisplayTopAnchor?.constant = -300
     mainView.shopButtonTrailingAnchor?.constant = 300
+  }
+
+  /// Returns a NSAttributedString where the input is greyed out, the rest remains normally visible.
+  /// - Parameters:
+  ///   - input: The part that will be greyed out.
+  ///   - onString: The String that this applies to.
+  ///
+  func highlighted(input: String, onString: String) -> NSAttributedString {
+    let markedAttribute: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.label.withAlphaComponent(0.2)]
+    let attributedString = NSMutableAttributedString()
+    var tmpInput = input
+    for letter in onString {
+      if tmpInput.contains(letter) {
+        let attributedLetter = NSAttributedString(string: String(letter), attributes: markedAttribute)
+        attributedString.append(attributedLetter)
+        if let index = tmpInput.firstIndex(of: letter) {
+          tmpInput.remove(at: index)
+        }
+      } else {
+        let attributedLetter = NSAttributedString(string: String(letter))
+        attributedString.append(attributedLetter)
+      }
+    }
+    return attributedString
   }
 }
 

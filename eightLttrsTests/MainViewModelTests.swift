@@ -80,7 +80,7 @@ fileprivate extension MainViewModelTests {
     let session = Session(using: context)
     session.id = UUID()
     session.isFinished = false
-    session.baseword = "Taubenei"
+    session.baseWord = "Taubenei"
     session.possibleWords = ["Taube", "Tauben", "Taub"]
     return session
   }

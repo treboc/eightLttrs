@@ -25,10 +25,15 @@ struct CoinShopBuyActionPopover<PresetingOn>: View where PresetingOn: View {
         .allowsHitTesting(!isPresented)
 
       if isPresented {
-        VStack(spacing: 20) {
+        VStack {
           AnimatedCheckmark(animationDuration: 0.6)
+            .padding(50)
 
-          Text(error == nil ? "Purchase successful completed!" : "Error buying words.")
+          if let error {
+            Text(L10n.CoinShopView.BuyPage.BuyAction.error(error.localizedDescription))
+          } else {
+            Text(L10n.CoinShopView.BuyPage.BuyAction.successful)
+          }
         }
         .padding(30)
         .background(

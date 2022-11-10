@@ -11,11 +11,14 @@ import SwiftUI
 struct AnimatedCheckmark: View {
   struct Checkmark: Shape {
     func path(in rect: CGRect) -> Path {
-      var p = Path()
-      p.move(to: CGPoint(x: rect.minX + rect.width / 5, y: rect.midY + (rect.height / 5)))
-      p.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
-      p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-      return p
+      let width = rect.size.width
+      let height = rect.size.height
+
+      var path = Path()
+      path.move(to: .init(x: 0 * width, y: 0.5 * height))
+      path.addLine(to: .init(x: 0.4 * width, y: 1.0 * height))
+      path.addLine(to: .init(x: 1.0 * width, y: 0 * height))
+      return path
     }
   }
 
@@ -25,7 +28,7 @@ struct AnimatedCheckmark: View {
   var body: some View {
     Checkmark()
       .trim(from: 0, to: end)
-      .stroke(.secondary, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+      .stroke(.secondary, style: StrokeStyle(lineWidth: 16, lineCap: .round, lineJoin: .round))
       .aspectRatio(1, contentMode: .fit)
       .padding()
       .onAppear {

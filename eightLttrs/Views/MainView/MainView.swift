@@ -48,6 +48,15 @@ class MainView: UIView {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    shopButton.layer.backgroundColor = UIColor.tintColor.cgColor
+    shopButton.tintColor = .systemBackground
+    let width = shopButton.frame.width
+    shopButton.layer.cornerRadius = width / 2
+    shopButton.imageEdgeInsets = .init(width / 4)
+  }
 }
 
 extension MainView {
@@ -55,9 +64,9 @@ extension MainView {
     let semiBoldFont = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: .semibold)
     let buttonConfig = UIImage.SymbolConfiguration(textStyle: .title3, scale: .large)
 
-    let shopButtonConfig = UIImage.SymbolConfiguration(textStyle: .largeTitle, scale: .large)
-    let shopButtonImage = UIImage(systemName: "bag.circle.fill", withConfiguration: shopButtonConfig)
+    let shopButtonImage = UIImage(named: "shopIcon")
     shopButton.setImage(shopButtonImage, for: .normal)
+    shopButton.accessibilityLabel = L10n.MainView.ShopButton.title
 
     let resetButtonImage = UIImage(systemName: "arrow.counterclockwise.circle.fill", withConfiguration: buttonConfig)
     resetButton.setImage(resetButtonImage, for: .normal)
@@ -67,7 +76,7 @@ extension MainView {
     menuButton.setImage(menuButtonImage, for: .normal)
     menuButton.accessibilityLabel = L10n.MenuView.title
 
-    basewordLabel.font = .baseword()
+    basewordLabel.font = .roundedLargeTitle()
     basewordLabel.textAlignment = .center
     basewordLabel.textColor = .label
     basewordLabel.adjustsFontForContentSizeCategory = true
@@ -128,9 +137,10 @@ extension MainView {
 
     NSLayoutConstraint.activate([
       coinsDisplayView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: Constants.widthPadding),
-      coinsDisplayView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
 
       shopButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -Constants.widthPadding),
+      shopButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.17),
+      shopButton.widthAnchor.constraint(equalTo: shopButton.heightAnchor),
 
       resetButton.trailingAnchor.constraint(equalTo: menuButton.leadingAnchor, constant: -Constants.widthPadding),
       resetButton.centerYAnchor.constraint(equalTo: coinsDisplayView.centerYAnchor),

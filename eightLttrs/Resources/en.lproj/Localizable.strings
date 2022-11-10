@@ -31,6 +31,7 @@
 // MainView
 "mainView.currentScore" = "Current Score";
 "mainView.foundWords" = "Words found";
+"mainView.shopButton.title" = "Shop";
 
 // MenuView
 "menuView.title" = "Menu";
@@ -93,6 +94,7 @@
 "widget.noWords" = "No words found yet. What are you waiting for?";
 
 // CoinShop
+// BuyPage
 "coinShopView.buyPage.heading" = "How many words do you want to buy?";
 "coinShopView.buyPage.oneWord" = "One Word";
 "coinShopView.buyPage.threeWords" = "Three Words";
@@ -101,6 +103,10 @@
 "coinShopView.buyPage.strikethroughPrice %@ %@" = "Price: ~%@P~ %@P";
 "coinShopView.buyPage.buyButtonTitle" = "Buy";
 "coinShopView.buyPage.infoPageSelectionButtonTitle" = "Info";
+"coinShopView.buyPage.buyAction.successful" = "Purchase completed";
+"coinShopView.buyPage.buyAction.error %@" = "Error buying words:\n%@";
+
+// InfoPage
 "coinShopView.infoPage.heading" = "How to get points?";
 "coinShopView.infoPage.20correctWords" = "For 20 correct entered words";
 "coinShopView.infoPage.50percentReached" = "When reaching 50%% of a word";

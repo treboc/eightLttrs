@@ -44,7 +44,7 @@ final class GameAPITests: XCTestCase {
     let expectedSession = sut.startGame(in: moc)
 
     // Assert
-    XCTAssertNotNil(expectedSession.baseword)
+    XCTAssertNotNil(expectedSession.baseWord)
   }
 
   func test_startGame_withBaseword_shouldReturnSessionWithBaseword() {
@@ -53,14 +53,14 @@ final class GameAPITests: XCTestCase {
     let expectedSession = sut.startGame(.shared(baseword), in: moc)
 
     // Assert
-    XCTAssertEqual(expectedSession.baseword, baseword)
+    XCTAssertEqual(expectedSession.baseWord, baseword)
     XCTAssertTrue(expectedSession.possibleWordsSet.isEmpty == false)
   }
 
   func test_submit_withValidInput_shouldPersistSession() {
     let session = Session.init(using: moc)
     session.isFinished = false
-    session.baseword = "Taubenei"
+    session.baseWord = "Taubenei"
     session.possibleWords = ["Taube"]
 
     try? sut.submit("Taube", session: session)

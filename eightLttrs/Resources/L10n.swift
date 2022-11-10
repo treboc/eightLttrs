@@ -127,16 +127,25 @@ internal enum L10n {
       internal static let infoPageSelectionButtonTitle = L10n.tr("Localizable", "coinShopView.buyPage.infoPageSelectionButtonTitle", fallback: "Info")
       /// One Word
       internal static let oneWord = L10n.tr("Localizable", "coinShopView.buyPage.oneWord", fallback: "One Word")
-      /// Price: %@
+      /// Price: %@P
       internal static func price(_ p1: Any) -> String {
-        return L10n.tr("Localizable", "coinShopView.buyPage.price %@", String(describing: p1), fallback: "Price: %@")
+        return L10n.tr("Localizable", "coinShopView.buyPage.price %@", String(describing: p1), fallback: "Price: %@P")
       }
-      /// Price: ~%@~ %@
+      /// Price: ~%@P~ %@P
       internal static func strikethroughPrice(_ p1: Any, _ p2: Any) -> String {
-        return L10n.tr("Localizable", "coinShopView.buyPage.strikethroughPrice %@ %@", String(describing: p1), String(describing: p2), fallback: "Price: ~%@~ %@")
+        return L10n.tr("Localizable", "coinShopView.buyPage.strikethroughPrice %@ %@", String(describing: p1), String(describing: p2), fallback: "Price: ~%@P~ %@P")
       }
       /// Three Words
       internal static let threeWords = L10n.tr("Localizable", "coinShopView.buyPage.threeWords", fallback: "Three Words")
+      internal enum BuyAction {
+        /// Error buying words:
+        /// %@
+        internal static func error(_ p1: Any) -> String {
+          return L10n.tr("Localizable", "coinShopView.buyPage.buyAction.error %@", String(describing: p1), fallback: "Error buying words:\n%@")
+        }
+        /// Purchase completed
+        internal static let successful = L10n.tr("Localizable", "coinShopView.buyPage.buyAction.successful", fallback: "Purchase completed")
+      }
     }
     internal enum InfoPage {
       /// For completing a word
@@ -145,8 +154,8 @@ internal enum L10n {
       internal static let _20correctWords = L10n.tr("Localizable", "coinShopView.infoPage.20correctWords", fallback: "For 20 correct entered words")
       /// When reaching 50%% of a word
       internal static let _50percentReached = L10n.tr("Localizable", "coinShopView.infoPage.50percentReached", fallback: "When reaching 50%% of a word")
-      /// How to get coins?
-      internal static let heading = L10n.tr("Localizable", "coinShopView.infoPage.heading", fallback: "How to get coins?")
+      /// How to get points?
+      internal static let heading = L10n.tr("Localizable", "coinShopView.infoPage.heading", fallback: "How to get points?")
       /// Shop
       internal static let shopPageSelectionButtonTitle = L10n.tr("Localizable", "coinShopView.infoPage.shopPageSelectionButtonTitle", fallback: "Shop")
       internal enum StatusBar {
@@ -222,6 +231,10 @@ internal enum L10n {
     internal static let currentScore = L10n.tr("Localizable", "mainView.currentScore", fallback: "Current Score")
     /// Words found
     internal static let foundWords = L10n.tr("Localizable", "mainView.foundWords", fallback: "Words found")
+    internal enum ShopButton {
+      /// Shop
+      internal static let title = L10n.tr("Localizable", "mainView.shopButton.title", fallback: "Shop")
+    }
   }
   internal enum MenuView {
     /// Baseword

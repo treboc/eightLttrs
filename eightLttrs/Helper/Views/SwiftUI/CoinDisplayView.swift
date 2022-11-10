@@ -16,7 +16,8 @@ struct CoinsDisplayView: View {
     HStack {
       Coins()
       Spacer()
-      Text("\(coinShopManager.availableCoins)")
+      Text("\(coinShopManager.availableCoins.formatAsShortNumber())")
+        .monospacedDigit()
     }
     .padding(10)
     .background(
@@ -39,7 +40,9 @@ struct CoinsDisplayView: View {
   }
 
   private func setWidth(_ enteredWords: Int) {
-    width = size.width * (CGFloat(enteredWords) / 20)
+    withAnimation(.spring()) {
+      width = size.width * (CGFloat(enteredWords) / 20)
+    }
   }
 }
 
@@ -59,6 +62,7 @@ extension CoinsDisplayView {
             Text("P")
               .font(.system(.caption2, design: .rounded, weight: .semibold))
               .foregroundColor(.black)
+              .dynamicTypeSize(.medium)
           }
         }
         .frame(width: 18, height: 18)

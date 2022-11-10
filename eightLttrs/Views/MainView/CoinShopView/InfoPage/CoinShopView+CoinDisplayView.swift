@@ -49,7 +49,7 @@ extension CoinShopView {
     var body: some View {
       HStack {
         Coins()
-        Text(isInfo ? "+\(coins)" : "\(coins)")
+        Text(isInfo ? "+\(coins)" : "\(coins.formatAsShortNumber())")
           .foregroundColor(isInfo ? .accent : .primary)
       }
       .padding(10)
