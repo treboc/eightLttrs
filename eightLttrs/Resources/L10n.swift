@@ -10,10 +10,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// baseword
-  internal static let baseword = L10n.tr("Localizable", "baseword", fallback: "baseword")
-  /// basewords
-  internal static let basewords = L10n.tr("Localizable", "basewords", fallback: "basewords")
+  /// base word
+  internal static let baseword = L10n.tr("Localizable", "baseword", fallback: "base word")
+  /// base words
+  internal static let basewords = L10n.tr("Localizable", "basewords", fallback: "base words")
   /// Plural format key: "%#@wordsCount@ %#@score@"
   internal static func endSessionBody(_ p1: Int, _ p2: Int) -> String {
     return L10n.tr("Localizable", "endSessionBody", p1, p2, fallback: "Plural format key: \"%#@wordsCount@ %#@score@\"")
@@ -146,6 +146,30 @@ internal enum L10n {
         /// Purchase completed
         internal static let successful = L10n.tr("Localizable", "coinShopView.buyPage.buyAction.successful", fallback: "Purchase completed")
       }
+      internal enum BuySelectionButton {
+        internal enum A11yLabel {
+          /// buy five words for %@ points, 
+          internal static func fiveWords(_ p1: Any) -> String {
+            return L10n.tr("Localizable", "coinShopView.buyPage.buySelectionButton.a11yLabel.fiveWords %@", String(describing: p1), fallback: "buy five words for %@ points, ")
+          }
+          /// is selected
+          internal static let isSelected = L10n.tr("Localizable", "coinShopView.buyPage.buySelectionButton.a11yLabel.isSelected", fallback: "is selected")
+          /// buy one word for %@ points, 
+          internal static func oneWord(_ p1: Any) -> String {
+            return L10n.tr("Localizable", "coinShopView.buyPage.buySelectionButton.a11yLabel.oneWord %@", String(describing: p1), fallback: "buy one word for %@ points, ")
+          }
+          /// buy three words for %@ points, 
+          internal static func threeWords(_ p1: Any) -> String {
+            return L10n.tr("Localizable", "coinShopView.buyPage.buySelectionButton.a11yLabel.threeWords %@", String(describing: p1), fallback: "buy three words for %@ points, ")
+          }
+        }
+      }
+      internal enum CoinDisplayView {
+        /// you have %@ points
+        internal static func a11yLabel(_ p1: Any) -> String {
+          return L10n.tr("Localizable", "coinShopView.buyPage.coinDisplayView.a11yLabel %@", String(describing: p1), fallback: "you have %@ points")
+        }
+      }
     }
     internal enum InfoPage {
       /// For completing a word
@@ -187,8 +211,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "endSessionView.title", fallback: "Congratulations! 🎉")
   }
   internal enum HighscoreDetaiLView {
-    /// Baseword
-    internal static let baseword = L10n.tr("Localizable", "highscoreDetaiLView.baseword", fallback: "Baseword")
+    /// Base Word
+    internal static let baseword = L10n.tr("Localizable", "highscoreDetaiLView.baseword", fallback: "Base Word")
     /// Found %@
     internal static func foundWordsPercentage(_ p1: Any) -> String {
       return L10n.tr("Localizable", "highscoreDetaiLView.foundWordsPercentage", String(describing: p1), fallback: "Found %@")
@@ -213,9 +237,9 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "highscoreListEmptyListPlaceholder.title", fallback: "It's empty here")
   }
   internal enum HighscoreListRowView {
-    /// baseword war: *%@*
+    /// base word was: *%@*
     internal static func basewordWas(_ p1: Any) -> String {
-      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "baseword war: *%@*")
+      return L10n.tr("Localizable", "highscoreListRowView.basewordWas", String(describing: p1), fallback: "base word was: *%@*")
     }
   }
   internal enum HighscoreListView {
@@ -247,8 +271,8 @@ internal enum L10n {
     internal static let filterDescription = L10n.tr("Localizable", "menuView.filterDescription", fallback: "When enabled, the list of already used words gets dynamically filtered.")
     /// Haptic Feedback
     internal static let hapticFeedback = L10n.tr("Localizable", "menuView.hapticFeedback", fallback: "Haptic Feedback")
-    /// New Baseword
-    internal static let restartSession = L10n.tr("Localizable", "menuView.restartSession", fallback: "New Baseword")
+    /// New Base Word
+    internal static let restartSession = L10n.tr("Localizable", "menuView.restartSession", fallback: "New Base Word")
     /// Settings
     internal static let settings = L10n.tr("Localizable", "menuView.settings", fallback: "Settings")
     /// Highscore
@@ -258,10 +282,10 @@ internal enum L10n {
     /// Menu
     internal static let title = L10n.tr("Localizable", "menuView.title", fallback: "Menu")
     internal enum ChangedLanguage {
-      /// You're now playing with different basewords.
+      /// You're now playing with different base words.
       /// 
       /// This change will take effect on the next session.
-      internal static let message = L10n.tr("Localizable", "menuView.changedLanguage.message", fallback: "You're now playing with different basewords.\n\nThis change will take effect on the next session.")
+      internal static let message = L10n.tr("Localizable", "menuView.changedLanguage.message", fallback: "You're now playing with different base words.\n\nThis change will take effect on the next session.")
       /// Changed Language
       internal static let title = L10n.tr("Localizable", "menuView.changedLanguage.title", fallback: "Changed Language")
     }
@@ -347,6 +371,10 @@ internal enum L10n {
     }
   }
   internal enum Widget {
+    /// Base Word
+    internal static let configurationDisplayName = L10n.tr("Localizable", "widget.configurationDisplayName", fallback: "Base Word")
+    /// Show the current base word and how many words you've found.
+    internal static let description = L10n.tr("Localizable", "widget.description", fallback: "Show the current base word and how many words you've found.")
     /// No words found yet. What are you waiting for?
     internal static let noWords = L10n.tr("Localizable", "widget.noWords", fallback: "No words found yet. What are you waiting for?")
     /// Found %@ of %@ possible words.
