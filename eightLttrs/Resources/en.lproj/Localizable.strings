@@ -146,8 +146,6 @@
 "a11y.sessionDetailView.score" = "%@ of %@ Points"; // Score, PossibleScore
 
 // WordError
-"wordError.tryUppercaseHint.title" = "Hint";
-"wordError.tryUppercaseHint.message" = "Try it again! Notice that it depends on whether you capitalize the words or not.";
 "wordError.notReal.title" = "Word Not Recognized";
 "wordError.notReal.message" = "You can't just make them up, you know?";
 "wordError.notOriginal.title" = "Word Already Used";

@@ -409,12 +409,6 @@ internal enum L10n {
       /// Too Short
       internal static let title = L10n.tr("Localizable", "wordError.tooShort.title", fallback: "Too Short")
     }
-    internal enum TryUppercaseHint {
-      /// Try it again! Notice that it depends on whether you capitalize the words or not.
-      internal static let message = L10n.tr("Localizable", "wordError.tryUppercaseHint.message", fallback: "Try it again! Notice that it depends on whether you capitalize the words or not.")
-      /// Hint
-      internal static let title = L10n.tr("Localizable", "wordError.tryUppercaseHint.title", fallback: "Hint")
-    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

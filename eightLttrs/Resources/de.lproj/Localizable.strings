@@ -145,8 +145,6 @@
 "a11y.sessionDetailView.score" = "%@ von %@ Punkten"; // Score, PossibleScore
 
 // WordError
-"wordError.tryUppercaseHint.title" = "Hinweis";
-"wordError.tryUppercaseHint.message" = "Achte darauf, dass es hier auf Groß- und Kleinschreibung ankommt.";
 "wordError.notReal.title" = "Unbekanntes Wort";
 "wordError.notReal.message" = "Dies scheint kein Wort zu sein, dass ich kenne. Versuch's nochmal.";
 "wordError.notOriginal.title" = "Schon genutzt";
