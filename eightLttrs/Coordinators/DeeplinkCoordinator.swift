@@ -8,8 +8,7 @@
 import Foundation
 
 protocol DeeplinkCoordinatorProtocol {
-  @discardableResult
-  func handleURL(_ url: URL) -> Bool
+  func handleURL(_ url: URL)
 }
 
 final class DeeplinkCoordinator {
@@ -21,15 +20,9 @@ final class DeeplinkCoordinator {
 }
 
 extension DeeplinkCoordinator: DeeplinkCoordinatorProtocol {
-  @discardableResult
-  func handleURL(_ url: URL) -> Bool {
-    guard let handler = handlers.first(where: { $0.canOpenURL(url) }) else {
-      return false
-    }
+  func handleURL(_ url: URL) {
+    guard let handler = handlers.first(where: { $0.canOpenURL(url) }) else { return }
 
     handler.openURL(url)
-    return true
   }
-
-
 }
