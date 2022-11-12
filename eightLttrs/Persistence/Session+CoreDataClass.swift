@@ -120,12 +120,12 @@ extension Session {
     set { maxPossibleScoreOnBaseWordIntern = Int16(newValue) }
   }
 
-  var locIdentifier: WSLocale {
+  var locIdentifier: ELLocale {
     get {
       if let identifier = localeIdentifier {
-        return .init(rawValue: identifier) ?? WSLocale.getStoredWSLocale()
+        return .init(rawValue: identifier) ?? ELLocale.getStoredWSLocale()
       } else {
-        return WSLocale.getStoredWSLocale()
+        return ELLocale.getStoredWSLocale()
       }
     }
 

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class WordService {
-  static func loadBasewords(_ wsLocale: WSLocale) -> Set<String> {
+  static func loadBasewords(_ wsLocale: ELLocale) -> Set<String> {
     if let basewordsURL = Bundle.main.url(forResource: "basewords\(wsLocale.fileNameSuffix)", withExtension: "txt"),
        let basewords = try? String(contentsOf: basewordsURL) {
       return Set(basewords.components(separatedBy: .newlines))
@@ -17,7 +17,7 @@ class WordService {
     return Set<String>()
   }
 
-  static func loadPossibleWords(_ wsLocale: WSLocale) -> Set<String> {
+  static func loadPossibleWords(_ wsLocale: ELLocale) -> Set<String> {
     if let possibleWordsURL = Bundle.main.url(forResource: "possibleWords\(wsLocale.fileNameSuffix)", withExtension: "txt"),
        let possibleWords = try? String(contentsOf: possibleWordsURL) {
       return Set(possibleWords.components(separatedBy: .newlines))
@@ -25,7 +25,7 @@ class WordService {
     return Set<String>()
   }
 
-  static func getNewBasewordWith(_ wsLoacle: WSLocale) -> (String, Set<String>, Int) {
+  static func getNewBasewordWith(_ wsLoacle: ELLocale) -> (String, Set<String>, Int) {
     let basewords = WordService.loadBasewords(wsLoacle)
     let baseword = basewords.randomElement()!
     let allPossibleWords = WordService.loadPossibleWords(wsLoacle)
@@ -47,7 +47,7 @@ class WordService {
   }
 
   static func isValidBaseword(_ word: String,
-                              with locale: WSLocale) -> Bool {
+                              with locale: ELLocale) -> Bool {
     let basewords = loadBasewords(locale)
     return basewords.contains(word)
   }
@@ -79,8 +79,8 @@ class WordService {
     }
   }
 
-  static func getLocale(for word: String) -> WSLocale {
-    for locale in WSLocale.allCases {
+  static func getLocale(for word: String) -> ELLocale {
+    for locale in ELLocale.allCases {
       let basewords = loadBasewords(locale)
       if basewords.contains(word) {
         return locale
@@ -100,7 +100,7 @@ class WordService {
     return allPossibleWords(for: word, basedOn: list)
   }
 
-  static func getAllPossibleWordsFor(_ word: String, withLocale locale: WSLocale, onCompletion: @escaping (Set<String>, Int) -> Void) {
+  static func getAllPossibleWordsFor(_ word: String, withLocale locale: ELLocale, onCompletion: @escaping (Set<String>, Int) -> Void) {
     let list = loadPossibleWords(locale)
     Task {
       let (words, score) = allPossibleWords(for: word, basedOn: list)

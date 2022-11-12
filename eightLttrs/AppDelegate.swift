@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // german for de/at/ch, else en
-    let wsLocale = WSLocale.wsLocaleBasedOnRegion()
+    let wsLocale = ELLocale.wsLocaleBasedOnRegion()
     application.accessibilityLanguage = Locale.autoupdatingCurrent.language.region?.identifier
 
     // register settings

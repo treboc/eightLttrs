@@ -11,8 +11,8 @@ import XCTest
 final class WordServiceTests: XCTestCase {
   func test_loadBasewords_withGermanLocale_shouldReturnBasewords() {
     // Arrange
-    let regionCode: WSLocale = .DE
     let testWord = "Taubenei"
+    let regionCode: ELLocale = .DE
 
     // Act
     let basewords = WordService.loadBasewords(regionCode)
@@ -23,8 +23,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadBasewords_withEnglishLocale_shouldReturnBasewords() {
     // Arrange
-    let regionCode: WSLocale = .EN
     let testWord = "candying"
+    let regionCode: ELLocale = .EN
 
     // Act
     let basewords = WordService.loadBasewords(regionCode)
@@ -35,8 +35,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadpossibleWords_withGermanLocale_shouldReturnBasewords() {
     // Arrange
-    let regionCode: WSLocale = .DE
     let testWord = "Taubenei"
+    let regionCode: ELLocale = .DE
 
     // Act
     let basewords = WordService.loadPossibleWords(regionCode)
@@ -47,8 +47,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadpossibleWords_withEnglishLocale_shouldReturnBasewords() {
     // Arrange
-    let regionCode: WSLocale = .EN
     let testWord = "candying"
+    let regionCode: ELLocale = .EN
 
     // Act
     let basewords = WordService.loadPossibleWords(regionCode)
@@ -154,7 +154,7 @@ final class WordServiceTests: XCTestCase {
   func test_getLocale_forHolzzaun_shouldReturn_DE() {
     // Arrange
     let baseword = "Holzzaun"
-    let storedLocale: WSLocale = .EN
+    let storedLocale: ELLocale = .EN
     storedLocale.persistWSLocale()
 
     // Act
@@ -167,7 +167,7 @@ final class WordServiceTests: XCTestCase {
   func test_getLocale_fordDemeaned_shouldReturn_DE() {
     // Arrange
     let baseword = "demeaned"
-    let storedLocale: WSLocale = .DE
+    let storedLocale: ELLocale = .DE
     storedLocale.persistWSLocale()
 
     // Act

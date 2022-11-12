@@ -21,7 +21,7 @@ struct MenuView: View {
   @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
   @AppStorage(UserDefaultsKeys.setVolume) private var setVolume: Double = 0.5
   @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
-  @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: WSLocale = .DE
+  @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: ELLocale = .DE
 
   @State private var alertModel: AlertToPresent? = nil
   @State private var endGameViewIsShown: Bool = false
@@ -150,7 +150,7 @@ extension MenuView {
 
 // MARK: - Methods
 extension MenuView {
-  private func didReceiveWSLocaleChange(_ locale: WSLocale) {
+  private func didReceiveWSLocaleChange(_ locale: ELLocale) {
     alertModel = AlertToPresent(simpleAlert: true,
                                 title: L10n.MenuView.ChangedLanguage.title,
                                 message: L10n.MenuView.ChangedLanguage.message,
@@ -265,7 +265,7 @@ extension MenuView {
 
   private var basewordLanguagePicker: some View {
     Picker(selection: $chosenBasewordLocale) {
-      ForEach(WSLocale.availableLanguages()) { locale in
+      ForEach(ELLocale.availableLanguages()) { locale in
         Text(locale.description)
           .tag(locale)
       }

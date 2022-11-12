@@ -1,5 +1,5 @@
 //
-//  WSLocale.swift
+//  ELLocale.swift
 //  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 02.09.22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WSLocale: String, CaseIterable, Identifiable {
+enum ELLocale: String, CaseIterable, Identifiable {
   var id: String {
     return rawValue
   }
@@ -41,7 +41,7 @@ enum WSLocale: String, CaseIterable, Identifiable {
     }
   }
 
-  static func availableLanguages() -> [WSLocale] {
+  static func availableLanguages() -> [ELLocale] {
     return [.DE, .EN]
   }
 
@@ -49,9 +49,9 @@ enum WSLocale: String, CaseIterable, Identifiable {
     UserDefaults.standard.set(rawValue, forKey: UserDefaultsKeys.regionCode)
   }
 
-  static func getStoredWSLocale() -> WSLocale {
+  static func getStoredWSLocale() -> ELLocale {
     guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaultsKeys.regionCode),
-          let wsLocale = WSLocale.init(rawValue: storedRegionCode)
+          let wsLocale = ELLocale.init(rawValue: storedRegionCode)
     else { return .EN }
     return wsLocale
   }
@@ -68,10 +68,10 @@ enum WSLocale: String, CaseIterable, Identifiable {
     }
   }
 
-  static func wsLocaleBasedOnRegion() -> WSLocale {
+  static func wsLocaleBasedOnRegion() -> ELLocale {
     guard
       let regionCode = Locale.autoupdatingCurrent.region,
-      let wsLocale = WSLocale.init(rawValue: regionCode.identifier)
+      let wsLocale = ELLocale.init(rawValue: regionCode.identifier)
     else { return .EN }
 
     return wsLocale
