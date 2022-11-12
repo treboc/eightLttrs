@@ -10,7 +10,7 @@ import UIKit
 
 final class MainViewModel: ObservableObject {
   let audioPlayer = AudioPlayer()
-  let gameAPI: GameAPI
+  let gameAPI: GameService
   var session: Session
 
   var input = CurrentValueSubject<String, Never>("")
@@ -21,12 +21,12 @@ final class MainViewModel: ObservableObject {
   @Published var shopIsShown: Bool = false
 
   init(gameType: GameType = .continueLastSession) {
-    self.gameAPI = GameAPI()
+    self.gameAPI = GameService()
     self.session = gameAPI.continueLastSession()
 
     switch gameType {
-    case .random:
-      self.session = gameAPI.startGame(.random)
+    case .newSession:
+      self.session = gameAPI.startGame(.newSession)
     case .shared(let word):
       self.session = gameAPI.startGame(.shared(word))
     case .continueLastSession:

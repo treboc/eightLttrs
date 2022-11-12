@@ -10,11 +10,11 @@ import CoreData
 import XCTest
 
 final class GameAPITests: XCTestCase {
-  var sut: GameAPI!
+  var sut: GameService!
   var moc: NSManagedObjectContext!
 
   override func setUpWithError() throws {
-    sut = GameAPI()
+    sut = GameService()
     let store = PersistenceController(inMemory: true)
     moc = store.context
   }

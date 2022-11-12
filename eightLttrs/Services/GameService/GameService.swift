@@ -1,5 +1,5 @@
 //
-//  GameAPI.swift
+//  GameService.swift
 //  eightLttrs
 //
 //  Created by Marvin Lee Kobert on 11.08.22.
@@ -9,15 +9,15 @@ import CoreData
 import Foundation
 import UIKit
 
-class GameAPI {
-  var usersLocale: WSLocale
+class GameService {
+  var usersLocale: ELLocale
   static let moc = PersistenceController.shared.context
 
-  init(wsLocale: WSLocale = .getStoredWSLocale()) {
+  init(wsLocale: ELLocale = .getStoredWSLocale()) {
     self.usersLocale = wsLocale
   }
 
-  func startGame(_ gameType: GameType = .random, in context: NSManagedObjectContext = moc) -> Session {
+  func startGame(_ gameType: GameType = .newSession, in context: NSManagedObjectContext = moc) -> Session {
     switch gameType {
     case .continueLastSession:
       return SessionService.returnLastSession(in: context) ?? randomWordSession()

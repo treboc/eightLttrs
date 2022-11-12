@@ -135,7 +135,7 @@ extension CoinShopManager {
       session.usedWords.insert(randomWord, at: 0)
     }
 
-    session.score = GameAPI.calculatedScore(for: session.usedWords)
+    session.score = GameService.calculatedScore(for: session.usedWords)
     SessionService.persist(session: session)
   }
 
