@@ -23,8 +23,6 @@ final class MainViewControllerTests: XCTestCase {
 
     // Act
 
-
-
     // Assert
   }
 

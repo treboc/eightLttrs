@@ -16,6 +16,7 @@
 		45435A76291ACB6200FCDB42 /* buyAction.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45435A75291ACB6200FCDB42 /* buyAction.wav */; };
 		45435AB3291BC27B00FCDB42 /* AnimatedCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435AB2291BC27B00FCDB42 /* AnimatedCheckmark.swift */; };
 		45435AB5291C2DC400FCDB42 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435AB4291C2DC400FCDB42 /* Double+Extension.swift */; };
+		45435AB9291D6E6800FCDB42 /* DisableAnimation+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45435AB8291D6E6800FCDB42 /* DisableAnimation+ViewModifier.swift */; };
 		45535C6C2915A36600BEB2B7 /* CoinShopView+BuySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */; };
 		45535C6E2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */; };
 		45535C702915A3E500BEB2B7 /* CoinShopView+BuyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */; };
@@ -78,8 +79,8 @@
 		8A87CC4328B4185900A9643B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A87CC4028B4185900A9643B /* Localizable.stringsdict */; };
 		8A9202FB28C1FD3D008AF8EA /* SmallSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */; };
 		8A9202FD28C1FDA8008AF8EA /* UsedWordsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */; };
-		8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
-		8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* WSLocale.swift */; };
+		8A9202FF28C217F5008AF8EA /* ELLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* ELLocale.swift */; };
+		8A92030528C265E4008AF8EA /* ELLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9202FE28C217F5008AF8EA /* ELLocale.swift */; };
 		8A92030628C26673008AF8EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6703CA28A9B32900BBF5F1 /* Constants.swift */; };
 		8A92030728C26690008AF8EA /* String+CalculatedScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */; };
 		8A92030828C26699008AF8EA /* Array+Permute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF524F28BAD985008728BB /* Array+Permute.swift */; };
@@ -114,7 +115,7 @@
 		8ADAB27528A5911C0083E028 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB27428A5911C0083E028 /* MainViewController.swift */; };
 		8ADAB27A28A5911D0083E028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAB27928A5911D0083E028 /* Assets.xcassets */; };
 		8ADAB28828A5911D0083E028 /* WordServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB28728A5911D0083E028 /* WordServiceTests.swift */; };
-		8ADAB2A528A5941B0083E028 /* GameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameAPI.swift */; };
+		8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAB2A428A5941B0083E028 /* GameService.swift */; };
 		8AE9627E28C718ED00FBD9FE /* UIAlertController+PresentAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */; };
 		8AF14FE028BF8D3D00AB6646 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FDF28BF8D3D00AB6646 /* SessionDetailView.swift */; };
 		8AF14FE228BF9E6F00AB6646 /* HighscoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */; };
@@ -160,6 +161,7 @@
 		45435A75291ACB6200FCDB42 /* buyAction.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buyAction.wav; sourceTree = "<group>"; };
 		45435AB2291BC27B00FCDB42 /* AnimatedCheckmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCheckmark.swift; sourceTree = "<group>"; };
 		45435AB4291C2DC400FCDB42 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		45435AB8291D6E6800FCDB42 /* DisableAnimation+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisableAnimation+ViewModifier.swift"; sourceTree = "<group>"; };
 		45535C6B2915A36600BEB2B7 /* CoinShopView+BuySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelection.swift"; sourceTree = "<group>"; };
 		45535C6D2915A38E00BEB2B7 /* CoinShopView+BuySelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuySelectionButton.swift"; sourceTree = "<group>"; };
 		45535C6F2915A3E500BEB2B7 /* CoinShopView+BuyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+BuyPage.swift"; sourceTree = "<group>"; };
@@ -223,7 +225,7 @@
 		8A87CC4228B4185900A9643B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		8A9202FA28C1FD3D008AF8EA /* SmallSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSizeView.swift; sourceTree = "<group>"; };
 		8A9202FC28C1FDA8008AF8EA /* UsedWordsProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordsProgressView.swift; sourceTree = "<group>"; };
-		8A9202FE28C217F5008AF8EA /* WSLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSLocale.swift; sourceTree = "<group>"; };
+		8A9202FE28C217F5008AF8EA /* ELLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELLocale.swift; sourceTree = "<group>"; };
 		8A99A32028B524DC00E5ABBF /* String+CalculatedScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CalculatedScore.swift"; sourceTree = "<group>"; };
 		8A9C880828CDBE0D0062FA6F /* SessionDetailChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailChartView.swift; sourceTree = "<group>"; };
 		8AAC5C7E28C875BF00AF66F6 /* UITextField+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Publisher.swift"; sourceTree = "<group>"; };
@@ -252,7 +254,7 @@
 		8ADAB27E28A5911D0083E028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ADAB28328A5911D0083E028 /* eightLttrsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eightLttrsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAB28728A5911D0083E028 /* WordServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordServiceTests.swift; sourceTree = "<group>"; };
-		8ADAB2A428A5941B0083E028 /* GameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAPI.swift; sourceTree = "<group>"; };
+		8ADAB2A428A5941B0083E028 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		8AE9627D28C718ED00FBD9FE /* UIAlertController+PresentAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+PresentAC.swift"; sourceTree = "<group>"; };
 		8AF14FDF28BF8D3D00AB6646 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		8AF14FE128BF9E6F00AB6646 /* HighscoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreListView.swift; sourceTree = "<group>"; };
@@ -364,10 +366,10 @@
 		8A3F79D328AC55E90058A272 /* GameService */ = {
 			isa = PBXGroup;
 			children = (
-				8ADAB2A428A5941B0083E028 /* GameAPI.swift */,
+				8ADAB2A428A5941B0083E028 /* GameService.swift */,
 				8A794FD828B938AB00BC9CE5 /* GameType.swift */,
 				8A78F3A428AE5C2900DFA6D5 /* WordError.swift */,
-				8A9202FE28C217F5008AF8EA /* WSLocale.swift */,
+				8A9202FE28C217F5008AF8EA /* ELLocale.swift */,
 				8A73D73628C0DE3F000F81CA /* basewordsDE.txt */,
 				8A73D73728C0DE3F000F81CA /* basewordsEN.txt */,
 				8A3F79D428AC59810058A272 /* possibleWordsEN.txt */,
@@ -416,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				8A45C1DF28BB977400A136CC /* RoundedNavigationTitle-ViewModifier.swift */,
+				45435AB8291D6E6800FCDB42 /* DisableAnimation+ViewModifier.swift */,
 				8A45C1E228BBC30700A136CC /* PresentAlert-ViewModifier.swift */,
 				451CD11929159ADF0062384A /* ReadSize-ViewModifier.swift */,
 			);
@@ -845,7 +848,7 @@
 				8A92030828C26699008AF8EA /* Array+Permute.swift in Sources */,
 				8ABED75C28C1E65D003457FD /* MediumSizeView.swift in Sources */,
 				8A4941E428CFB216000BC0E1 /* AccessoryCircularView.swift in Sources */,
-				8A92030528C265E4008AF8EA /* WSLocale.swift in Sources */,
+				8A92030528C265E4008AF8EA /* ELLocale.swift in Sources */,
 				8A4941E628CFB6DB000BC0E1 /* AccessoryRectangularView.swift in Sources */,
 				8AC3AAB728C1F34E004C355A /* VerticalAlignment+Extension.swift in Sources */,
 				8ABED75A28C1E4AA003457FD /* WidgetView.swift in Sources */,
@@ -859,7 +862,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ADAB2A528A5941B0083E028 /* GameAPI.swift in Sources */,
+				8ADAB2A528A5941B0083E028 /* GameService.swift in Sources */,
 				8A6703C928A9A77000BBF5F1 /* MainView.swift in Sources */,
 				8A3F79DE28ACE42C0058A272 /* SessionService.swift in Sources */,
 				45535C7C2916AC3200BEB2B7 /* CoinShopView+StatusBars.swift in Sources */,
@@ -882,6 +885,7 @@
 				8A2A24F828C3244A00C47C27 /* UsedWordsProgressView.swift in Sources */,
 				8A01FED828C2706A0071978F /* CurrentWidgetSession.swift in Sources */,
 				45435A742918FEF200FCDB42 /* CoinShopView+BuyActionPopover.swift in Sources */,
+				45435AB9291D6E6800FCDB42 /* DisableAnimation+ViewModifier.swift in Sources */,
 				8ACF20A628C9BF0900B78DCE /* SharedSessionDeeplinkHandler.swift in Sources */,
 				8AE9627E28C718ED00FBD9FE /* UIAlertController+PresentAC.swift in Sources */,
 				8A9C880928CDBE0D0062FA6F /* SessionDetailChartView.swift in Sources */,
@@ -906,7 +910,7 @@
 				8A99A32128B524DC00E5ABBF /* String+CalculatedScore.swift in Sources */,
 				8A78F3A528AE5C2900DFA6D5 /* WordError.swift in Sources */,
 				8ACF20A028C9BDA100B78DCE /* DeeplinkHandlerProtocol.swift in Sources */,
-				8A9202FF28C217F5008AF8EA /* WSLocale.swift in Sources */,
+				8A9202FF28C217F5008AF8EA /* ELLocale.swift in Sources */,
 				8ABFC55E28B6162500ACC064 /* HapticsManager.swift in Sources */,
 				45836CC6290FCADB00DF7308 /* Bundle+Extensions.swift in Sources */,
 				8A2A24F628C3215D00C47C27 /* Color+Accent.swift in Sources */,
@@ -987,7 +991,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
@@ -1016,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = eightLttrsWidget/eightLttrsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = eightLttrsWidget/Info.plist;
@@ -1165,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1201,7 +1205,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = eightLttrs/eightLttrs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = X9DJ8STXP5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GENERATE_INFOPLIST_FILE = YES;

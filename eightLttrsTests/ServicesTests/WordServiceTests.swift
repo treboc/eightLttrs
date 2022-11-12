@@ -11,8 +11,8 @@ import XCTest
 final class WordServiceTests: XCTestCase {
   func test_loadBasewords_withGermanLocale_shouldReturnBasewords() {
     // Arrange
-    let testWord = "Taubenei"
     let regionCode: ELLocale = .DE
+    let testWord = "TAUBENEI"
 
     // Act
     let basewords = WordService.loadBasewords(regionCode)
@@ -23,8 +23,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadBasewords_withEnglishLocale_shouldReturnBasewords() {
     // Arrange
-    let testWord = "candying"
     let regionCode: ELLocale = .EN
+    let testWord = "CANDYING"
 
     // Act
     let basewords = WordService.loadBasewords(regionCode)
@@ -35,8 +35,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadpossibleWords_withGermanLocale_shouldReturnBasewords() {
     // Arrange
-    let testWord = "Taubenei"
     let regionCode: ELLocale = .DE
+    let testWord = "TAUBENEI"
 
     // Act
     let basewords = WordService.loadPossibleWords(regionCode)
@@ -47,8 +47,8 @@ final class WordServiceTests: XCTestCase {
 
   func test_loadpossibleWords_withEnglishLocale_shouldReturnBasewords() {
     // Arrange
-    let testWord = "candying"
     let regionCode: ELLocale = .EN
+    let testWord = "CANDYING"
 
     // Act
     let basewords = WordService.loadPossibleWords(regionCode)
@@ -153,7 +153,7 @@ final class WordServiceTests: XCTestCase {
 
   func test_getLocale_forHolzzaun_shouldReturn_DE() {
     // Arrange
-    let baseword = "Holzzaun"
+    let baseword = "HOLZZAUN"
     let storedLocale: ELLocale = .EN
     storedLocale.persistWSLocale()
 
@@ -166,7 +166,7 @@ final class WordServiceTests: XCTestCase {
 
   func test_getLocale_fordDemeaned_shouldReturn_DE() {
     // Arrange
-    let baseword = "demeaned"
+    let baseword = "DEMEANED"
     let storedLocale: ELLocale = .DE
     storedLocale.persistWSLocale()
 
@@ -179,7 +179,7 @@ final class WordServiceTests: XCTestCase {
 
   func test_getAllPossibleWords_forTaubenei_shouldContain_Taube() {
     // Arrange
-    let baseword = "Taubenei"
+    let baseword = "TAUBENEI"
     var possibleWords = Set<String>()
 
     // Act
@@ -187,12 +187,12 @@ final class WordServiceTests: XCTestCase {
     possibleWords = list
 
     // Assert
-    XCTAssertTrue(possibleWords.contains("Taube"))
+    XCTAssertTrue(possibleWords.contains("TAUBE"))
   }
 
   func test_getAllPossibleWords_forDemeaned_shouldContain_mean() {
     // Arrange
-    let baseword = "demeaned"
+    let baseword = "DEMEANED"
     var possibleWords = Set<String>()
 
     // Act
@@ -200,7 +200,7 @@ final class WordServiceTests: XCTestCase {
     possibleWords = list
 
     // Assert
-    XCTAssertTrue(possibleWords.contains("mean"))
+    XCTAssertTrue(possibleWords.contains("MEAN"))
   }
 
   func test_getAllPossibleWordsFor_shouldReturnWordsAndScore() {

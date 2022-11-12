@@ -32,7 +32,7 @@ final class MainViewModelTests: XCTestCase {
 
   func test_submit_validInput_shouldPass() {
     // Arrange
-    sut.input.value = "Taube"
+    sut.input.value = "TAUBE"
     var testPassed = false
 
     // Act
@@ -80,8 +80,8 @@ fileprivate extension MainViewModelTests {
     let session = Session(using: context)
     session.id = UUID()
     session.isFinished = false
-    session.baseWord = "Taubenei"
-    session.possibleWords = ["Taube", "Tauben", "Taub"]
+    session.baseword = "TAUBENEI"
+    session.possibleWords = ["TAUBE", "TAUBEN", "TAUB"]
     return session
   }
 }
