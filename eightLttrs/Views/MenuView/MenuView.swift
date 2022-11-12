@@ -317,7 +317,7 @@ extension MenuView {
           .onChange(of: setVolume) { newValue in
             HapticManager.shared.impact(style: .soft)
           }
-          .accessibilityLabel("Sets Volume of sound effects.")
+          .accessibilityLabel(L10n.MenuView.volumeSlider)
       }
       .transition(.slide.combined(with: .opacity))
     }

@@ -281,6 +281,8 @@ internal enum L10n {
     internal static let sound = L10n.tr("Localizable", "menuView.sound", fallback: "Sound")
     /// Menu
     internal static let title = L10n.tr("Localizable", "menuView.title", fallback: "Menu")
+    /// Volume slider for sound effects
+    internal static let volumeSlider = L10n.tr("Localizable", "menuView.volumeSlider", fallback: "Volume slider for sound effects")
     internal enum ChangedLanguage {
       /// You're now playing with different base words.
       /// 

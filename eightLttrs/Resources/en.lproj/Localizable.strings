@@ -42,6 +42,7 @@
 "menuView.baseword" = "Base Word";
 "menuView.hapticFeedback" = "Haptic Feedback";
 "menuView.sound" = "Sound";
+"menuView.volumeSlider" = "Volume slider for sound effects";
 "menuView.filter" = "Filter Words";
 "menuView.filterDescription" = "When enabled, the list of already used words gets dynamically filtered.";
 "menuView.changedLanguage.title" = "Changed Language";

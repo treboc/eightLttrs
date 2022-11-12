@@ -41,6 +41,7 @@
 "menuView.baseword" = "Grundwort";
 "menuView.hapticFeedback" = "Haptisches Feedback";
 "menuView.sound" = "Ton";
+"menuView.volumeSlider" = "Lautstärkeregler für Sound Effekte";
 "menuView.filter" = "Wortlistenfilter";
 "menuView.filterDescription" = "Filtert basierend auf deiner Eingabe die bereits gefundenen Wörter.";
 "menuView.changedLanguage.title" = "Sprache gewechselt";
