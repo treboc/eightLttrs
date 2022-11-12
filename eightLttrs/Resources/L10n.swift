@@ -261,8 +261,8 @@ internal enum L10n {
     }
   }
   internal enum MenuView {
-    /// Baseword
-    internal static let baseword = L10n.tr("Localizable", "menuView.baseword", fallback: "Baseword")
+    /// Base Word
+    internal static let baseword = L10n.tr("Localizable", "menuView.baseword", fallback: "Base Word")
     /// End Session
     internal static let endSession = L10n.tr("Localizable", "menuView.endSession", fallback: "End Session")
     /// Filter Words

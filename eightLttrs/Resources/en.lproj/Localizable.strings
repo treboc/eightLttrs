@@ -39,7 +39,7 @@
 "menuView.restartSession" = "New Base Word";
 "menuView.endSession" = "End Session";
 "menuView.showHighscore" = "Highscore";
-"menuView.baseword" = "Baseword";
+"menuView.baseword" = "Base Word";
 "menuView.hapticFeedback" = "Haptic Feedback";
 "menuView.sound" = "Sound";
 "menuView.filter" = "Filter Words";
