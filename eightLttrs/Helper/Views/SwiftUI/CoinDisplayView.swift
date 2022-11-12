@@ -18,6 +18,7 @@ struct CoinsDisplayView: View {
       Spacer()
       Text("\(coinShopManager.availableCoins.formatAsShortNumber())")
         .monospacedDigit()
+        .disableAnimation()
     }
     .padding(10)
     .background(
