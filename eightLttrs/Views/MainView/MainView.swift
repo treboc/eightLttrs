@@ -62,17 +62,17 @@ class MainView: UIView {
 extension MainView {
   private func setupViews() {
     let semiBoldFont = UIFont.monospacedDigitSystemFont(ofSize: 15, weight: .semibold)
-    let buttonConfig = UIImage.SymbolConfiguration(textStyle: .title3, scale: .large)
+    let symbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title3, scale: .large)
 
     let shopButtonImage = UIImage(named: "shopIcon")
     shopButton.setImage(shopButtonImage, for: .normal)
     shopButton.accessibilityLabel = L10n.MainView.ShopButton.title
 
-    let resetButtonImage = UIImage(systemName: "arrow.counterclockwise.circle.fill", withConfiguration: buttonConfig)
+    let resetButtonImage = UIImage(systemName: "arrow.counterclockwise.circle.fill", withConfiguration: symbolConfiguration)
     resetButton.setImage(resetButtonImage, for: .normal)
     resetButton.accessibilityLabel = L10n.MenuView.restartSession
 
-    let menuButtonImage = UIImage(systemName: "line.3.horizontal.circle.fill", withConfiguration: buttonConfig)
+    let menuButtonImage = UIImage(systemName: "line.3.horizontal.circle.fill", withConfiguration: symbolConfiguration)
     menuButton.setImage(menuButtonImage, for: .normal)
     menuButton.accessibilityLabel = L10n.MenuView.title
 
