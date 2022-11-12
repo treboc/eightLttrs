@@ -24,9 +24,13 @@ final class SharedSessionDeeplinkHandler: DeeplinkHandlerProtocol {
     mainViewController.presentedViewController?.dismiss(animated: false)
 
     if let word = extractStartWord(from: url) {
-      UIAlertController.presentAlertController(on: mainViewController,
-                                               with: .wordsInSession) { _ in
+      if mainViewController.viewModel.session.usedWords.isEmpty {
         mainViewController.viewModel.startNewSession(with: word)
+      } else {
+        UIAlertController.presentAlertController(on: mainViewController,
+                                                 with: .wordsInSession) { _ in
+          mainViewController.viewModel.startNewSession(with: word)
+        }
       }
     } else {
       UIAlertController.presentAlertController(on: mainViewController,
