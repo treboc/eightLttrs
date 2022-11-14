@@ -138,13 +138,6 @@ extension CoinShopManager {
     session.score = GameService.calculatedScore(for: session.usedWords)
     SessionService.persist(session: session)
   }
-
-  private func getRandomWord(from session: Session) -> String? {
-    if session.possibleWords.count > session.usedWords.count {
-      return session.possibleWordsSet.filter({ !session.usedWords.contains($0) }).randomElement()
-    }
-    return nil
-  }
 }
 
 extension CoinShopManager {

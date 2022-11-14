@@ -81,7 +81,6 @@ struct MenuView: View {
 
         Section("Contact Me") {
           twitterLink
-          // SUPPORT EMAIL
           supportEmailLink
           reviewLink
           NavigationLink(L10n.LegalNoticeView.title, destination: LegalNoticeView.init)

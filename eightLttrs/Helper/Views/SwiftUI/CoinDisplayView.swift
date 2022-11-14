@@ -31,7 +31,6 @@ struct CoinsDisplayView: View {
       setWidth(coinShopManager.correctWordsEntered)
     }
     .onChange(of: coinShopManager.correctWordsEntered, perform: setWidth)
-    .onAppear()
     .overlay(alignment: .bottomLeading) {
       Rectangle()
         .fill(Color.accent)
