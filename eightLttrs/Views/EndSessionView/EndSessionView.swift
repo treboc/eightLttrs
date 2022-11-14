@@ -12,7 +12,7 @@ struct EndSessionView: View {
   @Environment(\.modalMode) private var modalMode
   @ObservedObject var session: Session
   @FocusState private var isFocused
-  @AppStorage(UserDefaultsKeys.lastPlayersName) private var name: String = ""
+  @AppStorage(UserDefaults.Keys.lastPlayersName) private var name: String = ""
   @State private var cancelAlertIsShowing: Bool = false
 
   var body: some View {

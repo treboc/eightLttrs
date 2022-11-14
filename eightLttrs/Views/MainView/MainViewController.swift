@@ -332,7 +332,7 @@ extension MainViewController {
 // MARK: - Handle onboarding
 extension MainViewController {
   private func presentOnboarding() {
-    if UserDefaults.standard.value(forKey: UserDefaultsKeys.isFirstStart) == nil {
+    if UserDefaults.standard.value(forKey: UserDefaults.Keys.isFirstStart) == nil {
       let onboardingVC = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
       onboardingVC.modalPresentationStyle = .fullScreen
       self.parent?.present(onboardingVC, animated: false)

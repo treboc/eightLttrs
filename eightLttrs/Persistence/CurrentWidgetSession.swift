@@ -17,7 +17,7 @@ struct WidgetSession: Codable {
 }
 
 struct CurrentWidgetSession {
-  @AppStorage(UserDefaultsKeys.currentSession, store: UserDefaults(suiteName: "group.com.marvinleekobert.eightLttrs")) private var currentSessionData: Data = Data()
+  @AppStorage(UserDefaults.Keys.currentSession, store: UserDefaults(suiteName: "group.com.marvinleekobert.eightLttrs")) private var currentSessionData: Data = Data()
   
   let currentSession: WidgetSession
 

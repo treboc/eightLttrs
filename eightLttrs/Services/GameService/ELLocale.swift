@@ -46,18 +46,18 @@ enum ELLocale: String, CaseIterable, Identifiable {
   }
 
   func persistWSLocale() {
-    UserDefaults.standard.set(rawValue, forKey: UserDefaultsKeys.regionCode)
+    UserDefaults.standard.set(rawValue, forKey: UserDefaults.Keys.regionCode)
   }
 
   static func getStoredWSLocale() -> ELLocale {
-    guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaultsKeys.regionCode),
+    guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaults.Keys.regionCode),
           let wsLocale = ELLocale.init(rawValue: storedRegionCode)
     else { return .EN }
     return wsLocale
   }
 
   static func regionHasChanged() -> Bool {
-    guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaultsKeys.regionCode),
+    guard let storedRegionCode = UserDefaults.standard.string(forKey: UserDefaults.Keys.regionCode),
           let currentRegionCode = Locale.autoupdatingCurrent.region?.identifier
     else { return true }
 

@@ -17,11 +17,11 @@ struct MenuView: View {
   @StateObject private var coinShop = CoinShopManager.shared
   #endif
 
-  @AppStorage(UserDefaultsKeys.enabledVibration) private var enabledVibration = true
-  @AppStorage(UserDefaultsKeys.enabledSound) private var enabledSound = true
-  @AppStorage(UserDefaultsKeys.setVolume) private var setVolume: Double = 0.5
-  @AppStorage(UserDefaultsKeys.enabledFiltering) private var enabledFiltering = true
-  @AppStorage(UserDefaultsKeys.regionCode) private var chosenBasewordLocale: ELLocale = .DE
+  @AppStorage(UserDefaults.Keys.enabledVibration) private var enabledVibration = true
+  @AppStorage(UserDefaults.Keys.enabledSound) private var enabledSound = true
+  @AppStorage(UserDefaults.Keys.setVolume) private var setVolume: Double = 0.5
+  @AppStorage(UserDefaults.Keys.enabledFiltering) private var enabledFiltering = true
+  @AppStorage(UserDefaults.Keys.regionCode) private var chosenBasewordLocale: ELLocale = .DE
 
   @State private var alertModel: AlertToPresent? = nil
   @State private var endGameViewIsShown: Bool = false
@@ -89,7 +89,7 @@ struct MenuView: View {
 #if DEBUG
         Section("Development") {
           Button("Reset Onboarding") {
-            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart)
+            UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.isFirstStart)
           }
         }
         allPossibleWordsSection_DEV

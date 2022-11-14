@@ -108,7 +108,7 @@ extension OnboardingPageViewController {
   private func startButtonTapped(_ sender: UIButton) {
     dismiss(animated: true)
     // set isStarted, so that the onboarding does not show again on next start
-    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isFirstStart)
+    UserDefaults.standard.set(true, forKey: UserDefaults.Keys.isFirstStart)
   }
 }
 

@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // register settings
     UserDefaults.standard.register(
       defaults: [
-        UserDefaultsKeys.appearance: "system",
-        UserDefaultsKeys.regionCode: wsLocale.rawValue,
-        UserDefaultsKeys.enabledVibration: true,
-        UserDefaultsKeys.enabledSound: true,
-        UserDefaultsKeys.setVolume: 0.5,
-        UserDefaultsKeys.enabledFiltering: true,
-        UserDefaultsKeys.flagUppercaseHintAlreadyShown: false
+        UserDefaults.Keys.appearance: "system",
+        UserDefaults.Keys.regionCode: wsLocale.rawValue,
+        UserDefaults.Keys.enabledVibration: true,
+        UserDefaults.Keys.enabledSound: true,
+        UserDefaults.Keys.setVolume: 0.5,
+        UserDefaults.Keys.enabledFiltering: true,
+        UserDefaults.Keys.flagUppercaseHintAlreadyShown: false
       ]
     )
     return true

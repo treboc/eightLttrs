@@ -7,22 +7,24 @@
 
 import Foundation
 
-struct UserDefaultsKeys {
-  static let flagUppercaseHintAlreadyShown = "flagUppercaseHintAlreadyShown"
-
-  static let isFirstStart = "isFirstStart"
-  static let lastPlayersName = "lastPlayersName"
-  static let currentSession = "currentSession"
-
-  static let appearance = "Appearance"
-  static let enabledVibration = "enabledVibration"
-  static let enabledSound = "enabledSound"
-  static let setVolume = "setVolume"
-  static let enabledFiltering = "enabledFiltering"
-  static let regionCode = "chosenBasewordLocale"
-
-  static let lastVersionPromptedForReviewKey = "lastVersionPromptedForReviewKey"
-  static let isReadyForRequestKey = "isReadyForRequest"
-  static let wordCounterForRequestKey = "wordCounterForRequest"
-  static let neededWordCounterForRequestKey = "neededWordCounterForRequest"
+extension UserDefaults {
+  enum Keys {
+    static let flagUppercaseHintAlreadyShown = "flagUppercaseHintAlreadyShown"
+    
+    static let isFirstStart = "isFirstStart"
+    static let lastPlayersName = "lastPlayersName"
+    static let currentSession = "currentSession"
+    
+    static let appearance = "Appearance"
+    static let enabledVibration = "enabledVibration"
+    static let enabledSound = "enabledSound"
+    static let setVolume = "setVolume"
+    static let enabledFiltering = "enabledFiltering"
+    static let regionCode = "chosenBasewordLocale"
+    
+    static let lastVersionPromptedForReviewKey = "lastVersionPromptedForReviewKey"
+    static let isReadyForRequestKey = "isReadyForRequest"
+    static let wordCounterForRequestKey = "wordCounterForRequest"
+    static let neededWordCounterForRequestKey = "neededWordCounterForRequest"
+  }
 }

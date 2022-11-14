@@ -24,13 +24,13 @@ class HapticManager {
   }
 
   func success() {
-    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledVibration) {
+    if UserDefaults.standard.bool(forKey: UserDefaults.Keys.enabledVibration) {
       generator.notificationOccurred(.success)
     }
   }
 
   func error() {
-    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.enabledVibration) {
+    if UserDefaults.standard.bool(forKey: UserDefaults.Keys.enabledVibration) {
       generator.notificationOccurred(.error)
     }
   }
