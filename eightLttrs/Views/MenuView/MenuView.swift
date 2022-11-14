@@ -313,8 +313,8 @@ extension MenuView {
           .accessibilityHidden(true)
 
         Slider(value: $setVolume, in: 0...1, step: 0.1)
-          .onChange(of: setVolume) { newValue in
-            HapticManager.shared.impact(style: .soft)
+          .onChange(of: setVolume) { _ in
+            mainViewModel.userFeedbackManager.perform(.sliderChange)
           }
           .accessibilityLabel(L10n.MenuView.volumeSlider)
       }

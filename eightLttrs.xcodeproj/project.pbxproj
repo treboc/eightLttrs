@@ -24,11 +24,12 @@
 		45535C772915AC3700BEB2B7 /* CoinShopView+InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C762915AC3700BEB2B7 /* CoinShopView+InfoPage.swift */; };
 		45535C7A2916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C792916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift */; };
 		45535C7C2916AC3200BEB2B7 /* CoinShopView+StatusBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45535C7B2916AC3200BEB2B7 /* CoinShopView+StatusBars.swift */; };
-		45589C3B2903E7FA000AEBE1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */; };
+		45589C3B2903E7FA000AEBE1 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45589C3A2903E7FA000AEBE1 /* AudioManager.swift */; };
 		45836CC4290FC9D300DF7308 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45836CC3290FC9D300DF7308 /* SupportEmail.swift */; };
 		45836CC6290FCADB00DF7308 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45836CC5290FCADB00DF7308 /* Bundle+Extensions.swift */; };
 		45836CCA29107EAA00DF7308 /* CoinShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45836CC929107EAA00DF7308 /* CoinShopManager.swift */; };
 		45836CCD2911C62D00DF7308 /* eightLttrs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45836CCB2911C62D00DF7308 /* eightLttrs.xcdatamodeld */; };
+		458FAF2E2922B5B100CEEB5A /* UserFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458FAF2D2922B5B100CEEB5A /* UserFeedbackManager.swift */; };
 		459E767F290148AF009664BF /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 459E767E290148AF009664BF /* Popovers */; };
 		459E768129014938009664BF /* ErrorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768029014938009664BF /* ErrorPopover.swift */; };
 		459E768329015044009664BF /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E768229015044009664BF /* AppearanceManager.swift */; };
@@ -169,11 +170,12 @@
 		45535C762915AC3700BEB2B7 /* CoinShopView+InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+InfoPage.swift"; sourceTree = "<group>"; };
 		45535C792916ABEB00BEB2B7 /* CoinShopView+CoinDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+CoinDisplayView.swift"; sourceTree = "<group>"; };
 		45535C7B2916AC3200BEB2B7 /* CoinShopView+StatusBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinShopView+StatusBars.swift"; sourceTree = "<group>"; };
-		45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		45589C3A2903E7FA000AEBE1 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		45836CC3290FC9D300DF7308 /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		45836CC5290FCADB00DF7308 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		45836CC929107EAA00DF7308 /* CoinShopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinShopManager.swift; sourceTree = "<group>"; };
 		45836CCC2911C62D00DF7308 /* WordScramble.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WordScramble.xcdatamodel; sourceTree = "<group>"; };
+		458FAF2D2922B5B100CEEB5A /* UserFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackManager.swift; sourceTree = "<group>"; };
 		459E768029014938009664BF /* ErrorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopover.swift; sourceTree = "<group>"; };
 		459E768229015044009664BF /* AppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		459E7684290151B9009664BF /* AppearancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePicker.swift; sourceTree = "<group>"; };
@@ -329,13 +331,13 @@
 			path = EnvironmentKey;
 			sourceTree = "<group>";
 		};
-		45589C3C2903E810000AEBE1 /* AudioPlayer */ = {
+		45589C3C2903E810000AEBE1 /* AudioManager */ = {
 			isa = PBXGroup;
 			children = (
-				45589C3A2903E7FA000AEBE1 /* AudioPlayer.swift */,
+				45589C3A2903E7FA000AEBE1 /* AudioManager.swift */,
 				8A4C4C8B28BC34F800B643D1 /* SoundType.swift */,
 			);
-			path = AudioPlayer;
+			path = AudioManager;
 			sourceTree = "<group>";
 		};
 		45836CC829107E8600DF7308 /* CoinShopManager */ = {
@@ -344,6 +346,24 @@
 				45836CC929107EAA00DF7308 /* CoinShopManager.swift */,
 			);
 			path = CoinShopManager;
+			sourceTree = "<group>";
+		};
+		458FAF2B2922B55A00CEEB5A /* UserFeedbackService */ = {
+			isa = PBXGroup;
+			children = (
+				458FAF2D2922B5B100CEEB5A /* UserFeedbackManager.swift */,
+				458FAF2C2922B5A000CEEB5A /* HapticsManager */,
+				45589C3C2903E810000AEBE1 /* AudioManager */,
+			);
+			path = UserFeedbackService;
+			sourceTree = "<group>";
+		};
+		458FAF2C2922B5A000CEEB5A /* HapticsManager */ = {
+			isa = PBXGroup;
+			children = (
+				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
+			);
+			path = HapticsManager;
 			sourceTree = "<group>";
 		};
 		45F99CF0290FC9A60050AC6F /* EmailContact */ = {
@@ -357,6 +377,7 @@
 		8A27E2D328C4F3DD00CB39C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				458FAF2B2922B55A00CEEB5A /* UserFeedbackService */,
 				8A3F79D328AC55E90058A272 /* GameService */,
 				8A41A52428C4AB380056662C /* WordService */,
 			);
@@ -458,9 +479,7 @@
 			children = (
 				45F99CF0290FC9A60050AC6F /* EmailContact */,
 				8A6703CA28A9B32900BBF5F1 /* Constants.swift */,
-				45589C3C2903E810000AEBE1 /* AudioPlayer */,
 				8ACC060728D65344005569C8 /* UserDefaultsKeys.swift */,
-				8ABFC55D28B6162500ACC064 /* HapticsManager.swift */,
 				459E768229015044009664BF /* AppearanceManager.swift */,
 				45589C392903E79F000AEBE1 /* EnvironmentKey */,
 				8A85AD2C28BDF3BD007FF4BF /* Views */,
@@ -876,7 +895,7 @@
 				8A70BEC028AB7C4000455FF1 /* OnboardingViewController.swift in Sources */,
 				8ACC060828D65344005569C8 /* UserDefaultsKeys.swift in Sources */,
 				45535C702915A3E500BEB2B7 /* CoinShopView+BuyPage.swift in Sources */,
-				45589C3B2903E7FA000AEBE1 /* AudioPlayer.swift in Sources */,
+				45589C3B2903E7FA000AEBE1 /* AudioManager.swift in Sources */,
 				8AF14FE028BF8D3D00AB6646 /* SessionDetailView.swift in Sources */,
 				451CD11A29159ADF0062384A /* ReadSize-ViewModifier.swift in Sources */,
 				8A41A52828C4AB6A0056662C /* WordService.swift in Sources */,
@@ -929,6 +948,7 @@
 				8A78F3BD28AEBFCD00DFA6D5 /* L10n.swift in Sources */,
 				8A87110E28B281C5004F299F /* PersistenceController.swift in Sources */,
 				45836CCA29107EAA00DF7308 /* CoinShopManager.swift in Sources */,
+				458FAF2E2922B5B100CEEB5A /* UserFeedbackManager.swift in Sources */,
 				459E768329015044009664BF /* AppearanceManager.swift in Sources */,
 				45535C772915AC3700BEB2B7 /* CoinShopView+InfoPage.swift in Sources */,
 			);

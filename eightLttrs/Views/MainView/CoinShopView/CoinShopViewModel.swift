@@ -20,13 +20,16 @@ final class CoinShopViewModel: ObservableObject {
   @Published var popoverIsPresented: Bool = false
   @Published var buyingError: Error?
 
-  let audioPlayer = AudioPlayer()
+  let userFeedbackManager: UserFeedbackManager
   let session: Session
   var onDismiss: () -> Void
 
   private var cancellables = Set<AnyCancellable>()
 
-  init(session: Session, onDismiss: @escaping () -> Void) {
+  init(userFeedbackManager: UserFeedbackManager = .init(),
+       session: Session,
+       onDismiss: @escaping () -> Void) {
+    self.userFeedbackManager = userFeedbackManager
     self.session = session
     self.onDismiss = onDismiss
 
@@ -44,13 +47,11 @@ final class CoinShopViewModel: ObservableObject {
     switch result {
     case .success(_):
       popoverIsPresented.toggle()
-      audioPlayer.play(type: .buyAction)
-      HapticManager.shared.notification(type: .success)
+      userFeedbackManager.perform(.buyAction)
     case .failure(let failure):
       self.buyingError = failure
-      audioPlayer.play(type: .error)
       popoverIsPresented.toggle()
-      HapticManager.shared.notification(type: .error)
+      userFeedbackManager.perform(.error)
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       onCompletion()

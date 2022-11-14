@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 final class MainViewModel: ObservableObject {
-  let audioPlayer = AudioPlayer()
+  let userFeedbackManager: UserFeedbackManager
   let gameAPI: GameService
   var session: Session
 
@@ -20,7 +20,9 @@ final class MainViewModel: ObservableObject {
   @Published var coinShopManager = CoinShopManager.shared
   @Published var shopIsShown: Bool = false
 
-  init(gameType: GameType = .continueLastSession) {
+  init(gameType: GameType = .continueLastSession,
+       userFeedbackManager: UserFeedbackManager = .init()) {
+    self.userFeedbackManager = userFeedbackManager
     self.gameAPI = GameService()
     self.session = gameAPI.continueLastSession()
 
@@ -37,14 +39,12 @@ final class MainViewModel: ObservableObject {
   func submit(onCompletion: () -> Void) {
     do {
       try gameAPI.submit(input.value.uppercased(), session: session)
+      userFeedbackManager.perform(.success)
       coinShopManager.enteredCorrectWord(on: session)
       input.value.removeAll()
       onCompletion()
-      HapticManager.shared.success()
-      audioPlayer.play(type: .success)
     } catch let error as WordError {
-      HapticManager.shared.error()
-      audioPlayer.play(type: .error)
+      userFeedbackManager.perform(.error)
       self.error.send(error)
     } catch {
       fatalError(error.localizedDescription)
