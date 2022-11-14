@@ -205,7 +205,7 @@ final class WordServiceTests: XCTestCase {
 
   func test_getAllPossibleWordsFor_shouldReturnWordsAndScore() {
     // Given
-    let input = "Taubenei"
+    let input = "TAUBENEI"
 
     // When
     let expectation = self.expectation(description: "LoadingWords")

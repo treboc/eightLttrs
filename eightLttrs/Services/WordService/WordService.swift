@@ -109,14 +109,14 @@ class WordService {
   }
 
   private class func allPossibleWords(for baseword: String,
-                                basedOn list: Set<String>,
-                                with minStringLen: Int = 3) -> (Set<String>, Int) {
+                                      basedOn list: Set<String>,
+                                      with minStringLen: Int = 3) -> (Set<String>, Int) {
     let stringArr = baseword
-      .map { String($0).lowercased() }
+      .map { String($0) }
     let permutedStringList = stringArr.permute(minStringLen: minStringLen)
 
     let possibleWordsForWord = list.filter { word in
-      permutedStringList.contains(word.lowercased()) && word != baseword
+      permutedStringList.contains(word) && word != baseword
     }
 
     let score = possibleWordsForWord

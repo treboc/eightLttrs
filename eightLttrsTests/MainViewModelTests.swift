@@ -46,20 +46,22 @@ final class MainViewModelTests: XCTestCase {
 
   func test_submit_withInvalidInput_shouldSetError() {
     // Arrange
-    sut.input.value = "Tau"
-    var testPassed = true
+    let ex = XCTestExpectation()
+    sut.input.value = "TAU"
 
-    _ = sut.error
-      .map { $0 != nil }
-      .sink { bool in
-        testPassed = bool
+    let errorPup = sut.error
+      .sink { error in
+        if error != nil {
+          ex.fulfill()
+        }
       }
 
     // Act
     sut.submit {}
 
     // Assert
-    XCTAssertFalse(testPassed)
+    wait(for: [ex], timeout: 1)
+    errorPup.cancel()
   }
 
   func test_startNewSession_shouldOverwriteCurrentSession() {

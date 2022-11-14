@@ -49,7 +49,7 @@ final class GameAPITests: XCTestCase {
 
   func test_startGame_withBaseword_shouldReturnSessionWithBaseword() {
     // Arrange
-    let baseword = "Taubenei"
+    let baseword = "TAUBENEI"
     let expectedSession = sut.startGame(.shared(baseword), in: moc)
 
     // Assert
