@@ -187,7 +187,7 @@ extension MainViewController {
     // Publisher -> color baseword with input
     viewModel.input
       .sink { [unowned self] value in
-        mainView.basewordLabel.attributedText = highlighted(input: value, onString: viewModel.session.unwrappedBaseword)
+        mainView.basewordLabel.attributedText = highlightedWord(input: value, onString: viewModel.session.unwrappedBaseword)
       }
       .store(in: &cancellables)
 
@@ -307,7 +307,7 @@ extension MainViewController {
   ///   - input: The part that will be greyed out.
   ///   - onString: The String that this applies to.
   ///
-  func highlighted(input: String, onString: String) -> NSAttributedString {
+  func highlightedWord(input: String, onString: String) -> NSAttributedString {
     let markedAttribute: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.label.withAlphaComponent(0.2)]
     let attributedString = NSMutableAttributedString()
     var tmpInput = input

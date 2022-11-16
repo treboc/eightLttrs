@@ -8,7 +8,7 @@
 import Foundation
 
 enum GameType: Equatable {
-  case random
+  case newSession
   case shared(String)
   case continueLastSession
 }
