@@ -214,7 +214,6 @@ extension MainViewController {
       .store(in: &cancellables)
 
     viewModel.error
-      .dropFirst()
       .compactMap { $0 }
       .sink(receiveValue: presentPopover)
       .store(in: &cancellables)
@@ -273,10 +272,9 @@ extension MainViewController {
 
   @objc
   private func showShop() {
-    let vc = UIHostingController(rootView: CoinShopView(session: viewModel.session) { [weak self] in
-      self?.viewModel.shopIsShown = false
-    }
-    )
+    let vc = UIHostingController(rootView: CoinShopView(session: viewModel.session) {
+      self.viewModel.shopIsShown = false
+    })
     vc.modalPresentationStyle = .overCurrentContext
     vc.modalTransitionStyle = .crossDissolve
     vc.view.backgroundColor = .clear

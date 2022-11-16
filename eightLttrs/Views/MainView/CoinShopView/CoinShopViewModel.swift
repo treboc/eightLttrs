@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-final class CoinShopViewModel: ObservableObject {
+class CoinShopViewModel: ObservableObject {
   enum CoinShopPageSelection {
     case shop
     case info
