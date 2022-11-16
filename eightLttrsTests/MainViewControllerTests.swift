@@ -19,7 +19,7 @@ final class MainViewControllerTests: XCTestCase {
 
   func test_viewDidLoad_shouldPresentOnboarding_ifIsFirstStart() {
     // Arrange
-    UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isFirstStart)
+    UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.isFirstStart)
 
     // Act
 
