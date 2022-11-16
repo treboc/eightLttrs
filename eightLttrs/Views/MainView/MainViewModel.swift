@@ -14,7 +14,7 @@ final class MainViewModel: ObservableObject {
   var session: Session
 
   var input = CurrentValueSubject<String, Never>("")
-  var error = CurrentValueSubject<WordError?, Never>(nil)
+  var error = PassthroughSubject<WordError?, Never>()
   var resetUICallback: (() -> Void)? = nil
 
   @Published var coinShopManager = CoinShopManager.shared
